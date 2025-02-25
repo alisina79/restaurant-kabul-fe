@@ -1,0 +1,155 @@
+/* General Footer Styling */
+.footer {
+  background: #2c3e50;
+  color: white;
+  padding: 50px 20px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  min-height: 550px;
+}
+
+/* Footer Container */
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+/* Footer Sections */
+.footerSection {
+  flex: 1;
+  padding: 20px;
+  min-width: 250px;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #f39c12;
+}
+
+/* Navigation Links */
+.footerNav,
+.footerSubnav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 16px;
+}
+
+.footerNav a,
+.footerSubnav a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.footerNav a:hover,
+.footerSubnav a:hover {
+  color: #f39c12;
+  text-shadow: 0px 0px 10px rgba(243, 156, 18, 0.8);
+}
+
+/* Social Media Icons */
+.footerIcons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 26px;
+}
+
+.icon {
+  color: white;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+  color: #f39c12;
+}
+
+/* Newsletter Form */
+.newsletterForm {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.input {
+  padding: 12px;
+  width: 220px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  outline: none;
+  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.input:focus {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 10px rgba(243, 156, 18, 0.8);
+}
+
+.button {
+  background: linear-gradient(135deg, #f39c12, #e74c3c);
+  color: white;
+  font-weight: bold;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #e74c3c, #f39c12);
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.loyaltyText {
+  color: white;
+}
+
+/* Footer Copyright */
+.footerCopyright {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  padding-top: 20px;
+}
+
+/* Scroll to Top Button */
+.scrollToTop {
+  position: absolute;
+  bottom: 40px;
+  right: 70px;
+  background: linear-gradient(135deg, #f39c12, #e74c3c);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.scrollToTop:hover {
+  transform: scale(1.1);
+}

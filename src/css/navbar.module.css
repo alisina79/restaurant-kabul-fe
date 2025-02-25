@@ -1,0 +1,491 @@
+/* General Reset */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  background-color: transparent;
+  transition: 0.3s ease-in-out;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(6, 5, 5, 0.753);
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  top: 0;
+  left: 0;
+  padding: 15px 30px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scrolledNavbar {
+  background-color: #2c3e50 !important; /* Dark base color */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* Enhanced Centered Logo with Animated Gradient and Underline (No Movement) */
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 44px;
+  font-weight: normal;
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 3px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+  background: linear-gradient(45deg, #f39c12, #e74c3c, #f39c12);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 0.5s ease, border-bottom-color 0.5s ease,
+    text-shadow 0.5s ease;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Underline Effect */
+.logo::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #f39c12;
+  margin: 5px auto 0;
+  transition: width 0.5s ease;
+}
+
+/* Hover Effects (Without Movement) */
+.logo:hover {
+  background-position: 100% center;
+  border-bottom-color: #f39c12;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.logo:hover::after {
+  width: 100%;
+}
+
+/* Order Button Container */
+.orderContainer {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  display: inline-block;
+}
+
+/* Stylish Order Button */
+.orderButton {
+  background: linear-gradient(135deg, #f39c12, #e74c3c); /* Updated gradient */
+  padding: 12px 22px;
+  border-radius: 30px;
+  margin-top: 10px;
+  margin-right: 50px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 5px 15px rgba(243, 156, 18, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button Hover Effect */
+.orderButton:hover {
+  transform: scale(1.07);
+  background: linear-gradient(135deg, #e74c3c, #f39c12); /* Reversed gradient */
+  box-shadow: 0px 6px 18px rgba(243, 156, 18, 0.6);
+}
+
+/* Dropdown Menu for Order Button */
+.dropdownMenu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
+  padding: 12px 0;
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.8s ease, transform 0.3s ease-in-out;
+}
+
+/* Show Order Dropdown when hovered */
+.orderContainer:hover .dropdownMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Order Dropdown Links */
+.dropdownMenu a {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+}
+
+/* Icon inside Order Dropdown */
+.dropdownMenu .icon {
+  margin-right: 10px;
+  color: #f39c12; /* Updated accent */
+}
+
+/* Hover effect for Order Dropdown links */
+.dropdownMenu a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Add an arrow at the top of Order Dropdown */
+.dropdownMenu::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 20px;
+  width: 16px;
+  height: 16px;
+  background: rgba(0, 0, 0, 0.9);
+  transform: rotate(45deg);
+}
+
+/* Full-Screen Dropdown Menu for Navigation */
+.fullscreenMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Show Full-Screen Dropdown */
+.fullscreenMenu.open {
+  transform: translateY(0);
+}
+
+/* Modern Close Button */
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* Close Button Hover Effect */
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+  color: #f39c12; /* Updated accent */
+}
+
+/* Close Button Click Effect */
+.closeButton:active {
+  transform: scale(0.95);
+  color: #e74c3c; /* Updated accent */
+}
+
+/* Close Button Icon Animation */
+.closeButton::before {
+  content: "✕";
+  font-size: 32px;
+  font-weight: bold;
+  color: inherit;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Hover Effect - Rotating Close Icon */
+.closeButton:hover::before {
+  transform: rotate(90deg);
+  color: #e74c3c; /* Updated accent */
+}
+
+/* Glowing Effect on Hover */
+@keyframes closeGlow {
+  0% {
+    box-shadow: 0px 0px 10px rgba(243, 156, 18, 0.5);
+  }
+  50% {
+    box-shadow: 0px 0px 15px rgba(243, 156, 18, 0.7);
+  }
+  100% {
+    box-shadow: 0px 0px 10px rgba(243, 156, 18, 0.5);
+  }
+}
+
+.closeButton:hover {
+  animation: closeGlow 1s infinite alternate;
+}
+
+/* Responsive Close Button Adjustments */
+@media (max-width: 768px) {
+  .closeButton {
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    padding: 10px;
+  }
+}
+
+/* Full-Screen Dropdown Menu Links */
+.fullscreenMenu a {
+  color: whitesmoke;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 20px;
+  transition: all 0.3s ease-in-out;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 280px;
+  border-radius: 8px;
+}
+
+/* Glowing Border Effect */
+.fullscreenMenu a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #f39c12, #e74c3c); /* Updated gradient */
+  transition: width 0.4s ease-in-out, left 0.4s ease-in-out;
+}
+
+/* Hover Effect */
+.fullscreenMenu a:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+/* Hover Glow Effect */
+.fullscreenMenu a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+  color: #f39c12; /* Updated accent */
+}
+
+/* Icon Styling */
+.fullscreenMenu .icon {
+  margin-right: 12px;
+  color: #f39c12; /* Updated accent */
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Icon Hover Effect */
+.fullscreenMenu a:hover .icon {
+  transform: scale(1.2);
+  color: #e74c3c; /* Updated accent */
+}
+
+/* Active Link Effect */
+.fullscreenMenu a.active {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #f39c12; /* Updated accent */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .fullscreenMenu a {
+    font-size: 20px;
+    max-width: 220px;
+  }
+
+  .fullscreenMenu a:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* Modern Menu Button */
+.menuButton {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  width: 50px;
+  height: 50px;
+  background: #f39c12; /* Updated accent */
+  backdrop-filter: blur(8px);
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Menu Icon Styling */
+.menuButton div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+/* Middle Line */
+.menuButton div:nth-child(2) {
+  margin: 5px 0;
+}
+
+/* Hover Effect */
+.menuButton:hover {
+  background: #f39c12;
+  transform: scale(1.1);
+}
+
+/* Clicked Animation for Menu Button */
+.menuButton.open div:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menuButton.open div:nth-child(2) {
+  opacity: 0;
+}
+
+.menuButton.open div:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .menuButton {
+    width: 45px;
+    height: 45px;
+  }
+
+  .menuButton div {
+    width: 22px;
+  }
+}
+
+/* Multi-Level Dropdown */
+.dropdownItem {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.dropdownToggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 15px 20px;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  justify-content: space-between;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdownToggle:hover {
+  color: #f39c12; /* Updated accent */
+}
+
+/* Updated Submenu Styles */
+.submenu {
+  position: absolute;
+  background: rgba(20, 20, 20, 0.95);
+  border-radius: 12px;
+  padding: 12px 0;
+  min-width: 180px;
+  top: 100%;
+  left: 0;
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transform: translateY(5px);
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Show submenu when parent is active */
+.submenu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Submenu items */
+.submenu button,
+.submenu a {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  color: #f8f8f8;
+  text-align: left;
+  padding: 14px 18px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease-in-out, padding 0.2s ease-in-out;
+  white-space: nowrap;
+  border-left: 4px solid transparent;
+  text-decoration: none;
+}
+
+/* Hover effect */
+.submenu button:hover,
+.submenu a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  padding-left: 22px;
+  border-left: 4px solid #f39c12; /* Updated accent */
+}

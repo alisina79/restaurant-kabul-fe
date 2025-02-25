@@ -1,0 +1,94 @@
+.gallery-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #222;
+}
+
+/* Swiper Carousel */
+.carousel {
+  margin-bottom: 30px;
+}
+.carousel-image {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .carousel-image {
+    height: 250px;
+  }
+}
+
+/* Responsive Grid Gallery */
+.grid-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+  padding: 10px;
+}
+
+.grid-item {
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.grid-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Lightbox Modal */
+.lightbox-overlay {
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.lightbox-modal {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  outline: none;
+}
+
+.lightbox-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  border: none;
+  font-size: 24px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+.close-btn:hover {
+  background: rgba(255, 255, 255, 1);
+}

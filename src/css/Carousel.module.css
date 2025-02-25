@@ -1,0 +1,177 @@
+.carousel-container {
+  position: relative;
+  width: 100%; /* Full width of the viewport */
+  max-width: 1500px; /* Ensures it doesn’t stretch too much on large screens */
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-slide {
+  position: relative;
+  width: 100%;
+  height: 500px; /* Default height for desktops */
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .carousel-slide {
+    height: 400px; /* Reduce height for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-slide {
+    height: 300px; /* Smaller height for mobile screens */
+  }
+
+  .carousel-caption {
+    font-size: 18px; /* Smaller text for readability */
+  }
+
+  .carousel-button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .arrow {
+    font-size: 16px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-slide {
+    height: 250px; /* Even smaller for extra small screens */
+  }
+
+  .carousel-caption {
+    font-size: 16px; /* Adjust caption text */
+  }
+
+  .carousel-button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .arrow {
+    font-size: 14px;
+    padding: 6px;
+  }
+}
+
+.gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.carousel-caption {
+  color: #f8e1a1;
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  margin-bottom: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-caption:hover {
+  transform: scale(1.05);
+}
+
+.carousel-button {
+  background-color: #f8e1a1;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carousel-button:hover {
+  background-color: #d4af37;
+}
+
+.controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.arrow {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.arrow:hover {
+  background: rgba(255, 215, 0, 0.8);
+}
+
+.play-pause {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.play-pause:hover {
+  background: rgba(255, 215, 0, 0.8);
+}
+
+.progress-bar {
+  height: 4px;
+  background: #f8e1a1;
+  animation: progress 5s linear infinite;
+}
+
+.indicator-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dot.active,
+.dot:hover {
+  background: #f8e1a1;
+}

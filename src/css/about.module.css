@@ -1,0 +1,175 @@
+np/* 🌟 About Section - A Unique Color Palette */
+.aboutSection {
+  padding: 80px 20px;
+  background: linear-gradient(
+    135deg,
+    #3d2c2e,
+    #1b1b1f
+  ); /* Deep Burgundy & Dark Gray */
+  max-width: 100vw;
+  color: white;
+}
+
+/* 🏗️ Layout Design */
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 1400px;
+  gap: 50px;
+}
+
+/* 📜 Text Container */
+.textContent {
+  flex: 1;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.08); /* Elegant Frosted Glass Effect */
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border-left: 6px solid #d4af37; /* Gold Accent */
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ✨ Hover Effect */
+.textContent:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* 🔥 Title */
+.title {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #d4af37; /* Gold */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease-in-out;
+}
+
+/* 📝 Description */
+.description {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease-in-out;
+}
+
+/* 🎬 Animation */
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 🔹 Feature Boxes */
+.featureBoxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.featureBox {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featureBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.featureBox h4 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #d4af37;
+}
+
+.featureBox p {
+  font-size: 1rem;
+  color: #ddd;
+}
+
+/* 📸 Image Section */
+.imageContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* 🖼️ Image */
+.aboutImage {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s ease, box-shadow 0.5s ease, filter 0.5s ease;
+}
+
+/* 🌟 Hover Effects */
+.imageContent:hover .aboutImage {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(218, 165, 32, 0.5);
+  filter: brightness(1.1);
+}
+
+/* ✨ Parallax & Overlay Effect */
+.imageOverlay {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.imageContent:hover .imageOverlay {
+  opacity: 1;
+}
+
+.imageCaption {
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* 📱 Responsive */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    gap: 20px;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+}

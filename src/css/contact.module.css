@@ -1,0 +1,122 @@
+.contact {
+  background: #f5efe4;
+  padding: 100px 20px 60px;
+  margin-top: 80px;
+  color: #333;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 30px;
+  flex: 1;
+  min-width: 48%;
+  max-width: 48%;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.info p {
+  margin: 8px 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.formGroup input,
+.formGroup textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-color: #f8b500;
+  box-shadow: 0 0 8px rgba(248, 181, 0, 0.4);
+  outline: none;
+}
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+textarea {
+  min-height: 120px;
+  resize: none;
+}
+
+.submitButton {
+  background: linear-gradient(90deg, #f6dcb8, #f4b96b);
+  color: black;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.submitButton:hover {
+  background: linear-gradient(90deg, #f4b96b, #f6dcb8);
+  transform: scale(1.05);
+}
+
+.mapContainer {
+  margin-top: 30px;
+  padding: 0 20px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.map {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+}
