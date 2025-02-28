@@ -136,6 +136,7 @@ const Menu = () => {
   return (
     <div
       className={`${styles.menuContainer} ${darkMode ? styles.darkMode : ""}`}
+      style={{ marginTop: "100px" }}
     >
       <button
         className={styles.darkModeToggle}

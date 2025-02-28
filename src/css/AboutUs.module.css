@@ -1,130 +1,165 @@
 /* About Us Section */
 .aboutSection {
-  padding: 80px 20px;
-  background-color: #f5efe4; /* Light beige background */
-}
-.aboutSection {
-  background: linear-gradient(to right, #fcf4e3, #fff);
-  padding: 80px 10%;
+  padding: 100px 5%;
+  background: #1a1e25; /* Dark background for a luxurious feel */
+  animation: fadeInUp 1s ease-in-out;
 }
 
-/* Container for Layout */
-.aboutcontainer {
+/* About Us Container */
+.aboutContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 60px 10%;
-}
-.textContent {
-  max-width: 600px;
-  text-align: left;
-}
-h1 {
-  font-family: serif;
-  font-size: 2.8rem;
-  font-weight: bold;
-  color: #2c3e50;
-}
-/* Left Side: Image */
-.imageContainer img {
-  width: 100%;
-  height: 65vh;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out;
+  flex-wrap: wrap;
+  gap: 50px;
 }
 
-.imageContainer img:hover {
-  transform: scale(1.05);
+/* Left Side: Image */
+.imageContainer {
+  flex: 1;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
+
+/* Elegant Image Styling */
+.aboutImage {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  border: 5px solid #ac8d5b; /* Gold Frame */
+  padding: 10px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(172, 141, 91, 0.3)
+  );
+  box-shadow: 0 0 10px rgba(172, 141, 91, 0.4),
+    0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Frame Effect */
+.imageContainer::before {
+  content: "";
+  position: absolute;
+  width: 105%;
+  height: 105%;
+  border-radius: 20px;
+  border: 2px solid rgba(172, 141, 91, 0.8);
+  box-shadow: 0 0 15px rgba(172, 141, 91, 0.5);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover Effect for Enhanced Look */
+.aboutImage:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.15),
+    0 0 20px rgba(172, 141, 91, 0.5);
+}
+
+.imageContainer:hover::before {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(172, 141, 91, 0.6);
+}
+
 /* Right Side: Content */
 .textContent {
   flex: 1;
+  max-width: 600px;
   text-align: left;
+  color: #ffff; /* White text for high contrast */
 }
 
-.textContent h2 {
-  font-size: 32px;
-  font-weight: bold;
-  color: #333;
+.textContent h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: "Playfair Display", serif;
+  color: #ac8d5b; /* Elegant golden-brown for headings */
   margin-bottom: 15px;
 }
 
 .textContent p {
-  font-size: 16px;
-  color: #666;
-  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #ffff; /* White text */
+  line-height: 1.8;
+  margin-bottom: 25px;
 }
 
 /* Features Section */
 .features {
   display: flex;
-  gap: 30px;
-  margin-top: 20px;
+  justify-content: space-between;
+  gap: 25px;
+  margin-top: 30px;
+  flex-wrap: wrap;
 }
 
 /* Individual Feature */
 .feature {
   text-align: center;
-  max-width: 180px;
-}
-
-.feature h3 {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.feature p {
-  font-size: 14px;
-  color: #666;
-}
-
-/* Icons Styling */
-.icon {
-  font-size: 40px;
-  color: #4caf50;
-  margin-bottom: 10px;
-}
-
-.feature {
-  text-align: center;
+  max-width: 200px;
   padding: 20px;
-  transition: transform 0.3s ease;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .feature:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
 }
 
+/* Feature Icon Styling */
 .featureIcon {
-  font-size: 40px;
-  color: #ae9327;
+  font-size: 45px;
+  color: #ac8d5b; /* Golden-brown for luxury feel */
+  margin-bottom: 15px;
 }
+
+/* Feature Text */
+.feature h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffff;
+}
+
+.feature p {
+  font-size: 1rem;
+  color: #ffff;
+}
+
+/* CTA Button */
 .ctaButton {
-  background: linear-gradient(to right, #f4b96b, #f6dcb8);
-  color: black;
-  padding: 12px 24px;
+  background: linear-gradient(45deg, #ac8d5b, #ffff);
+  color: #1a1e25; /* Dark text for contrast */
+  padding: 14px 28px;
   border-radius: 8px;
   font-size: 1.2rem;
-  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .ctaButton:hover {
-  background: linear-gradient(to right, #f4b96b, #f6dcb8);
   transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
+
+/* Fade In Animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.aboutSection {
-  animation: fadeInUp 1s ease-out;
 }

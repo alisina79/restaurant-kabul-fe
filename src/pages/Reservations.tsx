@@ -41,7 +41,7 @@ const Reservations = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.heading}>Book Your Table at Kaboul Gourmet</h1>
+      <h1 className={styles.heading}>Reserve Your Table</h1>
       <div className={styles.card}>
         {!formData.confirmed ? (
           <form onSubmit={handleSubmit} className={styles.form}>
@@ -55,7 +55,7 @@ const Reservations = () => {
                   type="text"
                   id="fullName"
                   name="fullName"
-                  placeholder="Full Name"
+                  placeholder="Enter your full name"
                   className={styles.inputField}
                   value={formData.fullName}
                   onChange={handleChange}
@@ -70,7 +70,7 @@ const Reservations = () => {
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder="Enter your email"
                   className={styles.inputField}
                   value={formData.email}
                   onChange={handleChange}
@@ -85,7 +85,7 @@ const Reservations = () => {
                   type="tel"
                   id="phone"
                   name="phone"
-                  placeholder="Phone Number"
+                  placeholder="Enter your phone number"
                   className={styles.inputField}
                   value={formData.phone}
                   onChange={handleChange}
@@ -150,7 +150,7 @@ const Reservations = () => {
             <textarea
               id="specialRequests"
               name="specialRequests"
-              placeholder="Special Requests (optional)"
+              placeholder="Enter any special requests..."
               className={styles.textArea}
               value={formData.specialRequests}
               onChange={handleChange}
@@ -168,7 +168,7 @@ const Reservations = () => {
             <h2>Reservation Confirmed!</h2>
             <p>
               Thank you for reserving your table at Kaboul Gourmet. We look
-              forward to seeing you!
+              forward to welcoming you soon!
             </p>
           </div>
         )}

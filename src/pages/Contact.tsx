@@ -1,6 +1,24 @@
-import styles from "../css/contact.module.css"; // Import CSS module
+import styles from "../css/contact.module.css";
+import { useState } from "react";
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 3000);
+  };
+
   return (
     <section className={styles.contact}>
       <div className={styles.container}>
@@ -11,16 +29,13 @@ function Contact() {
 
           <div className={styles.info}>
             <p>
-              <strong>Address:</strong>
-              123 Paris Street, France
+              <strong>Address:</strong> 123 Paris Street, France
             </p>
             <p>
-              <strong>Phone:</strong>
-              +33 1 23 45 67 89
+              <strong>Phone:</strong> +33 1 23 45 67 89
             </p>
             <p>
-              <strong>Email Id:</strong>
-              contact@KaboulGourmet.com
+              <strong>Email:</strong> contact@KaboulGourmet.com
             </p>
           </div>
         </div>
@@ -28,25 +43,50 @@ function Contact() {
         {/* Contact Right - Contact Form */}
         <div className={styles.contactForm}>
           <h2 className={styles.title}>Send a Message</h2>
-          <form className={styles.form}>
-            <div className={styles.formGroup}>
-              <label>Your Name</label>
-              <input type="text" placeholder="Your Name" required />
-            </div>
+          {submitted ? (
+            <p className={styles.successMessage}>
+              Thank you! Your message has been sent.
+            </p>
+          ) : (
+            <form className={styles.form} onSubmit={handleSubmit}>
+              <div className={styles.formGroup}>
+                <label>Your Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
 
-            <div className={styles.formGroup}>
-              <label>Your Email</label>
-              <input type="email" placeholder="Your Email" required />
-            </div>
+              <div className={styles.formGroup}>
+                <label>Your Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
 
-            <div className={styles.formGroup}>
-              <label>Send Message</label>
-              <textarea placeholder="Your Message" rows={5} required></textarea>
-            </div>
-            <button type="submit" className={styles.submitButton}>
-              Send Message
-            </button>
-          </form>
+              <div className={styles.formGroup}>
+                <label>Send Message</label>
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  rows={5}
+                  required
+                  onChange={handleChange}
+                ></textarea>
+              </div>
+
+              <button type="submit" className={styles.submitButton}>
+                Send Message
+              </button>
+            </form>
+          )}
         </div>
       </div>
 

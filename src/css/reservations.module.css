@@ -1,84 +1,118 @@
+/* ===========================
+   🌟 RESERVATIONS PAGE STYLING
+   =========================== */
+
+/* 🔹 Page Container */
 .container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to bottom right, #0d2538, #1a1a1a);
-  padding: 20px;
-  color: white;
+  background: #1a1e25; /* Dark luxurious background */
+  padding: 40px 20px;
+  color: #ffff;
+  margin-top: 30px;
 }
 
+/* 🔹 Heading */
 .heading {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 2rem;
-  color: #f4b400;
+  color: #ac8d5b; /* Golden accent */
   text-align: center;
   text-transform: uppercase;
-  margin-top: 100px;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
 }
 
+/* 🔹 Card (Glassmorphic Effect) */
 .card {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  padding: 25px;
+  backdrop-filter: blur(10px);
+  padding: 30px;
   border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 6px 20px rgba(172, 141, 91, 0.3);
   max-width: 700px;
   width: 100%;
+  transition: all 0.3s ease-in-out;
 }
 
-.inputWrapper {
-  margin-bottom: 20px;
-}
-
-.inputField,
-.textArea {
-  width: 98%;
-  padding: 16px;
-  margin-bottom: 10px;
-  border: none;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  font-size: 1rem;
-  transition: background 0.3s ease, border 0.3s ease;
-}
-.inputField:focus,
-.textArea:focus {
-  outline: none;
-  border: 2px solid #f4b400;
-  background: rgba(255, 255, 255, 0.3);
-}
-
+/* 🔹 Labels */
 .label {
   font-size: 1rem;
-  font-weight: 600;
-  color: #f4b400;
+  font-weight: bold;
+  color: #ac8d5b;
   margin-bottom: 5px;
   display: block;
 }
 
+/* 🔹 Input Fields */
+.inputField,
+.textArea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffff;
+  font-size: 1rem;
+  transition: 0.3s ease-in-out;
+}
+
+.inputField:focus,
+.textArea:focus {
+  border-color: #ac8d5b;
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+
+/* 🔹 Input Group */
+.inputGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔹 Date & Time Selection */
+.dateTimeGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* 🔹 Button */
 .button {
   width: 100%;
   padding: 15px;
   border: none;
   border-radius: 12px;
-  background: #f4b400;
-  color: #1a1a1a;
+  background: linear-gradient(to right, #ac8d5b, #ffff);
+  color: #1a1e25;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
   text-align: center;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Button Hover */
 .button:hover {
-  background: #d18e00;
-  color: white;
+  background: #ac8d5b;
+  color: #ffff;
+  transform: scale(1.05);
 }
 
+/* 🔹 Loader Animation */
 .loader {
   border: 4px solid rgba(255, 255, 255, 0.2);
   border-top: 4px solid white;
@@ -86,8 +120,30 @@
   width: 20px;
   height: 20px;
   animation: spin 1s linear infinite;
+  display: inline-block;
 }
 
+/* 🔹 Error Message */
+.error {
+  background: rgba(255, 0, 0, 0.2);
+  color: #ff4c4c;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* 🔹 Confirmation Message */
+.confirmation {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #ac8d5b;
+  background-color: #ffff;
+  padding: 20px;
+}
+
+/* 🔹 Animations */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -97,20 +153,24 @@
   }
 }
 
-.confirmation {
-  text-align: center;
-  font-size: 1.6rem;
-  color: #4caf50;
-  padding: 20px;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.dateTimeGroup {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
+.container,
+.card,
+.button {
+  animation: fadeIn 1s ease-in-out;
 }
 
+/* 🔹 Responsive Design */
 @media (max-width: 768px) {
   .inputGroup {
     grid-template-columns: 1fr;

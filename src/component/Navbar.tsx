@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import styles from "../css/navbar.module.css";
 import {
-  // X,
   Menu as MenuIcon,
   Home,
   Book,
@@ -65,11 +64,6 @@ function Navbar() {
 
   return (
     <>
-      <ul>
-        <li onClick={() => handleMenuClick("Foods")}>Foods</li>
-        <li onClick={() => handleMenuClick("Beverages")}>Beverages</li>
-        <li onClick={() => handleMenuClick("Starters")}>Starters</li>
-      </ul>
       <div
         className={styles.scrollIndicator}
         style={{ width: `${scrollWidth}%` }}
@@ -90,7 +84,7 @@ function Navbar() {
 
           <div className={styles.logo}>
             <Link to="/" className={styles.logoText}>
-              KABOUL
+              KABOUL Gourmet
             </Link>
           </div>
 

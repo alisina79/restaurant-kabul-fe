@@ -1,94 +1,138 @@
-.gallery-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-  color: #333;
-  font-family: "Poppins", sans-serif;
+html,
+body {
+  background: #ac8d5b;
 }
 
-.section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 30px;
-  color: #222;
-}
+/* ==============================
+   🌟 GALLERY PAGE STYLING
+   ============================== */
 
-/* Swiper Carousel */
-.carousel {
-  margin-bottom: 30px;
-}
-.carousel-image {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 12px;
-  transition: transform 0.3s ease-in-out;
-}
-
-@media (max-width: 768px) {
-  .carousel-image {
-    height: 250px;
-  }
-}
-
-/* Responsive Grid Gallery */
-.grid-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 15px;
-  padding: 10px;
-}
-
-.grid-item {
-  overflow: hidden;
-  border-radius: 12px;
-}
-
-.grid-image {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 12px;
-  transition: transform 0.3s ease-in-out;
-}
-
-/* Lightbox Modal */
-.lightbox-overlay {
-  background: rgba(0, 0, 0, 0.9);
+/* 🔹 Page Container */
+.galleryContainer {
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  background: #ac8d5b; /* Dark elegant theme */
+  padding: 50px 20px;
+  color: #ffff;
+  margin-top: 30px;
 }
 
-.lightbox-modal {
+/* 🔹 Heading */
+.heading {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ac8d5b; /* Golden accent */
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.subheading {
+  font-size: 1.2rem;
+  color: #ffff;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* 🔹 Image Grid */
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* 🔹 Image Wrapper */
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.imageWrapper:hover {
+  transform: scale(1.05);
+}
+
+/* 🔹 Image Styling */
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.imageWrapper:hover .galleryImage {
+  box-shadow: 0 10px 30px rgba(172, 141, 91, 0.5);
+}
+
+/* 🔹 Glassmorphism Modal for Image Preview */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+
+.modalContent {
   position: relative;
   max-width: 90%;
   max-height: 90%;
-  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 }
 
-.lightbox-image {
-  width: 100%;
-  height: auto;
+.modalImage {
+  max-width: 100%;
+  max-height: 80vh;
   border-radius: 12px;
 }
 
-.close-btn {
+.closeButton {
   position: absolute;
-  top: 15px;
+  top: 10px;
   right: 15px;
-  background: rgba(255, 255, 255, 0.8);
-  color: #333;
-  border: none;
   font-size: 24px;
-  padding: 5px 10px;
+  color: #fff;
   cursor: pointer;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 5px 10px;
   border-radius: 50%;
-  transition: background 0.3s ease;
+  transition: background 0.3s;
 }
-.close-btn:hover {
-  background: rgba(255, 255, 255, 1);
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  .subheading {
+    font-size: 1rem;
+  }
 }

@@ -1,0 +1,151 @@
+html,
+body {
+  background: #1a1e25;
+}
+/* Chef Page Container */
+.chefContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  padding: 80px 10%;
+  background: #1a1e25;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.chefContainer.fadeIn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Left Side - Chef Image */
+.chefImageContainer {
+  flex: 1;
+  max-width: 500px;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  background: linear-gradient(135deg, #e0c188, #ac8d5b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chefImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.chefImageContainer::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #ffd700, #ff8c00);
+  z-index: -1;
+  filter: blur(15px);
+  opacity: 0.6;
+}
+
+.chefImage:hover {
+  transform: scale(1.08);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* /* Right Side - Chef Info */
+.chefInfoContainer {
+  flex: 1;
+  max-width: 600px;
+  text-align: left;
+  background: linear-gradient(135deg, #ac8d5b, #8b6f44);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chefInfoContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.chefTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.chefDescription {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #ffff;
+}
+
+.chefQuote {
+  font-style: italic;
+  font-size: 1.4rem;
+  color: #fffdfb;
+  margin-bottom: 30px;
+  border-left: 5px solid #ffebcd;
+  padding-left: 15px;
+  transition: color 0.3s ease;
+}
+
+.chefQuote:hover {
+  color: #d7cc8d;
+  border-left-color: #9e9771;
+}
+
+.menuButton {
+  display: flex;
+  align-items: center;
+  background: #1a1e25;
+  color: #ffff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 5px 15px rgba(39, 35, 20, 0.3);
+}
+
+.menuButton:hover {
+  background: #0b182b; /* Deep Royal Blue - Elegant & Professional */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(11, 25, 45, 0.5); /* Subtle glow for sophistication */
+}
+.icon {
+  margin-right: 10px;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 1024px) {
+  .chefInfoContainer {
+    text-align: center;
+    padding: 30px;
+  }
+
+  .chefQuote {
+    border-left: none;
+    border-top: 5px solid #ffebcd;
+    padding-top: 10px;
+  }
+}

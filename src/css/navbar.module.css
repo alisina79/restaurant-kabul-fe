@@ -26,48 +26,60 @@ body {
 }
 
 .scrolledNavbar {
-  background-color: #2c3e50 !important; /* Dark base color */
+  background-color: #1a1e25 !important; /* Dark base color */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
-/* Enhanced Centered Logo with Animated Gradient and Underline (No Movement) */
+/* Enhanced Centered Logo with Animated Gradient and Glow */
 .logo {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 44px;
-  font-weight: normal;
+  font-size: 48px;
+  font-weight: 600;
   font-family: "Playfair Display", serif;
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 3px;
-  padding-bottom: 5px;
-  border-bottom: 2px solid transparent;
-  background: linear-gradient(45deg, #f39c12, #e74c3c, #f39c12);
-  background-size: 200% auto;
+  padding-bottom: 6px;
+  border-bottom: 3px solid transparent;
+  background: linear-gradient(90deg, #ac8d5b, #e74c3c, #f39c12, #ac8d5b);
+  background-size: 300% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  animation: gradientAnimation 6s ease infinite alternate;
   transition: background-position 0.5s ease, border-bottom-color 0.5s ease,
     text-shadow 0.5s ease;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* Underline Effect */
+/* Smooth Gradient Animation */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 100% center;
+  }
+}
+
+/* Elegant Underline Effect */
 .logo::after {
   content: "";
   display: block;
   width: 0;
-  height: 2px;
-  background: #f39c12;
-  margin: 5px auto 0;
-  transition: width 0.5s ease;
+  height: 3px;
+  background: linear-gradient(90deg, #f39c12, #e74c3c);
+  margin: 6px auto 0;
+  transition: width 0.5s ease-in-out;
+  border-radius: 3px;
 }
 
-/* Hover Effects (Without Movement) */
+/* Hover Effects for a Modern Touch */
 .logo:hover {
   background-position: 100% center;
   border-bottom-color: #f39c12;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
 }
 
 .logo:hover::after {
@@ -84,7 +96,8 @@ body {
 
 /* Stylish Order Button */
 .orderButton {
-  background: linear-gradient(135deg, #f39c12, #e74c3c); /* Updated gradient */
+  background: linear-gradient(135deg, #ac8d5b, #8c6b40);
+  /* Updated gradient */
   padding: 12px 22px;
   border-radius: 30px;
   margin-top: 10px;
@@ -154,7 +167,7 @@ body {
 /* Icon inside Order Dropdown */
 .dropdownMenu .icon {
   margin-right: 10px;
-  color: #f39c12; /* Updated accent */
+  color: #ac8d5b; /* Updated accent */
 }
 
 /* Hover effect for Order Dropdown links */
@@ -182,7 +195,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
+  background: black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -200,7 +213,7 @@ body {
 .closeButton {
   position: absolute;
   top: 20px;
-  right: 30px;
+  right: 99px;
   background: none;
   border: none;
   color: white;
@@ -353,8 +366,9 @@ body {
   top: 15px;
   width: 50px;
   height: 50px;
-  background: #f39c12; /* Updated accent */
+  background: #ac8d5b; /* Updated accent */
   backdrop-filter: blur(8px);
+  color: white;
   border: none;
   cursor: pointer;
   border-radius: 10px;

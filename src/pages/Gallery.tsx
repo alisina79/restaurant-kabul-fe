@@ -1,93 +1,81 @@
 import { useState } from "react";
+import styles from "../css/gallery.module.css";
 import { motion } from "framer-motion";
-import Modal from "react-modal";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper/modules";
 
-import afghan from "../assets/afghan.jpg";
-import first from "../photo/first.jpg";
+// Import images correctly
+import one from "../chef/one.jpg";
+import two from "../chef/two.jpg";
+import three from "../chef/three.jpg";
+import four from "../chef/four.jpg";
+import five from "../chef/five.jpg";
+import six from "../chef/six.jpg";
+import seven from "../chef/seven.jpg";
+import eight from "../chef/eight.jpg";
+import nine from "../chef/nine.jpg";
+import ten from "../chef/ten.jpg";
 
-const galleryImages = [
-  { src: afghan, alt: "Signature Dish" },
-  { src: first, alt: "Delicious Afghan Cuisine" },
-  { src: afghan, alt: "Signature Dish" },
-  { src: first, alt: "Delicious Afghan Cuisine" },
-  { src: afghan, alt: "Signature Dish" },
-  { src: first, alt: "Delicious Afghan Cuisine" },
-];
+// Use imported variables instead of string paths
+const images = [one, two, three, four, five, six, seven, eight, nine, ten];
 
 const Gallery = () => {
-  const [selectedImage, setSelectedImage] = useState<string>("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const openImage = (index: number) => {
+    setCurrentIndex(index);
+    setIsOpen(true);
+  };
 
   return (
-    <section className="gallery-container">
-      <h2 className="section-title">Our Gallery</h2>
+    <motion.div
+      className={styles.galleryContainer}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 30 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <h1 className={styles.heading}>Explore Our Exquisite Dishes</h1>
+      <p className={styles.subheading}>
+        A glimpse of our finest creations, prepared with passion and
+        authenticity.
+      </p>
 
-      {/* Swiper Carousel */}
-      <Swiper
-        slidesPerView={1}
-        spaceBetween={20}
-        pagination={{ clickable: true }}
-        navigation
-        modules={[Navigation, Pagination]}
-        className="carousel"
-        loop={true}
-      >
-        {galleryImages.map((image, index) => (
-          <SwiperSlide key={index}>
-            <motion.img
-              src={image.src}
-              alt={image.alt}
-              className="carousel-image"
-              whileHover={{ scale: 1.05 }}
-              loading="lazy"
-              onClick={() => setSelectedImage(image.src)}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-
-      {/* Responsive Grid Gallery */}
-      <div className="grid-gallery">
-        {galleryImages.map((image, index) => (
+      <div className={styles.gridContainer}>
+        {images.map((img, index) => (
           <motion.div
             key={index}
-            className="grid-item"
+            className={styles.imageWrapper}
             whileHover={{ scale: 1.05 }}
-            onClick={() => setSelectedImage(image.src)}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => openImage(index)}
           >
             <img
-              src={image.src}
-              alt={image.alt}
-              className="grid-image"
-              loading="lazy"
+              src={img}
+              alt={`Dish ${index + 1}`}
+              className={styles.galleryImage}
             />
           </motion.div>
         ))}
       </div>
 
-      {/* Lightbox Modal */}
-      <Modal
-        isOpen={!!selectedImage}
-        onRequestClose={() => setSelectedImage("")}
-        className="lightbox-modal"
-        overlayClassName="lightbox-overlay"
-      >
-        <motion.img
-          src={selectedImage}
-          alt="Expanded View"
-          className="lightbox-image"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        />
-        <button className="close-btn" onClick={() => setSelectedImage("")}>
-          ✕
-        </button>
-      </Modal>
-    </section>
+      {isOpen && (
+        <div className={styles.modal} onClick={() => setIsOpen(false)}>
+          <div className={styles.modalContent}>
+            <span
+              className={styles.closeButton}
+              onClick={() => setIsOpen(false)}
+            >
+              &times;
+            </span>
+            <img
+              src={images[currentIndex]}
+              alt="Expanded view"
+              className={styles.modalImage}
+            />
+          </div>
+        </div>
+      )}
+    </motion.div>
   );
 };
 

@@ -2,6 +2,12 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import styles from "../css/OurStory.module.css";
 
+// Importing images correctly
+import rest from "../chef/rest.jpg";
+import one from "../chef/one.jpg";
+import three from "../chef/three.jpg";
+import eight from "../chef/eight.jpg";
+
 export default function OurStory() {
   useEffect(() => {
     document.title = "Our Story - Kaboul Gourmet";
@@ -12,7 +18,7 @@ export default function OurStory() {
       {/* Hero Section */}
       <div
         className={styles.heroSection}
-        style={{ backgroundImage: "url('/images/restaurant-hero.jpg')" }}
+        style={{ backgroundImage: `url(${rest})` }}
       >
         <div className={styles.heroOverlay}>
           <motion.h1
@@ -92,17 +98,13 @@ export default function OurStory() {
 
       {/* Image Gallery Section */}
       <section className={styles.gallerySection}>
-        {["dish1.jpg", "dish2.jpg", "dish3.jpg"].map((img, index) => (
+        {[one, three, eight].map((img, index) => (
           <motion.div
             key={index}
             className={styles.galleryItem}
             whileHover={{ scale: 1.05 }}
           >
-            <img
-              src={`/images/${img}`}
-              alt="Dish"
-              className={styles.galleryImage}
-            />
+            <img src={img} alt="Dish" className={styles.galleryImage} />
           </motion.div>
         ))}
       </section>

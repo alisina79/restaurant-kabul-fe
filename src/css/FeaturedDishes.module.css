@@ -1,30 +1,31 @@
 /* Container Styling */
 .container {
   text-align: center;
-  padding: 60px 20px;
-  background: rgba(245, 239, 228, 0.85);
+  padding: 80px 5%;
+  background: #ffffff;
 }
 
 /* Section Title */
 .title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 700;
-  color: #3e2c1c;
+  color: goldenrod;
   text-align: center;
   margin: 20px 0;
   letter-spacing: 1px;
   text-transform: uppercase;
   position: relative;
   transition: transform 0.3s ease, all 0.3s ease;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .title::before {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -8px;
   left: 50%;
-  width: 50%;
-  height: 4px;
+  width: 60px;
+  height: 5px;
   background-color: #8b4513;
   transform: translateX(-50%);
   transition: width 0.3s ease;
@@ -36,7 +37,7 @@
 }
 
 .title:hover::before {
-  width: 100%;
+  width: 100px;
 }
 
 /* Dish Grid Layout */
@@ -44,85 +45,137 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 40px;
 }
 
-/* Dish Card */
+/* Dish Card Animation - Move from Bottom to Top */
 .dishCard {
-  background: blanchedalmond;
+  background: #1a1e25;
   border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease;
   width: 450px;
-  height: 600px;
+  min-height: 550px;
   overflow: hidden;
   text-align: center;
   position: relative;
-  gap: 30%;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeInUp 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .dishCard:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Dish Image */
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+}
+
 .dishImage {
   width: 100%;
   height: 300px;
   object-fit: cover;
   border-bottom: 1px solid #eee;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease-in-out;
 }
 
 .dishCard:hover .dishImage {
   transform: scale(1.1);
 }
 
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.dishCard:hover .overlay {
+  opacity: 1;
+}
+
+.extraInfo {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 /* Dish Name */
 .dishName {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
-  color: #222;
+  color: white;
   margin: 20px 0 10px;
   text-transform: capitalize;
 }
 
 /* Dish Description */
 .dishDescription {
-  font-size: 16px;
-  color: black;
+  font-size: 18px;
+  color: whitesmoke;
   margin-bottom: 15px;
-  padding-top: 15px;
-  line-height: 1.6;
-  padding: 0 15px;
-}
-
-/* Price Styling */
-.dishPrice {
-  font-size: 20px;
-  font-weight: 700;
-  color: #ff6f61;
-  margin-bottom: 20px;
+  padding: 0 20px;
+  line-height: 1.8;
 }
 
 /* Modern Button */
 .menuButton {
-  background: linear-gradient(90deg, #ff8a00, #ff3c3c);
-  color: black;
-  padding: 15px 30px;
+  background: #ac8d5b;
+  color: white;
+  padding: 15px 35px;
   border: none;
   border-radius: 50px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(255, 60, 60, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.menuButton::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease-out;
+}
+
+.menuButton:hover::before {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .menuButton:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(255, 60, 60, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgb(74, 62, 34);
 }
 
 /* Responsive Design */
@@ -131,15 +184,12 @@
     flex-direction: column;
     align-items: center;
   }
-
   .dishCard {
     width: 100%;
     max-width: 400px;
   }
-}
-.extraInfo {
-  padding-top: 10px;
-  color: black;
-  font-family: sans-serif;
-  font-size: 14px;
+  .menuButton {
+    font-size: 16px;
+    padding: 12px 28px;
+  }
 }

@@ -1,8 +1,5 @@
-function Order() {
-  return (
-    <div style={{ marginTop: "200px" }}>
-      <h1>Welcome to the order page</h1>
-    </div>
-  );
+import React from "react";
+
+export default function Order() {
+  return <div>Order</div>;
 }
-export default Order;

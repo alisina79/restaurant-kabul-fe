@@ -1,12 +1,11 @@
 import { Routes, Route } from "react-router";
 import Navbar from "./component/Navbar";
-
 import Footer from "./component/Footer";
 import Home from "./pages/Home";
 import Order from "./pages/Order";
 import Contact from "./pages/Contact";
 import Menu from "./pages/Menu";
-import Testimonials from "./pages/Testimonials";
+import Testimonials from "./pages/CustomerPolls";
 import Reservations from "./pages/Reservations";
 import Gallery from "./pages/Gallery";
 import About from "./pages/AboutUs";

@@ -40,45 +40,39 @@ const Carousel = () => {
     setCurrentSlide(index);
 
   return (
-    <section
-      style={{
-        backgroundColor: "rgba(245, 239, 228, 0.85)",
-        padding: "20px 0",
-      }}
-    >
-      <div className={styles["carousel-container"]}>
+    <section className={styles.carouselSection}>
+      <div className={styles.carouselContainer}>
         <div
-          className={styles["carousel-slide"]}
+          className={styles.carouselSlide}
           style={{ backgroundImage: `url(${images[currentSlide].src})` }}
         >
-          <div className={styles["gradient-overlay"]}>
-            <h2 className={styles["carousel-caption"]}>
+          <div className={styles.gradientOverlay}>
+            <h2 className={styles.carouselCaption}>
               {images[currentSlide].caption}
             </h2>
-            <button className={styles["carousel-button"]}>View Our Menu</button>
+            <button className={styles.carouselButton}>View Our Menu</button>
           </div>
-          <div className={styles["controls"]}>
-            <button className={styles["arrow"]} onClick={handlePrev}>
+          <div className={styles.controls}>
+            <button className={styles.arrow} onClick={handlePrev}>
               ❮
             </button>
-            <button className={styles["arrow"]} onClick={handleNext}>
+            <button className={styles.arrow} onClick={handleNext}>
               ❯
             </button>
             <button
-              className={styles["play-pause"]}
+              className={styles.playPause}
               onClick={() => setIsPlaying(!isPlaying)}
             >
               {isPlaying ? "⏸" : "▶️"}
             </button>
           </div>
         </div>
-        <div className={styles["progress-bar"]}></div>
-        <div className={styles["indicator-dots"]}>
+        <div className={styles.indicatorDots}>
           {images.map((_, index) => (
             <span
               key={index}
-              className={`${styles["dot"]} ${
-                index === currentSlide ? styles["active"] : ""
+              className={`${styles.dot} ${
+                index === currentSlide ? styles.active : ""
               }`}
               onClick={() => handleDotClick(index)}
             ></span>

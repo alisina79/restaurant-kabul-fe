@@ -1,8 +1,9 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import styles from "../css/FeaturedDishes.module.css";
 import restImage from "../assets/Rest.jpg";
 import afghanImage from "../assets/afghan.jpg";
 import logoImage from "../assets/Logo.jpg";
+import { useRef } from "react";
 
 const featuredDishes = [
   {
@@ -29,11 +30,14 @@ const featuredDishes = [
 ];
 
 const FeaturedDishes = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.5 });
   return (
     <motion.section
       className={styles.container}
+      ref={ref}
       initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.8 }}
     >
       <h2 className={styles.title}>🍽️ Featured Dishes</h2>
