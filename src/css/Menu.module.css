@@ -2,16 +2,17 @@
 .menuContainer {
   text-align: center;
   padding: 40px;
-  background: #f4f1ea;
-  color: #333;
-  height: auto;
+  background: #ffff;
+  color: black;
+  border-radius: 10px;
 }
 
 .title {
-  font-size: 2.2rem;
-  color: #8b4513;
+  font-size: 2.5rem;
   font-weight: bold;
+  text-transform: uppercase;
   margin-bottom: 25px;
+  color: #ac8d5b;
 }
 
 /* 📌 Tabs for Menu Sections */
@@ -28,19 +29,19 @@
   font-size: 1.2rem;
   cursor: pointer;
   padding: 10px 15px;
-  color: #8b4513;
+  color: #ac8d5b;
   border-bottom: 3px solid transparent;
   transition: all 0.3s ease-in-out;
 }
 
 .menuTab:hover {
-  color: #d2691e;
-  border-bottom: 3px solid #d2691e;
+  color: #c0a570;
+  border-bottom: 3px solid #c0a570;
 }
 
 .activeTab {
-  color: #d2691e;
-  border-bottom: 3px solid #d2691e;
+  color: #c0a570;
+  border-bottom: 3px solid #c0a570;
   font-weight: bold;
 }
 
@@ -52,17 +53,19 @@
   justify-content: center;
 }
 
+/* 🥗 Menu Item Card */
 .menuItem {
-  background: #fff;
+  background: #222;
   border-radius: 15px;
   padding: 20px;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 20px rgba(172, 141, 91, 0.3);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-align: center;
 }
 
 .menuItem:hover {
   transform: scale(1.05);
-  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 10px 25px rgba(172, 141, 91, 0.5);
 }
 
 .menuImage {
@@ -78,21 +81,21 @@
 
 .menuName {
   font-size: 1.6rem;
-  color: #5c4033;
+  color: #ac8d5b;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
 .menuDescription {
   font-size: 1rem;
-  color: #444;
+  color: #ddd;
   margin-bottom: 10px;
   line-height: 1.4;
 }
 
 .menuPrice {
   font-size: 1.4rem;
-  color: #ff4500;
+  color: #ffba00;
   font-weight: bold;
 }
 
@@ -105,22 +108,20 @@
   transition: all 0.3s ease-in-out;
 }
 
-.searchFocused {
-  transform: scale(1.05);
-}
-
 .searchInput {
   width: 100%;
   padding: 12px 40px 12px 15px;
   font-size: 1rem;
-  border: 2px solid #8b4513;
+  border: 2px solid #ac8d5b;
   border-radius: 25px;
   outline: none;
   transition: all 0.3s ease-in-out;
+  background: #2a2d35;
+  color: #ffffff;
 }
 
 .searchInput:focus {
-  border-color: #d2691e;
+  border-color: #c0a570;
   box-shadow: 0 0 8px rgba(210, 105, 30, 0.5);
 }
 
@@ -138,12 +139,12 @@
 }
 
 .clearButton:hover {
-  color: #ff4500;
+  color: #ffba00;
 }
 
 /* 🌙 Dark Mode */
 .darkMode {
-  background: #181818;
+  background: #121212;
   color: #eaeaea;
 }
 
@@ -152,7 +153,7 @@
 }
 
 .darkMode .activeTab {
-  border-bottom: 3px solid #e6e3df;
+  border-bottom: 3px solid #c0a570;
 }
 
 .darkMode .searchInput {
@@ -171,104 +172,102 @@
 
 /* 🌙 Dark Mode Toggle Button */
 .darkModeToggle {
-  background: #ffb74d;
-  color: white;
-  padding: 8px 12px;
+  background: #ac8d5b;
+  color: #1a1e25;
+  padding: 10px 15px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
-  margin-bottom: 15px;
+  margin-top: 90px;
   transition: background 0.3s ease-in-out;
 }
 
 .darkModeToggle:hover {
-  background: #ff9800;
+  background: #c0a570;
 }
+
+/* 🛒 Cart Quantity Controls */
+.cartControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.cartControls button {
+  background: #ac8d5b;
+  color: #1a1e25;
+  padding: 6px 10px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.cartControls button:hover {
+  background: #c0a570;
+  transform: scale(1.1);
+}
+
+.cartControls span {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffba00;
+}
+
 /* 🍽️ Customization Options */
 .customizationOptions {
   margin-top: 20px;
   padding: 10px;
-  background-color: #ece9e3;
+  background-color: #2a2d35;
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 20px rgba(172, 141, 91, 0.2);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .customizationOptions:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(172, 141, 91, 0.3);
 }
 
 .customizationOptions h4 {
   font-size: 1.5rem;
-  color: #5c4033;
+  color: #ac8d5b;
   margin-bottom: 15px;
   font-weight: bold;
   letter-spacing: 0.5px;
 }
 
-.customizationOptions label {
-  display: block;
-  margin-bottom: 12px;
-  font-size: 1.1rem;
-  color: #444;
-  font-weight: 500;
-}
-
-.customizationOptions input {
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  transition: border-color 0.3s ease;
-}
-
-.customizationOptions input:focus {
-  border-color: #8b4513;
-  outline: none;
-}
-
-.allergenFilter {
-  margin: 20px 0;
-  padding: 20px;
-  background-color: #ece9e3;
-  border-radius: 12px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.allergenFilter:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.allergenFilter h3 {
-  font-size: 1.5rem;
-  color: #8b4513;
-  margin-bottom: 15px;
+/* 🛑 No Results Found */
+.noResults {
+  font-size: 1.2rem;
+  color: #ac8d5b;
+  margin-top: 20px;
   font-weight: bold;
-  letter-spacing: 0.5px;
 }
 
-.allergenFilter label {
-  display: block;
-  font-size: 1.1rem;
-  margin: 8px 0;
-  color: #444;
-  font-weight: 500;
-}
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
 
-.allergenFilter input {
-  margin-right: 12px;
-  padding: 8px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  transition: border-color 0.3s ease;
-}
+  .menuGrid {
+    grid-template-columns: 1fr;
+  }
 
-.allergenFilter input:focus {
-  border-color: #8b4513;
-  outline: none;
+  .menuItem {
+    padding: 15px;
+  }
+
+  .menuImage {
+    height: 250px;
+  }
+
+  .customizationOptions {
+    padding: 15px;
+  }
 }

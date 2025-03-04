@@ -1,92 +1,118 @@
 import { useState, useEffect } from "react";
-import { FaFacebookF, FaInstagram, FaTiktok, FaArrowUp } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTiktok,
+  FaLinkedinIn,
+  FaArrowUp,
+} from "react-icons/fa";
 import styles from "../css/Footer.module.css";
 
 const Footer = () => {
   const [showScroll, setShowScroll] = useState(false);
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScroll(true);
-      } else {
-        setShowScroll(false);
-      }
+      setShowScroll(window.scrollY > 300);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert("Thank you for subscribing!");
+    setEmail(""); // Clear input field after submission
   };
 
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContainer}>
-        {/* Left Section - Explore Links */}
-        <div className={styles.footerSection}>
-          <h4 className={styles.sectionTitle}>Explore</h4>
-          <nav className={styles.footerNav}>
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/menu">Menus</a>
-            <a href="/ourstory">Our Story</a>
-            <a href="/gallery">Gallery</a>
-            <a href="/contact">Contact</a>
-          </nav>
-          <div className={styles.footerSubnav}>
-            <a href="/termsandconditions">Terms & Conditions</a>
-            <a href="/privacypolicy">Privacy Policy</a>
+        {/* Large Clickable "K" */}
+        <motion.div
+          className={styles.logoContainer}
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <Link to="/" className={styles.logo}>
+            K
+          </Link>
+        </motion.div>
+
+        {/* Navigation Links */}
+        <nav className={styles.footerNav}>
+          <div className={styles.navRow}>
+            <Link to="/">Home</Link>
+            <Link to="/about">About Us</Link>
+            <Link to="/menu">Menus</Link>
           </div>
+          <div className={styles.navRow}>
+            <Link to="/ourstory">Our Story</Link>
+            <Link to="/gallery">Gallery</Link>
+            <Link to="/contact">Contact</Link>
+          </div>
+        </nav>
+
+        {/* Social Media Icons */}
+        <div className={styles.socialIcons}>
+          <a href="#" aria-label="Instagram">
+            <FaInstagram />
+          </a>
+          <a href="#" aria-label="TikTok">
+            <FaTiktok />
+          </a>
+          <a href="#" aria-label="Facebook">
+            <FaFacebookF />
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <FaLinkedinIn />
+          </a>
         </div>
 
-        {/* Middle Section - Social Media Icons */}
-        <div className={styles.footerSection}>
-          <h4 className={styles.sectionTitle}>Follow Us</h4>
-          <div className={styles.footerIcons}>
-            <a href="#" className={styles.icon} aria-label="Facebook">
-              <FaFacebookF />
-            </a>
-            <a href="#" className={styles.icon} aria-label="Instagram">
-              <FaInstagram />
-            </a>
-            <a href="#" className={styles.icon} aria-label="TikTok">
-              <FaTiktok />
-            </a>
-          </div>
+        {/* Sub Navigation Links */}
+        <div className={styles.footerSubnav}>
+          <Link to="/termsandconditions">Terms & Conditions</Link>
+          <Link to="/privacypolicy">Privacy Policy</Link>
         </div>
 
-        {/* Right Section - Newsletter Signup */}
-        <div className={styles.footerSection}>
-          <h4 className={styles.sectionTitle}>Stay Updated!</h4>
-          <form className={styles.newsletterForm}>
+        {/* Newsletter Section (Now below Sub Links) */}
+        <div className={styles.newsletter}>
+          <h3>Stay Updated!</h3>
+          <p>Subscribe to receive the latest offers and news.</p>
+          <form
+            onSubmit={handleNewsletterSubmit}
+            className={styles.newsletterForm}
+          >
             <input
               type="email"
               placeholder="Enter your email..."
-              className={styles.input}
-              aria-label="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
-            <button type="submit" className={styles.button}>
-              Subscribe
-            </button>
+            <button type="submit">Subscribe</button>
           </form>
-          <p className={styles.loyaltyText}>
-            Be the first to know about our special offers!
-          </p>
         </div>
-      </div>
-      <p className={styles.footerCopyright}>
-        Kaboul Gourmet © {new Date().getFullYear()}. All rights reserved.
-      </p>
 
-      {/* Scroll to Top Button */}
-      {showScroll && (
-        <button className={styles.scrollToTop} onClick={scrollToTop}>
-          <FaArrowUp />
-        </button>
-      )}
+        {/* Copyright */}
+        <p className={styles.footerCopyright}>
+          Kaboul Gourmet © {new Date().getFullYear()}. All rights reserved.
+        </p>
+
+        {/* Scroll to Top Button (Moved to Right) */}
+        {showScroll && (
+          <button
+            className={styles.scrollToTop}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
+            <FaArrowUp />
+          </button>
+        )}
+      </div>
     </footer>
   );
 };

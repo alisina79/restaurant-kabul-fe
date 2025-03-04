@@ -1,155 +1,249 @@
-/* General Footer Styling */
+/* 🎨 Footer Styling */
 .footer {
+  padding-top: 60px;
+  border-top: 1px solid white;
   background: #1a1e25;
-  color: white;
-  padding: 50px 20px;
-  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  position: relative;
+  z-index: 10;
+  overflow: hidden;
+  padding-bottom: 40px; /* Increased space at the bottom */
+}
+
+/* 📌 Blending Footer & Navbar */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: -40px;
+  left: 0;
   width: 100%;
-  min-height: 550px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(26, 30, 37, 0), #1a1e25);
+  z-index: 9;
 }
 
-/* Footer Container */
-.footerContainer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  width: 100%;
-  padding-bottom: 20px;
-  text-align: center;
+/* 🖋 Large Clickable "K" */
+.logoContainer {
+  margin-top: 90px;
+  position: absolute;
+  left: 40px;
 }
 
-/* Footer Sections */
-.footerSection {
-  flex: 1;
-  padding: 20px;
-  min-width: 250px;
-}
-
-.sectionTitle {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 15px;
-  color: #f39c12;
-}
-
-/* Navigation Links */
-.footerNav,
-.footerSubnav {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 16px;
-}
-
-.footerNav a,
-.footerSubnav a {
-  color: rgba(255, 255, 255, 0.9);
+.logo {
+  font-size: 20rem;
+  font-family: "Playfair Display", serif; /* More elegant font */
+  color: #ffffff;
   text-decoration: none;
-  transition: color 0.3s ease-in-out;
-}
-
-.footerNav a:hover,
-.footerSubnav a:hover {
-  color: #f39c12;
-  text-shadow: 0px 0px 10px rgba(243, 156, 18, 0.8);
-}
-
-/* Social Media Icons */
-.footerIcons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  font-size: 26px;
-}
-
-.icon {
-  color: white;
   transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.icon:hover {
-  transform: scale(1.2);
-  color: #f39c12;
+.logo:hover {
+  transform: scale(1.05);
+  color: #ac8d5b;
 }
 
-/* Newsletter Form */
+/* 📌 Navigation */
+.footerNav {
+  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.navRow {
+  display: flex;
+  gap: 20px;
+}
+
+.footerNav a {
+  color: #ac8d5b;
+  text-decoration: none;
+  font-size: 18px;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+}
+
+.footerNav a:hover {
+  color: #ffffff;
+}
+
+.footerNav a::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #ac8d5b;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.footerNav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* 🌍 Social Media Icons */
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.socialIcons a {
+  font-size: 2rem;
+  color: #ac8d5b;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.socialIcons a:hover {
+  color: #c0a570;
+  transform: scale(1.2);
+  filter: drop-shadow(0px 0px 5px #c0a570);
+}
+
+/* 📜 Sub Navigation */
+.footerSubnav a {
+  color: #ac8d5b;
+  text-decoration: none;
+  font-size: 18px;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+}
+
+.footerSubnav a:hover {
+  color: #ffffff;
+}
+
+.footerSubnav a::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #ac8d5b;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.footerSubnav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* 📩 Newsletter (Now Below Sub Links) */
+.newsletter {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  width: 80%;
+  max-width: 500px;
+}
+
+.newsletter h3 {
+  font-size: 1.5rem;
+  color: #ac8d5b;
+  margin-bottom: 10px;
+}
+
 .newsletterForm {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 15px;
+  margin-top: 10px;
 }
 
-.input {
-  padding: 12px;
-  width: 220px;
-  border: none;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.15);
+.newsletterForm input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #ac8d5b;
+  background: transparent;
   color: white;
-  font-size: 16px;
-  text-align: center;
-  outline: none;
-  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border-radius: 5px;
 }
 
-.input:focus {
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0px 0px 10px rgba(243, 156, 18, 0.8);
-}
-
-.button {
-  background: linear-gradient(135deg, #f39c12, #e74c3c);
-  color: white;
-  font-weight: bold;
+.newsletterForm button {
+  padding: 10px 15px;
+  background: #ac8d5b;
   border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
+  color: #1a1e25;
+  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
 }
 
-.button:hover {
-  background: linear-gradient(135deg, #e74c3c, #f39c12);
-  transform: scale(1.05);
-  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+.newsletterForm button:hover {
+  background: #c0a570;
 }
 
-.loyaltyText {
-  color: white;
-}
-
-/* Footer Copyright */
-.footerCopyright {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.7);
-  text-align: center;
-  padding-top: 20px;
-}
-
-/* Scroll to Top Button */
 .scrollToTop {
   position: absolute;
-  bottom: 40px;
-  right: 70px;
-  background: linear-gradient(135deg, #f39c12, #e74c3c);
-  color: white;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #ac8d5b, #c0a570);
+  color: #1a1e25;
+  padding: 12px 15px;
   border: none;
-  padding: 15px;
   border-radius: 50%;
-  font-size: 24px;
   cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
   z-index: 1000;
+  opacity: 0.8;
 }
 
 .scrollToTop:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
+  background: linear-gradient(135deg, #c0a570, #e6d4b3);
+  box-shadow: 0 6px 15px rgba(192, 165, 112, 0.5);
+  opacity: 1;
+}
+
+.scrollToTop:active {
+  transform: scale(0.9);
+}
+
+/* Add a slight fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+}
+
+.scrollToTop {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* 📱 Responsive Fix */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 10rem;
+    padding-left: 20px;
+  }
+
+  .navRow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footerCopyright {
+    font-size: 0.8rem;
+  }
 }

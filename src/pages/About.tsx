@@ -1,99 +1,99 @@
-import { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
 import styles from "../css/about.module.css";
 import ext from "../chef/ext.jpg";
 
 function About() {
-  const textRef = useRef(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { triggerOnce: false, threshold: 0.3 });
+  const navigate = useNavigate(); // ✅ Initialize navigation
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.visible);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+  // Variants for staggered fade-in-up animation
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.3, delayChildren: 0.2 },
+    },
+  };
 
-    if (textRef.current) {
-      observer.observe(textRef.current);
-    }
-
-    return () => {
-      if (textRef.current) {
-        observer.unobserve(textRef.current);
-      }
-    };
-  }, []);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1 } },
+  };
 
   return (
-    <section className={styles.aboutSection}>
+    <motion.section
+      className={styles.aboutSection}
+      ref={ref}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={containerVariants}
+    >
       <div className={styles.container}>
         {/* LEFT SIDE: IMAGE */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
           className={styles.imageContainer}
+          variants={{
+            hidden: { opacity: 0, x: -50 },
+            visible: { opacity: 1, x: 0, transition: { duration: 1 } },
+          }}
+          whileHover={{ scale: 1.05, filter: "brightness(1.1)" }}
         >
           <motion.img
             src={ext}
             alt="Kaboul Gourmet"
             className={styles.aboutImage}
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1 }}
+            variants={{
+              hidden: { scale: 0.9, opacity: 0 },
+              visible: { scale: 1, opacity: 1, transition: { duration: 1 } },
+            }}
             whileHover={{ scale: 1.1, filter: "brightness(1.2)" }}
           />
         </motion.div>
 
-        {/* RIGHT SIDE: TEXT CONTENT */}
-        <motion.div
-          ref={textRef}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className={styles.textContent}
-        >
+        {/* RIGHT SIDE: STAGGERED TEXT CONTENT (Now Scroll Activated & Repeats) */}
+        <motion.div className={styles.textContent} variants={containerVariants}>
           <motion.h2
             className={styles.title}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            whileHover={{ scale: 1.1 }}
+            variants={itemVariants}
+            whileHover={{ scale: 1.05 }}
           >
             WHAT’S ON
           </motion.h2>
-          <p className={styles.subtitle}>What’s on at Kaboul Gourmet</p>
-          <p className={styles.description}>
+          <motion.p className={styles.subtitle} variants={itemVariants}>
+            What’s on at Kaboul Gourmet
+          </motion.p>
+          <motion.p className={styles.description} variants={itemVariants}>
             Throughout the year, we run a series of wine dinners, themed events,
             live music days, and other celebrations. Check out what’s happening
             at our locations.
-          </p>
+          </motion.p>
 
-          <div className={styles.buttons}>
+          <motion.div className={styles.buttons} variants={containerVariants}>
             <motion.button
+              variants={itemVariants}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               className={styles.primaryButton}
+              onClick={() => navigate("/whatson")} // ✅ Corrected Navigation
             >
               WHAT'S ON
             </motion.button>
             <motion.button
+              variants={itemVariants}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               className={styles.secondaryButton}
+              onClick={() => navigate("/newsletter")}
             >
               NEWSLETTER SIGNUP
             </motion.button>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

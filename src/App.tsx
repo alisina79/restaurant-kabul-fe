@@ -12,6 +12,8 @@ import About from "./pages/AboutUs";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import OurStory from "./pages/OurStory";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import WhatsOn from "./pages/WhatsOn";
+import Newsletter from "./pages/Newsletter";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
         <Route path="/reservations" element={<Reservations />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/about" element={<About />} />
+        <Route path="/whatson" element={<WhatsOn />} />
+        <Route path="/newsletter" element={<Newsletter />} />
         <Route path="/termsandconditions" element={<TermsAndConditions />} />
         <Route path="/ourstory" element={<OurStory />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />

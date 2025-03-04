@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
+import { motion } from "framer-motion";
 import styles from "../css/Menu.module.css";
 
 import Nodels from "../assets/Nodels.jpg";
@@ -87,44 +88,58 @@ const menuData: MenuData = {
 const Menu = () => {
   const [activeCategory, setActiveCategory] = useState<keyof MenuData>("Foods");
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [isFocused, setIsFocused] = useState<boolean>(false);
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const [allergenFilter, setAllergenFilter] = useState<string[]>([]);
+  const [cart, setCart] = useState<{ [key: number]: number }>({});
   const location = useLocation();
 
-  // Handle location state for scrolling to specific section
   useEffect(() => {
     if (location.state?.section) {
       const formattedCategory =
-        (location.state.section as string).charAt(0).toUpperCase() +
+        location.state.section.charAt(0).toUpperCase() +
         location.state.section.slice(1).toLowerCase();
-
-      if (menuData[formattedCategory as keyof MenuData]) {
+      if (menuData[formattedCategory as keyof MenuData])
         setActiveCategory(formattedCategory as keyof MenuData);
-      }
-
-      setTimeout(() => {
-        const section = document.getElementById(formattedCategory);
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 100);
+      setTimeout(
+        () =>
+          document
+            .getElementById(formattedCategory)
+            ?.scrollIntoView({ behavior: "smooth", block: "start" }),
+        100
+      );
     }
   }, [location]);
 
-  // Handle allergen filter
+  // Handle allergen filtering
   const handleAllergenFilterChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    const { value, checked } = e.target;
     setAllergenFilter((prevFilter) =>
-      checked
-        ? [...prevFilter, value]
-        : prevFilter.filter((allergen) => allergen !== value)
+      e.target.checked
+        ? [...prevFilter, e.target.value]
+        : prevFilter.filter((allergen) => allergen !== e.target.value)
     );
   };
 
-  // Filter menu items based on search query and allergen filter
+  // Handle adding to cart
+  const handleAddToCart = (id: number) => {
+    setCart((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
+  };
+
+  // Handle removing from cart
+  const handleRemoveFromCart = (id: number) => {
+    setCart((prev) => {
+      const updatedCart = { ...prev };
+      if (updatedCart[id] > 1) {
+        updatedCart[id] -= 1;
+      } else {
+        delete updatedCart[id];
+      }
+      return updatedCart;
+    });
+  };
+
+  // Filter menu items based on search and allergens
   const filteredItems =
     menuData[activeCategory]?.filter(
       (item) =>
@@ -134,32 +149,34 @@ const Menu = () => {
     ) || [];
 
   return (
-    <div
+    <motion.div
       className={`${styles.menuContainer} ${darkMode ? styles.darkMode : ""}`}
-      style={{ marginTop: "100px" }}
     >
-      <button
+      <motion.button
         className={styles.darkModeToggle}
         onClick={() => setDarkMode(!darkMode)}
+        whileHover={{ scale: 1.05 }}
       >
         {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-      </button>
+      </motion.button>
 
-      <h2 className={styles.title}>Our Menu</h2>
-
-      <div
-        className={`${styles.searchWrapper} ${
-          isFocused ? styles.searchFocused : ""
-        }`}
+      <motion.h2
+        className={styles.title}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
       >
+        Our Menu
+      </motion.h2>
+
+      {/* Search Bar */}
+      <motion.div className={styles.searchWrapper}>
         <input
           type="text"
           placeholder="Search for a dish..."
           className={styles.searchInput}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
         />
         {searchQuery && (
           <button
@@ -169,55 +186,49 @@ const Menu = () => {
             ✖
           </button>
         )}
-      </div>
+      </motion.div>
 
       {/* Allergen Filter */}
       <div className={styles.allergenFilter}>
         <h3>Filter by Allergens</h3>
-        <label>
-          <input
-            type="checkbox"
-            value="gluten"
-            onChange={handleAllergenFilterChange}
-          />
-          Gluten
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="dairy"
-            onChange={handleAllergenFilterChange}
-          />
-          Dairy
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            value="egg"
-            onChange={handleAllergenFilterChange}
-          />
-          Egg
-        </label>
+        {["gluten", "dairy", "egg"].map((allergen) => (
+          <label key={allergen}>
+            <input
+              type="checkbox"
+              value={allergen}
+              onChange={handleAllergenFilterChange}
+            />
+            {allergen.charAt(0).toUpperCase() + allergen.slice(1)}
+          </label>
+        ))}
       </div>
 
+      {/* Menu Categories */}
       <div className={styles.menuTabs}>
         {Object.keys(menuData).map((category) => (
-          <button
+          <motion.button
             key={category}
             className={`${styles.menuTab} ${
               activeCategory === category ? styles.activeTab : ""
             }`}
             onClick={() => setActiveCategory(category as keyof MenuData)}
+            whileHover={{ scale: 1.1 }}
           >
             {category}
-          </button>
+          </motion.button>
         ))}
       </div>
 
-      <div className={styles.menuGrid}>
+      {/* Menu Items */}
+      <motion.div className={styles.menuGrid}>
         {filteredItems.length > 0 ? (
           filteredItems.map((item) => (
-            <div key={item.id} className={styles.menuItem} id={activeCategory}>
+            <motion.div
+              key={item.id}
+              className={styles.menuItem}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
               <img
                 src={item.image}
                 alt={item.name}
@@ -227,41 +238,24 @@ const Menu = () => {
                 <h3 className={styles.menuName}>{item.name}</h3>
                 <p className={styles.menuDescription}>{item.description}</p>
                 <span className={styles.menuPrice}>{item.price}</span>
-              </div>
-
-              {/* Customization Options */}
-              <div className={styles.customizationOptions}>
-                <h4>Customize your dish:</h4>
-                <label>
-                  Spice Level:
-                  <select>
-                    <option value="Mild">Mild</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Hot">Hot</option>
-                  </select>
-                </label>
-                <div className={styles.dietaryPreferences}>
-                  <label>
-                    <input type="checkbox" /> Vegetarian
-                  </label>
-                  <label>
-                    <input type="checkbox" /> Vegan
-                  </label>
-                  <label>
-                    <input type="checkbox" /> Gluten-Free
-                  </label>
-                  <label>
-                    <input type="checkbox" /> Dairy-Free
-                  </label>
+                <div className={styles.cartControls}>
+                  <button
+                    onClick={() => handleRemoveFromCart(item.id)}
+                    disabled={!cart[item.id]}
+                  >
+                    ➖
+                  </button>
+                  <span>{cart[item.id] || 0}</span>
+                  <button onClick={() => handleAddToCart(item.id)}>➕</button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))
         ) : (
-          <p className={styles.noResults}>No items found.</p>
+          <motion.p className={styles.noResults}>No items found.</motion.p>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
