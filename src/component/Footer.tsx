@@ -8,7 +8,7 @@ import {
   FaLinkedinIn,
   FaArrowUp,
 } from "react-icons/fa";
-import styles from "../css/Footer.module.css";
+import styles from "../css/footer.module.css";
 
 const Footer = () => {
   const [showScroll, setShowScroll] = useState(false);
