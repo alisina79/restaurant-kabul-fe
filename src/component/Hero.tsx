@@ -14,7 +14,7 @@ import { useRef } from "react";
 
 function Hero() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { triggerOnce: false, amount: 0.3 });
+  const isInView = useInView(ref, { amount: 0.3 });
 
   // Variants for staggered animation
   const containerVariants = {

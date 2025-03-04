@@ -7,7 +7,7 @@ import { useRef } from "react";
 export default function Menudetails() {
   const navigate = useNavigate();
   const ref = useRef(null);
-  const isInView = useInView(ref, { triggerOnce: false, amount: 0.3 });
+  const isInView = useInView(ref, { amount: 0.3 });
 
   // Variants for staggered fade-in animation
   const containerVariants = {

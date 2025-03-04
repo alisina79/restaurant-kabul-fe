@@ -6,7 +6,7 @@ import ext from "../chef/ext.jpg";
 
 function About() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { triggerOnce: false, threshold: 0.3 });
+  const isInView = useInView(ref, { amount: 0.3 });
   const navigate = useNavigate(); // ✅ Initialize navigation
 
   // Variants for staggered fade-in-up animation

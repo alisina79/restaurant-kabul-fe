@@ -31,7 +31,7 @@ const featuredDishes = [
 
 const FeaturedDishes = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { triggerOnce: false, amount: 0.3 });
+  const isInView = useInView(ref, { amount: 0.3 });
 
   // Container animation (staggered fade-in-up)
   const containerVariants = {
