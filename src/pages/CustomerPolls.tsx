@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "../css/customerPolls.module.css";
+import styles from "../css/CustomerPolls.module.css";
 import { FaChartBar } from "react-icons/fa";
 
 const dishes = [
