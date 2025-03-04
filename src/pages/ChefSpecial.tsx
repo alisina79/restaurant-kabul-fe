@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "../css/ChefSpecial.module.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useSwipeable } from "react-swipeable";
-import lamb from "../chef/lamb.jpg";
+import Lamb from "../chef/Lamb.jpg";
 import burger from "../chef/burger.jpg";
 import special from "../chef/special.jpg";
 
@@ -12,7 +12,7 @@ const specials = [
     title: "Lamb Shank with Saffron Rice",
     description:
       "Slow-cooked lamb shank infused with saffron and aromatic spices.",
-    image: lamb,
+    image: Lamb,
     overlayColor: "rgba(255, 165, 0, 0.6)",
   },
   {
