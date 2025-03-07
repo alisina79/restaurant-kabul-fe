@@ -3,6 +3,9 @@ body {
   background-color: white;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 /* GENERAL STYLES */
@@ -25,9 +28,11 @@ body {
   height: auto;
   margin: 0 auto;
   gap: 50px;
-  border: 3px solid #f4d27a; /* Soft golden yellow for visibility */
+  border: 3px solid #f4d27a;
   border-radius: 12px;
   padding: 20px;
+  flex-wrap: wrap;
+  transition: all 0.3s ease-in-out;
 }
 
 /* IMAGE SECTION */
@@ -37,8 +42,10 @@ body {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  border: 3px solid #ffcc80; /* Bright gold for better contrast */
+  border: 3px solid #ffcc80;
   border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .aboutImage {
@@ -47,13 +54,15 @@ body {
   max-height: 700px;
   object-fit: cover;
   border-radius: 12px;
-  transition: transform 0.5s ease-in-out, filter 0.5s ease;
+  transition: transform 0.5s ease-in-out, filter 0.5s ease,
+    box-shadow 0.5s ease-in-out;
 }
 
 /* IMAGE HOVER EFFECT */
 .imageContainer:hover .aboutImage {
   transform: scale(1.1);
   filter: brightness(1.2);
+  box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.3);
 }
 
 /* TEXT CONTENT */
@@ -66,7 +75,10 @@ body {
   box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   position: relative;
-  border: 3px solid #ffd27d; /* Lighter gold for better visibility */
+  border: 3px solid #ffd27d;
+  width: 100%;
+  max-width: 600px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .textContent:hover {
@@ -78,12 +90,13 @@ body {
 .title {
   font-size: 2.8rem;
   font-weight: 700;
-  color: #ffdd99; /* Soft bright gold */
+  color: #ffdd99;
   text-transform: uppercase;
   margin-bottom: 10px;
   letter-spacing: 2px;
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
   animation: titleGlow 1.5s infinite alternate;
+  transition: all 0.3s ease-in-out;
 }
 
 @keyframes titleGlow {
@@ -95,10 +108,16 @@ body {
   }
 }
 
+.title:hover {
+  transform: scale(1.05);
+}
+
 /* BUTTONS CONTAINER */
 .buttons {
   display: flex;
   gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* BUTTON STYLING */
@@ -124,34 +143,107 @@ body {
 
 .primaryButton:hover,
 .secondaryButton:hover {
-  background: linear-gradient(135deg, #b38a5e, #8c6b40); /* Smooth transition */
+  background: linear-gradient(135deg, #b38a5e, #8c6b40);
   transform: translateY(-2px);
+  box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
 }
 
 /* RESPONSIVE DESIGN */
+
+/* Large Tablets & Small Laptops */
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;
     text-align: center;
+    gap: 30px;
   }
   .textContent {
     padding: 30px;
     width: 100%;
   }
+  .imageContainer {
+    width: 100%;
+    max-width: 500px;
+  }
+  .aboutImage {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
+/* Tablets */
 @media (max-width: 768px) {
   .title {
     font-size: 2.4rem;
   }
+  .textContent {
+    padding: 20px;
+  }
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    max-width: 300px;
+  }
 }
-.description {
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
+
+/* Mobile */
+@media (max-width: 480px) {
+  .aboutSection {
+    padding: 60px 5%;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .textContent {
+    padding: 15px;
+  }
+  .container {
+    gap: 20px;
+  }
+  .imageContainer {
+    max-width: 90%;
+  }
+  .primaryButton,
+  .secondaryButton {
+    font-size: 0.9rem;
+    padding: 12px 25px;
+  }
 }
+
+/* Text Styles */
+.description,
 .subtitle {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
+}
+
+.description {
+  font-size: 16px;
+}
+
+.subtitle {
+  font-size: 18px;
+}
+
+/* SMOOTH FADE-IN ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container,
+.textContent,
+.aboutImage,
+.buttons {
+  animation: fadeIn 1s ease-in-out;
 }

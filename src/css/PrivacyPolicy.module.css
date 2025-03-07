@@ -1,30 +1,33 @@
-/* PrivacyPolicy.module.css */
+:root {
+  --primary-bg: #1a1e25;
+  --gold: #ac8d5b;
+  --white: #ffff;
+}
 
 .container {
   display: flex;
-  max-width: 1200px;
-  margin: 30px auto;
-  padding: 20px;
-  gap: 30px;
-  font-family: "Poppins", sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--white);
+  padding: 50px 20px;
 }
 
-/* Sidebar Navigation */
 .sidebar {
+  margin-top: 80px;
   position: sticky;
   top: 20px;
-  width: 270px;
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  width: 250px;
+  height: fit-content;
+  background: rgba(255, 255, 255, 0.1);
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  color: white;
-  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar h2 {
+  color: var(--gold);
   font-size: 22px;
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .sidebar ul {
@@ -37,87 +40,99 @@
 }
 
 .sidebar ul li a {
+  color: var(--white);
   text-decoration: none;
-  color: white;
-  font-weight: 500;
-  transition: all 0.3s ease-in-out;
-  display: block;
-  padding: 8px;
-  border-radius: 6px;
+  font-size: 16px;
+  transition: color 0.3s ease;
 }
 
 .sidebar ul li a:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.05);
+  color: var(--gold);
 }
 
-/* Content Section */
 .content {
+  margin-top: 80px;
   flex: 1;
-  background: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 0.5s ease-in-out;
+  max-width: 800px;
+  margin-left: 50px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.content h2 {
-  font-size: 26px;
-  margin-bottom: 12px;
-  color: #ff7e5f;
-  font-weight: 600;
-}
-
-.content p {
-  font-size: 17px;
-  line-height: 1.7;
-  color: #444;
+.title {
+  font-size: 32px;
   margin-bottom: 20px;
+  color: var(--gold);
+  text-align: center;
 }
 
-/* Section Spacing */
-section {
-  padding: 20px 0;
-  border-bottom: 1px solid #eee;
+.introText {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 25px;
+  font-weight: 300;
 }
 
-section:last-child {
-  border-bottom: none;
+/* General Section Styling */
+.section {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: background 0.3s ease;
 }
 
-/* Fade-in Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.section:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    padding: 15px;
-  }
+/* Collapsible Section */
+.collapsibleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 10px;
+  color: var(--gold);
+  transition: color 0.3s ease;
+}
 
-  .sidebar {
-    width: 100%;
-    position: static;
-    text-align: center;
-    padding: 15px;
-  }
+.collapsibleHeader:hover {
+  color: var(--white);
+}
 
-  .sidebar ul li {
-    display: inline-block;
-    margin: 5px;
-  }
+.expandedText {
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 10px 15px;
+}
 
-  .sidebar ul li a {
-    padding: 6px 12px;
-    display: inline-block;
-  }
+/* Back to Top Button */
+.backToTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: var(--gold);
+  color: var(--primary-bg);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.backToTop:hover {
+  background: var(--white);
+  transform: scale(1.1);
+}
+
+.icon {
+  font-size: 20px;
 }

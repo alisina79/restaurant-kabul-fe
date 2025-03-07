@@ -10,110 +10,119 @@ const featuredDishes = [
     id: 1,
     name: "Kabuli Pulao",
     image: restImage,
-    description: "Fragrant rice topped with tender lamb, carrots, and raisins.",
     extraInfo: "Serves: 2-3, Calories: 550 kcal",
   },
   {
     id: 2,
     name: "Mantu",
     image: afghanImage,
-    description: "Afghan dumplings filled with beef, topped with yogurt.",
     extraInfo: "Serves: 1-2, Calories: 320 kcal",
   },
   {
     id: 3,
     name: "Bolani",
     image: logoImage,
-    description: "Flatbread stuffed with spiced potatoes and green onions.",
     extraInfo: "Serves: 1-2, Calories: 270 kcal",
   },
 ];
 
+/* Container Animation - Staggers All Children */
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+  },
+};
+
+/* Fade-in-Up Animation */
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (delayAmount: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: "easeOut", delay: delayAmount },
+  }),
+};
+
+/* Underline Animation */
+const underlineVariants = {
+  hidden: { opacity: 0, width: "0%" },
+  visible: {
+    opacity: 1,
+    width: "80px",
+    transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+  },
+};
+
 const FeaturedDishes = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.3 });
+  const isInView = useInView(ref, { amount: 0.3 }); // ✅ Remove "once: true" so animation works on scroll
 
-  // Container animation (staggered fade-in-up)
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
-    },
-  };
-
-  // Staggered fade-in-up effect for each item
-  const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
+  console.log("Is section visible? ", isInView); // Debugging
 
   return (
     <motion.section
       className={styles.container}
       ref={ref}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      animate={isInView ? "visible" : "hidden"} // ✅ Will re-trigger on scroll
       variants={containerVariants}
     >
-      {/* Title Animation */}
-      <motion.h2 className={styles.title} variants={itemVariants}>
+      {/* Title with Staggered Animation */}
+      <motion.h2 className={styles.title} variants={fadeUpVariants} custom={0}>
         🍽️ Featured Dishes
       </motion.h2>
 
-      {/* Dish Grid Animation */}
+      {/* Underline Animation */}
+      <motion.div
+        className={styles.underline}
+        variants={underlineVariants}
+      ></motion.div>
+
+      {/* Grid of Dish Cards */}
       <motion.div className={styles.dishGrid} variants={containerVariants}>
-        {featuredDishes.map((dish) => (
+        {featuredDishes.map((dish, index) => (
           <motion.div
             key={dish.id}
             className={styles.dishCard}
-            variants={itemVariants}
-            whileHover={{ scale: 1.05 }}
+            variants={fadeUpVariants}
+            custom={index * 0.2}
           >
-            <motion.div
+            <div
               className={styles.imageWrapper}
-              variants={itemVariants}
-              whileHover={{ scale: 1.1, filter: "brightness(1.1)" }}
-            >
-              <motion.img
-                src={dish.image}
-                alt={dish.name}
-                className={styles.dishImage}
-                variants={{
-                  hidden: { opacity: 0, scale: 0.9 },
-                  visible: {
-                    opacity: 1,
-                    scale: 1,
-                    transition: { duration: 1 },
-                  },
-                }}
-                whileHover={{ scale: 1.1, filter: "brightness(1.2)" }}
-              />
-              <motion.div className={styles.overlay} variants={itemVariants}>
-                <p className={styles.extraInfo}>{dish.extraInfo}</p>
-              </motion.div>
-            </motion.div>
-            <motion.h3 className={styles.dishName} variants={itemVariants}>
-              {dish.name}
-            </motion.h3>
-            <motion.p
-              className={styles.dishDescription}
-              variants={itemVariants}
-            >
-              {dish.description}
-            </motion.p>
-            <motion.button
-              variants={itemVariants}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              className={styles.menuButton}
-            >
-              Place Order
-            </motion.button>
+              style={{ backgroundImage: `url(${dish.image})` }}
+            ></div>
+
+            <div className={styles.overlay}>
+              {/* Dish Name */}
+              <motion.h3
+                className={styles.dishName}
+                variants={fadeUpVariants}
+                custom={index * 0.3}
+              >
+                {dish.name}
+              </motion.h3>
+
+              {/* Dish Extra Info */}
+              <motion.p
+                className={styles.extraInfo}
+                variants={fadeUpVariants}
+                custom={index * 0.4}
+              >
+                {dish.extraInfo}
+              </motion.p>
+
+              {/* Button */}
+              <motion.button
+                className={styles.menuButton}
+                variants={fadeUpVariants}
+                custom={index * 0.5}
+                whileHover={{ scale: 1.1 }}
+              >
+                Place Order
+              </motion.button>
+            </div>
           </motion.div>
         ))}
       </motion.div>

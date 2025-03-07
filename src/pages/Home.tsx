@@ -1,5 +1,5 @@
 import Hero from "../component/Hero";
-import About from "./About";
+import About from "../pages/About";
 import FeaturedDishes from "../component/FeaturedDishes";
 import Carousel from "./Carousel";
 import Menudetails from "./Menudetails";

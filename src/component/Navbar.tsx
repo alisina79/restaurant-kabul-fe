@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import styles from "../css/navbar.module.css";
 import {
   Menu as MenuIcon,
@@ -13,7 +13,23 @@ import {
   Utensils as ForkKnife,
   ChevronRight,
   ChevronDown,
+  X as CloseIcon,
 } from "lucide-react";
+import one from "../chef/one.jpg";
+import two from "../chef/two.jpg";
+import three from "../chef/three.jpg";
+import four from "../chef/four.jpg";
+import five from "../chef/five.jpg";
+import six from "../chef/six.jpg";
+
+const images: { [key: string]: string } = {
+  home: one,
+  menu: two,
+  reservations: three,
+  gallery: four,
+  contact: five,
+  about: six,
+};
 
 function Navbar() {
   const [scrollWidth, setScrollWidth] = useState(0);
@@ -21,15 +37,8 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState<string | null>(null);
-  const navigate = useNavigate();
+  const [activeImage, setActiveImage] = useState<string>(images.home);
 
-  const handleMenuClick = (category: string) => {
-    const formattedCategory =
-      category.charAt(0).toUpperCase() + category.slice(1);
-    navigate("/menu", { state: { section: formattedCategory } });
-  };
-
-  // Scroll progress for the indicator
   useEffect(() => {
     const updateScrollProgress = () => {
       const scrollTop =
@@ -45,17 +54,10 @@ function Navbar() {
     return () => window.removeEventListener("scroll", updateScrollProgress);
   }, []);
 
-  // Navbar color change on scroll with lowered threshold for testing
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-
-      // Temporarily lower threshold to 10px for testing
-      if (scrollTop > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(scrollTop > 50); // Navbar color changes after 50px scroll
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -68,7 +70,6 @@ function Navbar() {
         className={styles.scrollIndicator}
         style={{ width: `${scrollWidth}%` }}
       ></div>
-
       <nav
         className={`${styles.navbar} ${
           isScrolled ? styles.scrolledNavbar : ""
@@ -81,13 +82,11 @@ function Navbar() {
           >
             <MenuIcon size={30} />
           </button>
-
           <div className={styles.logo}>
             <Link to="/" className={styles.logoText}>
               KABOUL Gourmet
             </Link>
           </div>
-
           <div
             className={styles.orderContainer}
             onMouseEnter={() => setIsDropdownOpen(true)}
@@ -113,96 +112,86 @@ function Navbar() {
           >
             <button
               className={styles.closeButton}
-              onClick={() => setIsOpen(false)}
-            ></button>
+              onClick={() => {
+                console.log("Close button clicked!"); // Debugging
+                setIsOpen(false);
+              }}
+            >
+              <CloseIcon size={30} />
+            </button>
 
-            <Link to="/" onClick={() => setIsOpen(false)}>
-              <Home size={24} className={styles.icon} /> Home
-            </Link>
-
-            {/* Menu Dropdown */}
-            <div className={styles.dropdownItem}>
-              <button
-                className={styles.dropdownToggle}
-                onClick={() =>
-                  setSubmenuOpen(submenuOpen === "menu" ? null : "menu")
-                }
-              >
-                <Book size={24} className={styles.icon} /> Menu
-                {submenuOpen === "menu" ? (
-                  <ChevronDown size={16} />
-                ) : (
-                  <ChevronRight size={16} />
-                )}
-              </button>
-              <div
-                className={`${styles.submenu} ${
-                  submenuOpen === "menu" ? styles.active : ""
-                }`}
-              >
-                <button
-                  onClick={() => {
-                    handleMenuClick("Foods");
-                    setIsOpen(false);
-                  }}
+            <div className={styles.menuContainer}>
+              {/* Left Side - Navigation Links */}
+              <div className={styles.linksSection}>
+                <Link
+                  to="/"
+                  className={styles.navItem}
+                  onMouseEnter={() => setActiveImage(images.home)}
                 >
-                  Foods
-                </button>
-                <button
-                  onClick={() => {
-                    handleMenuClick("Beverages");
-                    setIsOpen(false);
-                  }}
+                  <Home size={24} /> Home
+                </Link>
+                <div className={styles.dropdownItem}>
+                  <button
+                    className={styles.dropdownToggle}
+                    onMouseEnter={() => setActiveImage(images.menu)}
+                    onClick={() =>
+                      setSubmenuOpen(submenuOpen === "menu" ? null : "menu")
+                    }
+                  >
+                    <Book size={24} /> Menu
+                    {submenuOpen === "menu" ? (
+                      <ChevronDown size={16} />
+                    ) : (
+                      <ChevronRight size={16} />
+                    )}
+                  </button>
+                  <div
+                    className={`${styles.submenu} ${
+                      submenuOpen === "menu" ? styles.active : ""
+                    }`}
+                  >
+                    <Link to="/menu/foods">Foods</Link>
+                    <Link to="/menu/beverages">Beverages</Link>
+                    <Link to="/menu/starters">Starters</Link>
+                  </div>
+                </div>
+                <Link
+                  to="/reservations"
+                  className={styles.navItem}
+                  onMouseEnter={() => setActiveImage(images.reservations)}
                 >
-                  Beverages
-                </button>
-                <button
-                  onClick={() => {
-                    handleMenuClick("Starters");
-                    setIsOpen(false);
-                  }}
+                  <Calendar size={24} /> Reservations
+                </Link>
+                <Link
+                  to="/gallery"
+                  className={styles.navItem}
+                  onMouseEnter={() => setActiveImage(images.gallery)}
                 >
-                  Starters
-                </button>
+                  <Image size={24} /> Gallery
+                </Link>
+                <Link
+                  to="/contact"
+                  className={styles.navItem}
+                  onMouseEnter={() => setActiveImage(images.contact)}
+                >
+                  <Phone size={24} /> Contact Us
+                </Link>
+                <Link
+                  to="/about"
+                  className={styles.navItem}
+                  onMouseEnter={() => setActiveImage(images.about)}
+                >
+                  <Users size={24} /> About Us
+                </Link>
               </div>
-            </div>
 
-            <Link to="/reservations" onClick={() => setIsOpen(false)}>
-              <Calendar size={24} className={styles.icon} /> Reservations
-            </Link>
-            <Link to="/gallery" onClick={() => setIsOpen(false)}>
-              <Image size={24} className={styles.icon} /> Gallery
-            </Link>
-            <Link to="/contact" onClick={() => setIsOpen(false)}>
-              <Phone size={24} className={styles.icon} /> Contact Us
-            </Link>
-
-            {/* About Us Dropdown */}
-            <div className={styles.dropdownItem}>
-              <button
-                className={styles.dropdownToggle}
-                onClick={() =>
-                  setSubmenuOpen(submenuOpen === "about" ? null : "about")
-                }
-              >
-                <Users size={24} className={styles.icon} /> About Us
-                {submenuOpen === "about" ? (
-                  <ChevronDown size={16} />
-                ) : (
-                  <ChevronRight size={16} />
-                )}
-              </button>
-              <div
-                className={`${styles.submenu} ${
-                  submenuOpen === "about" ? styles.active : ""
-                }`}
-              >
-                <Link to="/aboutus/ourteam" onClick={() => setIsOpen(false)}>
-                  Our Team
-                </Link>
-                <Link to="/about/vision" onClick={() => setIsOpen(false)}>
-                  Our Vision
-                </Link>
+              {/* Right Side - Image Carousel */}
+              <div className={styles.imageSection}>
+                <img
+                  src={activeImage}
+                  alt="Section Image"
+                  className={styles.carouselImage}
+                />
               </div>
             </div>
           </div>
