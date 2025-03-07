@@ -1,5 +1,5 @@
-import styles from "../css/chefPage.module.css";
-import chef from "../chef/chef.jpg"; // Ensure the correct image is used
+import styles from "../css/ChefPage.module.css";
+import chef from "../chef/chef.jpg";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
