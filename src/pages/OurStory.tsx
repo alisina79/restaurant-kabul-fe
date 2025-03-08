@@ -11,7 +11,7 @@ const textCarouselItems = [
 ];
 
 const OurStory = () => {
-  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [, setCarouselIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -78,15 +78,7 @@ const OurStory = () => {
           create some of the best restaurants and dining experiences, we founded
           Kaboul Gourmet. Our philosophy embraces seasonal, sustainable
           ingredients with impeccable service.ts and dining experiences, we
-          founded Kaboul Gourmet. Our philosophy embraces seasonal, sustainable
-          ingredients with impeccable service. With a passion for cooking and
-          the desire to create some of the best restaurants and dining
-          experiences, we founded Kaboul Gourmet. Our philosophy embraces
-          seasonal, sustainable ingredients with impeccable service.With a
-          passion for cooking and the desire to create some of the best
-          restaurants and dining experiences, we founded Kaboul Gourmet. Our
-          philosophy embraces seasonal, sustainable ingredients with impeccable
-          service.
+          founded Kaboul Gourmet.
         </motion.p>
 
         <motion.div
