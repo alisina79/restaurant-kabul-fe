@@ -1,0 +1,104 @@
+/* Our Story Page Styles (CSS Module) */
+
+.ourStoryContainer {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  color: #333;
+  font-family: "Arial", sans-serif;
+}
+
+/* Hero Section */
+.heroSection {
+  width: 100%;
+  height: 60vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroTitle {
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+/* About Section */
+.aboutSection {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.sectionText {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Timeline Section */
+.timelineSection {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  border-left: 4px solid #d32f2f;
+}
+
+.timelineItem {
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+}
+
+.timelineTitle {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.timelineText {
+  color: #555;
+}
+
+/* Gallery Section */
+.gallerySection {
+  max-width: 1100px;
+  margin: 4rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  padding: 0 2rem;
+}
+
+.galleryItem {
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.galleryImage {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.galleryItem:hover .galleryImage {
+  transform: scale(1.05);
+}

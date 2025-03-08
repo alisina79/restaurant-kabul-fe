@@ -5,15 +5,14 @@ import Home from "./pages/Home";
 import Order from "./pages/Order";
 import Contact from "./pages/Contact";
 import Menu from "./pages/Menu";
-import Testimonials from "./pages/CustomerPolls";
 import Reservations from "./pages/Reservations";
 import Gallery from "./pages/Gallery";
 import About from "./pages/AboutUs";
 import TermsAndConditions from "./pages/TermsAndConditions";
-import OurStory from "./pages/OurStory";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import WhatsOn from "./pages/WhatsOn";
 import Newsletter from "./pages/Newsletter";
+import Ourjourny from "./pages/Ourjourny";
 
 function App() {
   return (
@@ -24,14 +23,13 @@ function App() {
         <Route path="/order" element={<Order />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/menu" element={<Menu />} />
-        <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/reservations" element={<Reservations />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/about" element={<About />} />
         <Route path="/whatson" element={<WhatsOn />} />
         <Route path="/newsletter" element={<Newsletter />} />
         <Route path="/termsandconditions" element={<TermsAndConditions />} />
-        <Route path="/ourstory" element={<OurStory />} />
+        <Route path="/ourjourny" element={<Ourjourny />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
       </Routes>
       <Footer /> {/* Footer is always visible */}

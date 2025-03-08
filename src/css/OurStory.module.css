@@ -1,104 +1,153 @@
-/* Our Story Page Styles (CSS Module) */
+/* OurStory.module.css */
 
 .ourStoryContainer {
-  width: 100%;
-  min-height: 100vh;
-  background-color: #f8f8f8;
-  color: #333;
-  font-family: "Arial", sans-serif;
-}
-
-/* Hero Section */
-.heroSection {
-  width: 100%;
-  height: 60vh;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.heroOverlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 5rem 10rem;
+  gap: 4rem;
+  background-color: #1a1e25;
 }
 
-.heroTitle {
-  color: white;
-  font-size: 3rem;
-  font-weight: bold;
+.imageContainer {
+  flex: 1;
+  max-width: 50%;
 }
 
-/* About Section */
-.aboutSection {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.sectionTitle {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #222;
-}
-
-.sectionText {
-  font-size: 1.1rem;
-  color: #555;
-  line-height: 1.6;
-}
-
-/* Timeline Section */
-.timelineSection {
-  max-width: 900px;
-  margin: 4rem auto;
-  padding: 0 2rem;
-  border-left: 4px solid #d32f2f;
-}
-
-.timelineItem {
-  margin-bottom: 2rem;
-  padding-left: 1.5rem;
-}
-
-.timelineTitle {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #222;
-}
-
-.timelineText {
-  color: #555;
-}
-
-/* Gallery Section */
-.gallerySection {
-  max-width: 1100px;
-  margin: 4rem auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 16px;
-  padding: 0 2rem;
-}
-
-.galleryItem {
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.galleryImage {
+.ourStoryImage {
   width: 100%;
-  height: 250px;
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  border-radius: 16px;
+  box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s ease-in-out;
 }
 
-.galleryItem:hover .galleryImage {
-  transform: scale(1.05);
+.textContainer {
+  flex: 1;
+  max-width: 50%;
+  background: #ffffff;
+  padding: 3.5rem;
+  border-radius: 16px;
+  box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2);
+  text-align: left;
+}
+
+.ourStoryHeader {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: #1a1e25;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 4px solid #ac8d5b;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.ourStoryParagraph {
+  font-size: 1.3rem;
+  color: #333;
+  line-height: 2;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+  text-align: justify;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.buttonContainer a {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: 3px solid #ac8d5b;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 8px;
+  transition: all 0.4s ease-in-out;
+  background: #ac8d5b;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.buttonContainer a:hover {
+  background: #1a1e25;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.carouselContainer {
+  margin-top: 2.5rem;
+  background: linear-gradient(135deg, #ffffff, #f8f5f0);
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  font-style: italic;
+  color: #1a1e25;
+  position: relative;
+  overflow: hidden;
+}
+
+.carouselContainer::before {
+  content: "\201C";
+  font-size: 5rem;
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  color: #ac8d5b;
+  opacity: 0.3;
+  font-family: serif;
+}
+
+.carouselContainer::after {
+  content: "\201D";
+  font-size: 5rem;
+  position: absolute;
+  bottom: -20px;
+  right: 20px;
+  color: #ac8d5b;
+  opacity: 0.3;
+  font-family: serif;
+}
+
+.carouselContainer p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  max-width: 80%;
+  margin: auto;
+  color: #333;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1024px) {
+  .ourStoryContainer {
+    flex-direction: column;
+    padding: 3rem;
+  }
+  .imageContainer,
+  .textContainer {
+    max-width: 100%;
+  }
+  .textContainer {
+    padding: 3rem;
+    text-align: center;
+  }
+  .buttonContainer {
+    flex-direction: column;
+    align-items: center;
+  }
 }

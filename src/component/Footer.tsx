@@ -51,7 +51,7 @@ const Footer = () => {
             <Link to="/menu">Menus</Link>
           </div>
           <div className={styles.navRow}>
-            <Link to="/ourstory">Our Story</Link>
+            <Link to="/ourjourny">Our journy</Link>
             <Link to="/gallery">Gallery</Link>
             <Link to="/contact">Contact</Link>
           </div>

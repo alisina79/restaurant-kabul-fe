@@ -46,52 +46,48 @@
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
 }
-
-/* Logo - Centered and Elegant */
+/* Logo - Elegant and Charming Styling */
 .logo {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 2.5rem;
+  font-size: 3rem; /* Slightly larger for a premium feel */
   font-weight: bold;
-  color: #ffff;
+  color: #e6c07b; /* Luxurious gold tone */
   text-decoration: none;
   display: flex;
   align-items: center;
-  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
-  text-shadow: 3px 3px 10px rgba(255, 215, 0, 0.6);
-  padding: 10px 20px;
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.8),
-    rgba(172, 141, 91, 0.8)
-  );
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+  text-shadow: 3px 3px 12px rgba(230, 192, 123, 0.6);
+  padding: 14px 35px;
+  background: linear-gradient(135deg, #1a1e25 30%, #ac8d5b 100%);
   border-radius: 50px;
-  box-shadow: 0px 5px 15px rgba(255, 215, 0, 0.4);
+  box-shadow: 0px 4px 12px rgba(172, 141, 91, 0.6),
+    0px 3px 8px rgba(255, 255, 255, 0.4);
+  letter-spacing: 2px;
+  font-family: "Playfair Display", serif;
 }
 
 .logo:hover {
-  transform: translateX(-50%) scale(1.1);
-  color: #ac8d5b;
-  background: linear-gradient(
-    to right,
-    rgba(172, 141, 91, 0.8),
-    rgba(255, 255, 255, 0.9)
-  );
-  box-shadow: 0px 8px 20px rgba(255, 165, 0, 0.7);
+  transform: translateX(-50%) scale(1.07);
+  color: #ffffff;
+  background: linear-gradient(135deg, #ac8d5b 30%, #ffffff 100%);
+  box-shadow: 0px 6px 18px rgba(255, 215, 165, 0.8),
+    0px 3px 10px rgba(255, 255, 255, 0.5);
+  text-shadow: 4px 4px 15px rgba(255, 255, 255, 0.9);
 }
 
 .logoText {
   font-family: "Playfair Display", serif;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #ffff;
+  letter-spacing: 2.5px;
+  color: #e6c07b;
   transition: color 0.3s ease-in-out;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  text-shadow: 2px 2px 6px rgba(26, 30, 37, 0.3);
 }
-
 /* Order Button Styling */
 .orderContainer {
   position: relative;
@@ -109,14 +105,12 @@
   border-radius: 50px;
   color: black;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0px 5px 15px rgba(255, 215, 0, 0.5);
   margin: 0 30px;
 }
 
 .orderButton:hover {
   background: linear-gradient(to right, #ac8d5b, #ffff);
   color: black;
-  box-shadow: 0px 8px 20px rgba(255, 165, 0, 0.8);
 }
 /* Dropdown Menu - Elegant Styling */
 .dropdownMenu {
@@ -348,7 +342,7 @@
 .dropdownToggle:hover {
   background: linear-gradient(to right, #1a1e25, #ac8d5b);
   color: #ffff;
-  box-shadow: 0px 6px 15px rgba(255, 215, 0, 0.5);
+
   transform: scale(1.05);
 }
 
@@ -489,12 +483,26 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .logo {
+    font-size: 2.5rem;
+    padding: 10px 20px;
+  }
   .logoText {
-    font-size: 1.8rem;
+    font-size: 2.3rem;
   }
+}
 
-  .orderButton {
-    padding: 8px 20px;
+@media (max-width: 480px) {
+  .logo {
+    font-size: 2rem;
+    padding: 8px 16px;
   }
+  .logoText {
+    font-size: 2rem;
+  }
+}
+
+.orderButton {
+  padding: 8px 20px;
 }

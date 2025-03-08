@@ -1,6 +1,5 @@
 html,
 body {
-  background-color: white;
   scroll-behavior: smooth;
   overflow-x: hidden;
   margin: 0;
@@ -11,7 +10,7 @@ body {
 /* GENERAL STYLES */
 .aboutSection {
   padding: 80px 5%;
-  background: #ac8d5b;
+  background-image: url(../chef/gold.png);
   color: white;
   max-width: 100vw;
   position: relative;

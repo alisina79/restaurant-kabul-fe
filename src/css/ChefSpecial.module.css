@@ -1,180 +1,76 @@
-.chefSpecial {
+/* Ensure Swiper container has proper height */
+.carouselContainer {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 600px;
+  background-color: #1a1e25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Swiper container */
+.swiperContainer {
+  width: 100%;
+  height: 100%;
+}
+
+/* Each slide */
+.slide {
+  position: relative;
+  width: 100%;
+  height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: white;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.5s ease;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease-in-out;
 }
 
-.chefSpecial:hover {
+.slide:hover {
   transform: scale(1.05);
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Description box */
+.descriptionBox {
   width: 100%;
-  height: 100%;
-  transition: background 0.5s ease-in-out;
-  border-radius: 10px;
+  max-width: 600px;
+  padding: 20px;
+  background-color: rgba(
+    172,
+    141,
+    91,
+    0.9
+  ); /* Golden-beige with slight opacity */
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
-.bgImage {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  opacity: 0;
-  animation: fadeIn 1s ease-in-out forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(1.05);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  padding: 30px;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
-  animation: fadeIn 1.5s ease-in-out;
-}
-
-h2 {
-  font-size: 2.8rem;
-  font-family: "Playfair Display", serif;
-  font-weight: 700;
-  margin-bottom: 15px;
+/* Title Styling */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  font-family: "Roboto", sans-serif;
-  margin-bottom: 20px;
-  font-weight: 400;
+/* Text Styling */
+.text {
+  font-size: 18px;
+  margin-bottom: 15px;
 }
 
-.ctaButton {
-  padding: 12px 24px;
-  background: #ff6b35;
-  border: none;
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.ctaButton:hover {
-  background: #ff4f1b;
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-.prevButton,
-.nextButton {
+/* Swiper pagination dots */
+.swiper-pagination {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.6);
-  border: none;
-  color: white;
-  font-size: 2.2rem;
-  padding: 12px;
-  cursor: pointer;
-  transition: opacity 0.3s ease;
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-}
-
-.chefSpecial:hover .prevButton,
-.chefSpecial:hover .nextButton {
-  opacity: 1;
-}
-
-.prevButton {
-  left: 20px;
-}
-
-.nextButton {
-  right: 20px;
-}
-
-.prevButton:hover,
-.nextButton:hover {
-  background: rgba(255, 255, 255, 0.8);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.dotsContainer {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.activeDot {
-  background: #ff6b35;
-  transform: scale(1.2);
-}
-
-@media (max-width: 768px) {
-  .chefSpecial {
-    height: 400px;
-  }
-  .content {
-    padding: 15px;
-    max-width: 90%;
-  }
-  h2 {
-    font-size: 2rem;
-  }
-  p {
-    font-size: 1rem;
-  }
-  .ctaButton {
-    padding: 10px 20px;
-    font-size: 1rem;
-  }
-  .prevButton,
-  .nextButton {
-    font-size: 1.8rem;
-    padding: 10px;
-  }
+  bottom: 20px;
+  z-index: 10;
 }

@@ -1,113 +1,117 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Carousel } from "../component/ui";
 import styles from "../css/OurStory.module.css";
+import chef from "../chef/chef.jpg";
 
-// Importing images correctly
-import rest from "../chef/rest.jpg";
-import one from "../chef/one.jpg";
-import three from "../chef/three.jpg";
-import eight from "../chef/eight.jpg";
+const textCarouselItems = [
+  "While each of their establishments has its own unique feel, the theme which pervades them all is that of family. - Gentleman's Journal",
+  "At Kaboul Gourmet, we embrace the harmony of tradition and innovation to create an unforgettable dining experience.",
+  "Our commitment to fresh, sustainable ingredients is what makes every dish special and unique.",
+];
 
-export default function OurStory() {
+const OurStory = () => {
+  const [, setCarouselIndex] = useState(0);
+
   useEffect(() => {
-    document.title = "Our Story - Kaboul Gourmet";
+    const interval = setInterval(() => {
+      setCarouselIndex(
+        (prevIndex) => (prevIndex + 1) % textCarouselItems.length
+      );
+    }, 4000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div className={styles.ourStoryContainer}>
-      {/* Hero Section */}
-      <div
-        className={styles.heroSection}
-        style={{ backgroundImage: `url(${rest})` }}
+      {/* Left Section - Image with Zoom-in Animation */}
+      <motion.div
+        className={styles.imageContainer}
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        whileHover={{ scale: 1.05 }}
       >
-        <div className={styles.heroOverlay}>
-          <motion.h1
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className={styles.heroTitle}
-          >
-            Our Story
-          </motion.h1>
-        </div>
-      </div>
+        <img src={chef} alt="Our Story" className={styles.ourStoryImage} />
+      </motion.div>
 
-      {/* About Section */}
-      <section className={styles.aboutSection}>
+      {/* Right Section - Text Content with Staggered Animations */}
+      <motion.div
+        className={styles.textContainer}
+        initial="hidden"
+        animate="visible"
+        variants={{
+          visible: {
+            transition: {
+              staggerChildren: 0.3,
+            },
+          },
+        }}
+      >
         <motion.h2
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5 }}
-          className={styles.sectionTitle}
+          className={styles.ourStoryHeader}
+          variants={{
+            hidden: { y: 50, opacity: 0 },
+            visible: { y: 0, opacity: 1 },
+          }}
+          transition={{ duration: 1 }}
         >
-          A Journey of Passion & Taste
+          OUR STORY
         </motion.h2>
-        <p className={styles.sectionText}>
-          Kaboul Gourmet was born from a dream to bring the rich flavors of
-          Afghan cuisine to France. From the bustling streets of Kabul to the
-          heart of Paris, we craft dishes that tell a story of tradition,
-          warmth, and authenticity.
-        </p>
-      </section>
 
-      {/* Timeline Section */}
-      <section className={styles.timelineSection}>
-        <div>
-          <motion.div
-            className={styles.timelineItem}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1 }}
-          >
-            <h3 className={styles.timelineTitle}>2015 - The Vision Begins</h3>
-            <p className={styles.timelineText}>
-              The idea of Kaboul Gourmet was first conceived, inspired by the
-              rich culinary heritage of Afghanistan.
-            </p>
-          </motion.div>
-          <motion.div
-            className={styles.timelineItem}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2 }}
-          >
-            <h3 className={styles.timelineTitle}>
-              2018 - First Restaurant Opens
-            </h3>
-            <p className={styles.timelineText}>
-              We opened our first restaurant, quickly gaining popularity for our
-              authentic dishes.
-            </p>
-          </motion.div>
-          <motion.div
-            className={styles.timelineItem}
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.4 }}
-          >
-            <h3 className={styles.timelineTitle}>
-              2024 - Expanding the Experience
-            </h3>
-            <p className={styles.timelineText}>
-              We launched our website, allowing customers to explore our menu,
-              make reservations, and order online.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+        <motion.p
+          className={styles.ourStoryParagraph}
+          variants={{
+            hidden: { y: 50, opacity: 0 },
+            visible: { y: 0, opacity: 1 },
+          }}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          With a passion for cooking and the desire to create some of the best
+          restaurants and dining experiences, we founded Kaboul Gourmet. Our
+          philosophy embraces seasonal, sustainable ingredients with impeccable
+          service. With a passion for cooking and the desire to create some of
+          the best restauran With a passion for cooking and the desire to create
+          some of the best restaurants and dining experiences, we founded Kaboul
+          Gourmet. Our philosophy embraces seasonal, sustainable ingredients
+          with impeccable service. With a passion for cooking and the desire to
+          create some of the best restaurants and dining experiences, we founded
+          Kaboul Gourmet. Our philosophy embraces seasonal, sustainable
+          ingredients with impeccable service.ts and dining experiences, we
+          founded Kaboul Gourmet.
+        </motion.p>
 
-      {/* Image Gallery Section */}
-      <section className={styles.gallerySection}>
-        {[one, three, eight].map((img, index) => (
-          <motion.div
-            key={index}
-            className={styles.galleryItem}
-            whileHover={{ scale: 1.05 }}
+        <motion.div
+          className={styles.buttonContainer}
+          variants={{
+            hidden: { y: 50, opacity: 0 },
+            visible: { y: 0, opacity: 1 },
+          }}
+          transition={{ duration: 1, delay: 0.4 }}
+        >
+          <a
+            href="https://instagram.com/yourrestaurant"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <img src={img} alt="Dish" className={styles.galleryImage} />
-          </motion.div>
-        ))}
-      </section>
+            Instagram
+          </a>
+          <a href="/newsletter">Newsletter Signup</a>
+        </motion.div>
+
+        <motion.div
+          className={styles.carouselContainer}
+          variants={{
+            hidden: { y: 50, opacity: 0 },
+            visible: { y: 0, opacity: 1 },
+          }}
+          transition={{ duration: 1, delay: 0.6 }}
+        >
+          <Carousel items={textCarouselItems} />
+        </motion.div>
+      </motion.div>
     </div>
   );
-}
+};
+
+export default OurStory;

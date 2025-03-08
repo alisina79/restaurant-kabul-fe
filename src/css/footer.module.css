@@ -10,7 +10,7 @@
   align-items: center;
   z-index: 10;
   overflow: hidden;
-  padding-bottom: 40px; /* Increased space at the bottom */
+  padding-bottom: 40px;
 }
 
 /* 📌 Blending Footer & Navbar */
@@ -34,15 +34,15 @@
 
 .logo {
   font-size: 20rem;
-  font-family: "Playfair Display", serif; /* More elegant font */
-  color: #ffffff;
+  font-family: "Playfair Display", serif;
+  color: #ac8d5b;
   text-decoration: none;
   transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 .logo:hover {
   transform: scale(1.05);
-  color: #ac8d5b;
+  color: #ffffff;
 }
 
 /* 📌 Navigation */
@@ -134,7 +134,7 @@
   transform: scaleX(1);
 }
 
-/* 📩 Newsletter (Now Below Sub Links) */
+/* 📩 Newsletter */
 .newsletter {
   text-align: center;
   background: rgba(255, 255, 255, 0.1);
@@ -144,12 +144,6 @@
   margin-top: 20px;
   width: 80%;
   max-width: 500px;
-}
-
-.newsletter h3 {
-  font-size: 1.5rem;
-  color: #ac8d5b;
-  margin-bottom: 10px;
 }
 
 .newsletterForm {
@@ -183,6 +177,7 @@
   background: #c0a570;
 }
 
+/* 🔝 Scroll to Top Button */
 .scrollToTop {
   position: absolute;
   bottom: 30px;
@@ -215,34 +210,14 @@
   transform: scale(0.9);
 }
 
-/* Add a slight fade-in effect */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 0.8;
-    transform: translateY(0);
-  }
-}
-
-.scrollToTop {
-  animation: fadeIn 0.6s ease-in-out;
-}
-
-/* 📱 Responsive Fix */
 @media (max-width: 768px) {
   .logo {
     font-size: 10rem;
-    padding-left: 20px;
   }
-
   .navRow {
     flex-direction: column;
     align-items: center;
   }
-
   .footerCopyright {
     font-size: 0.8rem;
   }
