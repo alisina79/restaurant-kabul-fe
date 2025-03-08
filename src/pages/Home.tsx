@@ -3,9 +3,9 @@ import About from "../pages/About";
 import FeaturedDishes from "../component/FeaturedDishes";
 import Carousel from "./Carousel";
 import Menudetails from "./Menudetails";
-import ChefSpecial from "./ChefSpecial";
-import CustomerPolls from "./CustomerPolls";
 import Chef from "../component/Chef";
+import ChefSpecial from "../pages/ChefSpecial";
+import OurStory from "./OurStory";
 
 function Home() {
   return (
@@ -13,13 +13,12 @@ function Home() {
       <Hero />
       <FeaturedDishes />
       <About />
+      <ChefSpecial />
       <Chef />
       <Carousel />
+      <OurStory />
       <Menudetails />
-      <div>
-        <ChefSpecial />
-      </div>
-      <CustomerPolls />
+      <div></div>
     </div>
   );
 }

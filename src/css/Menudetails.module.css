@@ -6,7 +6,7 @@
   gap: 30px;
   padding: 80px 60px;
   height: auto;
-  background: linear-gradient(135deg, #ac8d5b, #8f724b); /* Elegant gradient */
+  background-image: url(../chef/dense.png);
   flex-wrap: wrap;
   opacity: 0;
   transform: translateY(30px);

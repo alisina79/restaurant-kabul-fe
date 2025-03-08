@@ -1,6 +1,6 @@
 html,
 body {
-  background: #1a1e25;
+  background-image: url(../chef/back.png);
 }
 /* Chef Page Container */
 .chefContainer {
@@ -9,7 +9,8 @@ body {
   justify-content: center;
   gap: 50px;
   padding: 80px 10%;
-  background: #1a1e25;
+  background-image: url(../chef/back.png);
+
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;

@@ -1,107 +1,57 @@
-import { useState, useEffect } from "react";
-import styles from "../css/ChefSpecial.module.css";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { useSwipeable } from "react-swipeable";
-import Lamb from "../chef/Lamb.jpg";
-import burger from "../chef/burger.jpg";
-import special from "../chef/special.jpg";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination, Autoplay } from "swiper/modules";
+import styles from "../css/ChefSpecial.module.css"; // Ensure CSS module is imported
+import one from "../chef/one.jpg";
+import eight from "../chef/eight.jpg";
+import seven from "../chef/seven.jpg";
 
-const specials = [
+const carouselData = [
   {
-    id: 1,
-    title: "Lamb Shank with Saffron Rice",
+    image: one,
+    title: "Grilled Lamb Chops",
     description:
-      "Slow-cooked lamb shank infused with saffron and aromatic spices.",
-    image: Lamb,
-    overlayColor: "rgba(255, 165, 0, 0.6)",
+      "Succulent lamb chops marinated in aromatic spices, served with saffron rice.",
   },
   {
-    id: 2,
-    title: "Grilled Salmon with Lemon Butter",
+    image: eight,
+    title: "Kabuli Pulao",
     description:
-      "Freshly grilled salmon topped with a lemon butter sauce and herbs.",
-    image: burger,
-    overlayColor: "rgba(0, 100, 255, 0.6)",
+      "Traditional Afghan rice dish with tender lamb, raisins, and carrots.",
   },
   {
-    id: 3,
-    title: "Persian Chicken Stew (Fesenjan)",
-    description: "A rich walnut and pomegranate stew with tender chicken.",
-    image: special,
-    overlayColor: "rgba(150, 50, 50, 0.6)",
+    image: seven,
+    title: "Spiced Chicken Kebab",
+    description:
+      "Juicy skewered chicken infused with a blend of exotic spices.",
   },
 ];
 
-const ChefSpecial = () => {
-  const [currentIndex, setCurrentIndex] = useState<number>(() => {
-    const savedIndex = localStorage.getItem("chefSpecialIndex");
-    return savedIndex ? parseInt(savedIndex, 10) : 0;
-  });
-
-  useEffect(() => {
-    localStorage.setItem("chefSpecialIndex", currentIndex.toString());
-  }, [currentIndex]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % specials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? specials.length - 1 : prevIndex - 1
-    );
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % specials.length);
-  };
-
-  const handlers = useSwipeable({
-    onSwipedLeft: nextSlide,
-    onSwipedRight: prevSlide,
-    preventScrollOnSwipe: true,
-    trackMouse: true,
-  });
-
+export default function ChefSpecial() {
   return (
-    <section {...handlers} className={styles.chefSpecial}>
-      <div
-        className={styles.overlay}
-        style={{ background: specials[currentIndex].overlayColor }}
-      ></div>
-      <img
-        src={specials[currentIndex].image}
-        alt={specials[currentIndex].title}
-        className={styles.bgImage}
-        loading="lazy"
-      />
-      <div className={styles.content}>
-        <h2>{specials[currentIndex].title}</h2>
-        <p>{specials[currentIndex].description}</p>
-        <button className={styles.ctaButton}>Order Now</button>
-      </div>
-      <button className={styles.prevButton} onClick={prevSlide}>
-        <FaChevronLeft />
-      </button>
-      <button className={styles.nextButton} onClick={nextSlide}>
-        <FaChevronRight />
-      </button>
-      <div className={styles.dotsContainer}>
-        {specials.map((_, index) => (
-          <span
-            key={index}
-            className={`${styles.dot} ${
-              index === currentIndex ? styles.activeDot : ""
-            }`}
-            onClick={() => setCurrentIndex(index)}
-          ></span>
+    <div className={styles.carouselContainer}>
+      <Swiper
+        modules={[Pagination, Autoplay]}
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        loop={true}
+        className={styles.swiperContainer}
+      >
+        {carouselData.map((item, index) => (
+          <SwiperSlide key={index}>
+            <div
+              className={styles.slide}
+              style={{ backgroundImage: `url(${item.image})` }}
+            >
+              <div className={styles.descriptionBox}>
+                <h2 className={styles.title}>{item.title}</h2>
+                <p className={styles.text}>{item.description}</p>
+              </div>
+            </div>
+          </SwiperSlide>
         ))}
-      </div>
-    </section>
+      </Swiper>
+    </div>
   );
-};
-
-export default ChefSpecial;
+}
