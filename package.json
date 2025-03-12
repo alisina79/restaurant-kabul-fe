@@ -7,10 +7,11 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve": "serve -s dist"
   },
   "dependencies": {
-    "framer-motion": "^12.4.7",
+    "framer-motion": "^12.5.0",
     "lucide-react": "^0.476.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -22,6 +23,7 @@
     "react-slick": "^0.30.3",
     "react-swipeable": "^7.0.2",
     "react-switch": "^7.1.0",
+    "serve": "^14.2.4",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.2.5",
     "yet-another-react-lightbox": "^3.21.7"
