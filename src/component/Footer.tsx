@@ -1,86 +1,254 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaFacebookF,
   FaInstagram,
   FaTiktok,
   FaLinkedinIn,
   FaArrowUp,
+  FaCheck,
+  FaSpinner,
 } from "react-icons/fa";
 import styles from "../css/footer.module.css";
 
 const Footer = () => {
   const [showScroll, setShowScroll] = useState(false);
   const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [year] = useState(new Date().getFullYear());
+  const newsletterRef = useRef<HTMLDivElement>(null);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   useEffect(() => {
     const handleScroll = () => {
       setShowScroll(window.scrollY > 300);
     };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(styles.fadeInUp);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (newsletterRef.current) {
+      observer.observe(newsletterRef.current);
+    }
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (newsletterRef.current) {
+        observer.unobserve(newsletterRef.current);
+      }
+    };
   }, []);
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const validateEmail = (email: string) => {
+    return emailRegex.test(email);
+  };
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you for subscribing!");
-    setEmail(""); // Clear input field after submission
+    
+    if (!validateEmail(email)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setIsSubmitted(true);
+      setIsSubmitting(false);
+      setTimeout(() => {
+        setEmail("");
+        setIsSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      console.error("Error subscribing to newsletter:", error);
+      setIsSubmitting(false);
+      alert("Something went wrong. Please try again later.");
+    }
+  };
+
+  const fadeInVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: 0.6,
+        ease: "easeOut" 
+      }
+    }
+  };
+  
+  const logoVariants = {
+    hidden: { opacity: 0, x: -100 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { 
+        duration: 1,
+        ease: "easeOut" 
+      }
+    }
+  };
+
+  const staggerChildren = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const socialVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      transition: { 
+        duration: 0.4,
+        ease: "easeOut" 
+      }
+    }
   };
 
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} role="contentinfo">
       <div className={styles.footerContainer}>
         {/* Large Clickable "K" */}
         <motion.div
           className={styles.logoContainer}
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
+          variants={logoVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
         >
-          <Link to="/" className={styles.logo}>
+          <Link to="/" className={styles.logo} aria-label="Return to homepage">
             K
           </Link>
         </motion.div>
 
         {/* Navigation Links */}
-        <nav className={styles.footerNav}>
-          <div className={styles.navRow}>
-            <Link to="/">Home</Link>
-            <Link to="/about">About Us</Link>
-            <Link to="/menu">Menus</Link>
-          </div>
-          <div className={styles.navRow}>
-            <Link to="/ourjourny">Our journy</Link>
-            <Link to="/gallery">Gallery</Link>
-            <Link to="/contact">Contact</Link>
-          </div>
-        </nav>
+        <motion.nav 
+          className={styles.footerNav}
+          variants={fadeInVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          aria-label="Footer Navigation"
+        >
+          <motion.div 
+            className={styles.navRow}
+            variants={staggerChildren}
+          >
+            <motion.div variants={fadeInVariants}>
+              <Link to="/">Home</Link>
+            </motion.div>
+            <motion.div variants={fadeInVariants}>
+              <Link to="/about">About Us</Link>
+            </motion.div>
+            <motion.div variants={fadeInVariants}>
+              <Link to="/menu">Menus</Link>
+            </motion.div>
+          </motion.div>
+          <motion.div 
+            className={styles.navRow}
+            variants={staggerChildren}
+          >
+            <motion.div variants={fadeInVariants}>
+              <Link to="/ourjourny">Our journy</Link>
+            </motion.div>
+            <motion.div variants={fadeInVariants}>
+              <Link to="/gallery">Gallery</Link>
+            </motion.div>
+            <motion.div variants={fadeInVariants}>
+              <Link to="/contact">Contact</Link>
+            </motion.div>
+          </motion.div>
+        </motion.nav>
 
         {/* Social Media Icons */}
-        <div className={styles.socialIcons}>
-          <a href="#" aria-label="Instagram">
+        <motion.div 
+          className={styles.socialIcons}
+          variants={staggerChildren}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.a 
+            href="https://instagram.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Visit our Instagram"
+            variants={socialVariants}
+          >
             <FaInstagram />
-          </a>
-          <a href="#" aria-label="TikTok">
+          </motion.a>
+          <motion.a 
+            href="https://tiktok.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Visit our TikTok"
+            variants={socialVariants}
+          >
             <FaTiktok />
-          </a>
-          <a href="#" aria-label="Facebook">
+          </motion.a>
+          <motion.a 
+            href="https://facebook.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Visit our Facebook"
+            variants={socialVariants}
+          >
             <FaFacebookF />
-          </a>
-          <a href="#" aria-label="LinkedIn">
+          </motion.a>
+          <motion.a 
+            href="https://linkedin.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            aria-label="Visit our LinkedIn"
+            variants={socialVariants}
+          >
             <FaLinkedinIn />
-          </a>
-        </div>
+          </motion.a>
+        </motion.div>
 
         {/* Sub Navigation Links */}
-        <div className={styles.footerSubnav}>
+        <motion.div 
+          className={styles.footerSubnav}
+          variants={fadeInVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <Link to="/termsandconditions">Terms & Conditions</Link>
           <Link to="/privacypolicy">Privacy Policy</Link>
-        </div>
+        </motion.div>
 
-        {/* Newsletter Section (Now below Sub Links) */}
-        <div className={styles.newsletter}>
+        {/* Newsletter Section */}
+        <motion.div 
+          className={styles.newsletter}
+          ref={newsletterRef}
+          variants={fadeInVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <h3>Stay Updated!</h3>
           <p>Subscribe to receive the latest offers and news.</p>
           <form
@@ -93,25 +261,63 @@ const Footer = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              aria-label="Email for newsletter"
+              disabled={isSubmitting || isSubmitted}
             />
-            <button type="submit">Subscribe</button>
+            <AnimatePresence mode="wait">
+              {isSubmitted ? (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  className={styles.successButton}
+                >
+                  <FaCheck /> Subscribed
+                </motion.div>
+              ) : (
+                <motion.button
+                  key="submit"
+                  type="submit"
+                  disabled={isSubmitting || isSubmitted}
+                  whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+                >
+                  {isSubmitting ? <FaSpinner className={styles.spinner} /> : "Subscribe"}
+                </motion.button>
+              )}
+            </AnimatePresence>
           </form>
-        </div>
+        </motion.div>
 
         {/* Copyright */}
-        <p className={styles.footerCopyright}>
-          Kaboul Gourmet © {new Date().getFullYear()}. All rights reserved.
-        </p>
+        <motion.p 
+          className={styles.footerCopyright}
+          variants={fadeInVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          Kaboul Gourmet © {year}. All rights reserved.
+        </motion.p>
 
-        {/* Scroll to Top Button (Moved to Right) */}
-        {showScroll && (
-          <button
-            className={styles.scrollToTop}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            <FaArrowUp />
-          </button>
-        )}
+        {/* Scroll to Top Button */}
+        <AnimatePresence>
+          {showScroll && (
+            <motion.button
+              className={styles.scrollToTop}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              aria-label="Scroll to top"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <FaArrowUp />
+            </motion.button>
+          )}
+        </AnimatePresence>
       </div>
     </footer>
   );

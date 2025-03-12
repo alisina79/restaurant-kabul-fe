@@ -5,10 +5,24 @@ import styles from "../css/OurStory.module.css";
 import chef from "../chef/chef.jpg";
 
 const textCarouselItems = [
-  "While each of their establishments has its own unique feel, the theme which pervades them all is that of family. - Gentleman's Journal",
+  "While each of their establishments has its own unique feel, the theme which pervades them all is that of family. – Gentleman's Journal",
   "At Kaboul Gourmet, we embrace the harmony of tradition and innovation to create an unforgettable dining experience.",
   "Our commitment to fresh, sustainable ingredients is what makes every dish special and unique.",
 ];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const OurStory = () => {
   const [, setCarouselIndex] = useState(0);
@@ -18,95 +32,75 @@ const OurStory = () => {
       setCarouselIndex(
         (prevIndex) => (prevIndex + 1) % textCarouselItems.length
       );
-    }, 4000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className={styles.ourStoryContainer}>
-      {/* Left Section - Image with Zoom-in Animation */}
+      {/* Image Section */}
       <motion.div
-        className={styles.imageContainer}
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        whileHover={{ scale: 1.05 }}
+        className={styles.imageSection}
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
       >
-        <img src={chef} alt="Our Story" className={styles.ourStoryImage} />
+        <motion.img
+          src={chef}
+          alt="Kaboul Gourmet Chef"
+          className={styles.chefImage}
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        />
       </motion.div>
 
-      {/* Right Section - Text Content with Staggered Animations */}
+      {/* Text Section with Staggered Animation */}
       <motion.div
-        className={styles.textContainer}
+        className={styles.contentSection}
         initial="hidden"
         animate="visible"
-        variants={{
-          visible: {
-            transition: {
-              staggerChildren: 0.3,
-            },
-          },
-        }}
+        variants={containerVariants}
       >
-        <motion.h2
-          className={styles.ourStoryHeader}
-          variants={{
-            hidden: { y: 50, opacity: 0 },
-            visible: { y: 0, opacity: 1 },
-          }}
-          transition={{ duration: 1 }}
-        >
+        <motion.h2 className={styles.heading} variants={itemVariants}>
           OUR STORY
         </motion.h2>
 
-        <motion.p
-          className={styles.ourStoryParagraph}
-          variants={{
-            hidden: { y: 50, opacity: 0 },
-            visible: { y: 0, opacity: 1 },
-          }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
+        <motion.p className={styles.intro} variants={itemVariants}>
           With a passion for cooking and the desire to create some of the best
-          restaurants and dining experiences, we founded Kaboul Gourmet. Our
-          philosophy embraces seasonal, sustainable ingredients with impeccable
-          service. With a passion for cooking and the desire to create some of
-          the best restauran With a passion for cooking and the desire to create
-          some of the best restaurants and dining experiences, we founded Kaboul
-          Gourmet. Our philosophy embraces seasonal, sustainable ingredients
-          with impeccable service. With a passion for cooking and the desire to
-          create some of the best restaurants and dining experiences, we founded
-          Kaboul Gourmet. Our philosophy embraces seasonal, sustainable
-          ingredients with impeccable service.ts and dining experiences, we
-          founded Kaboul Gourmet.
+          restaurants and dining experiences, we founded Kaboul Gourmet.
         </motion.p>
 
-        <motion.div
-          className={styles.buttonContainer}
-          variants={{
-            hidden: { y: 50, opacity: 0 },
-            visible: { y: 0, opacity: 1 },
-          }}
-          transition={{ duration: 1, delay: 0.4 }}
-        >
-          <a
-            href="https://instagram.com/yourrestaurant"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Instagram
-          </a>
-          <a href="/newsletter">Newsletter Signup</a>
+        <motion.div className={styles.body} variants={itemVariants}>
+          <p>
+            Kaboul Gourmet is a collection of uniquely crafted dining spaces,
+            all tied together by a love for seasonal and sustainable
+            ingredients, impeccable service, and luxurious atmospheres.
+          </p>
+          <p>
+            From cozy neighborhood eateries to our signature flagship
+            experience, our chefs work passionately to deliver vibrant dishes
+            made with handpicked produce. We collaborate closely with local
+            markets and artisans to bring authenticity and freshness to your
+            plate.
+          </p>
+          <p>
+            Our menus evolve with the seasons, and our culinary team enjoys the
+            freedom to innovate while honoring the roots of traditional Afghan
+            cuisine. Kaboul Gourmet is about more than food — it’s about feeling
+            at home, wherever you dine with us.
+          </p>
         </motion.div>
 
-        <motion.div
-          className={styles.carouselContainer}
-          variants={{
-            hidden: { y: 50, opacity: 0 },
-            visible: { y: 0, opacity: 1 },
-          }}
-          transition={{ duration: 1, delay: 0.6 }}
-        >
+        <motion.div className={styles.buttons} variants={itemVariants}>
+          <a href="/about" className={styles.outlineButton}>
+            DISCOVER MORE
+          </a>
+          <a href="/newsletter" className={styles.outlineButton}>
+            NEWSLETTER SIGNUP
+          </a>
+        </motion.div>
+
+        <motion.div className={styles.quoteCarousel} variants={itemVariants}>
           <Carousel items={textCarouselItems} />
         </motion.div>
       </motion.div>

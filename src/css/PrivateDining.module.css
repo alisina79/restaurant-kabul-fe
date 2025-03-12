@@ -1,0 +1,294 @@
+/* GENERAL STYLES */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: clamp(20px, 4vw, 30px); /* Responsive gap */
+  padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 60px); /* Responsive padding */
+  height: auto;
+  background: #ac8d5b; /* Solid color as fallback */
+  background-image: url('../assets/patterns/simple-container-bg.svg'); /* New simpler pattern */
+  background-size: clamp(200px, 30vw, 300px); /* Responsive background size */
+  background-repeat: repeat;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1.2s ease-out forwards;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Spacer for consistent spacing like the Chef page */
+.spacer {
+  height: 60px;
+  width: 100%;
+}
+
+/* Smooth entrance animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* IMAGE SECTION */
+.imageSection {
+  flex: 1;
+  max-width: 48%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: clamp(15px, 2vw, 20px); /* Responsive gap */
+  min-height: clamp(400px, 60vh, 600px); /* Responsive min-height */
+}
+
+/* Modern Image Frame */
+.imageFrame {
+  width: 100%;
+  max-width: 600px; /* Increased from 500px to better fill the space */
+  height: 100%;
+  border: clamp(5px, 1vw, 10px) solid rgba(255, 255, 255, 0.2); /* Responsive border */
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Image Styling */
+.imageFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease-in-out;
+  min-height: clamp(350px, 55vh, 560px); /* Responsive min-height */
+  max-height: none; /* Remove the max-height limitation */
+}
+
+/* Hover Effect */
+.imageFrame:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.imageFrame:hover img {
+  transform: scale(1.08);
+}
+
+/* TEXT SECTION */
+.textSection {
+  flex: 1;
+  max-width: 48%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(30px, 4vw, 50px); /* Responsive padding */
+  background: #1a1e25; /* Dark background */
+  background-image: url('../assets/patterns/simple-monogram.svg'); /* Simple monogram */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideIn 1.2s ease-out forwards 0.4s;
+  min-height: clamp(400px, 60vh, 600px); /* Responsive min-height matching image section */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating Text Effect */
+.textSection:hover {
+  transform: translateX(0) scale(1.02);
+}
+
+/* Slide-in Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* TEXT CONTENT */
+.textBox {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: clamp(350px, 50vh, 500px); /* Responsive min-height */
+}
+
+/* Text content container - simpler styling */
+.textContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
+  position: relative;
+  padding: 20px;
+  border: none;
+  background-color: transparent;
+  z-index: 2;
+}
+
+/* Monogram letter styling */
+.monogram {
+  display: block;
+  font-size: clamp(3rem, 8vw, 5rem); /* Responsive font size */
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  color:#ffffff;
+  margin-bottom: clamp(10px, 2vw, 20px); /* Responsive margin */
+  text-align: center;
+}
+
+/* Title Styling */
+.mainHeading {
+  font-size: clamp(1.5rem, 3vw, 2.2rem); /* Responsive font size */
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: clamp(10px, 2vw, 20px); /* Responsive margin */
+  font-family: "Futura", "Proxima Nova", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: clamp(1px, 0.3vw, 3px); /* Responsive letter spacing */
+  transition: transform 0.3s ease-in-out;
+  text-align: center;
+}
+
+/* Subheading styling */
+.subheading {
+  font-size: clamp(1.2rem, 2vw, 1.5rem); /* Responsive font size */
+  font-family: "Georgia", serif;
+  color: white;
+  margin-bottom: clamp(15px, 2.5vw, 25px); /* Responsive margin */
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* Paragraph Styling */
+.textBox p {
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem); /* Responsive font size */
+  line-height: 1.9;
+  color:white;
+  margin-bottom: clamp(10px, 2vw, 20px); /* Responsive margin */
+  font-family: "Georgia", serif;
+  text-align: center;
+}
+
+/* MENU BUTTON */
+.menuButton {
+  background: #fff;
+  color: #333;
+  font-size: clamp(1rem, 1.5vw, 1.2rem); /* Responsive font size */
+  font-weight: 600;
+  padding: clamp(10px, 1.5vw, 14px) clamp(20px, 3vw, 28px); /* Responsive padding */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: clamp(1px, 0.2vw, 2px); /* Responsive letter spacing */
+  margin-top: clamp(15px, 2vw, 20px); /* Responsive margin */
+  margin-bottom: clamp(15px, 2.5vw, 25px); /* Responsive margin */
+  font-family: "Futura", "Proxima Nova", sans-serif;
+}
+
+/* Button Hover Effect */
+.menuButton:hover {
+  background: #f8f8f8;
+  transform: scale(1.05);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Secondary Image Container - Similar to Chef page */
+.secondaryImageContainer {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  margin-top: clamp(5px, 1vw, 10px); /* Responsive margin */
+  position: relative;
+  border: clamp(2px, 0.5vw, 3px) solid rgba(224, 193, 136, 0.5); /* Responsive border */
+  background: linear-gradient(to bottom, #ac8d5b, #8b6f44); /* Background gradient if image loading is delayed */
+  transform: translateZ(0); /* Hardware acceleration */
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+.secondaryImageContainer:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transform: translateY(-5px) translateZ(0);
+}
+
+.secondaryImageContainer::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  pointer-events: none; /* Don't interfere with hover effects */
+}
+
+.secondaryImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  transition: transform 0.6s ease;
+  max-height: clamp(180px, 25vh, 250px); /* Responsive max-height */
+  object-fit: cover;
+  transform: scale(1.01); /* Very slight scale to avoid white pixel edges */
+}
+
+.secondaryImage:hover {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .imageSection,
+  .textSection {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Keep styles here minimal since we're using clamp for most properties */
+  .textSection {
+    padding: clamp(25px, 4vw, 40px); /* Additional adjustment for medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Keep styles here minimal since we're using clamp for most properties */
+  .imageFrame {
+    border-width: 6px; /* Specifically for mobile to look better */
+  }
+}

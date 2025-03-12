@@ -72,5 +72,5 @@
 .swiper-pagination {
   position: absolute;
   bottom: 20px;
-  z-index: 10;
+  z-index: 1;
 }

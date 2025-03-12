@@ -1,223 +1,953 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
 
 :root {
-  --primary-bg: #ffffff; /* White background */
-  --gold: #d4af37; /* Gold color for title */
-  --dark-text: #1a1e25; /* Dark text for better contrast */
-  --dark-overlay: rgba(0, 0, 0, 0.6);
+  --primary-bg: #ffffff;
+  --gold: #ac8d5b;
+  --gold-light: rgba(172, 141, 91, 0.15);
+  --gold-hover: #c4a06a;
+  --dark-text: #1a1e25;
+  --light-text: #f7f7f7;
+  --gray-text: #5a5a5a;
+  --light-gray: #e6e6e6;
+  --dark-overlay: rgba(0, 0, 0, 0.65);
+  --light-overlay: rgba(255, 255, 255, 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  --transition: all 0.3s ease-in-out;
+  --border-radius: 12px;
   --font-family: "Inter", sans-serif;
-  --glass-bg: rgba(0, 0, 0, 0.05);
-  --glass-border: rgba(0, 0, 0, 0.1);
-  --shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  --title-family: "Playfair Display", serif;
 }
 
-/* 🔹 Ensure full background is white */
 body {
   background-color: white !important;
   font-family: var(--font-family);
-  color: var(--dark-text);
   margin: 0;
   padding: 0;
 }
 
-/* 🔹 Fix background for the main container */
+/* Main Container */
 .container {
   background-color: white !important;
   text-align: center;
-  padding: 60px 20px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 🔹 Title Styling - Featured Dishes */
-.title {
-  font-size: 40px;
-  font-weight: 700;
-  color: var(--gold); /* Gold color for title */
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  margin-bottom: 10px;
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
+  padding: 80px 20px;
+  max-width: 1440px;
+  margin: 0 auto;
   overflow: hidden;
-  transition: color 0.3s ease-in-out;
 }
 
-/* Underline Animation */
+/* Section Header Styling */
+.sectionHeader {
+  margin-bottom: 40px;
+}
+
+.title {
+  font-family: var(--title-family);
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--dark-text);
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  display: inline-block;
+  position: relative;
+}
+
+.titleIcon {
+  display: inline-block;
+  margin-right: 10px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  color: var(--gray-text);
+  max-width: 600px;
+  margin: 0 auto 15px;
+  font-weight: 400;
+}
+
 .underline {
   height: 3px;
-  width: 0%;
-  background: var(--gold);
-  margin: 10px auto 20px;
-  transition: width 0.5s ease-in-out;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 40px;
+  width: 80px;
 }
 
-.visible .underline {
-  width: 100px;
+/* Category Filters */
+.categoryFilters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.categoryButton {
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: transparent;
+  color: var(--dark-text);
+  border: 1px solid var(--light-gray);
+  border-radius: 25px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.categoryButton:hover {
+  background-color: var(--gold-light);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.activeCategory {
+  background-color: var(--gold) !important;
+  color: white !important;
+  border-color: var(--gold) !important;
+}
+
+/* Search Controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.searchBox {
+  position: relative;
+  width: 280px;
+  max-width: 100%;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 20px;
+  padding-right: 40px;
+  border: 1px solid var(--light-gray);
+  border-radius: 25px;
+  font-size: 15px;
+  transition: var(--transition);
+  outline: none;
+  font-family: var(--font-family);
+}
+
+.searchInput:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px var(--gold-light);
+}
+
+.searchIcon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: var(--gray-text);
+  pointer-events: none;
 }
 
 /* Grid Layout */
 .dishGrid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
   justify-content: center;
-  gap: 50px;
-  align-items: stretch;
+  margin-bottom: 40px;
 }
 
-/* Card Container */
+/* Dish Card Styling */
 .dishCard {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   position: relative;
-  border-radius: 5px;
-  width: 750px;
-  min-height: 600px;
+  width: 100%;
+  height: 450px;
   overflow: hidden;
+  border-radius: var(--border-radius);
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
-  color: var(--dark-text);
-  text-align: center;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
 }
 
-/* Hover Effect */
 .dishCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 12px 30px rgba(212, 175, 55, 0.4);
-  border: 1px solid var(--gold);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(172, 141, 91, 0.25);
+  border-color: var(--gold);
 }
 
-/* Background Image */
+/* Popular Badge */
+.popularBadge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(255, 200, 0, 0.9);
+  color: #222;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Category Label */
+.categoryLabel {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 4px;
+  z-index: 5;
+}
+
+/* Image Styling */
 .imageWrapper {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  transition: transform 0.5s ease-in-out;
+  z-index: 1;
+  transition: transform 0.6s ease;
 }
 
-/* Zoom Effect */
 .dishCard:hover .imageWrapper {
   transform: scale(1.1);
 }
 
-/* Overlay */
+/* Overlay with Info */
 .overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 50%;
-  background: linear-gradient(to top, var(--dark-overlay), transparent);
+  height: 65%;
+  background: linear-gradient(to top, var(--dark-overlay) 70%, transparent);
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding: 25px 20px;
   text-align: center;
-  padding: 20px;
+  box-sizing: border-box;
+  color: #ffffff;
 }
 
-/* Dish Name */
+
 .dishName {
-  font-size: 26px;
+  font-family: var(--title-family);
+  font-size: 24px;
   font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 5px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  color: white;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Dish Extra Info */
-.extraInfo {
-  font-size: 18px;
-  color: #ffffff;
-  opacity: 0.9;
+.description {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #f0f0f0;
   margin-bottom: 15px;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.dishInfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+  color: white;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  color: white;
+}
+
+.time, .extraInfo {
+  font-size: 13px;
+  color: #ddd;
 }
 
 /* Button Styling */
-.menuButton {
-  padding: 14px 32px;
+.buttonGroup {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.detailButton, .orderButton {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detailButton {
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.detailButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
+.orderButton {
+  background-color: var(--gold);
+  color: white;
+  border: 1px solid var(--gold);
+}
+
+.orderButton:hover {
+  background-color: var(--gold-hover);
+  border-color: var(--gold-hover);
+}
+.detailedButton{
+  backdrop-filter: blur(6px);
+}
+/* Load More Button */
+.loadMoreButton {
+  background-color: transparent;
+  color: var(--gold);
+  border: 2px solid var(--gold);
+  border-radius: 30px;
+  padding: 12px 30px;
   font-size: 16px;
   font-weight: 600;
-  border: 2px solid #ffffff;
-  color: #ffffff;
-  background: transparent;
   cursor: pointer;
-  border-radius: 8px;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
+  margin-top: 20px;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* Hover Effect */
-.menuButton:hover {
-  background: var(--gold);
-  color: var(--primary-bg);
-  border-color: var(--gold);
+.loadMoreButton:hover {
+  background-color: var(--gold);
+  color: white;
 }
 
-/* Mobile Screens */
-@media (max-width: 600px) {
-  .dishGrid {
-    flex-direction: column;
-    gap: 20px;
-  }
+/* Modal Styling */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+}
 
-  .dishCard {
-    width: 320px;
-    min-height: 400px;
-  }
+.modalContent {
+  background-color: #1a1e25;
+  width: 100%;
+  max-width: 900px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-height: 90vh;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
 
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition);
+}
+
+.closeButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+.modalImage {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.modalDetails {
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.modalDishName {
+  font-family: var(--title-family);
+  font-size: 28px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.modalDescription {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #d4d4d4;
+  margin-bottom: 25px;
+}
+
+.modalInfoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.modalInfoItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.modalInfoLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 5px;
+}
+
+.modalInfoValue {
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modalOrderButton {
+  background-color: var(--gold);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.modalOrderButton:hover {
+  background-color: var(--gold-hover);
+  transform: translateY(-2px);
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--dark-text);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: bottom 0.3s ease-in-out;
+}
+
+.showToast {
+  bottom: 30px;
+}
+
+/* ✅ Enhanced Responsiveness */
+/* Extra Small Devices */
+@media (max-width: 375px) {
+  .container {
+    padding: 40px 12px;
+  }
+  
   .title {
-    font-size: 28px;
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
   }
-
-  .menuButton {
-    padding: 12px 24px;
+  
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .dishCard {
+    height: 380px;
+  }
+  
+  .dishName {
+    font-size: 20px;
+  }
+  
+  .description {
+    font-size: 13px;
+    -webkit-line-clamp: 2;
+  }
+  
+  .categoryFilters {
+    gap: 8px;
+  }
+  
+  .categoryButton {
+    padding: 8px 15px;
+    font-size: 13px;
+  }
+  
+  .modalImage {
+    height: 180px;
+  }
+  
+  .modalDetails {
+    padding: 20px;
+  }
+  
+  .modalDishName {
+    font-size: 22px;
+  }
+  
+  .modalDescription {
     font-size: 14px;
   }
-}
-
-/* Tablet Screens */
-@media (min-width: 601px) and (max-width: 1024px) {
-  .dishGrid {
-    justify-content: center;
-    gap: 30px;
+  
+  .buttonGroup {
+    flex-direction: column;
+    gap: 8px;
   }
-
-  .dishCard {
-    width: 400px;
-    min-height: 450px;
-  }
-
-  .title {
-    font-size: 34px;
+  
+  .detailButton, .orderButton {
+    width: 100%;
+    padding: 8px 15px;
+    font-size: 13px;
   }
 }
 
-/* Large Screens */
-@media (min-width: 1025px) {
-  .dishGrid {
-    justify-content: center;
-    gap: 50px;
+/* Small Mobile Devices */
+@media (min-width: 376px) and (max-width: 576px) {
+  .container {
+    padding: 50px 15px;
   }
-
+  
   .dishCard {
-    width: 450px;
-    min-height: 500px;
+    height: 400px;
   }
+  
+  .overlay {
+    height: 70%;
+  }
+  
+  .dishGrid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .buttonGroup {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .detailButton, .orderButton {
+    width: 100%;
+  }
+  
+  .modalContent {
+    flex-direction: column;
+  }
+  
+  .modalImage {
+    height: 200px;
+  }
+  
+  .modalInfoGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .searchBox {
+    width: 100%;
+  }
+}
 
+/* Medium Mobile Devices */
+@media (min-width: 577px) and (max-width: 768px) {
+  .dishGrid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  
+  .dishCard {
+    height: 420px;
+  }
+  
+  .modalImage {
+    height: 250px;
+  }
+  
+  .modalInfoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .categoryFilters {
+    margin-bottom: 20px;
+  }
+  
+  .loadMoreButton {
+    padding: 10px 25px;
+    font-size: 15px;
+  }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .dishGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  
+  .dishCard {
+    height: 430px;
+  }
+  
+  .modalContent {
+    flex-direction: row;
+    max-height: 85vh;
+  }
+  
+  .modalImage {
+    width: 45%;
+    height: auto;
+  }
+  
+  .modalDetails {
+    width: 55%;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .modalContent {
+    flex-direction: row;
+    max-height: 80vh;
+  }
+  
+  .modalImage {
+    width: 45%;
+    height: auto;
+  }
+  
+  .modalDetails {
+    width: 55%;
+  }
+  
+  .dishGrid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+    margin: 0 auto 40px;
+  }
+  
+  .searchBox {
+    width: 320px;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1441px) {
+  .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 100px 20px;
+  }
+  
+  .dishGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1300px;
+    margin: 0 auto 50px;
+  }
+  
+  .dishCard {
+    height: 480px;
+  }
+  
   .title {
-    font-size: 42px;
+    font-size: 3rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .modalContent {
+    max-width: 1200px;
+    flex-direction: row;
+  }
+  
+  .modalImage {
+    width: 45%;
+  }
+  
+  .modalDetails {
+    width: 55%;
+    padding: 40px;
+  }
+  
+  .modalDishName {
+    font-size: 32px;
+  }
+  
+  .modalDescription {
+    font-size: 18px;
+  }
+}
+
+/* Landscape Mode on Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .container {
+    padding: 30px 15px;
+  }
+  
+  .dishCard {
+    height: 300px;
+  }
+  
+  .overlay {
+    height: 80%;
+  }
+  
+  .dishGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  
+  .modalContent {
+    flex-direction: row;
+    max-height: 90vh;
+    overflow: auto;
+  }
+  
+  .modalImage {
+    width: 40%;
+    height: auto;
+    min-height: 100%;
+  }
+  
+  .modalDetails {
+    width: 60%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .buttonGroup {
+    flex-direction: row;
+  }
+  
+  .sectionHeader {
+    margin-bottom: 20px;
+  }
+  
+  .underline {
+    margin-bottom: 20px;
+  }
+  
+  .categoryFilters {
+    margin-bottom: 15px;
+  }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .imageWrapper {
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+  }
+  
+  .dishCard {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .modalImage {
+    background-size: cover;
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Ensure text remains readable on small screens */
+@media (max-width: 320px) {
+  .dishName {
+    font-size: 18px;
+  }
+  
+  .description {
+    font-size: 12px;
+    -webkit-line-clamp: 2;
+  }
+  
+  .price, .time, .extraInfo {
+    font-size: 12px;
+  }
+  
+  .detailButton, .orderButton {
+    padding: 7px 12px;
+    font-size: 12px;
+  }
+  
+  .categoryButton {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .modalDishName {
+    font-size: 20px;
+  }
+  
+  .modalInfoValue, .modalInfoLabel {
+    font-size: 13px;
+  }
+}
+
+/* Print Styles for Restaurant Menu Printing */
+@media print {
+  .container {
+    padding: 0;
+    background-color: white !important;
+  }
+  
+  .categoryFilters, .controls, .buttonGroup, .loadMoreButton, .modalOverlay {
+    display: none !important;
+  }
+  
+  .dishGrid {
+    display: block;
+  }
+  
+  .dishCard {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    height: auto;
+    margin-bottom: 15px;
+    page-break-inside: avoid;
+  }
+  
+  .imageWrapper {
+    position: relative;
+    height: 200px;
+  }
+  
+  .overlay {
+    position: relative;
+    height: auto;
+    background: none;
+    color: #000;
+  }
+  
+  .dishName {
+    color: #000;
+    text-shadow: none;
+  }
+  
+  .description, .price, .extraInfo {
+    color: #333;
+  }
+  
+  .underline {
+    display: none;
+  }
+  
+  .title, .subtitle {
+    color: #000;
+  }
+}
+
+/* Container Queries for Component-Based Layouts */
+@container (max-width: 400px) {
+  .dishGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dishCard {
+    height: auto;
+    min-height: 350px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: #121212 !important;
+  }
+  
+  .title {
+    color: #f0f0f0;
+  }
+  
+  .subtitle {
+    color: #b0b0b0;
+  }
+  
+  .categoryButton {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #e0e0e0;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .searchInput {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #e0e0e0;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .modalContent {
+    background-color: #1e1e1e;
+  }
+  
+  .modalDishName, .modalInfoValue {
+    color: #f0f0f0;
+  }
+  
+  .modalDescription, .modalInfoLabel {
+    color: #b0b0b0;
+  }
+  
+  .loadMoreButton {
+    border-color: var(--gold);
   }
 }

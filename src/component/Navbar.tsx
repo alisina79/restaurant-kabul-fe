@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import styles from "../css/navbar.module.css";
 import {
@@ -9,194 +9,200 @@ import {
   Phone,
   Users,
   Calendar,
-  Car as CarIcon,
-  Utensils as ForkKnife,
-  ChevronRight,
-  ChevronDown,
   X as CloseIcon,
-} from "lucide-react";
-import one from "../chef/one.jpg";
-import two from "../chef/two.jpg";
-import three from "../chef/three.jpg";
-import four from "../chef/four.jpg";
-import five from "../chef/five.jpg";
-import six from "../chef/six.jpg";
 
-const images: { [key: string]: string } = {
-  home: one,
-  menu: two,
-  reservations: three,
-  gallery: four,
-  contact: five,
-  about: six,
-};
+} from "lucide-react";
+
+// Import your food images for the sidebar
+import homeImage from "../chef/one.jpg";
+import menuImage from "../chef/two.jpg";
+import reservationsImage from "../chef/three.jpg";
+import galleryImage from "../chef/four.jpg";
+import contactImage from "../chef/five.jpg";
+import aboutImage from "../chef/six.jpg";
 
 function Navbar() {
-  const [scrollWidth, setScrollWidth] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [submenuOpen, setSubmenuOpen] = useState<string | null>(null);
-  const [activeImage, setActiveImage] = useState<string>(images.home);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isBookDropdownOpen, setIsBookDropdownOpen] = useState(false);
+  const [activeImage, setActiveImage] = useState(homeImage);
+  
+  // Ref for the book button and dropdown
+  const bookButtonRef = useRef<HTMLDivElement>(null);
+  const bookDropdownRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const updateScrollProgress = () => {
-      const scrollTop =
-        document.documentElement.scrollTop || document.body.scrollTop;
-      const scrollHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-      const progress = (scrollTop / scrollHeight) * 100;
-      setScrollWidth(progress);
-    };
-
-    window.addEventListener("scroll", updateScrollProgress);
-    return () => window.removeEventListener("scroll", updateScrollProgress);
-  }, []);
+  // Image mapping for sidebar routes
+  const routeImages = {
+    home: homeImage,
+    menu: menuImage,
+    reservations: reservationsImage,
+    gallery: galleryImage,
+    contact: contactImage,
+    about: aboutImage
+  };
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      setIsScrolled(scrollTop > 50); // Navbar color changes after 50px scroll
+      setIsScrolled(scrollTop > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Add a click outside listener to close the dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        bookButtonRef.current && 
+        !bookButtonRef.current.contains(event.target as Node) &&
+        bookDropdownRef.current && 
+        !bookDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsBookDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  
+  // Handle dropdown toggle
+  const toggleBookDropdown = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsBookDropdownOpen(!isBookDropdownOpen);
+  };
+
   return (
     <>
-      <div
-        className={styles.scrollIndicator}
-        style={{ width: `${scrollWidth}%` }}
-      ></div>
-      <nav
-        className={`${styles.navbar} ${
-          isScrolled ? styles.scrolledNavbar : ""
-        }`}
-      >
-        <div className={styles.container}>
-          <button
-            className={styles.menuButton}
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <MenuIcon size={30} />
-          </button>
-          <div className={styles.logo}>
-            <Link to="/" className={styles.logoText}>
-              KABOUL Gourmet
+      <header className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}>
+        {/* Top Black Header */}
+        <div className={styles.topHeader}>
+          {/* Left Side - Hamburger Menu with LOCATIONS */}
+          <div className={styles.hamburgerWrapper} onClick={() => setIsSidebarOpen(true)}>
+            <MenuIcon size={20} color="#ac8d5b" />
+          </div>
+
+          {/* Center - Brand Logo */}
+          <div className={styles.logoWrapper}>
+            <Link to="/" className={styles.logo}>
+              Kaboul Gourmet
             </Link>
           </div>
-          <div
-            className={styles.orderContainer}
-            onMouseEnter={() => setIsDropdownOpen(true)}
-            onMouseLeave={() => setIsDropdownOpen(false)}
-          >
-            <button className={styles.orderButton}>Order</button>
-            {isDropdownOpen && (
-              <div className={styles.dropdownMenu}>
-                <Link to="/uber">
-                  <CarIcon size={18} className={styles.icon} /> Uber
-                </Link>
-                <Link to="/zomato">
-                  <ForkKnife size={18} className={styles.icon} /> Zomato
-                </Link>
-              </div>
-            )}
+
+          {/* Right Side - Contact info and Book button */}
+          <div className={styles.contactArea}>
+            <span className={styles.phoneNumber}>020 7299 0404</span>
+            
+            <div 
+              ref={bookButtonRef}
+              className={styles.bookButton}
+              onClick={toggleBookDropdown}
+            >
+              <Calendar size={16} /> BOOK NOW
+            </div>
+            <div 
+              ref={bookDropdownRef}
+              className={`${styles.bookDropdown} ${isBookDropdownOpen ? styles.active : ''}`}
+            >
+              <Link 
+                to="/reservations" 
+                className={styles.bookDropdownItem}
+                onClick={() => {
+                  setIsBookDropdownOpen(false);
+                }}
+              >
+                <Calendar size={16} style={{ color: '#ac8d5b' }} /> Book a Table
+              </Link>
+              <Link 
+                to="/private-dining" 
+                className={styles.bookDropdownItem}
+                onClick={() => {
+                  setIsBookDropdownOpen(false);
+                }}
+              >
+                <Users size={16} style={{ color: '#ac8d5b' }} /> Private Dining
+              </Link>
+            </div>
           </div>
         </div>
 
-        {isOpen && (
-          <div
-            className={`${styles.fullscreenMenu} ${isOpen ? styles.open : ""}`}
-          >
-            <button
-              className={styles.closeButton}
-              onClick={() => {
-                console.log("Close button clicked!"); // Debugging
-                setIsOpen(false);
-              }}
-            >
-              <CloseIcon size={30} />
-            </button>
-
-            <div className={styles.menuContainer}>
-              {/* Left Side - Navigation Links */}
-              <div className={styles.linksSection}>
-                <Link
-                  to="/"
-                  className={styles.navItem}
-                  onMouseEnter={() => setActiveImage(images.home)}
-                >
-                  <Home size={24} /> Home
-                </Link>
-                <div className={styles.dropdownItem}>
-                  <button
-                    className={styles.dropdownToggle}
-                    onMouseEnter={() => setActiveImage(images.menu)}
-                    onClick={() =>
-                      setSubmenuOpen(submenuOpen === "menu" ? null : "menu")
-                    }
-                  >
-                    <Book size={24} /> Menu
-                    {submenuOpen === "menu" ? (
-                      <ChevronDown size={16} />
-                    ) : (
-                      <ChevronRight size={16} />
-                    )}
-                  </button>
-                  <div
-                    className={`${styles.submenu} ${
-                      submenuOpen === "menu" ? styles.active : ""
-                    }`}
-                  >
-                    <Link to="/menu/foods">Foods</Link>
-                    <Link to="/menu/beverages">Beverages</Link>
-                    <Link to="/menu/starters">Starters</Link>
-                  </div>
-                </div>
-                <Link
-                  to="/reservations"
-                  className={styles.navItem}
-                  onMouseEnter={() => setActiveImage(images.reservations)}
-                >
-                  <Calendar size={24} /> Reservations
-                </Link>
-                <Link
-                  to="/gallery"
-                  className={styles.navItem}
-                  onMouseEnter={() => setActiveImage(images.gallery)}
-                >
-                  <Image size={24} /> Gallery
-                </Link>
-                <Link
-                  to="/contact"
-                  className={styles.navItem}
-                  onMouseEnter={() => setActiveImage(images.contact)}
-                >
-                  <Phone size={24} /> Contact Us
-                </Link>
-                <Link
-                  to="/about"
-                  className={styles.navItem}
-                  onMouseEnter={() => setActiveImage(images.about)}
-                >
-                  <Users size={24} /> About Us
-                </Link>
-              </div>
-
-              {/* Right Side - Image Carousel */}
-              <div className={styles.imageSection}>
-                <img
-                  src={activeImage}
-                  alt="Section Image"
-                  className={styles.carouselImage}
-                />
-              </div>
-            </div>
+        {/* Bottom White Header */}
+        <div className={styles.bottomHeader}>
+          <div className={styles.restaurantName}>
+            Kaboul Gourmet
           </div>
-        )}
-      </nav>
+          <nav className={styles.navLinks}>
+            <Link to="/menu" className={styles.navLink}>MENUS</Link>
+            <Link to="/whats-on" className={styles.navLink}>WHAT'S ON</Link>
+            
+            <Link to="/about" className={styles.navLink}>ABOUT</Link>
+          
+            <Link to="/contact" className={styles.navLink}>CONTACT</Link>
+            <Link to="/newsletter" className={styles.navLink}>NEWSLETTER SIGNUP</Link>
+          </nav>
+        </div>
+      </header>
+
+      {/* Sidebar Menu for Mobile/Tablet */}
+      <div className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ""}`}>
+        <div className={styles.sidebarContent}>
+          <button className={styles.sidebarClose} onClick={() => setIsSidebarOpen(false)}>
+            <CloseIcon size={24} />
+          </button>
+          <div className={styles.sidebarLinks}>
+            <Link to="/" 
+              className={styles.sidebarLink} 
+              onClick={() => setIsSidebarOpen(false)}
+              onMouseEnter={() => setActiveImage(routeImages.home)}
+            >
+              <Home size={20} /> HOME
+            </Link>
+            <Link to="/menu" 
+              className={styles.sidebarLink} 
+              onClick={() => setIsSidebarOpen(false)}
+              onMouseEnter={() => setActiveImage(routeImages.menu)}
+            >
+              <Book size={20} /> MENU
+            </Link>
+            <Link to="/reservations" 
+              className={styles.sidebarLink} 
+              onClick={() => setIsSidebarOpen(false)}
+              onMouseEnter={() => setActiveImage(routeImages.reservations)}
+            >
+              <Calendar size={20} /> RESERVATIONS
+            </Link>
+            <Link to="/gallery" 
+              className={styles.sidebarLink} 
+              onClick={() => setIsSidebarOpen(false)}
+              onMouseEnter={() => setActiveImage(routeImages.gallery)}
+            >
+              <Image size={20} /> GALLERY
+            </Link>
+            <Link to="/contact" 
+              className={styles.sidebarLink} 
+              onClick={() => setIsSidebarOpen(false)}
+              onMouseEnter={() => setActiveImage(routeImages.contact)}
+            >
+              <Phone size={20} /> CONTACT US
+            </Link>
+            <Link to="/about" 
+              className={styles.sidebarLink} 
+              onClick={() => setIsSidebarOpen(false)}
+              onMouseEnter={() => setActiveImage(routeImages.about)}
+            >
+              <Users size={20} /> ABOUT US
+            </Link>
+          </div>
+        </div>
+        <div 
+          className={styles.sidebarImage} 
+          style={{ backgroundImage: `url(${activeImage})` }}
+        ></div>
+      </div>
     </>
   );
 }

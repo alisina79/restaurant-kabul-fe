@@ -1,0 +1,17 @@
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="250" cy="250" r="250" fill="#ac8d5b"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="250" cy="250" r="220" fill="none" stroke="rgba(255, 255, 255, 0.2)" stroke-width="1"/>
+  <circle cx="250" cy="250" r="180" fill="rgba(255, 255, 255, 0.05)"/>
+  
+  <!-- Corner accents -->
+  <path d="M 60,60 L 120,60 M 60,60 L 60,120" stroke="rgba(255, 255, 255, 0.2)" stroke-width="2" fill="none"/>
+  <path d="M 440,60 L 380,60 M 440,60 L 440,120" stroke="rgba(255, 255, 255, 0.2)" stroke-width="2" fill="none"/>
+  <path d="M 60,440 L 120,440 M 60,440 L 60,380" stroke="rgba(255, 255, 255, 0.2)" stroke-width="2" fill="none"/>
+  <path d="M 440,440 L 380,440 M 440,440 L 440,380" stroke="rgba(255, 255, 255, 0.2)" stroke-width="2" fill="none"/>
+  
+  <!-- Letter K -->
+  <path d="M 150,130 L 150,370 M 150,250 L 300,130 M 150,250 L 300,370" stroke="#ffffff" stroke-width="30" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg> 

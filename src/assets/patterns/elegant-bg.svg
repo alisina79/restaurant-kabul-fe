@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="elegant-bg" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+      <!-- Golden-brown background -->
+      <rect width="200" height="200" fill="#ac8d5b" fill-opacity="0.95"/>
+      
+      <!-- Elegant lines -->
+      <path d="M0,0 L200,200" stroke="#8a714a" stroke-width="0.5" fill="none" stroke-opacity="0.3"/>
+      <path d="M200,0 L0,200" stroke="#8a714a" stroke-width="0.5" fill="none" stroke-opacity="0.3"/>
+      
+      <!-- Subtle corner embellishments -->
+      <path d="M20,20 Q30,10 40,20" stroke="#8a714a" stroke-width="0.8" fill="none"/>
+      <path d="M160,20 Q170,10 180,20" stroke="#8a714a" stroke-width="0.8" fill="none"/>
+      <path d="M20,180 Q30,190 40,180" stroke="#8a714a" stroke-width="0.8" fill="none"/>
+      <path d="M160,180 Q170,190 180,180" stroke="#8a714a" stroke-width="0.8" fill="none"/>
+      
+      <!-- Faint dots -->
+      <circle cx="100" cy="100" r="1" fill="#8a714a" fill-opacity="0.4"/>
+      <circle cx="50" cy="50" r="1" fill="#8a714a" fill-opacity="0.4"/>
+      <circle cx="150" cy="50" r="1" fill="#8a714a" fill-opacity="0.4"/>
+      <circle cx="50" cy="150" r="1" fill="#8a714a" fill-opacity="0.4"/>
+      <circle cx="150" cy="150" r="1" fill="#8a714a" fill-opacity="0.4"/>
+      
+      <!-- K character in black -->
+      <text x="100" y="110" font-family="serif" font-size="24" fill="#000000" text-anchor="middle" font-weight="bold">K</text>
+    </pattern>
+  </defs>
+  <rect width="200" height="200" fill="url(#elegant-bg)"/>
+</svg> 

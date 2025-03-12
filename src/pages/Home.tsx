@@ -2,7 +2,7 @@ import Hero from "../component/Hero";
 import About from "../pages/About";
 import FeaturedDishes from "../component/FeaturedDishes";
 import Carousel from "./Carousel";
-import Menudetails from "./Menudetails";
+import PrivateDining from "../pages/PrivateDining";
 import Chef from "../component/Chef";
 import ChefSpecial from "../pages/ChefSpecial";
 import OurStory from "./OurStory";
@@ -13,11 +13,12 @@ function Home() {
       <Hero />
       <FeaturedDishes />
       <About />
+      <PrivateDining />
       <ChefSpecial />
       <Chef />
       <Carousel />
       <OurStory />
-      <Menudetails />
+      
       <div></div>
     </div>
   );

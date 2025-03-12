@@ -1,261 +1,214 @@
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router";
+import React, { useState, useEffect } from "react";
+import { Link, animateScroll as scroll } from "react-scroll";
 import { motion } from "framer-motion";
+import {
+  FaLeaf,
+  FaFire,
+  FaBreadSlice,
+  FaChevronUp,
+  FaSun,
+  FaMoon,
+} from "react-icons/fa";
 import styles from "../css/Menu.module.css";
+import Switch from "react-switch";
 
-import Nodels from "../assets/Nodels.jpg";
-import egg from "../assets/egg.jpg";
-import Tea from "../assets/Tea.jpg";
-import Water from "../assets/Water.jpg";
-import Mango from "../assets/Mango.jpg";
-import Lime from "../assets/Lime.jpg";
+const allTags = ["Spicy", "Vegan", "Gluten-Free"];
 
-// Define MenuItem type
-type MenuItem = {
-  id: number;
-  name: string;
-  price: string;
-  image: string;
-  description: string;
-  allergens: string[];
-};
-
-// Define MenuData type
-type MenuData = {
-  Foods: MenuItem[];
-  Beverages: MenuItem[];
-  Starters: MenuItem[];
-};
-
-// Menu data
-const menuData: MenuData = {
-  Foods: [
+const menu = {
+  starters: [
     {
-      id: 1,
-      name: "Noodles",
-      price: "€15",
-      image: Nodels,
-      description: "Delicious noodles with veggies.",
-      allergens: ["gluten"],
+      name: "Bruschetta",
+      desc: "Grilled bread with tomatoes.",
+      img: "/images/bruschetta.jpg",
+      tags: ["Vegan"],
     },
     {
-      id: 2,
-      name: "Egg",
-      price: "€12",
-      image: egg,
-      description: "Boiled egg served with herbs.",
-      allergens: ["egg"],
+      name: "Spicy Wings",
+      desc: "Wings with hot sauce.",
+      img: "/images/wings.jpg",
+      tags: ["Spicy"],
     },
   ],
-  Beverages: [
+  mains: [
     {
-      id: 3,
-      name: "Tea",
-      price: "€5",
-      image: Tea,
-      description: "Refreshing mint and lime tea.",
-      allergens: [],
+      name: "Ribeye Steak",
+      desc: "With garlic butter.",
+      img: "/images/ribeye.jpg",
+      tags: [],
     },
     {
-      id: 4,
-      name: "Water",
-      price: "€4",
-      image: Water,
-      description: "Natural spring water.",
-      allergens: [],
+      name: "Veggie Bowl",
+      desc: "Roasted veggies + quinoa.",
+      img: "/images/veggie-bowl.jpg",
+      tags: ["Vegan", "Gluten-Free"],
     },
   ],
-  Starters: [
+  beverages: [
     {
-      id: 5,
-      name: "Mango",
-      price: "€7",
-      image: Mango,
-      description: "Fresh mango slices.",
-      allergens: [],
+      name: "Berry Smoothie",
+      desc: "Berries & yogurt.",
+      img: "/images/berry-smoothie.jpg",
+      tags: ["Gluten-Free"],
     },
     {
-      id: 6,
-      name: "Lime",
-      price: "€8",
-      image: Lime,
-      description: "Crispy lime-flavored rolls.",
-      allergens: ["gluten", "dairy"],
+      name: "Spicy Margarita",
+      desc: "Tequila with chili.",
+      img: "/images/spicy-marg.jpg",
+      tags: ["Spicy"],
     },
   ],
 };
 
-const Menu = () => {
-  const [activeCategory, setActiveCategory] = useState<keyof MenuData>("Foods");
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [darkMode, setDarkMode] = useState<boolean>(false);
-  const [allergenFilter, setAllergenFilter] = useState<string[]>([]);
-  const [cart, setCart] = useState<{ [key: number]: number }>({});
-  const location = useLocation();
+const formatTitle = (key: string) =>
+  ({
+    starters: "Starters",
+    mains: "Main Courses",
+    beverages: "Drinks & Beverages",
+  }[key as keyof typeof menu] || key);
+
+const tagIcon: Record<string, React.ReactNode> = {
+  Spicy: <FaFire color="#ac8d5b" />,
+  Vegan: <FaLeaf color="#ac8d5b" />,
+  "Gluten-Free": <FaBreadSlice color="#ac8d5b" />,
+};
+
+const Menu: React.FC = () => {
+  const [activeFilters, setActiveFilters] = useState<string[]>([]);
+  const [search, setSearch] = useState("");
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [showTopBtn, setShowTopBtn] = useState(false);
 
   useEffect(() => {
-    if (location.state?.section) {
-      const formattedCategory =
-        location.state.section.charAt(0).toUpperCase() +
-        location.state.section.slice(1).toLowerCase();
-      if (menuData[formattedCategory as keyof MenuData])
-        setActiveCategory(formattedCategory as keyof MenuData);
-      setTimeout(
-        () =>
-          document
-            .getElementById(formattedCategory)
-            ?.scrollIntoView({ behavior: "smooth", block: "start" }),
-        100
-      );
-    }
-  }, [location]);
+    const onScroll = () => {
+      setShowTopBtn(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  // Handle allergen filtering
-  const handleAllergenFilterChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setAllergenFilter((prevFilter) =>
-      e.target.checked
-        ? [...prevFilter, e.target.value]
-        : prevFilter.filter((allergen) => allergen !== e.target.value)
+  const toggleFilter = (tag: string) => {
+    setActiveFilters((prev) =>
+      prev.includes(tag) ? prev.filter((f) => f !== tag) : [...prev, tag]
     );
   };
 
-  // Handle adding to cart
-  const handleAddToCart = (id: number) => {
-    setCart((prev) => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
-  };
-
-  // Handle removing from cart
-  const handleRemoveFromCart = (id: number) => {
-    setCart((prev) => {
-      const updatedCart = { ...prev };
-      if (updatedCart[id] > 1) {
-        updatedCart[id] -= 1;
-      } else {
-        delete updatedCart[id];
-      }
-      return updatedCart;
+  const filteredItems = (items: any[]) =>
+    items.filter((item) => {
+      const matchSearch = item.name
+        .toLowerCase()
+        .includes(search.toLowerCase());
+      const matchTags =
+        activeFilters.length === 0 ||
+        activeFilters.every((tag) => item.tags?.includes(tag));
+      return matchSearch && matchTags;
     });
-  };
-
-  // Filter menu items based on search and allergens
-  const filteredItems =
-    menuData[activeCategory]?.filter(
-      (item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-        (allergenFilter.length === 0 ||
-          !allergenFilter.some((allergen) => item.allergens.includes(allergen)))
-    ) || [];
 
   return (
-    <motion.div
-      className={`${styles.menuContainer} ${darkMode ? styles.darkMode : ""}`}
-    >
-      <motion.button
-        className={styles.darkModeToggle}
-        onClick={() => setDarkMode(!darkMode)}
-        whileHover={{ scale: 1.05 }}
-      >
-        {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-      </motion.button>
+    <div className={`${styles.wrapper} ${styles[theme]}`}>
+      <nav className={styles.navbar}>
+        {Object.keys(menu).map((section) => (
+          <Link
+            key={section}
+            to={section}
+            smooth={true}
+            offset={-60}
+            duration={500}
+            className={styles.navLink}
+          >
+            {formatTitle(section)}
+          </Link>
+        ))}
+        <div className={styles.themeToggle}>
+          <FaSun />
+          <Switch
+            onChange={() => setTheme(theme === "dark" ? "light" : "dark")}
+            checked={theme === "light"}
+            offColor="#333"
+            onColor="#ac8d5b"
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={20}
+            width={40}
+          />
+          <FaMoon />
+        </div>
+      </nav>
 
-      <motion.h2
-        className={styles.title}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        Our Menu
-      </motion.h2>
-
-      {/* Search Bar */}
-      <motion.div className={styles.searchWrapper}>
+      <div className={styles.searchFilter}>
         <input
           type="text"
-          placeholder="Search for a dish..."
-          className={styles.searchInput}
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search dishes..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className={styles.search}
         />
-        {searchQuery && (
-          <button
-            className={styles.clearButton}
-            onClick={() => setSearchQuery("")}
-          >
-            ✖
-          </button>
-        )}
-      </motion.div>
-
-      {/* Allergen Filter */}
-      <div className={styles.allergenFilter}>
-        <h3>Filter by Allergens</h3>
-        {["gluten", "dairy", "egg"].map((allergen) => (
-          <label key={allergen}>
-            <input
-              type="checkbox"
-              value={allergen}
-              onChange={handleAllergenFilterChange}
-            />
-            {allergen.charAt(0).toUpperCase() + allergen.slice(1)}
-          </label>
-        ))}
-      </div>
-
-      {/* Menu Categories */}
-      <div className={styles.menuTabs}>
-        {Object.keys(menuData).map((category) => (
-          <motion.button
-            key={category}
-            className={`${styles.menuTab} ${
-              activeCategory === category ? styles.activeTab : ""
-            }`}
-            onClick={() => setActiveCategory(category as keyof MenuData)}
-            whileHover={{ scale: 1.1 }}
-          >
-            {category}
-          </motion.button>
-        ))}
-      </div>
-
-      {/* Menu Items */}
-      <motion.div className={styles.menuGrid}>
-        {filteredItems.length > 0 ? (
-          filteredItems.map((item) => (
-            <motion.div
-              key={item.id}
-              className={styles.menuItem}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
+        <div className={styles.filters}>
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              className={`${styles.filterBtn} ${
+                activeFilters.includes(tag) ? styles.active : ""
+              }`}
+              onClick={() => toggleFilter(tag)}
             >
-              <img
-                src={item.image}
-                alt={item.name}
-                className={styles.menuImage}
-              />
-              <div className={styles.menuDetails}>
-                <h3 className={styles.menuName}>{item.name}</h3>
-                <p className={styles.menuDescription}>{item.description}</p>
-                <span className={styles.menuPrice}>{item.price}</span>
-                <div className={styles.cartControls}>
-                  <button
-                    onClick={() => handleRemoveFromCart(item.id)}
-                    disabled={!cart[item.id]}
-                  >
-                    ➖
-                  </button>
-                  <span>{cart[item.id] || 0}</span>
-                  <button onClick={() => handleAddToCart(item.id)}>➕</button>
+              {tagIcon[tag]} {tag}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {Object.entries(menu).map(([section, items]) => {
+        const sectionId = section;
+        const visibleItems = filteredItems(items);
+        return (
+          <motion.section
+            key={section}
+            id={sectionId}
+            className={styles.section}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 className={styles.sectionTitle}>{formatTitle(section)}</h2>
+            <div className={styles.cards}>
+              {visibleItems.map((item, idx) => (
+                <div key={idx} className={styles.card}>
+                  <div className={styles.imgWrap}>
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className={styles.image}
+                    />
+                  </div>
+                  <h3 className={styles.itemName}>{item.name}</h3>
+                  <p className={styles.itemDesc}>{item.desc}</p>
+                  <div className={styles.tags}>
+                    {item.tags?.map((tag: string) => (
+                      <span key={tag} className={styles.tag}>
+                        {tagIcon[tag]} {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))
-        ) : (
-          <motion.p className={styles.noResults}>No items found.</motion.p>
-        )}
-      </motion.div>
-    </motion.div>
+              ))}
+              {visibleItems.length === 0 && (
+                <p className={styles.empty}>No items found.</p>
+              )}
+            </div>
+          </motion.section>
+        );
+      })}
+
+      {showTopBtn && (
+        <button
+          className={styles.scrollTop}
+          onClick={() => scroll.scrollToTop()}
+        >
+          <FaChevronUp />
+        </button>
+      )}
+    </div>
   );
 };
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="softGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9b486" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#b39f6c" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Clean background with soft gold gradient -->
+  <rect width="200" height="200" fill="url(#softGold)"/>
+  
+  <!-- Simple single white K in the center -->
+  <text x="100" y="115" font-family="Playfair Display, serif" font-size="100" font-weight="bold" fill="#ffffff" fill-opacity="0.08" text-anchor="middle">K</text>
+  
+  <!-- Subtle dot pattern for texture -->
+  <circle cx="30" cy="30" r="1" fill="#ffffff" fill-opacity="0.2"/>
+  <circle cx="30" cy="170" r="1" fill="#ffffff" fill-opacity="0.2"/>
+  <circle cx="170" cy="30" r="1" fill="#ffffff" fill-opacity="0.2"/>
+  <circle cx="170" cy="170" r="1" fill="#ffffff" fill-opacity="0.2"/>
+  <circle cx="100" cy="30" r="1" fill="#ffffff" fill-opacity="0.2"/>
+  <circle cx="30" cy="100" r="1" fill="#ffffff" fill-opacity="0.2"/>
+  <circle cx="170" cy="100" r="1" fill="#ffffff" fill-opacity="0.2"/>
+  <circle cx="100" cy="170" r="1" fill="#ffffff" fill-opacity="0.2"/>
+</svg> 
