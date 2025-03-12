@@ -29,7 +29,7 @@ const items = [
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+  const [, setIsVideoPlaying] = useState(true);
 
   useEffect(() => {
     // Only auto-advance if not on video slide
