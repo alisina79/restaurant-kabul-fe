@@ -3,12 +3,12 @@
   display: flex;
   justify-content: center;
   align-items: stretch;
-  gap: clamp(20px, 4vw, 30px); /* Responsive gap */
-  padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 60px); /* Responsive padding */
+  gap: clamp(15px, 3vw, 25px); /* Reduced responsive gap */
+  padding: clamp(30px, 5vw, 60px) clamp(15px, 4vw, 50px); /* Reduced responsive padding */
   height: auto;
   background: #ac8d5b; /* Solid color as fallback */
   background-image: url('../assets/patterns/simple-container-bg.svg'); /* New simpler pattern */
-  background-size: clamp(200px, 30vw, 300px); /* Responsive background size */
+  background-size: clamp(180px, 25vw, 250px); /* Reduced responsive background size */
   background-repeat: repeat;
   flex-wrap: wrap;
   opacity: 0;
@@ -16,11 +16,16 @@
   animation: fadeInUp 1.2s ease-out forwards;
   border-radius: 12px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%; /* Full width */
+  max-width: 100%; /* No maximum width limitation */
+  margin: 0; /* Remove margin */
+  box-sizing: border-box; /* Include padding in width calculation */
+  /* Remove conflicting width properties */
 }
 
 /* Spacer for consistent spacing like the Chef page */
 .spacer {
-  height: 60px;
+  height: 20px; /* Reduced from 60px */
   width: 100%;
 }
 
@@ -45,17 +50,17 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  gap: clamp(15px, 2vw, 20px); /* Responsive gap */
-  min-height: clamp(400px, 60vh, 600px); /* Responsive min-height */
+  gap: clamp(12px, 1.5vw, 18px); /* Reduced responsive gap */
+  min-height: clamp(300px, 45vh, 450px); /* Reduced min-height */
 }
 
 /* Modern Image Frame */
 .imageFrame {
   width: 100%;
-  max-width: 600px; /* Increased from 500px to better fill the space */
+  max-width: 500px; /* Reduced from 600px to make it appear less zoomed */
   height: 100%;
-  border: clamp(5px, 1vw, 10px) solid rgba(255, 255, 255, 0.2); /* Responsive border */
-  border-radius: 15px;
+  border: clamp(4px, 0.8vw, 8px) solid rgba(255, 255, 255, 0.2); /* Reduced responsive border */
+  border-radius: 12px; /* Reduced from 15px */
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -67,11 +72,10 @@
 /* Image Styling */
 .imageFrame img {
   width: 100%;
-  height: 100%;
+  height: 100%; /* This will make it fill the entire imageFrame */
   object-fit: cover;
   transition: transform 0.5s ease-in-out;
-  min-height: clamp(350px, 55vh, 560px); /* Responsive min-height */
-  max-height: none; /* Remove the max-height limitation */
+  /* Removed min-height and max-height constraints to allow image to match parent's height */
 }
 
 /* Hover Effect */
@@ -87,24 +91,25 @@
 /* TEXT SECTION */
 .textSection {
   flex: 1;
-  max-width: 48%;
+  /* max-width: 48%; */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: clamp(30px, 4vw, 50px); /* Responsive padding */
+  /* padding: clamp(30px, 4vw, 50px); Responsive padding */
   background: #1a1e25; /* Dark background */
   background-image: url('../assets/patterns/simple-monogram.svg'); /* Simple monogram */
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  border-radius: 10px; /* Reduced from 12px */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Reduced shadow */
   opacity: 0;
   transform: translateX(50px);
   animation: slideIn 1.2s ease-out forwards 0.4s;
-  min-height: clamp(400px, 60vh, 600px); /* Responsive min-height matching image section */
+  min-height: clamp(300px, 45vh, 450px); /* Reduced min-height */
   position: relative;
   overflow: hidden;
+  background-position-y: 4.5rem;
 }
 
 /* Floating Text Effect */
@@ -131,7 +136,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: clamp(350px, 50vh, 500px); /* Responsive min-height */
+  min-height: clamp(250px, 40vh, 400px); /* Reduced min-height */
 }
 
 /* Text content container - simpler styling */
@@ -150,33 +155,33 @@
 /* Monogram letter styling */
 .monogram {
   display: block;
-  font-size: clamp(3rem, 8vw, 5rem); /* Responsive font size */
+  font-size: clamp(2.5rem, 7vw, 4.5rem); /* Reduced font size */
   font-family: "Playfair Display", serif;
   font-weight: 700;
   color:#ffffff;
-  margin-bottom: clamp(10px, 2vw, 20px); /* Responsive margin */
+  margin-bottom: clamp(8px, 1.5vw, 15px); /* Reduced margin */
   text-align: center;
 }
 
 /* Title Styling */
 .mainHeading {
-  font-size: clamp(1.5rem, 3vw, 2.2rem); /* Responsive font size */
+  font-size: clamp(1.3rem, 2.5vw, 2rem); /* Reduced font size */
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: clamp(10px, 2vw, 20px); /* Responsive margin */
+  margin-bottom: clamp(8px, 1.5vw, 15px); /* Reduced margin */
   font-family: "Futura", "Proxima Nova", sans-serif;
   text-transform: uppercase;
-  letter-spacing: clamp(1px, 0.3vw, 3px); /* Responsive letter spacing */
+  letter-spacing: clamp(1px, 0.25vw, 2px); /* Reduced letter spacing */
   transition: transform 0.3s ease-in-out;
   text-align: center;
 }
 
 /* Subheading styling */
 .subheading {
-  font-size: clamp(1.2rem, 2vw, 1.5rem); /* Responsive font size */
+  font-size: clamp(1.1rem, 1.8vw, 1.4rem); /* Reduced font size */
   font-family: "Georgia", serif;
   color: white;
-  margin-bottom: clamp(15px, 2.5vw, 25px); /* Responsive margin */
+  margin-bottom: clamp(12px, 2vw, 20px); /* Reduced margin */
   font-weight: 400;
   font-style: italic;
   letter-spacing: 1px;
@@ -185,10 +190,10 @@
 
 /* Paragraph Styling */
 .textBox p {
-  font-size: clamp(0.95rem, 1.5vw, 1.1rem); /* Responsive font size */
-  line-height: 1.9;
+  font-size: clamp(0.9rem, 1.3vw, 1rem); /* Reduced font size */
+  line-height: 1.8; /* Slightly reduced */
   color:white;
-  margin-bottom: clamp(10px, 2vw, 20px); /* Responsive margin */
+  margin-bottom: clamp(8px, 1.8vw, 15px); /* Reduced margin */
   font-family: "Georgia", serif;
   text-align: center;
 }
@@ -270,12 +275,17 @@
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;
+    padding: clamp(30px, 5vw, 50px) clamp(15px, 4vw, 40px);
   }
 
   .imageSection,
   .textSection {
     max-width: 100%;
     margin-bottom: 30px;
+  }
+  
+  .spacer {
+    height: 15px; /* Further reduced on tablets */
   }
 }
 
@@ -290,5 +300,18 @@
   /* Keep styles here minimal since we're using clamp for most properties */
   .imageFrame {
     border-width: 6px; /* Specifically for mobile to look better */
+  }
+  
+  .textBox p {
+    font-size: clamp(0.9rem, 1.2vw, 1rem); /* Smaller text */
+    line-height: 1.6;
+  }
+  
+  .secondaryImage {
+    max-height: clamp(120px, 18vh, 180px); /* Smaller image */
+  }
+  
+  .spacer {
+    height: 10px; /* Minimal on mobile */
   }
 }
