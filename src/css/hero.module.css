@@ -11,7 +11,7 @@ body {
 .hero {
   position: relative;
   width: 100%;
-  height: 97vh; /* Reduced from 100vh to 85vh for better fit on laptops */
+  height: 100vh; /* Reduced from 100vh to 85vh for better fit on laptops */
   max-height: 900px; /* Added max-height to prevent excessive scaling */
   overflow: hidden;
   display: flex;
