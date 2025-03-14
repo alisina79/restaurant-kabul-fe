@@ -3,8 +3,8 @@
   position: relative !important;
   overflow: hidden !important;
   background: #ac8d5b !important; /* Override the background with the requested color (#ac8d5b) */
-  padding: 120px 0 !important; /* Increased vertical padding for better spacing between pages */
-  margin: 50px 0 !important; /* Adding vertical margin for additional separation */
+  padding: 60px 0 !important; /* Increased padding from previous values to create more height */
+  margin: 20px 0 !important; /* Increased margin for more spacing */
 }
 
 /* Override the existing ::before pseudo-element in the carouselSection */
@@ -17,7 +17,7 @@
   position: absolute;
   color: rgba(255, 255, 255, 0.08); /* Slightly more visible white (#ffffff) */
   font-family: 'Playfair Display', serif;
-  font-size: 700px; /* Even larger size */
+  font-size: 400px; /* Kept the same size */
   font-weight: 700;
   z-index: 0;
   top: 50%;
@@ -49,8 +49,8 @@
 }
 
 .carousel-background-circle-1 {
-  width: 800px;
-  height: 800px;
+  width: 500px; /* Kept the same */
+  height: 500px; /* Kept the same */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -59,8 +59,8 @@
 }
 
 .carousel-background-circle-2 {
-  width: 1000px;
-  height: 1000px;
+  width: 700px; /* Kept the same */
+  height: 700px; /* Kept the same */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -71,8 +71,8 @@
 /* Corner accents */
 .carousel-background-corner {
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 100px; /* Kept the same */
+  height: 100px; /* Kept the same */
   border: 3px solid rgba(255, 255, 255, 0.1);
   z-index: 0;
   pointer-events: none;
@@ -110,4 +110,64 @@
 .carouselContainer {
   position: relative;
   z-index: 2 !important; /* Ensure it's above the background elements */
+  max-width: 85% !important; /* Kept the same for better proportions */
+}
+
+/* Update responsive media queries for better scaling on different devices */
+@media (max-width: 1200px) {
+  .carousel-background-k {
+    font-size: 350px; /* Kept the same */
+  }
+  .carousel-background-circle-1 {
+    width: 400px;
+    height: 400px;
+  }
+  .carousel-background-circle-2 {
+    width: 600px;
+    height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carouselSection {
+    padding: 50px 0 !important; /* Increased padding for tablets */
+    margin: 15px 0 !important;
+  }
+  .carousel-background-k {
+    font-size: 250px;
+  }
+  .carousel-background-circle-1 {
+    width: 300px;
+    height: 300px;
+  }
+  .carousel-background-circle-2 {
+    width: 400px;
+    height: 400px;
+  }
+  .carousel-background-corner {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carouselSection {
+    padding: 40px 0 !important; /* Increased padding for mobile */
+    margin: 10px 0 !important;
+  }
+  .carousel-background-k {
+    font-size: 180px;
+  }
+  .carousel-background-circle-1 {
+    width: 250px;
+    height: 250px;
+  }
+  .carousel-background-circle-2 {
+    width: 300px;
+    height: 300px;
+  }
+  .carousel-background-corner {
+    width: 50px;
+    height: 50px;
+  }
 } 
