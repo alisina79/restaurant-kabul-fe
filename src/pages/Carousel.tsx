@@ -7,10 +7,10 @@ import third from "/src/photo/third.jpg";
 import four from "/src/photo/four.jpg";
 import five from "/src/photo/five.jpg";
 import six from "/src/photo/six.jpg";
+import VIDEO_URL from "/src/video/video.mp4";
 
 // Define video URL - This is a placeholder URL for a restaurant promo video
-const VIDEO_URL = "/src/video/video.mp4"; 
-
+ 
 // Updated to include a video item at the beginning
 const items = [
   { type: "video", url: VIDEO_URL, caption: "Welcome to Kaboul Gourmet Restaurant" },

@@ -47,16 +47,22 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
   },
 };
 
 const fadeUpVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, y: 30 },
   visible: (delayAmount: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: "easeOut", delay: delayAmount },
+    transition: { 
+      duration: 0.45, 
+      ease: "easeOut", 
+      delay: delayAmount * 0.15,
+      type: "spring",
+      damping: 12
+    },
   }),
 };
 
@@ -65,27 +71,12 @@ const underlineVariants = {
   visible: {
     opacity: 1,
     width: "80px",
-    transition: { duration: 0.6, ease: "easeOut", delay: 0.2 },
+    transition: { duration: 0.5, ease: "easeOut", delay: 0.2 },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: (delay: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.5, ease: "easeOut", delay: delay * 0.1 },
-  }),
-  hover: {
-    scale: 1.03,
-    boxShadow: "0 12px 30px rgba(172, 141, 91, 0.4)",
-    transition: { duration: 0.3 },
-  },
-};
-
-// Enhanced button-specific animation variant
-const buttonVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.9 },
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
@@ -93,17 +84,39 @@ const buttonVariants = {
     transition: { 
       duration: 0.5, 
       ease: "easeOut", 
-      delay: delay,
+      delay: delay * 0.15,
+      type: "spring",
+      damping: 15
+    },
+  }),
+  hover: {
+    scale: 1.03,
+    boxShadow: "0 10px 25px rgba(172, 141, 91, 0.3)",
+    transition: { duration: 0.3 },
+  },
+};
+
+// Enhanced button-specific animation variant
+const buttonVariants = {
+  hidden: { opacity: 0, y: 15, scale: 0.95 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { 
+      duration: 0.4, 
+      ease: "easeOut", 
+      delay: delay * 0.1,
       type: "spring",
       stiffness: 100
     }
   }),
   hover: {
     scale: 1.05,
-    boxShadow: "0 5px 15px rgba(172, 141, 91, 0.3)",
-    transition: { duration: 0.2 }
+    boxShadow: "0 5px 15px rgba(172, 141, 91, 0.25)",
+    transition: { duration: 0.3 }
   },
-  tap: { scale: 0.95 }
+  tap: { scale: 0.97 }
 };
 
 // Define TypeScript interface for dish
@@ -119,8 +132,17 @@ interface Dish {
 }
 
 const FeaturedDishes = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { amount: 0.3 });
+  const mainRef = useRef(null);
+  const titleRef = useRef(null);
+  const categoriesRef = useRef(null);
+  const dishesRef = useRef(null);
+  
+  // Use separate InView checks for different sections
+  const isSectionInView = useInView(mainRef, { amount: 0.1, once: true });
+  const isTitleInView = useInView(titleRef, { amount: 0.5, once: true });
+  const areCategoriesInView = useInView(categoriesRef, { amount: 0.5, once: true });
+  const areDishesInView = useInView(dishesRef, { amount: 0.1, once: true });
+  
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
@@ -147,20 +169,49 @@ const FeaturedDishes = () => {
   return (
     <motion.section
       className={styles.container}
-      ref={ref}
+      ref={mainRef}
       initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
+      animate={isSectionInView ? "visible" : "hidden"}
       variants={containerVariants}
+      style={{ 
+        maxWidth: "1200px", 
+        margin: "0 auto",
+        padding: "2rem clamp(0.5rem, 5vw, 1rem)"
+      }}
     >
       {/* Section Title with enhanced design */}
-      <motion.div className={styles.sectionHeader} variants={fadeUpVariants} custom={0}>
-        <motion.h2 className={styles.title}>
+      <motion.div 
+        className={styles.sectionHeader} 
+        ref={titleRef}
+        initial="hidden"
+        animate={isTitleInView ? "visible" : "hidden"}
+        variants={containerVariants}
+        style={{ 
+          marginBottom: "clamp(1rem, 3vw, 1.5rem)",
+          textAlign: "center" 
+        }}
+      >
+        <motion.h2 
+          className={styles.title}
+          variants={fadeUpVariants}
+          custom={0}
+          style={{ 
+            fontSize: "clamp(1.5rem, 5vw, 2rem)", 
+            marginBottom: "0.5rem" 
+          }}
+        >
           <span className={styles.titleIcon}>🍽️</span> Featured Dishes
         </motion.h2>
         <motion.p 
           className={styles.subtitle}
           variants={fadeUpVariants} 
-          custom={0.1}
+          custom={0.2}
+          style={{ 
+            fontSize: "clamp(0.85rem, 3vw, 1rem)", 
+            maxWidth: "600px", 
+            margin: "0 auto 0.75rem",
+            padding: "0 clamp(0.5rem, 3vw, 1rem)" 
+          }}
         >
           Authentic Afghan delicacies prepared with traditional recipes
         </motion.p>
@@ -170,8 +221,17 @@ const FeaturedDishes = () => {
       {/* Category Filters with enhanced animations */}
       <motion.div 
         className={styles.categoryFilters}
-        variants={fadeUpVariants}
-        custom={0.2}
+        ref={categoriesRef}
+        initial="hidden"
+        animate={areCategoriesInView ? "visible" : "hidden"}
+        variants={containerVariants}
+        style={{ 
+          marginBottom: "clamp(1.25rem, 4vw, 2rem)", 
+          gap: "clamp(0.3rem, 2vw, 0.75rem)",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          display: "flex" 
+        }}
       >
         {categories.map((category, index) => (
           <motion.button
@@ -180,10 +240,15 @@ const FeaturedDishes = () => {
               selectedCategory === category ? styles.activeCategory : ""
             }`}
             onClick={() => setSelectedCategory(category)}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
             variants={fadeUpVariants}
-            custom={0.3 + index * 0.1}
+            custom={index * 0.2}
+            style={{ 
+              padding: "clamp(0.3rem, 2vw, 0.5rem) clamp(0.6rem, 3vw, 1rem)", 
+              fontSize: "clamp(0.75rem, 2.5vw, 0.9rem)",
+              fontWeight: 500,
+            }}
           >
             {category}
           </motion.button>
@@ -193,8 +258,18 @@ const FeaturedDishes = () => {
       {/* Dish Cards Grid / Carousel */}
       <motion.div 
         className={styles.dishGrid} 
+        ref={dishesRef}
+        initial="hidden"
+        animate={areDishesInView ? "visible" : "hidden"}
         variants={containerVariants}
-        custom={0.4}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 300px))",
+          gap: "clamp(1rem, 3vw, 2rem)",
+          width: "100%",
+          justifyContent: "center",
+          margin: "0 auto"
+        }}
       >
         <AnimatePresence>
           {filteredDishes.slice(0, visibleDishes).map((dish, index) => (
@@ -205,30 +280,75 @@ const FeaturedDishes = () => {
               custom={index}
               whileHover="hover"
               layout
+              style={{
+                height: "clamp(360px, 70vw, 420px)",
+                fontSize: "clamp(0.85rem, 2.5vw, 0.95rem)",
+                display: "flex",
+                flexDirection: "column",
+                margin: "0 auto",
+                width: "100%",
+                borderRadius: "clamp(8px, 2vw, 12px)",
+                overflow: "hidden",
+                position: "relative",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                backgroundImage: `url(${dish.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center"
+              }}
             >
+              {/* Dark overlay for text visibility */}
+              <div style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: "linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.85) 100%)",
+                zIndex: 1
+              }}></div>
+              
               {/* Category Label with animation */}
-              <motion.div 
+              <motion.div
                 className={styles.categoryLabel}
                 variants={fadeUpVariants}
-                custom={0.05 + index * 0.1}
+                custom={0.15}
+                style={{
+                  position: "absolute",
+                  top: "clamp(10px, 2vw, 15px)",
+                  right: "clamp(10px, 2vw, 15px)",
+                  zIndex: 2,
+                  padding: "clamp(0.2rem, 1vw, 0.3rem) clamp(0.5rem, 2vw, 0.85rem)",
+                  borderRadius: "clamp(15px, 4vw, 20px)",
+                  backgroundColor: "rgba(172, 141, 91, 0.9)",
+                  color: "white",
+                  fontSize: "clamp(0.7rem, 2vw, 0.8rem)",
+                  fontWeight: 600
+                }}
               >
                 {dish.category}
               </motion.div>
-              
-              {/* Background Image with animation */}
-              <motion.div
-                className={styles.imageWrapper}
-                style={{ backgroundImage: `url(${dish.image})` }}
-                variants={fadeUpVariants}
-                custom={0.1 + index * 0.1}
-              ></motion.div>
 
               {/* Overlay with Info */}
-              <div className={styles.overlay}>
+              <div className={styles.overlay} style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                padding: "clamp(1rem, 3vw, 1.5rem)",
+                height: "100%",
+                position: "relative",
+                zIndex: 2,
+                textAlign: "left"
+              }}>
                 <motion.h3
                   className={styles.dishName}
                   variants={fadeUpVariants}
-                  custom={0.15 + index * 0.1}
+                  custom={0.45}
+                  style={{ 
+                    fontSize: "clamp(1.2rem, 4vw, 1.5rem)", 
+                    marginBottom: "clamp(0.3rem, 1vw, 0.5rem)", 
+                    color: "white",
+                    textShadow: "0 2px 4px rgba(0,0,0,0.3)"
+                  }}
                 >
                   {dish.name}
                 </motion.h3>
@@ -236,7 +356,14 @@ const FeaturedDishes = () => {
                 <motion.p
                   className={styles.description}
                   variants={fadeUpVariants}
-                  custom={0.2 + index * 0.1}
+                  custom={0.6}
+                  style={{ 
+                    fontSize: "clamp(0.8rem, 2.5vw, 0.9rem)", 
+                    lineHeight: "1.4", 
+                    marginBottom: "clamp(0.75rem, 2vw, 1rem)",
+                    color: "rgba(255,255,255,0.9)",
+                    textShadow: "0 1px 3px rgba(0,0,0,0.3)"
+                  }}
                 >
                   {dish.description}
                 </motion.p>
@@ -244,52 +371,87 @@ const FeaturedDishes = () => {
                 <motion.div
                   className={styles.dishInfo}
                   variants={fadeUpVariants}
-                  custom={0.25 + index * 0.1}
+                  custom={0.75}
+                  style={{ 
+                    fontSize: "clamp(0.8rem, 2.2vw, 0.9rem)", 
+                    marginBottom: "clamp(0.75rem, 3vw, 1.25rem)", 
+                    width: "100%",
+                    color: "rgba(255,255,255,0.9)",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    flexWrap: "wrap"
+                  }}
                 >
-                  <motion.span 
-                    className={styles.price}
-                    variants={fadeUpVariants}
-                    custom={0.3 + index * 0.1}
-                  >
+                  <span className={styles.price} style={{ 
+                    fontWeight: "bold", 
+                    color: "#f5d8a0",
+                    fontSize: "clamp(0.9rem, 3vw, 1.1rem)"
+                  }}>
                     {dish.price}
-                  </motion.span>
-                  <motion.span 
-                    className={styles.extraInfo}
-                    variants={fadeUpVariants}
-                    custom={0.35 + index * 0.1}
-                  >
+                  </span>
+                  <span className={styles.extraInfo} style={{
+                    color: "rgba(255,255,255,0.8)",
+                    fontSize: "clamp(0.7rem, 2vw, 0.8rem)"
+                  }}>
                     {dish.extraInfo}
-                  </motion.span>
+                  </span>
                 </motion.div>
 
                 <motion.div 
                   className={styles.buttonGroup}
                   variants={fadeUpVariants}
-                  custom={0.4 + index * 0.1}
+                  custom={0.9}
+                  style={{ 
+                    gap: "clamp(0.5rem, 2vw, 0.75rem)", 
+                    display: "flex", 
+                    justifyContent: "center",
+                    width: "100%",
+                    marginTop: "clamp(0.3rem, 1vw, 0.5rem)"
+                  }}
                 >
                   <motion.button
                     className={styles.detailButton}
-                    initial="hidden"
-                    animate="visible"
                     variants={buttonVariants}
-                    custom={0.45 + index * 0.1}
+                    custom={1.0}
                     whileHover="hover"
                     whileTap="tap"
                     onClick={() => openDishDetail(dish)}
+                    style={{ 
+                      padding: "clamp(0.3rem, 1.5vw, 0.4rem) clamp(0.5rem, 2vw, 0.75rem)", 
+                      fontSize: "clamp(0.7rem, 2vw, 0.8rem)",
+                      backgroundColor: "rgba(172, 141, 91, 0.95)",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "4px",
+                      fontWeight: 500,
+                      cursor: "pointer",
+                      width: "auto",
+                      minWidth: "clamp(80px, 25vw, 110px)"
+                    }}
                   >
                     View Details
                   </motion.button>
 
                   <motion.button
                     className={styles.orderButton}
-                    initial="hidden"
-                    animate="visible"
                     variants={buttonVariants}
-                    custom={0.5 + index * 0.1}
+                    custom={1.1}
                     whileHover="hover"
                     whileTap="tap"
+                    style={{ 
+                      padding: "clamp(0.3rem, 1.5vw, 0.4rem) clamp(0.5rem, 2vw, 0.75rem)", 
+                      fontSize: "clamp(0.7rem, 2vw, 0.8rem)",
+                      backgroundColor: "rgba(255, 255, 255, 0.95)",
+                      color: "#222",
+                      border: "none",
+                      borderRadius: "4px",
+                      fontWeight: 500,
+                      cursor: "pointer",
+                      width: "auto",
+                      minWidth: "clamp(80px, 25vw, 110px)"
+                    }}
                   >
-                    visit Menu
+                    Visit Menu
                   </motion.button>
                 </motion.div>
               </div>
@@ -303,12 +465,31 @@ const FeaturedDishes = () => {
         <motion.button
           className={styles.loadMoreButton}
           onClick={() => setVisibleDishes(prev => prev + 3)}
-          initial="hidden"
-          animate="visible"
-          variants={buttonVariants}
-          custom={0.8}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ 
+            opacity: 1, 
+            y: 0,
+            transition: { 
+              delay: 0.5, 
+              duration: 0.5,
+              type: "spring",
+              stiffness: 100
+            } 
+          }}
           whileHover="hover"
           whileTap="tap"
+          variants={buttonVariants}
+          style={{ 
+            padding: "clamp(0.4rem, 1.5vw, 0.5rem) clamp(1rem, 3vw, 1.25rem)", 
+            fontSize: "clamp(0.8rem, 2.5vw, 0.9rem)", 
+            margin: "clamp(1rem, 3vw, 1.5rem) auto 0",
+            display: "block",
+            backgroundColor: "rgba(172, 141, 91, 0.9)",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer"
+          }}
         >
           Load More Dishes
         </motion.button>

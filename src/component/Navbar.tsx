@@ -10,9 +10,9 @@ import {
   Users,
   Calendar,
   X as CloseIcon,
-
 } from "lucide-react";
 
+import calendarIcon from "../assets/calendar-icon.svg"
 // Import your food images for the sidebar
 import homeImage from "../chef/one.jpg";
 import menuImage from "../chef/two.jpg";
@@ -20,12 +20,15 @@ import reservationsImage from "../chef/three.jpg";
 import galleryImage from "../chef/four.jpg";
 import contactImage from "../chef/five.jpg";
 import aboutImage from "../chef/six.jpg";
+import { HamburgerMenu, Logo } from "./SVGS";
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isBookDropdownOpen, setIsBookDropdownOpen] = useState(false);
   const [activeImage, setActiveImage] = useState(homeImage);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
   
   // Ref for the book button and dropdown
   const bookButtonRef = useRef<HTMLDivElement>(null);
@@ -49,6 +52,16 @@ function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  
+  // Check if the device is mobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Add a click outside listener to close the dropdown
@@ -76,20 +89,53 @@ function Navbar() {
     setIsBookDropdownOpen(!isBookDropdownOpen);
   };
 
+  // SVG for the "K" logo for mobile view
+  const KLogoSVG = () => (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      width="35" 
+      height="35" 
+      viewBox="0 0 100 100" 
+      className={styles.kLogoSvg}
+      onMouseEnter={() => setIsLogoHovered(true)}
+      onMouseLeave={() => setIsLogoHovered(false)}
+      onTouchStart={() => setIsLogoHovered(true)}
+      onTouchEnd={() => setIsLogoHovered(false)}
+    >
+      <text x="50" y="55" style={{
+        fontFamily: 'Cinzel, serif',
+        fontSize: '68px',
+        fill: 'none',
+        stroke: isLogoHovered ? '#ffffff' : '#ac8d5b',
+        strokeWidth: '1.1',
+        textAnchor: 'middle',
+        dominantBaseline: 'middle',
+        transition: 'stroke 0.3s ease'
+      }}>K</text>
+    </svg>
+  );
+
   return (
     <>
       <header className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}>
         {/* Top Black Header */}
         <div className={styles.topHeader}>
-          {/* Left Side - Hamburger Menu with LOCATIONS */}
+          {/* Left Side - Hamburger Menu */}
           <div className={styles.hamburgerWrapper} onClick={() => setIsSidebarOpen(true)}>
-            <MenuIcon size={20} color="#ac8d5b" />
+            <HamburgerMenu color="#ac8d5b"/>
           </div>
 
           {/* Center - Brand Logo */}
           <div className={styles.logoWrapper}>
             <Link to="/" className={styles.logo}>
-              Kaboul Gourmet
+              <div className={styles.desktopLogo}>
+                <Logo />
+              </div>
+              <div 
+                className={styles.mobileLogo}
+              >
+                <KLogoSVG />
+              </div>
             </Link>
           </div>
 
@@ -102,7 +148,8 @@ function Navbar() {
               className={styles.bookButton}
               onClick={toggleBookDropdown}
             >
-              <Calendar size={16} /> BOOK NOW
+              <img src={calendarIcon} alt="Calendar Icon" className={styles.calendarIconMobile} style={{ width: '16px', height: '16px', color: 'white' }} />
+              BOOK NOW
             </div>
             <div 
               ref={bookDropdownRef}
@@ -138,9 +185,7 @@ function Navbar() {
           <nav className={styles.navLinks}>
             <Link to="/menu" className={styles.navLink}>MENUS</Link>
             <Link to="/whats-on" className={styles.navLink}>WHAT'S ON</Link>
-            
             <Link to="/about" className={styles.navLink}>ABOUT</Link>
-          
             <Link to="/contact" className={styles.navLink}>CONTACT</Link>
             <Link to="/newsletter" className={styles.navLink}>NEWSLETTER SIGNUP</Link>
           </nav>

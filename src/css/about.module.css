@@ -32,7 +32,7 @@ body {
   align-items: stretch;
   justify-content: center;
   width: 100%;
-  max-width: 1600px;
+  max-width: 1400px;
   height: auto;
   margin: 0 auto;
   position: relative;
@@ -47,9 +47,9 @@ body {
   position: relative;
   overflow: hidden;
   width: 50%;
-  max-height: 650px;
-  min-height: 600px;
-  padding: 35px;
+  max-height: 600px;
+  min-height: 550px;
+  padding: 30px;
   box-shadow: inset -15px 0 25px -15px rgba(0,0,0,0.8);
   z-index: 1;
 }
@@ -87,7 +87,7 @@ body {
 .aboutImage {
   width: 100%;
   height: 100%;
-  max-height: 590px;
+  max-height: 550px;
   object-fit: cover;
   transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   filter: brightness(1.05) contrast(1.05);
@@ -176,7 +176,7 @@ body {
 .contentInner {
   position: relative;
   z-index: 2;
-  padding: 80px 50px;
+  padding: 60px 40px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -199,7 +199,7 @@ body {
   font-family: 'Playfair Display', serif;
   color: rgba(172, 141, 91, 0.08);
   position: absolute;
-  font-size: 340px;
+  font-size: 300px;
   font-weight: bold;
   z-index: 0;
   line-height: 0.8;
@@ -302,13 +302,13 @@ body {
 /* TOP DECORATIVE K */
 .decorativeK {
   font-family: 'Playfair Display', serif;
-  font-size: 4.2rem;
+  font-size: 3.8rem;
   background: linear-gradient(135deg, #d4b978 10%, #ac8d5b 50%, #d4b978 90%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   position: relative;
   z-index: 1;
   text-shadow: 0 4px 8px rgba(0,0,0,0.3);
@@ -317,7 +317,7 @@ body {
 /* TITLE */
 .title {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: white;
   text-transform: uppercase;
@@ -345,8 +345,8 @@ body {
 
 .subtitle {
   font-family: 'Playfair Display', serif;
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.3rem;
   color: #f5f5f5;
   font-weight: 400;
   position: relative;
@@ -356,12 +356,12 @@ body {
 
 .description {
   font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  margin-bottom: 1.8rem;
   color: #cccccc;
   font-weight: 400;
-  line-height: 1.8;
-  max-width: 500px;
+  line-height: 1.7;
+  max-width: 480px;
   position: relative;
   z-index: 1;
   letter-spacing: 0.3px;
@@ -370,9 +370,9 @@ body {
 /* BUTTONS CONTAINER */
 .buttons {
   display: flex;
-  gap: 18px;
+  gap: 16px;
   justify-content: center;
-  margin-top: 1.5rem;
+  margin-top: 1.3rem;
   position: relative;
   z-index: 1;
 }
@@ -382,10 +382,10 @@ body {
 .secondaryButton {
   font-family: 'Montserrat', sans-serif;
   color: white;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
-  padding: 0.7rem 1.6rem;
+  padding: 0.65rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -504,26 +504,31 @@ body {
 /* Large Screens */
 @media (min-width: 1200px) {
   .description {
-    padding: 0 2rem;
+    padding: 0 1.5rem;
+    font-size: 0.98rem;
   }
   
   .contentInner {
-    padding: 90px 60px;
+    padding: 70px 50px;
   }
 }
 
 /* Medium Screens */
 @media (max-width: 992px) {
+  .container {
+    max-width: 90%;
+  }
+  
   .contentInner {
-    padding: 60px 30px;
+    padding: 50px 25px;
   }
   
   .title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
   
   .decorativeK {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
   }
   
   .kPatternTop, 
@@ -539,10 +544,49 @@ body {
   }
 }
 
+/* New media query for better laptop experience */
+@media (max-width: 1100px) and (min-width: 769px) {
+  .container {
+    max-width: 95%;
+  }
+  
+  .imageContainer {
+    min-height: 500px;
+    max-height: 550px;
+  }
+  
+  .aboutImage {
+    max-height: 500px;
+  }
+  
+  .contentInner {
+    padding: 40px 25px;
+  }
+  
+  .contentInner::before,
+  .contentInner::after {
+    font-size: 240px;
+  }
+  
+  .title {
+    font-size: 1.9rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+    max-width: 420px;
+  }
+}
+
 /* Tablets & Small Laptops */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
+    max-width: 100%;
   }
   
   .imageContainer, 
@@ -551,9 +595,9 @@ body {
   }
   
   .imageContainer {
-    min-height: 500px;
-    max-height: 550px;
-    padding: 25px;
+    min-height: 450px;
+    max-height: 500px;
+    padding: 20px;
     box-shadow: inset 0 -15px 25px -15px rgba(0,0,0,0.8);
   }
   
@@ -597,23 +641,28 @@ body {
   }
   
   .aboutImage {
-    max-height: 480px;
+    max-height: 450px;
   }
   
   .contentInner {
-    padding: 50px 25px;
+    padding: 40px 22px;
+  }
+  
+  .contentInner::before,
+  .contentInner::after {
+    font-size: 220px;
   }
   
   .title {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
   
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   
   .decorativeK {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
   
   .kPatternTop, 
@@ -634,8 +683,8 @@ body {
 /* Mobile */
 @media (max-width: 480px) {
   .imageContainer {
-    min-height: 400px;
-    max-height: 450px;
+    min-height: 350px;
+    max-height: 400px;
     padding: 15px;
   }
   
@@ -682,32 +731,37 @@ body {
   }
   
   .aboutImage {
-    max-height: 400px;
+    max-height: 350px;
   }
   
   .contentInner {
-    padding: 40px 20px;
+    padding: 35px 18px;
+  }
+  
+  .contentInner::before,
+  .contentInner::after {
+    font-size: 180px;
   }
   
   .title {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     letter-spacing: 2px;
   }
   
   .subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
   
   .description {
-    font-size: 0.9rem;
-    line-height: 1.7;
+    font-size: 0.85rem;
+    line-height: 1.6;
   }
   
   .buttons {
     flex-direction: column;
     gap: 12px;
     width: 100%;
-    max-width: 250px;
+    max-width: 230px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -715,7 +769,7 @@ body {
   .primaryButton,
   .secondaryButton {
     width: 100%;
-    padding: 0.6rem 1.4rem;
+    padding: 0.6rem 1.3rem;
   }
   
   .kPatternTop, 
@@ -737,6 +791,40 @@ body {
   .kPatternLeft::before,
   .kPatternRight::before {
     font-size: 18px;
+  }
+}
+
+/* Extra Small Screens */
+@media (max-width: 360px) {
+  .imageContainer {
+    min-height: 300px;
+    max-height: 350px;
+    padding: 12px;
+  }
+  
+  .aboutImage {
+    max-height: 320px;
+  }
+  
+  .contentInner {
+    padding: 30px 15px;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .description {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+  
+  .buttons {
+    max-width: 200px;
   }
 }
 

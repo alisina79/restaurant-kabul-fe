@@ -29,7 +29,7 @@ export default function PrivateDining() {
   };
 
   return (
-    <>
+    <div style={{ width: "100%", boxSizing: "border-box", overflow: "hidden" }}>
       <div className={styles.spacer}></div> {/* Add spacer for top margin */}
       <motion.section
         className={styles.container}
@@ -110,6 +110,6 @@ export default function PrivateDining() {
         </motion.div>
       </motion.section>
       <div className={styles.spacer}></div> {/* Add spacer for bottom margin */}
-    </>
+    </div>
   );
 }

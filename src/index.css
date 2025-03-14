@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap');
+
+/* Apply box-sizing to all elements for consistent sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   /* line-height: 1.5; */
@@ -11,6 +22,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Ensure consistent zoom level */
+  zoom: 1;
 }
 
 /* a {
@@ -22,14 +35,20 @@ a:hover {
   color: #535bf2;
 } */
 
+html {
+  font-size: 100%; /* Ensure base font size is standard */
+  -webkit-text-size-adjust: 100%; /* Prevent automatic text size adjustment */
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-width: 100vw;
-  min-height: calc(100vh - 200px);
+  min-height: 100%;
+  overflow-x: hidden;
   .main-content {
-    padding-bottom: 50px;
+    padding-bottom: 30px; /* Reduced padding */
   }
 }
 
