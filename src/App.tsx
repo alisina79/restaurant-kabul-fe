@@ -13,8 +13,15 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import WhatsOn from "./pages/WhatsOn";
 import Newsletter from "./pages/Newsletter";
 import Ourjourny from "./pages/Ourjourny";
+import { useLocation } from "react-router";
+import { useEffect } from "react";
 
 function App() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <>
       <Navbar /> {/* Navbar is always visible */}

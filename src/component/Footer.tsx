@@ -43,7 +43,7 @@ const Footer = () => {
     }
 
     window.addEventListener("scroll", handleScroll);
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       if (newsletterRef.current) {
@@ -58,17 +58,17 @@ const Footer = () => {
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateEmail(email)) {
       alert("Please enter a valid email address");
       return;
     }
-    
+
     setIsSubmitting(true);
-    
+
     // Simulate API call
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       setIsSubmitted(true);
       setIsSubmitting(false);
       setTimeout(() => {
@@ -84,26 +84,26 @@ const Footer = () => {
 
   const fadeInVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { 
+      transition: {
         duration: 0.6,
-        ease: "easeOut" 
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
-  
+
   const logoVariants = {
     hidden: { opacity: 0, x: -20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
-      transition: { 
+      transition: {
         duration: 0.6,
-        ease: "easeOut" 
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   const staggerChildren = {
@@ -111,21 +111,21 @@ const Footer = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const socialVariants = {
     hidden: { opacity: 0, scale: 0.8 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       scale: 1,
-      transition: { 
+      transition: {
         duration: 0.4,
-        ease: "easeOut" 
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   };
 
   return (
@@ -138,12 +138,12 @@ const Footer = () => {
           animate={{ opacity: 1 }}
         >
           <Link to="/" className={styles.logo} aria-label="Return to homepage">
-            <KFooterLogoSVG color="#ac8d5b"  width="300" height="300"/>
+            <KFooterLogoSVG color="#ac8d5b" width="300" height="300" />
           </Link>
         </motion.div>
 
         {/* Navigation Links */}
-        <motion.nav 
+        <motion.nav
           className={styles.footerNav}
           variants={fadeInVariants}
           initial="hidden"
@@ -151,10 +151,7 @@ const Footer = () => {
           viewport={{ once: true }}
           aria-label="Footer Navigation"
         >
-          <motion.div 
-            className={styles.navRow}
-            variants={staggerChildren}
-          >
+          <motion.div className={styles.navRow} variants={staggerChildren}>
             <motion.div variants={fadeInVariants}>
               <Link to="/">Home</Link>
             </motion.div>
@@ -165,10 +162,7 @@ const Footer = () => {
               <Link to="/menu">Menus</Link>
             </motion.div>
           </motion.div>
-          <motion.div 
-            className={styles.navRow}
-            variants={staggerChildren}
-          >
+          <motion.div className={styles.navRow} variants={staggerChildren}>
             <motion.div variants={fadeInVariants}>
               <Link to="/ourjourny">Our journy</Link>
             </motion.div>
@@ -182,44 +176,44 @@ const Footer = () => {
         </motion.nav>
 
         {/* Social Media Icons */}
-        <motion.div 
+        <motion.div
           className={styles.socialIcons}
           variants={staggerChildren}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <motion.a 
-            href="https://instagram.com" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <motion.a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Visit our Instagram"
             variants={socialVariants}
           >
             <FaInstagram />
           </motion.a>
-          <motion.a 
-            href="https://tiktok.com" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <motion.a
+            href="https://tiktok.com"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Visit our TikTok"
             variants={socialVariants}
           >
             <FaTiktok />
           </motion.a>
-          <motion.a 
-            href="https://facebook.com" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <motion.a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Visit our Facebook"
             variants={socialVariants}
           >
             <FaFacebookF />
           </motion.a>
-          <motion.a 
-            href="https://linkedin.com" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <motion.a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
             aria-label="Visit our LinkedIn"
             variants={socialVariants}
           >
@@ -228,7 +222,7 @@ const Footer = () => {
         </motion.div>
 
         {/* Sub Navigation Links */}
-        <motion.div 
+        <motion.div
           className={styles.footerSubnav}
           variants={fadeInVariants}
           initial="hidden"
@@ -240,7 +234,7 @@ const Footer = () => {
         </motion.div>
 
         {/* Newsletter Section */}
-        <motion.div 
+        <motion.div
           className={styles.newsletter}
           ref={newsletterRef}
           variants={fadeInVariants}
@@ -282,7 +276,11 @@ const Footer = () => {
                   whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
                   whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
                 >
-                  {isSubmitting ? <FaSpinner className={styles.spinner} /> : "Subscribe"}
+                  {isSubmitting ? (
+                    <FaSpinner className={styles.spinner} />
+                  ) : (
+                    "Subscribe"
+                  )}
                 </motion.button>
               )}
             </AnimatePresence>
@@ -290,7 +288,7 @@ const Footer = () => {
         </motion.div>
 
         {/* Copyright */}
-        <motion.p 
+        <motion.p
           className={styles.footerCopyright}
           variants={fadeInVariants}
           initial="hidden"
