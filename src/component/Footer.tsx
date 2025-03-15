@@ -11,6 +11,7 @@ import {
   FaSpinner,
 } from "react-icons/fa";
 import styles from "../css/footer.module.css";
+import { KFooterLogoSVG } from "./SVGS";
 
 const Footer = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -94,12 +95,12 @@ const Footer = () => {
   };
   
   const logoVariants = {
-    hidden: { opacity: 0, x: -100 },
+    hidden: { opacity: 0, x: -20 },
     visible: { 
       opacity: 1, 
       x: 0,
       transition: { 
-        duration: 1,
+        duration: 0.6,
         ease: "easeOut" 
       }
     }
@@ -133,13 +134,11 @@ const Footer = () => {
         {/* Large Clickable "K" */}
         <motion.div
           className={styles.logoContainer}
-          variants={logoVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
         >
           <Link to="/" className={styles.logo} aria-label="Return to homepage">
-            K
+            <KFooterLogoSVG color="#ac8d5b"  width="300" height="300"/>
           </Link>
         </motion.div>
 

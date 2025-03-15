@@ -184,11 +184,11 @@
 }
 
 .bookButton {
-  background: #ac8d5b;
-  color: white;
+  /* background: #ac8d5b; */
+  color: #ac8d5b;
   border: none;
-  padding: 8px 20px; /* Reduced padding */
-  border-radius: 50px;
+  /* padding: 8px 20px; Reduced padding */
+  /* border-radius: 50px; */
   cursor: pointer;
   font-size: 13px; /* Smaller font */
   font-weight: 600;
@@ -198,8 +198,12 @@
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
-  box-shadow: 0 6px 12px rgba(172, 141, 91, 0.2);
+  /* box-shadow: 0 6px 12px rgba(172, 141, 91, 0.2); */
   z-index: 1;
+  .calendarIconMobile {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .bookButton::before {
@@ -209,15 +213,15 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.2);
+  /* background: rgba(255, 255, 255, 0.2); */
   transition: all 0.4s ease;
   z-index: -1;
 }
 
 .bookButton:hover {
-  background: #c0a06a; /* Slightly lighter gold on hover */
-  box-shadow: 0 10px 20px rgba(172, 141, 91, 0.3);
-  transform: translateY(-2px);
+  /* background: #c0a06a; Slightly lighter gold on hover */
+  /* box-shadow: 0 10px 20px rgba(172, 141, 91, 0.3); */
+  /* transform: translateY(-2px); */
 }
 
 .bookButton:hover::before {
@@ -227,7 +231,7 @@
 .bookDropdown {
   position: absolute;
   top: calc(100% + 10px);
-  left: 50%;
+  left: 67%;
   transform: translateX(-50%) translateY(10px);
   background-color: white;
   border-radius: 12px;

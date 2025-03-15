@@ -20,7 +20,7 @@ import reservationsImage from "../chef/three.jpg";
 import galleryImage from "../chef/four.jpg";
 import contactImage from "../chef/five.jpg";
 import aboutImage from "../chef/six.jpg";
-import { HamburgerMenu, Logo } from "./SVGS";
+import { CalendarIcon, HamburgerMenu, Logo } from "./SVGS";
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -147,8 +147,12 @@ function Navbar() {
               ref={bookButtonRef}
               className={styles.bookButton}
               onClick={toggleBookDropdown}
-            >
-              <img src={calendarIcon} alt="Calendar Icon" className={styles.calendarIconMobile} style={{ width: '16px', height: '16px', color: 'white' }} />
+              onMouseEnter={toggleBookDropdown}
+             >
+              <div className={styles.calendarIconMobile} >
+                <CalendarIcon color="#ac8d5b"  />
+              </div>
+              {/* <img src={calendarIcon} alt="Calendar Icon" className={styles.calendarIconMobile} style={{ width: '16px', height: '16px', color: 'white' }} /> */}
               BOOK NOW
             </div>
             <div 

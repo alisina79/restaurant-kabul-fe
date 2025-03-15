@@ -11,11 +11,12 @@ function Home() {
   return (
     <div>
       <Hero />
+      <Chef />
       <FeaturedDishes />
       <About />
       <PrivateDining />
       <ChefSpecial />
-      <Chef />
+      
       <Carousel />
       <OurStory />
       
