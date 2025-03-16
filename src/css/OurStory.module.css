@@ -1,12 +1,58 @@
+/* Add CSS Variables for easier theming and maintenance */
+:root {
+  --primary-color: #ac8d5b;
+  --primary-color-rgb: 172, 141, 91;
+  --primary-light: #d5bd8e;
+  --primary-dark: #8a7149;
+  --text-dark: #1a1e25;
+  --text-body: #444;
+  --text-light: #666;
+  --bg-light: #fff;
+  --animation-timing: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
 /* Animation Keyframes */
-@keyframes fadeInUp {
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(30px);
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes widthGrow {
+  0% {
+    width: 0;
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  20% {
+    opacity: 0.7;
+    width: 30%;
+  }
+  40% {
+    opacity: 1;
     transform: translateY(0);
+    width: 60%;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Elegant Background Pattern */
+@keyframes subtleShift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
   }
 }
 
@@ -14,14 +60,20 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 8rem 8rem; /* Increased vertical padding for spacing between pages */
-  margin: 3rem 0; /* Added margin for additional spacing between pages */
-  gap: 4rem;
-  background-color: #ac8d5b;
+  padding: 4rem 5%; /* Reduced padding, using percentage for horizontal padding */
+  margin: 2rem auto; /* Changed to auto margin to center container */
+  gap: 5rem;
+  background-color: var(--primary-color);
   flex-wrap: wrap;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  max-width: 1400px; /* Added max-width to container to prevent stretching on wide screens */
+  border-radius: 16px; /* Rounded corners for container */
+  transition: box-shadow 0.5s var(--animation-timing);
+  scroll-margin-top: 80px; /* For better anchor scrolling */
+  will-change: opacity; /* Performance hint for browser */
+  contain: layout style paint; /* Optimization to isolate this element */
 }
 
 .ourStoryContainer::before {
@@ -36,83 +88,304 @@
   background-size: 100px 100px;
   z-index: 1;
   opacity: 0.8;
+  filter: blur(0.5px); /* Subtle blur for depth */
+  mix-blend-mode: overlay; /* Better blending with background */
+}
+
+.imageSection, 
+.contentSection {
+  contain: content; /* Optimization for layout calculations */
+  will-change: transform, opacity; /* Performance hints */
+}
+
+.imageWrapper,
+.chefImage,
+.heading::after,
+.outlineButton::before,
+.quoteCarousel blockquote {
+  will-change: transform; /* Performance hint for elements with animations */
+}
+
+/* Add hardware acceleration for transitions */
+.chefImage,
+.heading::after,
+.outlineButton,
+.imageWrapper,
+.quoteCarousel blockquote {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Improve touch scrolling */
+html, body {
+  touch-action: manipulation;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  .imageWrapper,
+  .chefImage,
+  .heading::after {
+    /* Reduce animation complexity on mobile */
+    transition-duration: 0.3s;
+  }
 }
 
 .imageSection {
   flex: 1;
   max-width: 45%;
+  min-width: 300px; /* Added min-width to prevent too narrow images */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 2;
-  opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
-  animation-delay: 0.2s;
+  perspective: 1000px; /* For 3D effect */
+}
+
+/* Advanced Image Hover Effect */
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .chefImage {
   width: 100%;
-  border-radius: 12px;
   object-fit: cover;
   height: auto;
-  transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  will-change: transform;
+  aspect-ratio: 3/4; /* Modern aspect ratio control */
+  transition: transform 0.5s var(--animation-timing);
+  will-change: transform; /* Performance optimization */
+  transform-style: preserve-3d; /* For 3D effect */
+  backface-visibility: hidden; /* Smoother transforms */
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+  filter: brightness(0.95);
 }
 
-.chefImage:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+.imageOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s var(--animation-timing);
+  pointer-events: none;
+  text-align: center;
+}
+
+.imageOverlay span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  display: block;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.imageWrapper:hover .imageOverlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.imageWrapper:hover .chefImage {
+  filter: brightness(1.05) contrast(1.05);
+}
+
+@media (hover: none) {
+  /* For touch devices without hover */
+  .imageWrapper:active .chefImage {
+    transform: scale(1.05);
+    filter: brightness(1.05) contrast(1.05);
+  }
+  
+  .imageWrapper:active .imageOverlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .contentSection {
   flex: 1;
   max-width: 45%;
-  background-color: #fff;
-  padding: 3rem 3.5rem;
+  min-width: 300px; /* Added min-width to prevent too narrow content */
+  background-color: var(--bg-light);
+  padding: 2.5rem; /* Slightly more padding */
   border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 2;
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+}
+
+/* Add animation class for scroll-based animations */
+.animateContent .heading {
   opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
-  animation-delay: 0.5s;
+  animation: fadeIn 0.6s ease-out forwards;
+  animation-delay: 0.2s;
+}
+
+/* New underline animations */
+@keyframes centerGrow {
+  0% {
+    width: 0;
+    left: 50%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes shimmerLine {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 .heading {
-  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
   font-weight: 700;
-  color: #1a1e25;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-dark);
   margin-bottom: 1rem;
   text-transform: uppercase;
-  border-bottom: 4px solid #ac8d5b;
   display: inline-block;
   padding-bottom: 0.3rem;
+  position: relative;
+  letter-spacing: 0.05em; /* Improved letter spacing */
+}
+
+.heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  width: 0;
+  background: linear-gradient(90deg, 
+    var(--primary-color), 
+    var(--primary-light), 
+    #ffffff, 
+    var(--primary-light), 
+    var(--primary-color));
+  background-size: 200% 100%;
   opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
-  animation-delay: 0.7s;
+  transform-origin: center;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(172, 141, 91, 0.2);
+}
+
+/* Additional animation style options */
+@keyframes steppedLines {
+  0% {
+    width: 0;
+    opacity: 0;
+    box-shadow: none;
+  }
+  15% {
+    width: 25%;
+    opacity: 0.5;
+  }
+  35% {
+    width: 25%;
+    opacity: 1;
+    box-shadow: 0 2px 8px rgba(172, 141, 91, 0.3);
+  }
+  50% {
+    width: 60%;
+  }
+  75% {
+    width: 60%;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+    box-shadow: 0 2px 12px rgba(172, 141, 91, 0.4);
+  }
+}
+
+/* Third animation option */
+@keyframes gradientReveal {
+  0% {
+    width: 0;
+    opacity: 0;
+    background-position: 0% 50%;
+  }
+  20% {
+    opacity: 0.8;
+    width: 30%;
+  }
+  50% {
+    width: 70%;
+    background-position: 100% 50%;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+    background-position: 0% 50%;
+  }
+}
+
+/* ACTIVE ANIMATION STYLE - CURRENTLY USING SHIMMER EFFECT */
+.animateContent .heading::after {
+  animation: centerGrow 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards,
+             shimmerLine 3s linear infinite 1.7s;
+  animation-delay: 0.5s, 1.7s;
+}
+
+/* Remove the glowing dot as we're using a new animation approach */
+.heading::before {
+  display: none;
+}
+
+.animateContent .intro {
+  animation-delay: 0.4s;
 }
 
 .intro {
-  font-size: clamp(1.1rem, 2vw, 1.25rem);
-  color: #222;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  color: var(--text-dark);
   margin-bottom: 1.5rem;
   line-height: 1.6;
   font-weight: 500;
+  font-family: 'Cormorant Garamond', serif;
   opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
-  animation-delay: 0.9s;
+  animation: fadeIn 0.6s ease-out forwards;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5); /* Subtle text enhancement */
 }
 
 .body p {
-  font-size: clamp(1rem, 1.8vw, 1.1rem);
-  color: #444;
+  font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+  color: var(--text-body);
   line-height: 1.8;
   margin-bottom: 1.3rem;
+  font-family: 'Cormorant Garamond', serif;
   opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
-  animation-delay: 1.1s;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.body p strong {
+  color: var(--primary-dark); /* Highlight important text */
+  font-weight: 600;
 }
 
 .body p:nth-child(2) {
@@ -123,43 +396,103 @@
   animation-delay: 1.5s;
 }
 
+/* Add animation class for scroll-based animations */
+.animateContent .body p:nth-child(1) {
+  animation-delay: 0.6s;
+}
+
+.animateContent .body p:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.animateContent .body p:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.animateContent .quoteCarousel {
+  animation-delay: 1.4s;
+}
+
 .buttons {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  font-family: 'Montserrat', sans-serif;
   flex-wrap: wrap;
+  justify-content: flex-start;
   opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
-  animation-delay: 1.7s;
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Add animation class for scroll-based animations */
+.animateContent .buttons {
+  animation-delay: 1.2s;
 }
 
 .outlineButton {
-  padding: 0.75rem 1.75rem;
-  border: 2px solid #1a1e25;
-  color: #1a1e25;
-  font-weight: 600;
+  position: relative;
+  padding: 0.8rem 1.75rem;
+  border: 2px solid var(--primary-color);
+  color: #000;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  font-size: 0.70rem;
   text-decoration: none;
-  border-radius: 6px;
-  transition: all 0.3s ease;
+  border-radius: 8px;
+  transition: all 0.4s var(--animation-timing);
   background-color: transparent;
   white-space: nowrap;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(172, 141, 91, 0.1);
+  flex: 0 0 auto;
+  user-select: none; /* Prevent text selection */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+
+.outlineButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+  z-index: -1;
+  transition: width 0.4s var(--animation-timing);
 }
 
 .outlineButton:hover {
-  background-color: #1a1e25;
   color: #fff;
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(172, 141, 91, 0.2);
 }
 
-/* Enhanced Quote Carousel */
+.outlineButton:hover::before {
+  width: 100%;
+}
+
+.outlineButton:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(172, 141, 91, 0.15);
+}
+
+.outlineButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(172, 141, 91, 0.3), 0 4px 12px rgba(172, 141, 91, 0.1);
+}
+
+/* Enhanced Quote Carousel - Completely Redesigned */
 .quoteCarousel {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   position: relative;
   text-align: center;
-  overflow: hidden;
+  overflow: visible;
   opacity: 0;
-  animation: fadeInUp 0.6s ease-out forwards;
-  animation-delay: 1.9s;
+  animation: fadeIn 0.6s ease-out forwards;
+  max-width: 100%;
 }
 
 .quoteCarouselInner {
@@ -169,48 +502,73 @@
   transition: transform 0.6s cubic-bezier(0.45, 0, 0.55, 1);
 }
 
+.quoteCarousel::before,
+.quoteCarousel::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgba(172, 141, 91, 0.4), transparent);
+  left: 30%;
+  z-index: 2;
+}
+
+.quoteCarousel::before {
+  top: -5px;
+}
+
+.quoteCarousel::after {
+  bottom: -5px;
+  transform: rotate(180deg);
+}
+
 .quoteCarousel blockquote {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 500;
-  color: #444;
+  color: #333;
   line-height: 1.8;
   position: relative;
-  max-width: 90%;
-  margin: 2rem auto;
-  padding: 1.8rem 2.5rem;
+  max-width: 95%;
+  margin: 1.5rem auto;
+  padding: 2rem 2.5rem;
   font-style: italic;
-  background-color: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: all 0.4s ease;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 2px 5px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  transition: all 0.5s var(--animation-timing);
+  border-left: 4px solid var(--primary-color);
+  transform-origin: center center;
+  display: grid; /* Modern layout */
+  place-items: center; /* Center content perfectly */
 }
 
 .quoteCarousel blockquote:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(172, 141, 91, 0.12), 0 5px 15px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(255, 255, 255, 0.9);
 }
 
 .quoteCarousel blockquote::before,
 .quoteCarousel blockquote::after {
-  font-size: 3.5rem;
-  color: #ac8d5b;
-  opacity: 0.5;
-  font-family: serif;
+  font-size: 4rem;
+  color: var(--primary-color);
+  opacity: 0.2;
+  font-family: 'Georgia', serif;
   position: absolute;
   z-index: 1;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  line-height: 1;
 }
 
 .quoteCarousel blockquote::before {
-  content: "";
-  top: -15px;
-  left: -5px;
+  content: "\201C"; /* Unicode for left double quotation mark */
+  top: -5px;
+  left: 10px;
 }
 
 .quoteCarousel blockquote::after {
-  content: "";
+  content: "\201D"; /* Unicode for right double quotation mark */
   bottom: -30px;
-  right: -5px;
+  right: 10px;
 }
 
 .carouselControls {
@@ -221,54 +579,51 @@
   gap: 2rem;
 }
 
-.carouselArrow {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: #ac8d5b;
-  font-size: 1.2rem;
-  border: 1px solid rgba(172, 141, 91, 0.3);
-}
-
-.carouselArrow:hover {
-  background-color: rgba(172, 141, 91, 0.15);
-  transform: scale(1.1);
-}
-
 .carouselDots {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
-  gap: 0.5rem;
+  margin-top: 1.5rem;
+  gap: 0.75rem;
+  position: relative;
+  z-index: 5;
 }
 
 .carouselDot {
-  width: 10px;
-  height: 10px;
-  margin: 0 2px;
-  border-radius: 50%;
-  background: rgba(204, 204, 204, 0.6);
-  transition: all 0.3s ease;
+  width: 12px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(var(--primary-color-rgb), 0.3);
+  transition: all 0.4s var(--animation-timing);
   cursor: pointer;
-  border: 1px solid transparent;
+  position: relative;
+}
+
+.carouselDot::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(172, 141, 91, 0.1);
+  transition: transform 0.3s ease;
+  z-index: -1;
 }
 
 .carouselDot:hover {
-  background: rgba(172, 141, 91, 0.5);
-  transform: scale(1.2);
+  background: rgba(var(--primary-color-rgb), 0.6);
+  width: 18px;
+}
+
+.carouselDot:hover::before {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .carouselDot.active {
-  background: #ac8d5b;
-  transform: scale(1.3);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 0 8px rgba(172, 141, 91, 0.4);
+  background: var(--primary-color);
+  width: 24px;
 }
 
 @keyframes autoscroll {
@@ -295,121 +650,230 @@
   animation-play-state: paused;
 }
 
-/* Responsive Styles - Enhanced for more device sizes */
-/* Large Desktop */
+/* Update media queries for better responsive behavior */
 @media (min-width: 1441px) {
   .ourStoryContainer {
-    padding: 10rem 12rem;
-    max-width: 1800px;
-    margin: 4rem auto;
-  }
-
-  .contentSection,
-  .imageSection {
-    max-width: 800px;
+    padding: 5rem 6%;
+    max-width: 1600px;
   }
 }
 
-/* Desktop */
 @media (max-width: 1440px) and (min-width: 1025px) {
   .ourStoryContainer {
-    padding: 8rem 6rem;
+    padding: 4rem 5%;
   }
 }
 
-/* Tablet */
 @media (max-width: 1024px) {
   .ourStoryContainer {
-    flex-direction: column;
-    padding: 6rem 4rem;
-    margin: 2.5rem 0;
+    padding: 3rem 4%;
+    gap: 2.5rem;
   }
-
-  .imageSection,
-  .contentSection {
-    max-width: 90%;
-  }
-
-  .contentSection {
-    padding: 2.5rem 2rem;
-  }
-
-  .buttons {
-    justify-content: center;
-  }
-}
-
-/* Small Tablet */
-@media (max-width: 768px) {
-  .ourStoryContainer {
-    padding: 5rem 3rem;
-    margin: 2rem 0;
-  }
-
+  
   .imageSection,
   .contentSection {
     max-width: 100%;
+    flex-basis: 100%;
   }
-
-  .heading {
-    font-size: clamp(1.8rem, 3.5vw, 2.2rem);
-  }
-}
-
-/* Large Phone */
-@media (max-width: 600px) {
-  .ourStoryContainer {
-    padding: 4rem 2rem;
-    gap: 2rem;
-    margin: 1.5rem 0;
-  }
-
+  
   .contentSection {
-    padding: 2rem 1.5rem;
+    padding: 2rem;
   }
-
+  
   .buttons {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
+    flex-direction: row; /* Keep buttons in a row */
+    justify-content: center; /* Center the buttons */
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    gap: 1rem; /* Reduced gap for smaller screens */
   }
-
+  
   .outlineButton {
-    width: 100%;
+    width: auto; /* Allow buttons to size naturally */
     text-align: center;
   }
 }
 
-/* Small Phone */
+@media (max-width: 768px) {
+  .ourStoryContainer {
+    padding: 2.5rem 3%;
+    margin: 1.5rem auto;
+  }
+  
+  .imageSection {
+    margin-bottom: 1rem;
+  }
+  
+  .heading {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .ourStoryContainer {
+    padding: 2rem 1.5rem;
+    margin: 1rem auto;
+  }
+  
+  .contentSection {
+    padding: 1.75rem;
+  }
+  
+  .buttons {
+    justify-content: center;
+    margin-top: 1.5rem;
+    gap: 0.8rem; /* Further reduced gap for very small screens */
+  }
+  
+  .outlineButton {
+    width: auto; /* Auto width instead of 100% */
+    padding: 0.7rem 1.25rem;
+    font-size: 0.8rem;
+  }
+}
+
 @media (max-width: 414px) {
   .ourStoryContainer {
-    padding: 3rem 1.25rem;
-    margin: 1rem 0;
+    padding: 1.5rem 1rem;
+    margin: 0.5rem auto;
   }
-
+  
   .contentSection {
-    padding: 1.75rem 1.25rem;
+    padding: 1.5rem;
   }
-
+  
   .quoteCarousel blockquote {
-    font-size: 1.1rem;
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 1.5rem;
   }
-
-  .quoteCarousel blockquote::before,
-  .quoteCarousel blockquote::after {
-    font-size: 2.5rem;
-  }
-
+  
   .heading {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
-
+  
   .intro {
     font-size: 1rem;
   }
-
+  
   .body p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+  }
+  
+  .outlineButton {
+    padding: 0.6rem 1rem; /* Further reduced padding for smallest screens */
+    font-size: 0.75rem;
+  }
+}
+
+/* Scroll behavior improvement */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Print styles for better PDF generation */
+@media print {
+  .ourStoryContainer {
+    display: block;
+    background: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .imageSection, .contentSection {
+    max-width: 100%;
+    margin: 1rem 0;
+    box-shadow: none;
+  }
+  
+  .buttons, .quoteCarousel {
+    display: none;
+  }
+}
+
+/* Dark mode support - only if your site supports it */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-light: #222;
+    --text-dark: #f0f0f0;
+    --text-body: #cccccc;
+    --text-light: #aaaaaa;
+  }
+  
+  /* Add more dark mode overrides as needed */
+}
+
+/* Add to the .py-8 bg-amber-50/50 parent container in the component */
+.pageBackground {
+  position: relative;
+  overflow: hidden;
+}
+
+.pageBackground::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(var(--primary-color-rgb), 0.05) 1%, transparent 6%),
+    radial-gradient(circle at 75% 75%, rgba(var(--primary-color-rgb), 0.05) 1%, transparent 6%),
+    radial-gradient(circle at 50% 50%, rgba(var(--primary-color-rgb), 0.03) 1%, transparent 8%);
+  background-size: 100px 100px, 120px 120px, 80px 80px;
+  opacity: 0.7;
+  z-index: 0;
+  pointer-events: none;
+  animation: subtleShift 30s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .pageBackground::before {
+    background-size: 70px 70px, 90px 90px, 50px 50px;
+    animation-duration: 20s;
+  }
+  
+  /* Add other responsive adjustments for the ourStoryContainer */
+  .ourStoryContainer {
+    padding: 2.5rem 3%;
+    margin: 1.5rem auto;
+  }
+  
+  .imageSection {
+    margin-bottom: 1rem;
+  }
+  
+  .heading {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+  }
+}
+
+/* Add support for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .ourStoryContainer,
+  .chefImage,
+  .heading::after,
+  .contentSection,
+  .quoteCarousel blockquote {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+  
+  .pageBackground::before {
+    animation: none !important;
+  }
+  
+  .animateContent .heading::after {
+    width: 100%;
+    opacity: 1;
   }
 }
