@@ -17,11 +17,11 @@ const Chef = () => {
   const imageColumnRef = useRef(null);
   
   // Set up inView hooks for each section
-  const textColumnInView = useInView(textColumnRef, { once: true, amount: 0.2 });
-  const headingInView = useInView(headingRef, { once: true, amount: 0.3 });
-  const buttonsInView = useInView(buttonsRef, { once: true, amount: 0.3 });
-  const testimonialInView = useInView(testimonialSectionRef, { once: true, amount: 0.3 });
-  const imageInView = useInView(imageColumnRef, { once: true, amount: 0.2 });
+  const textColumnInView = useInView(textColumnRef, { once: true, amount: 0.2, margin: "0px 0px -100px 0px" });
+  const headingInView = useInView(headingRef, { once: true, amount: 0.3, margin: "0px 0px -100px 0px" });
+  const buttonsInView = useInView(buttonsRef, { once: true, amount: 0.3, margin: "0px 0px -100px 0px" });
+  const testimonialInView = useInView(testimonialSectionRef, { once: true, amount: 0.3, margin: "0px 0px -100px 0px" });
+  const imageInView = useInView(imageColumnRef, { once: true, amount: 0.2, margin: "0px 0px -100px 0px" });
   
   // Animation controls
   const textColumnControls = useAnimation();
@@ -317,17 +317,20 @@ const Chef = () => {
       <motion.div 
         ref={imageColumnRef}
         className={styles.imageColumn} 
-        style={{ backgroundImage: `url(${Rest})` }}
         initial="hidden"
         animate={imageControls}
         variants={imageVariants}
         whileHover={{ 
-          boxShadow: "0 15px 35px rgba(0, 0, 0, 0.2)",
-          scale: 1.05,
           transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] }
         }}
       >
-        {/* Background image is set in CSS */}
+        {/* Background image with gradient overlay */}
+        <div className={styles.backgroundImage} style={{ backgroundImage: `url(${Rest})` }}></div>
+        <div className={styles.overlay}></div>
+        
+        {/* Decorative corner elements - now hidden via CSS */}
+        <div className={styles.cornerTL}></div>
+        <div className={styles.cornerBR}></div>
       </motion.div>
     </div>
   );

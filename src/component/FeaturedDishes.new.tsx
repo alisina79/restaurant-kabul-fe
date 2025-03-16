@@ -1,4 +1,4 @@
-import { motion, useInView, AnimatePresence } from "framer-motion";
+﻿import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import styles from "../css/FeaturedDishes.module.css";
 import restImage from "../assets/Rest.jpg";
@@ -179,28 +179,25 @@ const FeaturedDishes = () => {
         padding: "2rem clamp(0.5rem, 5vw, 1rem)",
         backgroundImage: "url(/texture.png)",
         backgroundRepeat: "repeat",
-        backgroundSize: "300px",
-        backgroundColor: "rgba(248, 247, 245, 0.9)",
-        backgroundBlendMode: "overlay",
+        backgroundPosition: "center",
         position: "relative"
       }}
     >
-      {/* Subtle overlay to enhance texture visibility */}
+      {/* Semi-transparent overlay for better readability */}
       <div style={{
         position: "absolute",
         top: 0,
         left: 0,
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(172, 141, 91, 0.04)",
-        zIndex: 1,
-        pointerEvents: "none"
+        right: 0,
+        bottom: 0,
+        backgroundColor: "rgba(255, 255, 255, 0.85)",
+        zIndex: 0
       }}></div>
       
-      {/* Section content */}
+      {/* Rest of the content with proper z-index */}
       <div style={{
         position: "relative",
-        zIndex: 2
+        zIndex: 1
       }}>
         {/* Section Title with enhanced design */}
         <motion.div 
@@ -225,7 +222,7 @@ const FeaturedDishes = () => {
               marginBottom: "0.5rem" 
             }}
           >
-            <span className={styles.titleIcon}>🍽️</span> Featured Dishes
+            <span className={styles.titleIcon}>ðŸ½ï¸</span> Featured Dishes
           </motion.h2>
           <motion.p 
             className={styles.subtitle}
@@ -549,7 +546,7 @@ const FeaturedDishes = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1, transition: { delay: 0.3 } }}
                 >
-                  ×
+                  Ã—
                 </motion.button>
 
                 <motion.div

@@ -36,6 +36,18 @@ body {
   max-width: 1440px;
   margin: 0 auto;
   overflow: hidden;
+  position: relative;
+}
+
+/* We don't need this anymore since we're handling the overlay in the component */
+.container::before {
+  content: none;
+}
+
+/* Update z-index to match our inline styles */
+.container > * {
+  position: relative;
+  z-index: 2;
 }
 
 /* Section Header Styling */

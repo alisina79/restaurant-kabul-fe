@@ -255,12 +255,13 @@
   margin-top: 1.5rem; /* Added top margin */
   overflow: hidden; /* Ensure the zoomed content stays contained */
   transition: all 0.8s var(--animation-timing);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+  box-sizing: border-box;
+  position: relative;
+  filter: saturate(1.05) brightness(1.02); /* Slightly enhance image colors */
 }
 
-/* Add a subtle dark overlay to ensure image looks good over texture */
-.imageColumn::before {
-  content: "";
+/* Inner background image with zoom effect */
+.imageColumn .backgroundImage {
   position: absolute;
   top: 0;
   left: 0;
@@ -269,39 +270,43 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: inherit; /* Use the same background image */
-  transition: transform 0.8s var(--animation-timing);
-  z-index: -1;
+  transition: transform 1s var(--animation-timing); /* Slightly longer transition for smoother effect */
 }
 
-/* Keep the hover effect on the pseudo-element */
-.imageColumn:hover::before {
-  transform: scale(1.1);
+/* Enhanced zoom effect for inner image only */
+.imageColumn:hover .backgroundImage {
+  transform: scale(1.15); /* Slightly stronger zoom effect */
 }
 
-/* Remove conflicting transform to avoid issues with Framer Motion */
-.imageColumn:hover {
-  /* transform scale is now handled by Framer Motion */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-}
-
-/* Right column overlay for better text contrast against bg images */
-.imageColumn::after {
-  content: "";
+/* Overlay gradient for better text contrast */
+.imageColumn .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: linear-gradient(to right, rgba(0,0,0,0.2), transparent);
-  z-index: -1;
   pointer-events: none;
   transition: background 0.5s var(--animation-timing);
 }
 
-/* Enhance overlay on hover for dramatic effect */
-.imageColumn:hover::after {
+.imageColumn:hover .overlay {
   background: linear-gradient(to right, rgba(0,0,0,0.15), rgba(0,0,0,0.05));
+}
+
+/* Top-left corner decorative element */
+.imageColumn .cornerTL {
+  display: none; /* Hide the element instead of removing it completely */
+}
+
+/* Bottom-right corner decorative element */
+.imageColumn .cornerBR {
+  display: none; /* Hide the element instead of removing it completely */
+}
+
+/* Hover effects */
+.imageColumn:hover {
+  filter: saturate(1.1) brightness(1.05); /* Enhance colors on hover */
 }
 
 /* Responsive styles */
@@ -368,6 +373,78 @@
   
   .quoteIcon {
     font-size: 0.8rem; /* Even smaller on mobile */
+  }
+}
+
+/* Large screen optimizations (1400px to 2000px) */
+@media (min-width: 1400px) {
+  .chefSpecialContainer {
+    min-height: 95vh; /* Slightly taller container for large screens */
+    max-width: 90%; /* Prevent excessive stretching on ultra-wide screens */
+    margin: 0 auto; /* Center the container */
+  }
+  
+  .textColumn {
+    padding: 5rem 4rem; /* More generous padding */
+  }
+  
+  .contentWrapper {
+    max-width: 800px; /* Larger content area */
+  }
+  
+  .mainHeading {
+    font-size: clamp(1.7rem, 2.2vw, 2.2rem); /* Larger heading for large screens */
+    margin-bottom: 3.5rem; /* More spacing below heading */
+    line-height: 1.5; /* Better line height for readability */
+  }
+  
+  .buttonContainer {
+    gap: 2rem; /* More space between buttons */
+    margin-bottom: 3rem; /* More space below buttons */
+  }
+  
+  .actionButton {
+    padding: 0.8rem 2rem; /* Larger buttons */
+    font-size: 0.9rem; /* Larger text */
+  }
+  
+  .testimonialSection {
+    margin-top: 1.5rem;
+    max-width: 650px; /* Larger testimonial container */
+  }
+  
+  .testimonialText {
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem); /* Larger testimonial text */
+    line-height: 1.7; /* Better line height */
+  }
+  
+  .testimonialAttribution {
+    font-size: 1.1rem; /* Larger attribution text */
+  }
+  
+  .imageColumn {
+    flex: 1.2; /* Slightly wider image column */
+  }
+  
+  .dot {
+    width: 10px; /* Larger dots */
+    height: 10px;
+  }
+  
+  .quoteIcon {
+    font-size: 1.2rem; /* Larger quote icon */
+  }
+  
+  .imageColumn .backgroundImage {
+    transition: transform 1.2s var(--animation-timing); /* Slightly longer transition for smoother effect on large screens */
+  }
+  
+  .imageColumn:hover .backgroundImage {
+    transform: scale(1.18); /* Stronger zoom effect on large screens */
+  }
+  
+  .imageColumn:hover {
+    filter: saturate(1.15) brightness(1.08); /* Enhanced color effect on hover for large screens */
   }
 }
 
