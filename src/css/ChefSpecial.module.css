@@ -22,10 +22,10 @@
   overflow: hidden;
   position: relative;
   will-change: transform, opacity; /* Optimize animations */
-  background-image: url("/texture.png");  
+  /* background-image: url("/texture.png");   */
   background-repeat: repeat;
   background-size: 300px;
-  background-color: rgba(248, 247, 245, 0.9); /* Subtle neutral background with texture */
+  /* background-color: rgba(248, 247, 245, 0.9);  */
   background-blend-mode: overlay; /* Blend the texture with the background color */
   position: relative;
 }
@@ -44,8 +44,9 @@
 }
 
 /* Update z-index to be above the overlay */
-.textColumn, .imageColumn {
-  z-index: 2; 
+.textColumn,
+.imageColumn {
+  z-index: 2;
 }
 
 /* Left column - Text content */
@@ -59,8 +60,10 @@
   box-sizing: border-box;
   position: relative;
   z-index: 1;
-  background-color: rgba(248, 247, 245, 0.75); /* More transparent to let texture show through */
-  color: var(--primary-dark); /* Setting the primary text color for the entire column */
+  /* background-color: rgba(248, 247, 245, 0.75); More transparent to let texture show through */
+  color: var(
+    --primary-dark
+  ); /* Setting the primary text color for the entire column */
   margin-top: 1.5rem; /* Added top margin */
   backdrop-filter: blur(2px); /* Subtle blur effect for the texture */
 }
@@ -74,7 +77,7 @@
 
 /* Main heading styling */
 .mainHeading {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(1.2rem, 2vw, 1.7rem); /* Further decreased font size */
   line-height: 1.4;
   font-weight: 500;
@@ -94,7 +97,7 @@
 /* Base button styling */
 .actionButton {
   padding: 0.6rem 1.4rem; /* Reduced from 0.8rem 1.75rem */
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 0.75rem; /* Reduced from 0.85rem */
   font-weight: 700;
   letter-spacing: 1.5px;
@@ -180,7 +183,7 @@
 
 /* Testimonial text styling */
 .testimonialText {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(0.9rem, 1.3vw, 1.1rem); /* Decreased font size */
   line-height: 1.6;
   margin-bottom: 0.3rem; /* Reduced from 0.5rem */
@@ -202,7 +205,7 @@
 
 /* Attribution styling */
 .testimonialAttribution {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   font-style: italic;
   font-size: 0.9rem; /* Decreased font size */
   color: var(--primary-color); /* Changed text color to primary color */
@@ -285,13 +288,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(0,0,0,0.2), transparent);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.2), transparent);
   pointer-events: none;
   transition: background 0.5s var(--animation-timing);
 }
 
 .imageColumn:hover .overlay {
-  background: linear-gradient(to right, rgba(0,0,0,0.15), rgba(0,0,0,0.05));
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.05)
+  );
 }
 
 /* Top-left corner decorative element */
@@ -314,29 +321,29 @@
   .chefSpecialContainer {
     flex-direction: column-reverse;
   }
-  
+
   .textColumn,
   .imageColumn {
     width: 100%;
     margin-top: 1rem; /* Reduced top margin for mobile */
   }
-  
+
   .imageColumn {
     min-height: 40vh;
   }
-  
+
   .mainHeading {
     font-size: clamp(1.1rem, 1.8vw, 1.5rem); /* Further decreased for mobile */
     margin-bottom: 2rem; /* Reduced for mobile */
   }
-  
+
   .buttonContainer {
     flex-direction: column;
     width: 100%;
     max-width: 250px; /* Reduced from 300px */
     margin: 0 auto 1.5rem; /* Reduced from 3rem to 1.5rem for mobile */
   }
-  
+
   .actionButton {
     width: 100%;
     margin-bottom: 0.8rem; /* Reduced from 1rem */
@@ -348,29 +355,33 @@
   .textColumn {
     padding: 2rem 1.5rem; /* Reduced from 2.5rem */
   }
-  
+
   .mainHeading {
-    font-size: clamp(1rem, 1.5vw, 1.3rem); /* Even smaller for very small screens */
+    font-size: clamp(
+      1rem,
+      1.5vw,
+      1.3rem
+    ); /* Even smaller for very small screens */
   }
-  
+
   .testimonialText {
     font-size: clamp(0.85rem, 1.1vw, 1rem);
   }
-  
+
   .testimonialContent {
     min-height: 150px;
   }
-  
+
   .actionButton {
     padding: 0.5rem 1.2rem; /* Reduced from 0.7rem 1.5rem */
     font-size: 0.7rem; /* Reduced from 0.8rem */
   }
-  
+
   .dot {
     width: 6px; /* Even smaller on mobile */
     height: 6px; /* Even smaller on mobile */
   }
-  
+
   .quoteIcon {
     font-size: 0.8rem; /* Even smaller on mobile */
   }
@@ -383,66 +394,70 @@
     max-width: 90%; /* Prevent excessive stretching on ultra-wide screens */
     margin: 0 auto; /* Center the container */
   }
-  
+
   .textColumn {
     padding: 5rem 4rem; /* More generous padding */
   }
-  
+
   .contentWrapper {
     max-width: 800px; /* Larger content area */
   }
-  
+
   .mainHeading {
-    font-size: clamp(1.7rem, 2.2vw, 2.2rem); /* Larger heading for large screens */
+    font-size: clamp(
+      1.7rem,
+      2.2vw,
+      2.2rem
+    ); /* Larger heading for large screens */
     margin-bottom: 3.5rem; /* More spacing below heading */
     line-height: 1.5; /* Better line height for readability */
   }
-  
+
   .buttonContainer {
     gap: 2rem; /* More space between buttons */
     margin-bottom: 3rem; /* More space below buttons */
   }
-  
+
   .actionButton {
     padding: 0.8rem 2rem; /* Larger buttons */
     font-size: 0.9rem; /* Larger text */
   }
-  
+
   .testimonialSection {
     margin-top: 1.5rem;
     max-width: 650px; /* Larger testimonial container */
   }
-  
+
   .testimonialText {
     font-size: clamp(1.1rem, 1.5vw, 1.3rem); /* Larger testimonial text */
     line-height: 1.7; /* Better line height */
   }
-  
+
   .testimonialAttribution {
     font-size: 1.1rem; /* Larger attribution text */
   }
-  
+
   .imageColumn {
     flex: 1.2; /* Slightly wider image column */
   }
-  
+
   .dot {
     width: 10px; /* Larger dots */
     height: 10px;
   }
-  
+
   .quoteIcon {
     font-size: 1.2rem; /* Larger quote icon */
   }
-  
+
   .imageColumn .backgroundImage {
     transition: transform 1.2s var(--animation-timing); /* Slightly longer transition for smoother effect on large screens */
   }
-  
+
   .imageColumn:hover .backgroundImage {
     transform: scale(1.18); /* Stronger zoom effect on large screens */
   }
-  
+
   .imageColumn:hover {
     filter: saturate(1.15) brightness(1.08); /* Enhanced color effect on hover for large screens */
   }
@@ -495,12 +510,13 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.5s var(--animation-timing), transform 0.5s var(--animation-timing);
+  transition: opacity 0.5s var(--animation-timing),
+    transform 0.5s var(--animation-timing);
 }
 
 /* Title Styling */
 .title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -510,7 +526,7 @@
 
 /* Text Styling */
 .text {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 18px;
   margin-bottom: 15px;
   line-height: 1.6;
@@ -535,7 +551,7 @@
 .dot {
   will-change: transform, opacity;
   backface-visibility: hidden;
-  perspective: 1000px; 
+  perspective: 1000px;
 }
 
 /* Force hardware acceleration for smoother animations */

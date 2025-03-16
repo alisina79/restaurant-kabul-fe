@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap");
 
 /* Apply box-sizing to all elements for consistent sizing */
 *,
@@ -10,21 +10,20 @@
 }
 
 :root {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   /* line-height: 1.5; */
   font-weight: 400;
-  
+
   /* Standard text sizes - CHANGE THESE VALUES TO UPDATE FONT SIZES ACROSS THE ENTIRE APPLICATION */
-  --font-size-base: 1rem;             /* Base font size for normal text (16px) */
-  --font-size-small: 0.875rem;        /* Smaller text (14px) */
-  --font-size-large: 1.125rem;        /* Slightly larger text (18px) */
-  --font-size-xl: 1.5rem;             /* Extra large text (24px) */
-  --font-size-xxl: 1.75rem;           /* Double extra large (28px) */
+  --font-size-base: 1rem; /* Base font size for normal text (16px) */
+  --font-size-small: 0.875rem; /* Smaller text (14px) */
+  --font-size-large: 1.125rem; /* Slightly larger text (18px) */
+  --font-size-xl: 1.5rem; /* Extra large text (24px) */
+  --font-size-xxl: 1.75rem; /* Double extra large (28px) */
   --font-size-heading: clamp(2rem, 5vw, 3rem); /* Responsive heading size */
-  
+
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -72,7 +71,7 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
   }
   a:hover {
     color: #747bff;

@@ -165,7 +165,7 @@
 }
 
 .phoneNumber {
-  font-size: 14px; /* Smaller font */
+  font-size: 1rem; /* Smaller font */
   transition: all 0.3s ease;
   color: #fff;
   font-weight: 500;
@@ -190,7 +190,7 @@
   /* padding: 8px 20px; Reduced padding */
   /* border-radius: 50px; */
   cursor: pointer;
-  font-size: 13px; /* Smaller font */
+  font-size: 0.9rem; /* Smaller font */
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -201,8 +201,8 @@
   /* box-shadow: 0 6px 12px rgba(172, 141, 91, 0.2); */
   z-index: 1;
   .calendarIconMobile {
-    width: 16px;
-    height: 16px;
+    width: 25px;
+    /* height: 16px; */
   }
 }
 

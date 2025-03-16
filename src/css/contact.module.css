@@ -1,6 +1,6 @@
 html,
 body {
-  background-color: #1a1e25;
+  /* background-color: #1a1e25; */
 }
 
 /* Advanced Contact Page Styling */
@@ -9,7 +9,7 @@ body {
   padding: 100px 20px 60px;
   margin-top: 80px;
   color: #ffff;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
 }
 
 .container {

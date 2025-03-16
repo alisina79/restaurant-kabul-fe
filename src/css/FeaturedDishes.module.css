@@ -17,12 +17,12 @@
   --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
   --transition: all 0.3s ease-in-out;
   --border-radius: 12px;
-  --font-family: 'Cormorant Garamond', serif;
-  --title-family: 'Cormorant Garamond', serif;
+  --font-family: "Cormorant Garamond", serif;
+  --title-family: "Cormorant Garamond", serif;
 }
 
 body {
-  background-color: white !important;
+  /* background-color: white !important; */
   font-family: var(--font-family);
   margin: 0;
   padding: 0;
@@ -30,7 +30,7 @@ body {
 
 /* Main Container */
 .container {
-  background-color: white !important;
+  /* background-color: white !important; */
   text-align: center;
   padding: 80px 20px;
   max-width: 1440px;
@@ -74,8 +74,13 @@ body {
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .subtitle {
@@ -254,7 +259,6 @@ body {
   color: #ffffff;
 }
 
-
 .dishName {
   font-family: var(--title-family);
   font-size: var(--font-size-xl);
@@ -294,7 +298,8 @@ body {
   color: white;
 }
 
-.time, .extraInfo {
+.time,
+.extraInfo {
   font-size: var(--font-size-small);
   color: var(--gray-text);
   display: flex;
@@ -309,7 +314,8 @@ body {
   justify-content: center;
 }
 
-.detailButton, .orderButton {
+.detailButton,
+.orderButton {
   font-size: var(--font-size-small);
   padding: 8px 15px;
   border: none;
@@ -342,7 +348,7 @@ body {
   background-color: var(--gold-hover);
   border-color: var(--gold-hover);
 }
-.detailedButton{
+.detailedButton {
   backdrop-filter: blur(6px);
 }
 /* Load More Button */
@@ -517,59 +523,60 @@ body {
   .container {
     padding: 40px 12px;
   }
-  
+
   .title {
     font-size: var(--font-size-heading);
   }
-  
+
   .subtitle {
     font-size: 0.9rem;
   }
-  
+
   .dishCard {
     height: 380px;
   }
-  
+
   .dishName {
     font-size: var(--font-size-xl);
   }
-  
+
   .description {
     font-size: 13px;
     -webkit-line-clamp: 2;
   }
-  
+
   .categoryFilters {
     gap: 8px;
   }
-  
+
   .categoryButton {
     padding: 8px 15px;
     font-size: 13px;
   }
-  
+
   .modalImage {
     height: 180px;
   }
-  
+
   .modalDetails {
     padding: 20px;
   }
-  
+
   .modalDishName {
     font-size: var(--font-size-xxl);
   }
-  
+
   .modalDescription {
     font-size: 14px;
   }
-  
+
   .buttonGroup {
     flex-direction: column;
     gap: 8px;
   }
-  
-  .detailButton, .orderButton {
+
+  .detailButton,
+  .orderButton {
     width: 100%;
     padding: 8px 15px;
     font-size: 13px;
@@ -581,42 +588,43 @@ body {
   .container {
     padding: 50px 15px;
   }
-  
+
   .dishCard {
     height: 400px;
   }
-  
+
   .overlay {
     height: 70%;
   }
-  
+
   .dishGrid {
     grid-template-columns: 1fr;
     gap: 25px;
   }
-  
+
   .buttonGroup {
     flex-direction: column;
     align-items: center;
     gap: 10px;
   }
-  
-  .detailButton, .orderButton {
+
+  .detailButton,
+  .orderButton {
     width: 100%;
   }
-  
+
   .modalContent {
     flex-direction: column;
   }
-  
+
   .modalImage {
     height: 200px;
   }
-  
+
   .modalInfoGrid {
     grid-template-columns: 1fr;
   }
-  
+
   .searchBox {
     width: 100%;
   }
@@ -628,23 +636,23 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 20px;
   }
-  
+
   .dishCard {
     height: 420px;
   }
-  
+
   .modalImage {
     height: 250px;
   }
-  
+
   .modalInfoGrid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .categoryFilters {
     margin-bottom: 20px;
   }
-  
+
   .loadMoreButton {
     padding: 10px 25px;
     font-size: 15px;
@@ -656,21 +664,21 @@ body {
   .dishGrid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
-  
+
   .dishCard {
     height: 430px;
   }
-  
+
   .modalContent {
     flex-direction: row;
     max-height: 85vh;
   }
-  
+
   .modalImage {
     width: 45%;
     height: auto;
   }
-  
+
   .modalDetails {
     width: 55%;
   }
@@ -682,22 +690,22 @@ body {
     flex-direction: row;
     max-height: 80vh;
   }
-  
+
   .modalImage {
     width: 45%;
     height: auto;
   }
-  
+
   .modalDetails {
     width: 55%;
   }
-  
+
   .dishGrid {
     grid-template-columns: repeat(3, 1fr);
     max-width: 1200px;
     margin: 0 auto 40px;
   }
-  
+
   .searchBox {
     width: 320px;
   }
@@ -710,44 +718,44 @@ body {
     margin: 0 auto;
     padding: 100px 20px;
   }
-  
+
   .dishGrid {
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
     max-width: 1300px;
     margin: 0 auto 50px;
   }
-  
+
   .dishCard {
     height: 480px;
   }
-  
+
   .title {
     font-size: var(--font-size-heading);
   }
-  
+
   .subtitle {
     font-size: 1.2rem;
   }
-  
+
   .modalContent {
     max-width: 1200px;
     flex-direction: row;
   }
-  
+
   .modalImage {
     width: 45%;
   }
-  
+
   .modalDetails {
     width: 55%;
     padding: 40px;
   }
-  
+
   .modalDishName {
     font-size: var(--font-size-xxl);
   }
-  
+
   .modalDescription {
     font-size: 18px;
   }
@@ -758,49 +766,49 @@ body {
   .container {
     padding: 30px 15px;
   }
-  
+
   .dishCard {
     height: 300px;
   }
-  
+
   .overlay {
     height: 80%;
   }
-  
+
   .dishGrid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
-  
+
   .modalContent {
     flex-direction: row;
     max-height: 90vh;
     overflow: auto;
   }
-  
+
   .modalImage {
     width: 40%;
     height: auto;
     min-height: 100%;
   }
-  
+
   .modalDetails {
     width: 60%;
     max-height: 90vh;
     overflow-y: auto;
   }
-  
+
   .buttonGroup {
     flex-direction: row;
   }
-  
+
   .sectionHeader {
     margin-bottom: 20px;
   }
-  
+
   .underline {
     margin-bottom: 20px;
   }
-  
+
   .categoryFilters {
     margin-bottom: 15px;
   }
@@ -812,11 +820,11 @@ body {
     background-size: cover;
     image-rendering: -webkit-optimize-contrast;
   }
-  
+
   .dishCard {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   }
-  
+
   .modalImage {
     background-size: cover;
     image-rendering: -webkit-optimize-contrast;
@@ -828,31 +836,35 @@ body {
   .dishName {
     font-size: var(--font-size-xl);
   }
-  
+
   .description {
     font-size: 12px;
     -webkit-line-clamp: 2;
   }
-  
-  .price, .time, .extraInfo {
+
+  .price,
+  .time,
+  .extraInfo {
     font-size: 12px;
   }
-  
-  .detailButton, .orderButton {
+
+  .detailButton,
+  .orderButton {
     padding: 7px 12px;
     font-size: 12px;
   }
-  
+
   .categoryButton {
     padding: 6px 12px;
     font-size: 12px;
   }
-  
+
   .modalDishName {
     font-size: var(--font-size-xxl);
   }
-  
-  .modalInfoValue, .modalInfoLabel {
+
+  .modalInfoValue,
+  .modalInfoLabel {
     font-size: 13px;
   }
 }
@@ -861,17 +873,21 @@ body {
 @media print {
   .container {
     padding: 0;
-    background-color: white !important;
+    /* background-color: white !important; */
   }
-  
-  .categoryFilters, .controls, .buttonGroup, .loadMoreButton, .modalOverlay {
+
+  .categoryFilters,
+  .controls,
+  .buttonGroup,
+  .loadMoreButton,
+  .modalOverlay {
     display: none !important;
   }
-  
+
   .dishGrid {
     display: block;
   }
-  
+
   .dishCard {
     break-inside: avoid;
     box-shadow: none;
@@ -880,33 +896,36 @@ body {
     margin-bottom: 15px;
     page-break-inside: avoid;
   }
-  
+
   .imageWrapper {
     position: relative;
     height: 200px;
   }
-  
+
   .overlay {
     position: relative;
     height: auto;
     background: none;
     color: #000;
   }
-  
+
   .dishName {
     color: #000;
     text-shadow: none;
   }
-  
-  .description, .price, .extraInfo {
+
+  .description,
+  .price,
+  .extraInfo {
     color: #333;
   }
-  
+
   .underline {
     display: none;
   }
-  
-  .title, .subtitle {
+
+  .title,
+  .subtitle {
     color: #000;
   }
 }
@@ -916,7 +935,7 @@ body {
   .dishGrid {
     grid-template-columns: 1fr;
   }
-  
+
   .dishCard {
     height: auto;
     min-height: 350px;
@@ -928,39 +947,41 @@ body {
   .container {
     background-color: #121212 !important;
   }
-  
+
   .title {
     color: #f0f0f0;
   }
-  
+
   .subtitle {
     color: #b0b0b0;
   }
-  
+
   .categoryButton {
     background-color: rgba(255, 255, 255, 0.05);
     color: #e0e0e0;
     border-color: rgba(255, 255, 255, 0.1);
   }
-  
+
   .searchInput {
     background-color: rgba(255, 255, 255, 0.05);
     color: #e0e0e0;
     border-color: rgba(255, 255, 255, 0.1);
   }
-  
+
   .modalContent {
     background-color: #1e1e1e;
   }
-  
-  .modalDishName, .modalInfoValue {
+
+  .modalDishName,
+  .modalInfoValue {
     color: #f0f0f0;
   }
-  
-  .modalDescription, .modalInfoLabel {
+
+  .modalDescription,
+  .modalInfoLabel {
     color: #b0b0b0;
   }
-  
+
   .loadMoreButton {
     border-color: var(--gold);
   }
