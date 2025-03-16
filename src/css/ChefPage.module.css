@@ -12,7 +12,7 @@
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
   font-family: 'Cormorant Garamond', serif; /* Default serif font for body text */
-  background-color: #1a1e25; /* Dark background color */
+  background-color: #1a1e25 !important; /* Dark background color with !important */
   position: relative;
   overflow: hidden; /* Ensure the pattern doesn't cause overflow */
   margin-bottom: 20px;
@@ -280,52 +280,6 @@
   color: #e0c188;
 }
 
-/* Secondary Image (Chef at Work) */
-.secondaryImageContainer {
-  width: 100%;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  margin-top: 15px;
-  position: relative;
-  border: 2px solid rgba(224, 193, 136, 0.5);
-  background: linear-gradient(to bottom, #ac8d5b, #8b6f44);
-  transform: translateZ(0);
-  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
-  aspect-ratio: 16/9; /* Widescreen aspect ratio for secondary image */
-  max-height: none; /* Remove max-height constraint */
-}
-
-.secondaryImageContainer:hover {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-  transform: translateY(-5px) translateZ(0);
-}
-
-.secondaryImageContainer::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-  pointer-events: none; /* Don't interfere with hover effects */
-}
-
-.secondaryImage {
-  width: 100%;
-  height: 100%;
-  display: block;
-  border-radius: 6px;
-  transition: transform 0.6s ease;
-  object-fit: cover;
-  object-position: center 30%; /* Position to show more of the chef's work */
-  transform: scale(1.01);
-}
-
-.secondaryImage:hover {
-  transform: scale(1.03); /* Slight scale on hover to avoid overflow issues */
-}
 
 /* Additional K-pattern overlay with rotation */
 .chefContainer::after {
@@ -386,18 +340,6 @@ img {
     max-width: 600px;
     padding: 30px;
     aspect-ratio: 3/4;
-  }
-  
-  .chefTitle {
-    font-size: 2.3rem;
-  }
-  
-  .chefSubtitle {
-    font-size: 1.6rem;
-  }
-  
-  .chefDescription {
-    font-size: 1.2rem;
   }
   
   .menuButton {
@@ -478,7 +420,7 @@ img {
   }
   
   .chefInfoContainer {
-    text-align: center;
+    text-align: left;
     padding: 25px 20px;
     max-height: none;
     aspect-ratio: auto; /* Remove aspect ratio constraint */
@@ -486,6 +428,8 @@ img {
   
   .menuButton {
     margin: 0 auto 25px auto;
+    align-self: flex-start;
+    margin-left: 0;
   }
   
   .secondaryImageContainer {
@@ -493,7 +437,7 @@ img {
   }
   
   .titleWrapper {
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
@@ -502,15 +446,7 @@ img {
   .chefContainer {
     padding: 70px 5% 70px;
     margin-top: 35px;
-  }
-  
-  .chefTitle {
-    font-size: 2rem;
-    letter-spacing: 1.5px;
-  }
-  
-  .chefSubtitle {
-    font-size: 1.5rem;
+    background-color: #1a1e25 !important;
   }
   
   .menuButton {
@@ -531,12 +467,13 @@ img {
   .chefContainer {
     padding: 60px 20px 60px;
     margin-top: 30px;
+    background-color: #1a1e25 !important;
   }
   
   .logoLetter {
-    font-size: 2.5rem;
-    width: 50px;
-    height: 50px;
+    font-size: 3rem;
+    width: 60px;
+    height: 60px;
   }
   
   .chefImageContainer {
@@ -546,27 +483,14 @@ img {
   
   .chefInfoContainer {
     padding: 25px 20px;
-  }
-  
-  .chefTitle {
-    font-size: 1.7rem;
-    letter-spacing: 1px;
-  }
-  
-  .chefSubtitle {
-    font-size: 1.3rem;
-  }
-  
-  .chefDescription {
-    font-size: 1rem;
-    line-height: 1.5;
+    text-align: left;
   }
   
   .menuButton {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    width: 160px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    letter-spacing: 1.5px;
+    width: 200px;
   }
   
   .secondaryImageContainer {
@@ -575,19 +499,20 @@ img {
   }
   
   .secondaryImage {
-    object-position: center 25%; /* Adjust focus point on mobile */
-    transform: scale(1); /* No scale down on mobile */
+    object-position: center 25%;
+    transform: scale(0.95);
   }
   
-  /* K pattern adjustment for small screens */
+  /* K pattern adjustment for small screens - KEEP CONSISTENT WITH DESKTOP */
   .chefContainer::before {
-    background-size: 40px 40px; /* Smaller pattern for mobile */
-    opacity: 0.4; /* Slightly reduced opacity for better readability */
+    background-size: 60px 60px; /* Same size as desktop */
+    opacity: 0.6; /* Same opacity as desktop */
   }
   
   .titleWrapper {
-    flex-direction: column;
-    gap: 5px;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10px;
   }
 }
 
@@ -596,31 +521,24 @@ img {
   .chefContainer {
     padding: 50px 15px 50px;
     margin-top: 25px;
+    background-color: #1a1e25 !important;
+  }
+  
+  /* K pattern adjustment for very small screens - KEEP CONSISTENT WITH DESKTOP */
+  .chefContainer::before {
+    background-size: 60px 60px;
+    opacity: 0.6;
   }
   
   .logoLetter {
-    font-size: 2.2rem;
-    width: 45px;
-    height: 45px;
-  }
-  
-  .chefTitle {
-    font-size: 1.5rem;
-  }
-  
-  .chefSubtitle {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-  }
-  
-  .chefDescription {
-    font-size: 0.95rem;
-    margin-bottom: 30px;
+    font-size: 3rem;
+    width: 60px;
+    height: 60px;
   }
   
   .menuButton {
-    font-size: 0.85rem;
-    width: 140px;
+    font-size: 0.95rem;
+    width: 200px;
   }
   
   .secondaryImage {
