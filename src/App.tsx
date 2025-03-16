@@ -14,11 +14,12 @@ import WhatsOn from "./pages/WhatsOn";
 import Newsletter from "./pages/Newsletter";
 import Ourjourny from "./pages/Ourjourny";
 import Private from "./pages/Private";
+
 import { useLocation } from "react-router";
 import { useEffect } from "react";
 
 function App() {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation(); 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
@@ -40,6 +41,7 @@ function App() {
         <Route path="/ourjourny" element={<Ourjourny />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/private-dining" element={<Private />} />
+      
       </Routes>
       <Footer /> {/* Footer is always visible */}
     </>

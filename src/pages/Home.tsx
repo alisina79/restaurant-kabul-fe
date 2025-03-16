@@ -1,5 +1,5 @@
 import Hero from "../component/Hero";
-import About from "../pages/About";
+import Seasonal from "./Seasonal";
 import FeaturedDishes from "../component/FeaturedDishes";
 import Carousel from "./Carousel";
 import PrivateDining from "../pages/PrivateDining";
@@ -13,7 +13,7 @@ function Home() {
       <Hero />
       <Chef />
       <FeaturedDishes />
-      <About />
+      <Seasonal />
       <PrivateDining />
       {/* <ChefSpecial /> */}
       
