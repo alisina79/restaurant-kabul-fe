@@ -187,7 +187,7 @@ body {
   overflow: hidden;
   border-radius: var(--border-radius);
   background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  /* border: 1px solid var(--glass-border); */
   box-shadow: var(--card-shadow);
   transition: var(--transition);
 }
