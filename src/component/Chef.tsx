@@ -223,7 +223,7 @@ const Chef = () => {
           >
             <motion.button 
               className={`${styles.actionButton} ${styles.bookButton}`}
-              onClick={() => navigate("/reservation")}
+              onClick={() => navigate("/reservations")}
               
               variants={itemVariants}
             >

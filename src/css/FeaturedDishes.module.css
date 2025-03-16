@@ -187,7 +187,7 @@ body {
   overflow: hidden;
   border-radius: var(--border-radius);
   background: var(--glass-bg);
-  /* border: 1px solid var(--glass-border); */
+  /* border: 1px solid var(--light-overlay); */
   box-shadow: var(--card-shadow);
   transition: var(--transition);
 }
@@ -195,7 +195,7 @@ body {
 .dishCard:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 30px rgba(172, 141, 91, 0.25);
-  border-color: var(--gold);
+  /* border-color: var(--gold); */
 }
 
 /* Popular Badge */

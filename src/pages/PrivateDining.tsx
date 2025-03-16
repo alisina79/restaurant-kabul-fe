@@ -85,7 +85,7 @@ export default function PrivateDining() {
               </motion.p>
               <motion.button
                 className={styles.menuButton}
-                onClick={() => navigate("/private-dining-inquiry")}
+                onClick={() => navigate("/private-dining")}
                 variants={itemVariants}
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
