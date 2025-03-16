@@ -96,9 +96,9 @@
 
 /* Base button styling */
 .actionButton {
-  padding: 0.6rem 1.4rem; /* Reduced from 0.8rem 1.75rem */
+  padding: 0.6rem 1.4rem; 
   font-family: "Cormorant Garamond", serif;
-  font-size: 0.75rem; /* Reduced from 0.85rem */
+  font-size: 0.75rem; 
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -122,7 +122,7 @@
 .bookButton:hover {
   background-color: white;
   color: var(--primary-color);
-  transform: translateY(-3px);
+  transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(172, 141, 91, 0.2);
 }
 
@@ -135,14 +135,14 @@
 .menuButton:hover {
   background-color: white;
   color: var(--primary-color);
-  transform: translateY(-3px);
+  transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(172, 141, 91, 0.2);
 }
 
-.actionButton:active {
+/* .actionButton:hover {
   transform: translateY(-1px);
   box-shadow: 0 5px 10px rgba(172, 141, 91, 0.15);
-}
+} */
 
 /* Testimonial section styling */
 .testimonialSection {
@@ -461,82 +461,6 @@
   .imageColumn:hover {
     filter: saturate(1.15) brightness(1.08); /* Enhanced color effect on hover for large screens */
   }
-}
-
-/* Ensure Swiper container has proper height */
-.carouselContainer {
-  position: relative;
-  width: 100%;
-  height: 600px;
-  background-color: var(--text-dark);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-/* Swiper container */
-.swiperContainer {
-  width: 100%;
-  height: 100%;
-}
-
-/* Each slide */
-.slide {
-  position: relative;
-  width: 100%;
-  height: 600px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-size: cover;
-  background-position: center;
-  transition: transform 0.5s var(--animation-timing);
-}
-
-.slide:hover {
-  transform: scale(1.05);
-}
-
-/* Description box */
-.descriptionBox {
-  width: 100%;
-  max-width: 600px;
-  padding: 20px;
-  background-color: rgba(var(--primary-color-rgb), 0.9);
-  color: white;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.5s var(--animation-timing),
-    transform 0.5s var(--animation-timing);
-}
-
-/* Title Styling */
-.title {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Text Styling */
-.text {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 18px;
-  margin-bottom: 15px;
-  line-height: 1.6;
-}
-
-/* Swiper pagination dots */
-.swiper-pagination {
-  position: absolute;
-  bottom: 20px;
-  z-index: 1;
 }
 
 /* Animation optimization styles */

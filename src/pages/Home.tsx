@@ -4,7 +4,7 @@ import FeaturedDishes from "../component/FeaturedDishes";
 import Carousel from "./Carousel";
 import PrivateDining from "../pages/PrivateDining";
 import Chef from "../component/Chef";
-import ChefSpecial from "../pages/ChefSpecial";
+// import ChefSpecial from "../pages/ChefSpecial"; // Commented out ChefSpecial component
 import OurStory from "./OurStory";
 
 function Home() {
@@ -15,7 +15,7 @@ function Home() {
       <FeaturedDishes />
       <About />
       <PrivateDining />
-      <ChefSpecial />
+      {/* <ChefSpecial /> */}
       
       <Carousel />
       <OurStory />

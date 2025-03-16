@@ -224,15 +224,7 @@ const Chef = () => {
             <motion.button 
               className={`${styles.actionButton} ${styles.bookButton}`}
               onClick={() => navigate("/reservation")}
-              whileHover={{ 
-                y: -3, 
-                boxShadow: "0 10px 20px rgba(172, 141, 91, 0.2)" 
-              }}
-              whileTap={{ 
-                y: -1,
-                boxShadow: "0 5px 10px rgba(172, 141, 91, 0.15)"
-              }}
-              transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+              
               variants={itemVariants}
             >
               BOOK A TABLE
@@ -240,15 +232,6 @@ const Chef = () => {
             <motion.button 
               className={`${styles.actionButton} ${styles.menuButton}`}
               onClick={() => navigate("/menu")}
-              whileHover={{ 
-                y: -3, 
-                boxShadow: "0 10px 20px rgba(172, 141, 91, 0.2)"
-              }}
-              whileTap={{ 
-                y: -1,
-                boxShadow: "0 5px 10px rgba(172, 141, 91, 0.15)"
-              }}
-              transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
               variants={itemVariants}
             >
               MENUS
