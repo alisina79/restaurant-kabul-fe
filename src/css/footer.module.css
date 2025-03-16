@@ -71,7 +71,7 @@
 
 .logo {
   /* font-size: 17rem; */
-  font-family: "Didot", "Playfair Display", serif;
+  /* font-family: "Didot", "Playfair Display", serif; */
   font-weight: 600;
   color: #AD8658;
   text-decoration: none;
@@ -129,7 +129,7 @@
   letter-spacing: 1.5px;
   position: relative;
   transition: color 0.3s ease-in-out, transform 0.2s ease;
-  font-family: "Proxima Nova", "Avenir", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* font-family: "Proxima Nova", "Avenir", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif; */
   padding: 3px 2px;
 }
 
@@ -222,7 +222,7 @@
   letter-spacing: 1px;
   position: relative;
   transition: color 0.3s ease-in-out, transform 0.2s ease;
-  font-family: "Proxima Nova", "Avenir", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* font-family: "Proxima Nova", "Avenir", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif; */
   opacity: 0.9;
 }
 
@@ -309,7 +309,7 @@
   border-radius: 6px;
   transition: all 0.3s ease;
   width: 60%;
-  font-family: "Proxima Nova", "Avenir", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* font-family: "Proxima Nova", "Avenir", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif; */
 }
 
 .newsletterForm input:focus {
@@ -332,7 +332,7 @@
   cursor: pointer;
   border-radius: 6px;
   transition: all 0.3s ease;
-  font-family: "Proxima Nova", "Avenir", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif;
+  /* font-family: "Proxima Nova", "Avenir", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif; */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 

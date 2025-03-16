@@ -23,7 +23,7 @@
       <circle cx="150" cy="150" r="1" fill="#8a714a" fill-opacity="0.4"/>
       
       <!-- K character in black -->
-      <text x="100" y="110" font-family="serif" font-size="24" fill="#000000" text-anchor="middle" font-weight="bold">K</text>
+      <text x="100" y="110" font-family="Cormorant Garamond, serif" font-size="24" fill="#000000" text-anchor="middle" font-weight="bold">K</text>
     </pattern>
   </defs>
   <rect width="200" height="200" fill="url(#elegant-bg)"/>

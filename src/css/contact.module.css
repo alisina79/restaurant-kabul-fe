@@ -9,7 +9,7 @@ body {
   padding: 100px 20px 60px;
   margin-top: 80px;
   color: #ffff;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .container {
@@ -40,7 +40,7 @@ body {
 }
 
 .title {
-  font-size: 2.2rem;
+  font-size: var(--font-size-heading);
   font-weight: 700;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -65,7 +65,7 @@ body {
 
 .info p {
   margin: 12px 0;
-  font-size: 1.1rem;
+  font-size: var(--font-size-base);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -95,7 +95,7 @@ body {
   padding: 14px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 1.1rem;
+  font-size: var(--font-size-base);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -122,7 +122,7 @@ textarea {
   background: #ac8d5b;
   color: white;
   padding: 12px;
-  font-size: 1.2rem;
+  font-size: var(--font-size-large);
   font-weight: 700;
   border: none;
   border-radius: 8px;
@@ -146,7 +146,7 @@ textarea {
   padding: 15px;
   border-radius: 8px;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: var(--font-size-large);
   font-weight: bold;
   animation: fadeIn 0.8s ease-in-out;
 }

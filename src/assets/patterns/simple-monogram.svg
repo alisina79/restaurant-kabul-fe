@@ -4,7 +4,7 @@
   <rect width="300" height="300" fill="#1a1e25"/>
   
   <!-- Large white "K" with very subtle opacity -->
-  <text x="150" y="200" font-family="Playfair Display, serif" font-size="240" font-weight="bold" fill="#ffffff" fill-opacity="0.04" text-anchor="middle">K</text>
+  <text x="150" y="200" font-family="Cormorant Garamond, serif" font-size="240" font-weight="bold" fill="#ffffff" fill-opacity="0.04" text-anchor="middle">K</text>
   
   <!-- Minimal golden accent line at the top -->
   <line x1="100" y1="30" x2="200" y2="30" stroke="#c9b486" stroke-width="1" stroke-opacity="0.3"/>

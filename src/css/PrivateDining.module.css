@@ -156,7 +156,7 @@
 .monogram {
   display: block;
   font-size: clamp(2.5rem, 7vw, 4.5rem); /* Reduced font size */
-  font-family: "Playfair Display", serif;
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 700;
   color:#ffffff;
   margin-bottom: clamp(8px, 1.5vw, 15px); /* Reduced margin */
@@ -169,7 +169,7 @@
   font-weight: 700;
   color: #ffffff;
   margin-bottom: clamp(8px, 1.5vw, 15px); /* Reduced margin */
-  font-family: "Futura", "Proxima Nova", sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   text-transform: uppercase;
   letter-spacing: clamp(1px, 0.25vw, 2px); /* Reduced letter spacing */
   transition: transform 0.3s ease-in-out;
@@ -179,7 +179,7 @@
 /* Subheading styling */
 .subheading {
   font-size: clamp(1.1rem, 1.8vw, 1.4rem); /* Reduced font size */
-  font-family: "Georgia", serif;
+  font-family: 'Cormorant Garamond', serif;
   color: white;
   margin-bottom: clamp(12px, 2vw, 20px); /* Reduced margin */
   font-weight: 400;
@@ -190,11 +190,11 @@
 
 /* Paragraph Styling */
 .textBox p {
-  font-size: clamp(0.9rem, 1.3vw, 1rem); /* Reduced font size */
+  font-size: var(--font-size-base);
   line-height: 1.8; /* Slightly reduced */
   color:white;
   margin-bottom: clamp(8px, 1.8vw, 15px); /* Reduced margin */
-  font-family: "Georgia", serif;
+  font-family: 'Cormorant Garamond', serif;
   text-align: center;
 }
 
@@ -202,7 +202,7 @@
 .menuButton {
   background: #fff;
   color: #333;
-  font-size: clamp(1rem, 1.5vw, 1.2rem); /* Responsive font size */
+  font-size: var(--font-size-base);
   font-weight: 600;
   padding: clamp(10px, 1.5vw, 14px) clamp(20px, 3vw, 28px); /* Responsive padding */
   border: none;
@@ -216,7 +216,7 @@
   letter-spacing: clamp(1px, 0.2vw, 2px); /* Responsive letter spacing */
   margin-top: clamp(15px, 2vw, 20px); /* Responsive margin */
   margin-bottom: clamp(15px, 2.5vw, 25px); /* Responsive margin */
-  font-family: "Futura", "Proxima Nova", sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 /* Button Hover Effect */

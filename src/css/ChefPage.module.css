@@ -11,7 +11,7 @@
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
-  font-family: Georgia, 'Times New Roman', serif; /* Default serif font for body text */
+  font-family: 'Cormorant Garamond', serif; /* Default serif font for body text */
   background-color: #1a1e25; /* Dark background color */
   position: relative;
   overflow: hidden; /* Ensure the pattern doesn't cause overflow */
@@ -65,7 +65,7 @@
   align-items: center;
   justify-content: center;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
-  font-family: 'Playfair Display', 'Didot', serif; /* Stylized serif for logo */
+  font-family: 'Cormorant Garamond', serif; /* Stylized serif for logo */
 }
 
 /* Main content two-column layout */
@@ -199,7 +199,7 @@
   margin-top: 0;
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-family: 'Futura', 'Proxima Nova', 'Avenir', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .chefSubtitle {
@@ -208,16 +208,16 @@
   margin-bottom: 12px;
   color: #e0c188;
   letter-spacing: 1px;
-  font-family: Georgia, 'Times New Roman', serif; /* Serif for subheading */
+  font-family: 'Cormorant Garamond', serif; /* Serif for subheading */
   font-style: italic;
 }
 
 .chefDescription {
-  font-size: 0.95rem;
+  /* font-size: 0.95rem; */
   line-height: 1.5;
   margin-bottom: 20px;
   color: #ffff;
-  font-family: Georgia, 'Times New Roman', serif; /* Serif for body text */
+  font-family: 'Cormorant Garamond', serif; /* Serif for body text */
   max-height: 200px;
   overflow-y: auto;
 }
@@ -231,7 +231,7 @@
   color: #1a1e25;
   border: 2px solid #e0c188;
   padding: 12px 24px;
-  font-size: 0.95rem;
+  /* font-size: 0.95rem; */
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
@@ -239,7 +239,7 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(224, 193, 136, 0.4);
   margin-bottom: 20px;
-  font-family: 'Futura', 'Proxima Nova', 'Avenir', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   letter-spacing: 1.5px;
   width: 200px;
   align-self: flex-start;

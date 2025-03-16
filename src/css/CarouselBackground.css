@@ -16,7 +16,7 @@
 .carousel-background-k {
   position: absolute;
   color: rgba(255, 255, 255, 0.08); /* Slightly more visible white (#ffffff) */
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 400px; /* Kept the same size */
   font-weight: 700;
   z-index: 0;

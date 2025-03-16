@@ -11,7 +11,7 @@
   <rect width="200" height="200" fill="url(#softGold)"/>
   
   <!-- Simple single white K in the center -->
-  <text x="100" y="115" font-family="Playfair Display, serif" font-size="100" font-weight="bold" fill="#ffffff" fill-opacity="0.08" text-anchor="middle">K</text>
+  <text x="100" y="115" font-family="Cormorant Garamond, serif" font-size="100" font-weight="bold" fill="#ffffff" fill-opacity="0.08" text-anchor="middle">K</text>
   
   <!-- Subtle dot pattern for texture -->
   <circle cx="30" cy="30" r="1" fill="#ffffff" fill-opacity="0.2"/>

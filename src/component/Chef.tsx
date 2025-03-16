@@ -1,154 +1,333 @@
-import styles from "../css/ChefPage.module.css";
-import chefPortrait from "../chef/chef.jpg"; // Executive chef portrait
-import chefAtWork from "../chef/exter.jpg"; // Chef at work image
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import styles from "../css/ChefSpecial.module.css";
+import { motion, useInView, useAnimation } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { FaUtensils, FaStar } from "react-icons/fa";
+import { FaQuoteLeft } from "react-icons/fa";
+import Rest from "../assets/Rest.jpg"; // Using an appropriate image from the assets folder
+import { useState, useEffect, useRef } from "react";
 
 const Chef = () => {
   const navigate = useNavigate();
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
-  const [hasAnimated, setHasAnimated] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
-
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  
+  // Create refs for scroll animation triggers
+  const textColumnRef = useRef(null);
+  const headingRef = useRef(null);
+  const buttonsRef = useRef(null);
+  const testimonialSectionRef = useRef(null);
+  const imageColumnRef = useRef(null);
+  
+  // Set up inView hooks for each section
+  const textColumnInView = useInView(textColumnRef, { once: true, amount: 0.2 });
+  const headingInView = useInView(headingRef, { once: true, amount: 0.3 });
+  const buttonsInView = useInView(buttonsRef, { once: true, amount: 0.3 });
+  const testimonialInView = useInView(testimonialSectionRef, { once: true, amount: 0.3 });
+  const imageInView = useInView(imageColumnRef, { once: true, amount: 0.2 });
+  
+  // Animation controls
+  const textColumnControls = useAnimation();
+  const headingControls = useAnimation();
+  const buttonsControls = useAnimation();
+  const testimonialControls = useAnimation();
+  const imageControls = useAnimation();
+  
+  // Trigger animations when elements come into view
   useEffect(() => {
-    if (isInView) {
-      setHasAnimated(true);
+    if (textColumnInView) {
+      textColumnControls.start("visible");
     }
-  }, [isInView]);
+  }, [textColumnInView, textColumnControls]);
+  
+  useEffect(() => {
+    if (headingInView) {
+      headingControls.start("visible");
+    }
+  }, [headingInView, headingControls]);
+  
+  useEffect(() => {
+    if (buttonsInView) {
+      buttonsControls.start("visible");
+    }
+  }, [buttonsInView, buttonsControls]);
+  
+  useEffect(() => {
+    if (testimonialInView) {
+      testimonialControls.start("visible");
+    }
+  }, [testimonialInView, testimonialControls]);
+  
+  useEffect(() => {
+    if (imageInView) {
+      imageControls.start("visible");
+    }
+  }, [imageInView, imageControls]);
 
-  // Staggered animation variants for individual elements
-  const itemVariants = {
+  // Testimonial data
+  const testimonials = [
+    {
+      boldText: "Unlike many City restaurants,",
+      regularText: " La Chapelle is a great bet on the weekend.",
+      attribution: "– Great British Chefs"
+    },
+    {
+      boldText: "The epitome of fine dining,",
+      regularText: " with exceptional service and stunning surroundings.",
+      attribution: "– Food & Travel Magazine"
+    },
+    {
+      boldText: "A true culinary masterpiece,",
+      regularText: " where every dish tells a story of tradition and innovation.",
+      attribution: "– Gourmet Today"
+    }
+  ];
+
+  // Set up autoplay for testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => 
+        prev === testimonials.length - 1 ? 0 : prev + 1
+      );
+    }, 5000); // Change testimonial every 5 seconds
+    
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, [testimonials.length]);
+
+  // Animation variants with fade-in-up effect for scrolling
+  const containerVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: (custom: number) => ({
+    visible: { 
       opacity: 1,
       y: 0,
       transition: { 
-        duration: 0.6, 
-        ease: "easeOut",
-        delay: custom * 0.2 
-      },
-    }),
+        duration: 0.8, 
+        staggerChildren: 0.2,
+        ease: [0.25, 1, 0.5, 1] // Matching cubic-bezier(0.25, 1, 0.5, 1)
+      }
+    }
   };
 
-  // Handle image load to prevent layout shifts
-  const handleImageLoad = () => {
-    setImageLoaded(true);
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        duration: 0.6, 
+        ease: [0.25, 1, 0.5, 1] // Matching cubic-bezier(0.25, 1, 0.5, 1)
+      }
+    }
+  };
+
+  const testimonialVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.25, 1, 0.5, 1]
+      }
+    },
+    enter: { opacity: 0, x: 20 },
+    center: { 
+      opacity: 1, 
+      x: 0,
+      transition: { 
+        duration: 0.4, 
+        ease: [0.25, 1, 0.5, 1]
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      x: -20,
+      transition: { 
+        duration: 0.4, 
+        ease: [0.25, 1, 0.5, 1]
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, y: 40, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 1.2,
+        ease: [0.25, 1, 0.5, 1]
+      }
+    }
+  };
+
+  const dotVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.3,
+        ease: [0.25, 1, 0.5, 1],
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const singleDotVariant = {
+    hidden: { opacity: 0, scale: 0.5 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.3,
+        ease: [0.25, 1, 0.5, 1]
+      }
+    }
+  };
+
+  // Function to navigate directly to a specific testimonial
+  const goToTestimonial = (index: number) => {
+    setCurrentTestimonial(index);
   };
 
   return (
-    <div className="chef-page-wrapper" style={{ maxWidth: "100%", overflow: "hidden" }}>
+    <div className={styles.chefSpecialContainer}>
+      {/* The background texture is applied via CSS */}
+      
+      {/* Left Column - Text Content */}
       <motion.div 
-        className={`${styles.chefContainer} ${hasAnimated ? styles.fadeIn : ''}`}
-        ref={ref}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        ref={textColumnRef}
+        className={styles.textColumn}
+        initial="hidden"
+        animate={textColumnControls}
+        variants={containerVariants}
       >
-        {/* Vignette overlay for depth */}
-        <div className={styles.vignetteOverlay}></div>
-        
-        {/* Logo "K" character at the top - animated separately */}
-        <motion.div 
-          className={styles.logoContainer}
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <span className={styles.logoLetter}>K</span>
-        </motion.div>
-
-        {/* Main content two-column layout */}
-        <div className={styles.mainContent}>
-          {/* Left Column: Chef Portrait Image */}
-          <motion.div
-            className={`${styles.chefImageContainer} ${imageLoaded ? styles.imageLoaded : ''}`}
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+        <motion.div className={styles.contentWrapper} variants={containerVariants}>
+          {/* Main Heading */}
+          <motion.h1 
+            ref={headingRef}
+            className={styles.mainHeading} 
+            initial="hidden"
+            animate={headingControls}
+            variants={itemVariants}
           >
-            <img
-              src={chefPortrait}
-              alt="Executive Chef Portrait"
-              className={styles.chefImage}
-              loading="eager" 
-              onLoad={handleImageLoad}
-            />
-          </motion.div>
-
-          {/* Right Column: Chef Info */}
-          <div className={styles.chefInfoContainer}>
-            {/* Content Wrapper for better organization */}
-            <div className={styles.chefContentWrapper}>
-              {/* Main heading with star accent */}
-              <motion.div
-                className={styles.titleWrapper}
-                custom={1}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-                variants={itemVariants}
-              >
-                <FaStar style={{ color: "#e0c188", marginRight: "8px", fontSize: "16px" }} />
-                <h1 className={styles.chefTitle}>MEET OUR EXECUTIVE CHEF</h1>
-                <FaStar style={{ color: "#e0c188", marginLeft: "8px", fontSize: "16px" }} />
-              </motion.div>
-
-              {/* Subheading */}
-              <motion.h2 
-                className={styles.chefSubtitle}
-                custom={2}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-                variants={itemVariants}
-              >
-                Culinary Excellence
-              </motion.h2>
-
-              {/* Description */}
-              <motion.p 
-                className={styles.chefDescription}
-                custom={3}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-                variants={itemVariants}
-              >
-                Get to know the culinary mastermind behind our exceptional dishes. Our Executive Chef brings years of global experience and a passion for innovation to every plate. With a deep commitment to seasonal ingredients and refined techniques, the chef leads our team in delivering an unforgettable dining experience.
-              </motion.p>
-
-              {/* CTA Button with enhanced styling */}
-              <motion.button
-                className={styles.menuButton}
-                onClick={() => navigate("/chef-special")}
-                custom={4}
-                initial="hidden"
-                animate={isInView ? "visible" : "hidden"}
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <FaUtensils className={styles.icon} /> MEET THE CHEF
-              </motion.button>
-            </div>
-            
-            {/* Chef at work image under the button */}
-            <motion.div
-              className={styles.secondaryImageContainer}
-              custom={5}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
+            Large arched windows, high stone ceilings and elegant interiors provide the perfect backdrop to Michelin starred Galvin La Chapelle's traditional yet modern French menu, moments away from Liverpool Street station.
+          </motion.h1>
+          
+          {/* Buttons with enhanced hover animations */}
+          <motion.div 
+            ref={buttonsRef}
+            className={styles.buttonContainer} 
+            initial="hidden"
+            animate={buttonsControls}
+            variants={containerVariants}
+          >
+            <motion.button 
+              className={`${styles.actionButton} ${styles.bookButton}`}
+              onClick={() => navigate("/reservation")}
+              whileHover={{ 
+                y: -3, 
+                boxShadow: "0 10px 20px rgba(172, 141, 91, 0.2)" 
+              }}
+              whileTap={{ 
+                y: -1,
+                boxShadow: "0 5px 10px rgba(172, 141, 91, 0.15)"
+              }}
+              transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
               variants={itemVariants}
             >
-              <img
-                src={chefAtWork}
-                alt="Chef at Work"
-                className={styles.secondaryImage}
-                loading="lazy"
-              />
-            </motion.div>
-          </div>
-        </div>
+              BOOK A TABLE
+            </motion.button>
+            <motion.button 
+              className={`${styles.actionButton} ${styles.menuButton}`}
+              onClick={() => navigate("/menu")}
+              whileHover={{ 
+                y: -3, 
+                boxShadow: "0 10px 20px rgba(172, 141, 91, 0.2)"
+              }}
+              whileTap={{ 
+                y: -1,
+                boxShadow: "0 5px 10px rgba(172, 141, 91, 0.15)"
+              }}
+              transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+              variants={itemVariants}
+            >
+              MENUS
+            </motion.button>
+          </motion.div>
+          
+          {/* Testimonial Carousel Section - Auto-swiping without navigation arrows */}
+          <motion.div 
+            ref={testimonialSectionRef}
+            className={styles.testimonialSection} 
+            initial="hidden"
+            animate={testimonialControls}
+            variants={containerVariants}
+          >
+            <div className={styles.testimonialCarousel}>
+              {/* Current Testimonial */}
+              <motion.div
+                key={currentTestimonial}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                variants={testimonialVariants}
+                className={styles.testimonialContent}
+              >
+                {/* Quote icon moved inside the content, positioned via CSS */}
+                <motion.div variants={itemVariants}>
+                  <FaQuoteLeft className={styles.quoteIcon} />
+                </motion.div>
+                
+                <motion.p className={styles.testimonialText} variants={itemVariants}>
+                  <span className={styles.testimonialBold}>
+                    {testimonials[currentTestimonial].boldText}
+                  </span>
+                  <span className={styles.testimonialRegular}>
+                    {testimonials[currentTestimonial].regularText}
+                  </span>
+                </motion.p>
+                <motion.p className={styles.testimonialAttribution} variants={itemVariants}>
+                  {testimonials[currentTestimonial].attribution}
+                </motion.p>
+              </motion.div>
+              
+              {/* Carousel Indicator Dots Only */}
+              <motion.div 
+                className={styles.carouselIndicatorContainer}
+                variants={dotVariants}
+              >
+                <motion.div className={styles.carouselIndicator} variants={dotVariants}>
+                  {testimonials.map((_, index) => (
+                    <motion.button
+                      key={index}
+                      className={`${styles.dot} ${index === currentTestimonial ? styles.active : ''}`}
+                      onClick={() => goToTestimonial(index)}
+                      aria-label={`Go to testimonial ${index + 1}`}
+                      variants={singleDotVariant}
+                    />
+                  ))}
+                </motion.div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+      
+      {/* Right Column - Image */}
+      <motion.div 
+        ref={imageColumnRef}
+        className={styles.imageColumn} 
+        style={{ backgroundImage: `url(${Rest})` }}
+        initial="hidden"
+        animate={imageControls}
+        variants={imageVariants}
+        whileHover={{ 
+          boxShadow: "0 15px 35px rgba(0, 0, 0, 0.2)",
+          scale: 1.05,
+          transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] }
+        }}
+      >
+        {/* Background image is set in CSS */}
       </motion.div>
     </div>
   );

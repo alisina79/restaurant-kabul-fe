@@ -11,7 +11,7 @@ export const Logo = () => {
     >
       <style>{`
           .logo-text {
-            font-family: 'Cinzel', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 32px;
             fill: none;
             stroke: #ffffff;
@@ -92,7 +92,7 @@ export const KFooterLogoSVG = ({
       x="50"
       y="55"
       style={{
-        fontFamily: "Cinzel, serif",
+        fontFamily: "Cormorant Garamond, serif",
         fontSize: "68px",
         fill: "none",
         stroke: isHovered ? "#ffffff" : color,

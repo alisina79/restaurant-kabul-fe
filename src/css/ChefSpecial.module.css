@@ -1,9 +1,382 @@
+/* ChefSpecial.module.css */
+
+/* Add CSS Variables for easier theming and maintenance */
+:root {
+  --primary-color: #ac8d5b;
+  --primary-color-rgb: 172, 141, 91;
+  --primary-light: #d5bd8e;
+  --primary-dark: #8a7149;
+  --text-dark: #1a1e25;
+  --text-body: #444;
+  --text-light: #666;
+  --bg-light: #fff;
+  --animation-timing: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Main container for the chef special page */
+.chefSpecialContainer {
+  display: flex;
+  flex-direction: row;
+  min-height: 90vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  will-change: transform, opacity; /* Optimize animations */
+  background-image: url("/texture.png");  
+  background-repeat: repeat;
+  background-size: 300px;
+  background-color: rgba(248, 247, 245, 0.9); /* Subtle neutral background with texture */
+  background-blend-mode: overlay; /* Blend the texture with the background color */
+  position: relative;
+}
+
+/* Add a subtle overlay to enhance texture visibility */
+.chefSpecialContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(172, 141, 91, 0.04); /* Very subtle gold tint */
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Update z-index to be above the overlay */
+.textColumn, .imageColumn {
+  z-index: 2; 
+}
+
+/* Left column - Text content */
+.textColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 3rem;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  background-color: rgba(248, 247, 245, 0.75); /* More transparent to let texture show through */
+  color: var(--primary-dark); /* Setting the primary text color for the entire column */
+  margin-top: 1.5rem; /* Added top margin */
+  backdrop-filter: blur(2px); /* Subtle blur effect for the texture */
+}
+
+/* Content wrapper for better organization */
+.contentWrapper {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Main heading styling */
+.mainHeading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.2rem, 2vw, 1.7rem); /* Further decreased font size */
+  line-height: 1.4;
+  font-weight: 500;
+  color: var(--primary-color); /* Changed text color to primary color */
+  margin-bottom: 2.5rem; /* Slightly reduced from 3rem */
+  letter-spacing: 0.02em;
+}
+
+/* Button container */
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem; /* Reduced from 1.5rem */
+  margin-bottom: 2rem; /* Reduced from 4rem to 2rem to decrease gap */
+}
+
+/* Base button styling */
+.actionButton {
+  padding: 0.6rem 1.4rem; /* Reduced from 0.8rem 1.75rem */
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.75rem; /* Reduced from 0.85rem */
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.4s var(--animation-timing);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(172, 141, 91, 0.1);
+  border: 2px solid var(--primary-color);
+}
+
+/* Book button specific styling */
+.bookButton {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.bookButton:hover {
+  background-color: white;
+  color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(172, 141, 91, 0.2);
+}
+
+/* Menu button specific styling */
+.menuButton {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.menuButton:hover {
+  background-color: white;
+  color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(172, 141, 91, 0.2);
+}
+
+.actionButton:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(172, 141, 91, 0.15);
+}
+
+/* Testimonial section styling */
+.testimonialSection {
+  margin-top: 1rem; /* Reduced from 2rem to 1rem to decrease gap */
+  padding: 1rem; /* Reduced from 1.5rem to 1rem */
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Testimonial carousel container */
+.testimonialCarousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Testimonial content */
+.testimonialContent {
+  min-height: 100px; /* Reduced from 120px */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 0.7rem; /* Reduced from 1.5rem */
+  position: relative; /* Add position relative to contain the absolutely positioned quote icon */
+}
+
+/* Quote icon styling */
+.quoteIcon {
+  font-size: 0.9rem; /* Reduced from 1.2rem */
+  color: var(--primary-color);
+  margin-bottom: 0; /* Removed margin-bottom */
+  position: absolute; /* Position absolutely */
+  left: 0; /* Place on the left side instead of right */
+  top: 0; /* Align with the top of the content */
+  opacity: 0.8; /* Slightly transparent */
+}
+
+/* Testimonial text styling */
+.testimonialText {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem); /* Decreased font size */
+  line-height: 1.6;
+  margin-bottom: 0.3rem; /* Reduced from 0.5rem */
+  color: var(--primary-color); /* Changed text color to primary color */
+  padding-left: 1.5rem; /* Add padding on the left instead of right to prevent text from overlapping with the quote icon */
+  padding-right: 0; /* Remove right padding */
+}
+
+/* Bold text in testimonial */
+.testimonialBold {
+  font-weight: 700;
+  color: var(--primary-color); /* Changed text color to primary color */
+}
+
+/* Regular text in testimonial */
+.testimonialRegular {
+  font-weight: 400;
+}
+
+/* Attribution styling */
+.testimonialAttribution {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem; /* Decreased font size */
+  color: var(--primary-color); /* Changed text color to primary color */
+  opacity: 0.85; /* Slightly dimmer for visual hierarchy */
+  margin-top: 0.4rem; /* Reduced from 0.7rem */
+}
+
+/* Carousel indicator container */
+.carouselIndicatorContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.2rem; /* Reduced from 0.5rem */
+}
+
+/* Carousel indicator styling */
+.carouselIndicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem; /* Reduced from 0.5rem */
+  padding: 0.3rem; /* Reduced from 0.5rem */
+}
+
+/* Individual dot in carousel indicator */
+.dot {
+  width: 8px; /* Reduced from 10px */
+  height: 8px; /* Reduced from 10px */
+  border-radius: 50%;
+  background-color: rgba(var(--primary-color-rgb), 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.4s var(--animation-timing);
+}
+
+/* Active dot styling */
+.dot.active {
+  background-color: var(--primary-color);
+  transform: scale(1.2);
+}
+
+/* Right column - Image background */
+.imageColumn {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 1;
+  margin-top: 1.5rem; /* Added top margin */
+  overflow: hidden; /* Ensure the zoomed content stays contained */
+  transition: all 0.8s var(--animation-timing);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+}
+
+/* Add a subtle dark overlay to ensure image looks good over texture */
+.imageColumn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: inherit; /* Use the same background image */
+  transition: transform 0.8s var(--animation-timing);
+  z-index: -1;
+}
+
+/* Keep the hover effect on the pseudo-element */
+.imageColumn:hover::before {
+  transform: scale(1.1);
+}
+
+/* Remove conflicting transform to avoid issues with Framer Motion */
+.imageColumn:hover {
+  /* transform scale is now handled by Framer Motion */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Right column overlay for better text contrast against bg images */
+.imageColumn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,0.2), transparent);
+  z-index: -1;
+  pointer-events: none;
+  transition: background 0.5s var(--animation-timing);
+}
+
+/* Enhance overlay on hover for dramatic effect */
+.imageColumn:hover::after {
+  background: linear-gradient(to right, rgba(0,0,0,0.15), rgba(0,0,0,0.05));
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .chefSpecialContainer {
+    flex-direction: column-reverse;
+  }
+  
+  .textColumn,
+  .imageColumn {
+    width: 100%;
+    margin-top: 1rem; /* Reduced top margin for mobile */
+  }
+  
+  .imageColumn {
+    min-height: 40vh;
+  }
+  
+  .mainHeading {
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem); /* Further decreased for mobile */
+    margin-bottom: 2rem; /* Reduced for mobile */
+  }
+  
+  .buttonContainer {
+    flex-direction: column;
+    width: 100%;
+    max-width: 250px; /* Reduced from 300px */
+    margin: 0 auto 1.5rem; /* Reduced from 3rem to 1.5rem for mobile */
+  }
+  
+  .actionButton {
+    width: 100%;
+    margin-bottom: 0.8rem; /* Reduced from 1rem */
+    padding: 0.5rem 1.2rem; /* Even smaller on mobile */
+  }
+}
+
+@media (max-width: 576px) {
+  .textColumn {
+    padding: 2rem 1.5rem; /* Reduced from 2.5rem */
+  }
+  
+  .mainHeading {
+    font-size: clamp(1rem, 1.5vw, 1.3rem); /* Even smaller for very small screens */
+  }
+  
+  .testimonialText {
+    font-size: clamp(0.85rem, 1.1vw, 1rem);
+  }
+  
+  .testimonialContent {
+    min-height: 150px;
+  }
+  
+  .actionButton {
+    padding: 0.5rem 1.2rem; /* Reduced from 0.7rem 1.5rem */
+    font-size: 0.7rem; /* Reduced from 0.8rem */
+  }
+  
+  .dot {
+    width: 6px; /* Even smaller on mobile */
+    height: 6px; /* Even smaller on mobile */
+  }
+  
+  .quoteIcon {
+    font-size: 0.8rem; /* Even smaller on mobile */
+  }
+}
+
 /* Ensure Swiper container has proper height */
 .carouselContainer {
   position: relative;
   width: 100%;
   height: 600px;
-  background-color: #1a1e25;
+  background-color: var(--text-dark);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +400,7 @@
   text-align: center;
   background-size: cover;
   background-position: center;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s var(--animation-timing);
 }
 
 .slide:hover {
@@ -39,22 +412,18 @@
   width: 100%;
   max-width: 600px;
   padding: 20px;
-  background-color: rgba(
-    172,
-    141,
-    91,
-    0.9
-  ); /* Golden-beige with slight opacity */
+  background-color: rgba(var(--primary-color-rgb), 0.9);
   color: white;
   border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transition: opacity 0.5s var(--animation-timing), transform 0.5s var(--animation-timing);
 }
 
 /* Title Styling */
 .title {
+  font-family: 'Cormorant Garamond', serif;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
@@ -64,8 +433,10 @@
 
 /* Text Styling */
 .text {
+  font-family: 'Cormorant Garamond', serif;
   font-size: 18px;
   margin-bottom: 15px;
+  line-height: 1.6;
 }
 
 /* Swiper pagination dots */
@@ -73,4 +444,25 @@
   position: absolute;
   bottom: 20px;
   z-index: 1;
+}
+
+/* Animation optimization styles */
+/* These styles help with scroll animations */
+.textColumn,
+.imageColumn,
+.mainHeading,
+.buttonContainer,
+.testimonialSection,
+.testimonialContent,
+.carouselIndicatorContainer,
+.dot {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  perspective: 1000px; 
+}
+
+/* Force hardware acceleration for smoother animations */
+.chefSpecialContainer * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

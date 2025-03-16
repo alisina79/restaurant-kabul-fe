@@ -77,7 +77,7 @@
 .textContent h1 {
   font-size: 3rem;
   font-weight: 700;
-  font-family: "Playfair Display", serif;
+  /* font-family: "Playfair Display", serif; */
   color: #ac8d5b; /* Elegant golden-brown for headings */
   margin-bottom: 15px;
 }
