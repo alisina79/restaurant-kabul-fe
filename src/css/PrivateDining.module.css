@@ -14,7 +14,7 @@
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 1.2s ease-out forwards;
-  border-radius: 12px;
+  
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
   width: 100%; /* Full width */
   max-width: 100%; /* No maximum width limitation */
@@ -52,40 +52,67 @@
   position: relative;
   gap: clamp(12px, 1.5vw, 18px); /* Reduced responsive gap */
   min-height: clamp(300px, 45vh, 450px); /* Reduced min-height */
+  border: clamp(2px, 0.5vw, 3px) solid rgba(224, 193, 136, 0.5); /* Responsive border from secondaryImageContainer */
+  background: linear-gradient(to bottom, #ac8d5b, #8b6f44); /* Background gradient like secondaryImageContainer */
+  border-radius: 12px;
+  padding: clamp(10px, 1.5vw, 15px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  transform: translateZ(0); /* Hardware acceleration */
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+}
+
+/* Add hover effect to image section */
+.imageSection:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transform: translateY(-5px) translateZ(0);
 }
 
 /* Modern Image Frame */
 .imageFrame {
   width: 100%;
-  max-width: 500px; /* Reduced from 600px to make it appear less zoomed */
-  height: 100%;
-  border: clamp(4px, 0.8vw, 8px) solid rgba(255, 255, 255, 0.2); /* Reduced responsive border */
-  border-radius: 12px; /* Reduced from 15px */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  max-width: 500px; /* Keeping the original max-width */
+  height: 100%; /* Keeping the height as is */
+  border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  margin-top: clamp(5px, 1vw, 10px);
+  position: relative;
+  border: clamp(2px, 0.5vw, 3px) solid rgba(224, 193, 136, 0.5);
+  background: linear-gradient(to bottom, #ac8d5b, #8b6f44);
+  transform: translateZ(0);
+  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
 }
 
-/* Image Styling */
+.imageFrame:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transform: translateY(-5px) translateZ(0);
+}
+
+/* Add gradient overlay just like the secondary image container */
+.imageFrame::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+  pointer-events: none;
+}
+
+/* Image Styling exactly like secondary image */
 .imageFrame img {
   width: 100%;
-  height: 100%; /* This will make it fill the entire imageFrame */
+  height: 100%; /* Keep this to maintain the image height */
+  display: block;
+  border-radius: 6px;
+  transition: transform 0.6s ease;
   object-fit: cover;
-  transition: transform 0.5s ease-in-out;
-  /* Removed min-height and max-height constraints to allow image to match parent's height */
+  transform: scale(1.01);
 }
 
-/* Hover Effect */
-.imageFrame:hover {
+.imageFrame img:hover {
   transform: scale(1.05);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-}
-
-.imageFrame:hover img {
-  transform: scale(1.08);
 }
 
 /* TEXT SECTION */
@@ -222,7 +249,7 @@
 /* Button Hover Effect */
 .menuButton:hover {
   background: #f8f8f8;
-  transform: scale(1.05);
+  transform: scale(1);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 

@@ -1,6 +1,6 @@
 /* Add CSS Variables for easier theming and maintenance */
 :root {
-  --primary-color: #8a7149;
+  --primary-color: #ac8d5b;
   --animation-timing: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -11,12 +11,12 @@
   overflow: hidden;
   font-family: "Playfair Display", serif;
   font-size: 16px;
-  background-color: #8a7149;
+ 
 }
 
 .container {
   display: flex;
-  background-color: #8a7149;
+  background-color: #ac8d5b;
   max-height: 700px;
   position: relative;
   z-index: 1;
