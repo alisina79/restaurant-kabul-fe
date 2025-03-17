@@ -188,8 +188,8 @@ function Navbar() {
           </div>
           <nav className={styles.navLinks}>
             <Link to="/menu" className={styles.navLink}>MENUS</Link>
-            <Link to="/whats-on" className={styles.navLink}>WHAT'S ON</Link>
-            <Link to="/about" className={styles.navLink}>ABOUT</Link>
+            <Link to="/whatson" className={styles.navLink}>WHAT'S ON</Link>
+            <Link to="/celebrations" className={styles.navLink}>CELEBRATION</Link>
             <Link to="/contact" className={styles.navLink}>CONTACT</Link>
             <Link to="/newsletter" className={styles.navLink}>NEWSLETTER SIGNUP</Link>
           </nav>

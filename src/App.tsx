@@ -14,6 +14,7 @@ import WhatsOn from "./pages/WhatsOn";
 import Newsletter from "./pages/Newsletter";
 import Ourjourny from "./pages/Ourjourny";
 import Private from "./pages/Private";
+import Celebration from "./pages/Celebration";
 
 import { useLocation } from "react-router";
 import { useEffect } from "react";
@@ -41,6 +42,7 @@ function App() {
         <Route path="/ourjourny" element={<Ourjourny />} />
         <Route path="/privacypolicy" element={<PrivacyPolicy />} />
         <Route path="/private-dining" element={<Private />} />
+        <Route path="/celebrations" element={<Celebration />} />
       
       </Routes>
       <Footer /> {/* Footer is always visible */}

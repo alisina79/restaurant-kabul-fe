@@ -1,0 +1,477 @@
+/* Celebration Page Styles */
+
+.celebrationContainer {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background-image: url('/texture.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  padding: 30px;
+  margin-top: 58px;
+  max-width: 1800px;
+}
+
+/* Left column with gold background */
+.textColumn {
+    font-family: 'Cormorant Garamond', serif;
+  flex: 1;
+  background-color: #ac8d5b;
+  color: #000;
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  margin-right: 15px;
+}
+
+/* Right column with food image */
+.imageColumn {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  margin-left: 15px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+/* Logo styling */
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #1a1e25;
+}
+
+/* Main title styling */
+.mainTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+  color: #1a1e25;
+  line-height: 1.2;
+}
+
+/* Decorative underline for main title */
+.mainTitle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  width: 60px;
+  height: 2px;
+  background-color: #fff;
+  transform: translateX(-50%);
+}
+
+/* Subtitle styling */
+.subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  margin: 15px 0 35px;
+  color: #1a1e25;
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+/* Content text */
+.content {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 60px;
+  color: #1a1e25;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content p {
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Button container */
+.buttonContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Two-column button layout */
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+}
+
+/* Full-width button container */
+.fullWidthButtonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+/* Button styling */
+.button {
+  font-family: 'Cormorant Garamond', serif;
+  background-color: #ffffff;
+  color: #1a1e25;
+
+  border: 2px solid #ac8d5b;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  font-weight: bolder;
+  min-width: 200px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(172, 141, 91, 0.1);
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.button:hover {
+  background-color: #1a1e25;
+  color: #ffffff;
+  border-color: #ac8d5b;
+  box-shadow: 0 10px 20px rgba(172, 141, 91, 0.2);
+  transform: translateY(-10px);
+}
+
+.button:hover::before {
+  opacity: 1;
+}
+
+.button:active {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 15px rgba(172, 141, 91, 0.15);
+  transition: all 0.1s ease;
+}
+
+.fullWidthButton {
+  width: 100%;
+  max-width: 500px;
+  background-color: #ffffff;
+  border: 2px solid #ac8d5b;
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+
+.fullWidthButton:hover {
+  background-color: #1a1e25;
+  color: #ffffff;
+}
+
+/* Food image styling */
+.foodImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.5s ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+  filter: brightness(0.95);
+}
+
+.imageColumn:hover .foodImage {
+  filter: brightness(1.05) contrast(1.05);
+}
+
+/* Overlay for the image */
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.05));
+  pointer-events: none;
+  transition: background 0.5s ease;
+}
+
+/* Monogram pattern containers */
+.leftPattern, .rightPattern {
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  background-repeat: repeat-y;
+  background-size: 60px auto;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.leftPattern {
+  left: 0;
+  background-image: url('../assets/patterns/monogram-pattern.svg');
+}
+
+.rightPattern {
+  right: 0;
+  background-image: url('../assets/patterns/monogram-pattern.svg');
+}
+
+/* Responsive styles */
+@media (max-width: 1440px) {
+  .textColumn {
+    padding: 70px 50px;
+  }
+  
+  .mainTitle {
+    font-size: 32px;
+  }
+  
+  .subtitle {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .celebrationContainer {
+    padding: 25px;
+  }
+
+  .textColumn {
+    padding: 60px 45px;
+    margin-right: 12px;
+  }
+
+  .imageColumn {
+    margin-left: 12px;
+  }
+  
+  .mainTitle {
+    font-size: 30px;
+    margin-bottom: 25px;
+  }
+  
+  .subtitle {
+    font-size: 20px;
+    margin: 15px 0 30px;
+  }
+  
+  .content {
+    font-size: 15px;
+  }
+  
+  .content {
+    margin-bottom: 50px;
+  }
+  
+  .buttonContainer {
+    gap: 20px;
+    max-width: 540px;
+  }
+  
+  .buttonRow {
+    gap: 20px;
+  }
+  
+  .fullWidthButtonContainer {
+    margin-top: 20px;
+  }
+  
+  .button {
+    min-width: 190px;
+    padding: 14px 28px;
+  }
+  
+  .fullWidthButton {
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .celebrationContainer {
+    padding: 20px;
+  }
+
+  .textColumn {
+    padding: 50px 35px;
+    margin-right: 10px;
+  }
+
+  .imageColumn {
+    margin-left: 10px;
+  }
+  
+  .mainTitle {
+    font-size: 28px;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+    margin: 15px 0 25px;
+  }
+  
+  .content {
+    font-size: 15px;
+    margin-bottom: 45px;
+  }
+  
+  .buttonContainer {
+    gap: 16px;
+    max-width: 490px;
+  }
+  
+  .buttonRow {
+    gap: 16px;
+  }
+  
+  .fullWidthButtonContainer {
+    margin-top: 16px;
+  }
+  
+  .button {
+    min-width: 180px;
+    padding: 13px 26px;
+  }
+  
+  .fullWidthButton {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .celebrationContainer {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .textColumn, .imageColumn {
+    flex: none;
+    width: 100%;
+    margin: 0 0 15px 0;
+  }
+  
+  .textColumn {
+    padding: 60px 30px;
+  }
+  
+  .imageColumn {
+    height: 450px;
+    margin: 15px 0 0 0;
+  }
+  
+  .buttonContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    max-width: 100%;
+  }
+  
+  .buttonRow {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .fullWidthButtonContainer {
+    width: 100%;
+    margin-top: 16px;
+  }
+  
+  .button, .fullWidthButton {
+    width: 100%;
+    max-width: 380px;
+    padding: 14px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .celebrationContainer {
+    padding: 10px;
+  }
+
+  .textColumn {
+    padding: 40px 25px;
+  }
+  
+  .mainTitle {
+    font-size: 24px;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+  }
+  
+  .content {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+  
+  .buttonContainer {
+    gap: 14px;
+  }
+  
+  .button {
+    padding: 12px 20px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    min-width: unset;
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .fullWidthButton {
+    padding: 12px 20px;
+    margin-top: 14px;
+  }
+  
+  .imageColumn {
+    height: 350px;
+  }
+}
