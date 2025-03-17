@@ -11,6 +11,16 @@ const mainImage = '/dish.jpg';
 const bottomImage = '/new.jpg';
 
 const Seasonal: React.FC = () => {
+  // Track window size for responsive animations
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // Update window width when resized
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   // Testimonials data
   const testimonials = [
     { 
@@ -40,10 +50,14 @@ const Seasonal: React.FC = () => {
   const carouselRef = useRef(null);
   const bottomImageRef = useRef(null);
   
+  // Adjust threshold based on screen size
+  const viewportMargin = windowWidth <= 768 ? "0px 0px -30px 0px" : "0px 0px -50px 0px";
+  const viewportAmount = windowWidth <= 480 ? 0.2 : 0.3;
+  
   // Set up inView hooks for each section with better thresholds
-  const leftColumnInView = useInView(leftColumnRef, { once: true, amount: 0.3, margin: "0px 0px -50px 0px" });
-  const rightContentInView = useInView(rightContentRef, { once: true, amount: 0.3, margin: "0px 0px -50px 0px" });
-  const bottomImageInView = useInView(bottomImageRef, { once: true, amount: 0.3, margin: "0px 0px -50px 0px" });
+  const leftColumnInView = useInView(leftColumnRef, { once: true, amount: viewportAmount, margin: viewportMargin });
+  const rightContentInView = useInView(rightContentRef, { once: true, amount: viewportAmount, margin: viewportMargin });
+  const bottomImageInView = useInView(bottomImageRef, { once: true, amount: viewportAmount, margin: viewportMargin });
   
   // Animation controls - consolidated to fewer controllers
   const leftColumnControls = useAnimation();
@@ -86,70 +100,87 @@ const Seasonal: React.FC = () => {
     setActiveTestimonial(index);
   };
 
+  // Adjust animation distance based on screen size
+  const getAnimationDistance = () => {
+    if (windowWidth <= 480) return 15;
+    if (windowWidth <= 768) return 20;
+    if (windowWidth <= 1200) return 25;
+    return 30;
+  };
+
+  // Adjust animation timing based on screen size
+  const getAnimationDuration = () => {
+    return windowWidth <= 768 ? 0.6 : 0.7;
+  };
+
   // Animation variants with consistent timing and easing
   const containerVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: getAnimationDistance() },
     visible: { 
       opacity: 1,
       y: 0,
       transition: { 
-        duration: 0.7, 
-        staggerChildren: 0.1, // Reduced stagger for smoother sequence
+        duration: getAnimationDuration(), 
+        staggerChildren: windowWidth <= 768 ? 0.08 : 0.1, // Faster stagger on mobile
         ease: [0.25, 1, 0.5, 1],
-        when: "beforeChildren" // Ensures parent animates before children
+        when: "beforeChildren"
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 }, // Reduced y for subtler animation
+    hidden: { opacity: 0, y: getAnimationDistance() * 0.7 },
     visible: { 
       opacity: 1, 
       y: 0,
       transition: { 
-        duration: 0.7, // Consistent timing with container
+        duration: getAnimationDuration(),
         ease: [0.25, 1, 0.5, 1]
       }
     }
   };
 
   const testimonialVariants = {
-    hidden: { opacity: 0, y: 10 }, // Reduced y for subtler animation
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.7, // Consistent timing
+        duration: getAnimationDuration(),
         ease: [0.25, 1, 0.5, 1]
       }
     },
-    enter: { opacity: 0, y: 10 }, // Reduced y for subtler animation
+    enter: { opacity: 0, y: windowWidth <= 480 ? 8 : 10 },
     center: { 
       opacity: 1, 
       y: 0,
       transition: { 
-        duration: 0.5, 
+        duration: windowWidth <= 768 ? 0.4 : 0.5,
         ease: [0.25, 1, 0.5, 1]
       }
     },
     exit: { 
       opacity: 0, 
-      y: -10, // Reduced y for subtler animation
+      y: windowWidth <= 480 ? -8 : -10,
       transition: { 
-        duration: 0.5, 
+        duration: windowWidth <= 768 ? 0.4 : 0.5,
         ease: [0.25, 1, 0.5, 1]
       }
     }
   };
 
   const imageVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.98 }, // Reduced scale and y for subtler animation
+    hidden: { 
+      opacity: 0, 
+      y: getAnimationDistance() * 1.1, 
+      scale: windowWidth <= 768 ? 0.99 : 0.98
+    },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.7, // Consistent timing with other elements
+        duration: getAnimationDuration() * 1.1, // Slightly longer for images
         ease: [0.25, 1, 0.5, 1]
       }
     }
@@ -176,8 +207,8 @@ const Seasonal: React.FC = () => {
               src={mainImage} 
               alt="Seasonal dish presentation" 
               className={styles.topImage}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.5 }}
+              whileHover={{ scale: windowWidth <= 768 ? 1.03 : 1.05 }}
+              transition={{ duration: windowWidth <= 768 ? 0.4 : 0.5 }}
             />
           </motion.div>
         </motion.div>
@@ -263,15 +294,18 @@ const Seasonal: React.FC = () => {
           >
             <motion.div 
               className={styles.bottomImageContainer}
-              whileHover={{ boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)' }}
-              transition={{ duration: 0.3 }}
+              whileHover={{ boxShadow: windowWidth <= 768 
+                ? '0 15px 30px rgba(0, 0, 0, 0.25)'
+                : '0 20px 40px rgba(0, 0, 0, 0.3)' 
+              }}
+              transition={{ duration: windowWidth <= 768 ? 0.3 : 0.4 }}
             >
               <motion.img 
                 src={bottomImage} 
                 alt="Seasonal dish highlight" 
                 className={styles.bottomImage}
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.5 }}
+                whileHover={{ scale: windowWidth <= 768 ? 1.03 : 1.05 }}
+                transition={{ duration: windowWidth <= 768 ? 0.4 : 0.5 }}
               />
             </motion.div>
           </motion.div>
