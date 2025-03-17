@@ -6,11 +6,13 @@ import PrivateDining from "../pages/PrivateDining";
 import Chef from "../component/Chef";
 // import ChefSpecial from "../pages/ChefSpecial"; // Commented out ChefSpecial component
 import OurStory from "./OurStory";
+import HeroSection from "./HeroSection";
 
 function Home() {
   return (
     <div>
-      <Hero />
+      {/* <Hero /> */}
+      <HeroSection />
       <Chef />
       <FeaturedDishes />
       <Seasonal />

@@ -21,6 +21,7 @@
   position: relative;
   z-index: 1;
   overflow: hidden;
+  justify-content: space-around;
 }
 
 .left {
@@ -55,7 +56,7 @@
 .right {
   width: 50%;
   height: 100%;
-  padding: 2.5rem 3rem;
+  /* padding: 2.5rem; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -64,8 +65,9 @@
 }
 
 .content {
-  max-width: 520px;
+  /* max-width: 520px; */
   margin-bottom: 2rem;
+  
 }
 
 .sectionHeader {
@@ -82,7 +84,7 @@
 }
 
 .separator {
-  width: 60px;
+  /* width: 60px; */
   height: 2px;
   background-color: #ffffff;
   margin: 0.8rem 0;
@@ -105,6 +107,7 @@
   font-size: 1rem;
   font-family: "Cormorant Garamond", serif;
   font-weight: 300;
+  text-align: center;
 }
 
 .buttonLink {
@@ -136,19 +139,25 @@
 
 .carousel {
   margin-top: 1.5rem;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ }
 
 .quote {
   font-family: "Cormorant Garamond", serif;
   padding-left: 1rem;
   border-left: 2px solid rgba(255, 255, 255, 0.3);
-  max-width: 85%;
+  /* max-width: 85%; */
   min-height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   will-change: transform, opacity;
   backface-visibility: hidden;
+  align-items: center;
+  /* width: 50%; */
 }
 
 .quoteText {
@@ -208,6 +217,7 @@
   overflow: hidden;
   border-radius: 4px;
   position: relative;
+  object-fit: cover;
 }
 
 .bottomImage {
@@ -231,7 +241,7 @@
   }
   
   .content {
-    max-width: 580px;
+    /* max-width: 580px; */
   }
   
   .sectionLabel {
@@ -281,7 +291,7 @@
   }
   
   .content {
-    max-width: 650px;
+    /* max-width: 650px; */
   }
   
   .sectionLabel {
@@ -312,7 +322,7 @@
   }
   
   .content {
-    max-width: 450px;
+    /* max-width: 450px; */
   }
   
   .sectionLabel {
@@ -375,7 +385,7 @@
   }
   
   .content {
-    max-width: 600px;
+    /* max-width: 600px; */
     margin: 0 auto;
   }
   
@@ -539,8 +549,8 @@
   }
   
   .right {
-    padding-left: max(1.2rem, env(safe-area-inset-left));
-    padding-right: max(1.2rem, env(safe-area-inset-right));
+    /* padding-left: max(1.2rem, env(safe-area-inset-left));
+    padding-right: max(1.2rem, env(safe-area-inset-right)); */
   }
 }
 
@@ -566,6 +576,7 @@
 .quote {
   backface-visibility: hidden;
   transform-style: preserve-3d;
+  text-align: center;
 }
 
 /* Ensure proper positioning for animated elements */
@@ -574,6 +585,7 @@
 .content > p {
   backface-visibility: hidden;
   transform-style: preserve-3d;
+  width: 78%;
 }
 
 /* Dot animation for smooth transitions */

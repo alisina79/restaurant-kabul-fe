@@ -212,7 +212,7 @@ const Chef = () => {
           >
             Large arched windows, high stone ceilings and elegant interiors provide the perfect backdrop to Michelin starred Galvin La Chapelle's traditional yet modern French menu, moments away from Liverpool Street station.
           </motion.h1>
-          
+        
           {/* Buttons with enhanced hover animations */}
           <motion.div 
             ref={buttonsRef}
