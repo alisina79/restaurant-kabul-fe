@@ -1,190 +1,426 @@
-.seasonalContainer {
-  background-color: #8a7149;
-  display: flex;
-  width: 100%;
-  min-height: 100vh;
-  position: relative;
-  color: #000000;
+/* Add CSS Variables for easier theming and maintenance */
+:root {
+  --primary-color: #8a7149;
+  --animation-timing: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.leftColumn {
-  flex: 1;
+.seasonalPageWrapper {
   position: relative;
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Playfair Display", serif;
+  font-size: 16px;
+  background-color: #8a7149;
+}
+
+.container {
+  display: flex;
+  background-color: #8a7149;
+  max-height: 700px;
+  position: relative;
+  z-index: 1;
   overflow: hidden;
 }
 
-.rightColumn {
-  flex: 1;
+.left {
+  width: 47%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  padding: 5rem 4rem;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
 }
 
 .imageContainer {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  position: relative;
+  box-shadow: none;
+  border-radius: 0;
 }
 
-.imageWrapper {
+.topImage {
   width: 100%;
   height: 100%;
-  overflow: hidden;
-}
-
-.image {
-  width: 100%;
-  height: 100%;
+  display: block;
   object-fit: cover;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.5s var(--animation-timing);
 }
 
-.imageWrapper:hover .image {
+.topImage:hover {
   transform: scale(1.05);
 }
 
-.textContent {
-  max-width: 800px;
+.right {
+  width: 50%;
+  height: 100%;
+  padding: 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+  overflow: hidden;
 }
 
-.title {
-  font-size: 3rem;
-  letter-spacing: 3px;
-  font-weight: 700;
-  margin-bottom: 1rem;
+.content {
+  max-width: 520px;
+  margin-bottom: 2rem;
+}
+
+.sectionHeader {
+  margin-bottom: 1.2rem;
+}
+
+.sectionLabel {
+  font-size: 1.3rem;
   text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.separator {
+  width: 60px;
+  height: 2px;
+  background-color: #ffffff;
+  margin: 0.8rem 0;
 }
 
 .subtitle {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  font-weight: 300;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+  color: #ffffff;
+  font-style: italic;
+  line-height: 1;
+  font-family: "Cormorant Garamond", serif;
 }
 
 .description {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 3rem;
-  font-family: 'Times New Roman', Times, serif;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 300;
 }
 
-.menuButton {
+.buttonLink {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.button {
   background-color: #ffffff;
-  color: #000000;
-  padding: 12px 40px;
-  font-size: 1rem;
-  letter-spacing: 2px;
-  font-weight: 600;
+  color: #8a7149;
+  padding: 0.6rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   border: none;
   cursor: pointer;
-  text-transform: uppercase;
-  margin-bottom: 3rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.4s var(--animation-timing);
+  font-family: "Cormorant Garamond", serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.menuButton:hover {
-  background-color: #f0f0f0;
+.button:hover {
+  background-color: #1a1e25;
+  transform: translateY(-5px);
+  color: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.carousel {
+  margin-top: 1.5rem;
 }
 
 .quote {
-  font-style: italic;
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.attribution {
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
-}
-
-.testimonialDots {
+  font-family: "Cormorant Garamond", serif;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+  max-width: 85%;
+  min-height: 80px;
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  justify-content: center;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.quoteText {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 300;
+  font-family: "Cormorant Garamond", serif;
+}
+
+.dots {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 8px;
+  background-color: #1a1e25;
   border-radius: 50%;
-  background-color: #000;
-  opacity: 0.5;
+  transition: all 0.4s var(--animation-timing);
+  cursor: pointer;
+  border: none;
+  padding: 0;
 }
 
-.activeDot {
-  opacity: 1;
+.dot:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: scale(1.1);
+}
+
+.dot.active {
+  background-color: #ffffff;
+  width: 8px;
+  height: 8px;
+  transform: scale(1.2);
+}
+
+.bottomImageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: .9rem;
+  width: 100%;
 }
 
 .bottomImageContainer {
   width: 100%;
-  max-height: 300px;
+  max-width: 100%;
+  height: 250px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  margin-top: 2rem;
+  border-radius: 4px;
+  position: relative;
 }
 
-/* Responsive styles */
-@media (max-width: 1024px) {
-  .rightColumn {
-    padding: 3rem 2rem;
+.bottomImage {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s var(--animation-timing);
+}
+
+.bottomImage:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 1200px) {
+  .right {
+    padding: 2rem 2.5rem;
   }
   
-  .title {
-    font-size: 2.5rem;
+  .content {
+    max-width: 450px;
+  }
+  
+  .sectionLabel {
+    font-size: 1.2rem;
   }
   
   .subtitle {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  
+  .carousel {
+    margin-top: 1.5rem;
+  }
+  
+  .quote {
+    min-height: 80px;
+  }
+  
+  .quoteText {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  .bottomImageContainer {
+    height: 180px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container, .seasonalPageWrapper {
+    height: auto;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  
+  .left, .right {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+  
+  .container {
+    flex-direction: column;
+  }
+  
+  .left {
+    height: 50vh;
+  }
+  
+  .right {
+    padding: 2.5rem 2rem;
+    justify-content: flex-start;
+  }
+  
+  .content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .bottomImageContainer {
+    height: 250px;
+    max-width: 600px;
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 768px) {
-  .seasonalContainer {
-    flex-direction: column;
+  .right {
+    padding: 2rem 1.5rem;
   }
   
-  .leftColumn, .rightColumn {
-    width: 100%;
-    min-height: 50vh;
+  .sectionLabel {
+    font-size: 1.1rem;
   }
   
-  .leftColumn {
-    order: 1;
+  .subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
   }
   
-  .rightColumn {
-    order: 2;
-    padding: 3rem 2rem;
+  .description {
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
   }
   
-  .title {
-    font-size: 2rem;
+  .button {
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
   }
   
   .bottomImageContainer {
-    max-height: 250px;
+    height: 200px;
   }
 }
 
 @media (max-width: 480px) {
-  .rightColumn {
-    padding: 2rem 1.5rem;
+  .seasonalPageWrapper {
+    font-size: 14px;
   }
   
-  .title {
-    font-size: 1.8rem;
-    letter-spacing: 2px;
+  .left {
+    height: 40vh;
   }
   
-  .subtitle {
-    font-size: 1.1rem;
+  .right {
+    padding: 1.5rem 1.2rem;
   }
   
-  .description {
+  .sectionLabel {
     font-size: 1rem;
   }
   
-  .menuButton {
-    padding: 10px 30px;
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
   }
+  
+  .description {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+  
+  .button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.85rem;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .carousel {
+    margin-top: 1rem;
+  }
+  
+  .quote {
+    min-height: 60px;
+  }
+  
+  .bottomImageContainer {
+    height: 180px;
+  }
+}
+
+/* Clean up animation helpers at the bottom of the file */
+/* Be more selective with will-change to prevent performance issues */
+.left, 
+.imageContainer,
+.content,
+.bottomImageWrapper {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  /* Add hardware acceleration for smoother animations */
+  transform: translateZ(0);
+}
+
+/* Remove will-change from elements that don't need it */
+.sectionHeader, 
+.subtitle, 
+.description, 
+.button, 
+.carousel,
+.quote {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Ensure proper positioning for animated elements */
+.content > div, 
+.content > h2, 
+.content > p {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Dot animation for smooth transitions */
+.dot {
+  transition: all 0.4s var(--animation-timing);
+}
+
+.dot.active {
+  transform: scale(1.2);
+}
+
+/* Improved hover effect for testimonial dots */
+.dot:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: scale(1.1);
 }
