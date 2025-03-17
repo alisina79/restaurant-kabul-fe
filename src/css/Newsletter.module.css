@@ -1,115 +1,588 @@
 /* Newsletter Section */
 .newsletterSection {
-  background-color: #1a1e25; /* Dark Background */
+  background-image: url('/images/texture.png');
+  background-size: cover;
+  background-position: center;
   color: #ffffff; /* White Text */
-  padding: 60px 10%;
+  padding: 80px 5%; /* Reduced side padding */
   text-align: center;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  margin: 40px auto;
+  max-width: 1400px;
+  width: 90%; /* Control width for all screens */
+}
+
+.newsletterSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, #ac8d5b 0%, #8d734a 100%);
+}
+
+/* Remove the overlay */
+/* Add an overlay to ensure text readability over the texture */
+.newsletterSection::after {
+  content: none;
+}
+
+/* Inner content container for better spacing control */
+.newsletterContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 /* Header */
 .header {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: bold;
   text-transform: uppercase;
   color: #ac8d5b; /* Gold */
-  margin-top: 60px;
+  margin-top: 20px;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: #8d734a;
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #ac8d5b;
+  margin-top: 25px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  z-index: 1;
+  position: relative;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* Special Offer */
 .offerMessage {
-  font-size: 1.2rem;
-  color: #ac8d5b;
-  margin-top: 15px;
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 30px auto;
   font-weight: bold;
+  padding: 20px;
+  border: 1px dashed #8d734a;
+  border-radius: 8px;
+  background-color: #1a1e25;
+  max-width: 700px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.offerIcon {
+  color: #ac8d5b;
+  font-size: 1.8rem;
+  margin-right: 5px;
+}
+
+.offerMessage b {
+  color: #ac8d5b;
+  font-size: 1.6rem;
 }
 
 /* Form */
 .form {
+ 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 15px;
-  margin-top: 20px;
+  margin: 40px auto 30px;
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
 }
 
 .inputField {
-  padding: 12px;
-  width: 350px;
-  font-size: 1rem;
-  border: 2px solid #ac8d5b;
-  border-radius: 5px;
-  background: transparent;
-  color: #ffffff;
+  padding: 16px 20px;
+  width: 400px;
+  font-size: 1.1rem;
+  border: 2px solid #8d734a;
+  border-radius: 50px;
+  background: #1a1e25;
+  color: #ffffff; /* Fixed text color */
   outline: none;
-  transition: border 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.inputField::placeholder {
+  color: #8d734a;
 }
 
 .inputField:focus {
-  border: 2px solid #c0a570;
+  border: 2px solid #ac8d5b;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(172, 141, 91, 0.3);
 }
 
 /* Subscribe Button */
 .subscribeButton {
-  background: #ac8d5b;
-  color: #1a1e25;
-  padding: 12px 20px;
-  font-size: 1rem;
+  background: linear-gradient(135deg, #ac8d5b 0%, #8d734a 100%);
+  color: #ffffff;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: bold;
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .subscribeButton:hover {
-  background: #c0a570;
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #8d734a 0%, #ac8d5b 100%);
+  box-shadow: 0 6px 20px rgba(172, 141, 91, 0.4);
+  transform: translateY(-2px);
+}
+
+.subscribeButton:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(172, 141, 91, 0.4);
 }
 
 /* Success/Error Message */
-.successMessage {
-  background: #ac8d5b;
-  color: #1a1e25;
-  padding: 12px;
-  border-radius: 5px;
-  font-size: 1rem;
-  margin-top: 20px;
+.successMessage, .errorMessage {
+  background: rgba(26, 30, 37, 0.75);
+  color: #ffffff;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  margin: 25px auto;
+  max-width: 600px;
+  border-left: 4px solid #ac8d5b;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  animation: fadeInSlide 0.5s ease-out;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.errorMessage {
+  border-left-color: #e74c3c;
+}
+
+.messageIcon {
+  margin-right: 15px;
+  font-size: 1.5rem;
+  color: #ac8d5b;
+}
+
+.errorMessage .messageIcon {
+  color: #e74c3c;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Social Media Links */
 .socialIcons {
-  margin-top: 20px;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 
 .socialIcons a {
-  color: #ac8d5b;
-  margin: 0 10px;
-  font-size: 1.2rem;
+  color: #8d734a;
+  font-size: 1.1rem;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 5px;
 }
 
 .socialIcons a:hover {
+  color: #ac8d5b;
+  border-bottom: 2px solid #ac8d5b;
+  transform: translateY(-3px);
+}
+
+.socialIcon {
+  font-size: 1.5rem;
+  margin-right: 8px;
+}
+
+/* Special styling for X icon which tends to be smaller */
+.xIcon {
+  font-size: 1.3rem;
+  position: relative;
+  top: -1px; /* Slight vertical adjustment */
+  font-weight: bold;
+}
+
+.benefits {
+  display: flex;
+  justify-content: space-around;
+  margin: 50px auto 20px;
+  max-width: 900px;
+  flex-wrap: wrap;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.benefitItem {
+  background: #1a1e25;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(172, 141, 91, 0.3);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.benefitItem:hover {
+  transform: translateY(-5px);
+  background: rgba(26, 30, 37, 0.85);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-color: #ac8d5b;
+}
+
+.benefitIcon {
+  font-size: 2.2rem;
+  color: #ac8d5b;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.benefitTitle {
+  color: #ac8d5b;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.benefitText {
   color: #ffffff;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (min-width: 1801px) {
+  .newsletterSection {
+    max-width: 1800px;
+    padding: 100px 5%;
+    width: 85%;
+  }
+  
+  .title {
+    font-size: 3.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
+    max-width: 900px;
+  }
+  
+  .form {
+    max-width: 1000px;
+  }
+  
+  .benefits {
+    max-width: 1200px;
+    gap: 30px;
+  }
+  
+  .benefitItem {
+    width: 300px;
+  }
+  
+  .newsletterContent {
+    max-width: 1600px;
+  }
+}
+
+/* Regular Desktop Screens */
+@media (min-width: 1300px) and (max-width: 1800px) {
+  .newsletterSection {
+    padding: 80px 5%;
+    max-width: 1600px;
+    width: 90%;
+  }
+  
+  .benefits {
+    max-width: 1100px;
+  }
+  
+  .benefitItem {
+    width: 280px;
+  }
+  
+  .newsletterContent {
+    max-width: 1400px;
+  }
+}
+
+/* Smaller Desktop/Laptop Screens */
+@media (min-width: 992px) and (max-width: 1299px) {
+  .newsletterSection {
+    padding: 70px 5%;
+    max-width: 1200px;
+    width: 92%;
+  }
+  
+  .title {
+    font-size: 2.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    max-width: 650px;
+  }
+  
+  .benefits {
+    max-width: 900px;
+  }
+  
+  .benefitItem {
+    width: 260px;
+  }
+  
+  .newsletterContent {
+    max-width: 1000px;
+  }
+}
+
+/* Tablet Screens */
+@media (min-width: 768px) and (max-width: 991px) {
+  .newsletterSection {
+    padding: 60px 5%;
+    width: 94%;
+  }
+  
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .offerMessage {
+    font-size: 1.25rem;
+    padding: 15px;
+    max-width: 600px;
+  }
+  
+  .inputField {
+    width: 320px;
+  }
+  
+  .benefits {
+    gap: 15px;
+  }
+  
+  .benefitItem {
+    width: 220px;
+    padding: 15px;
+  }
+  
+  .benefitIcon {
+    font-size: 2rem;
+  }
+  
+  .benefitTitle {
+    font-size: 1.1rem;
+  }
+  
+  .newsletterContent {
+    max-width: 700px;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 767px) {
+  .newsletterSection {
+    padding: 50px 4%;
+    border-radius: 8px;
+    width: 96%;
+    margin: 20px auto;
+  }
+  
   .title {
     font-size: 2rem;
   }
-
+  
+  .subtitle {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+  
+  .offerMessage {
+    font-size: 1.1rem;
+    padding: 12px;
+    margin: 20px auto;
+  }
+  
+  .offerIcon {
+    font-size: 1.5rem;
+  }
+  
+  .offerMessage b {
+    font-size: 1.3rem;
+  }
+  
+  .form {
+    flex-direction: column;
+    width: 100%;
+    max-width: 350px;
+    gap: 12px;
+  }
+  
   .inputField {
     width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+  
+  .subscribeButton {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+  
+  .benefits {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 30px auto 20px;
+  }
+  
+  .benefitItem {
+    width: 100%;
+    max-width: 320px;
+    padding: 15px;
+  }
+  
+  .socialIcons {
+    margin-top: 30px;
+    gap: 20px;
+  }
+  
+  .socialIcons a {
+    font-size: 1rem;
+  }
+  
+  .socialIcon {
+    font-size: 1.3rem;
+  }
+  
+  .newsletterContent {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
+/* Small Mobile Screens */
+@media (max-width: 480px) {
+  .newsletterSection {
+    padding: 40px 3%;
+    width: 96%;
+    margin: 15px auto;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .offerMessage {
+    font-size: 1rem;
+    padding: 10px;
+  }
+  
+  .offerIcon {
+    font-size: 1.3rem;
+  }
+  
+  .offerMessage b {
+    font-size: 1.2rem;
+  }
+  
+  .form {
+    max-width: 280px;
+  }
+  
+  .benefitIcon {
+    font-size: 1.8rem;
+  }
+  
+  .benefitTitle {
+    font-size: 1.1rem;
+  }
+  
+  .benefitText {
+    font-size: 0.9rem;
+  }
+  
+  .successMessage, .errorMessage {
+    padding: 12px 18px;
+    font-size: 0.95rem;
+    border-left-width: 3px;
+  }
+  
+  .messageIcon {
+    font-size: 1.2rem;
+    margin-right: 10px;
   }
 }
