@@ -282,7 +282,11 @@ const Seasonal: React.FC = () => {
               best.
             </motion.p>
 
-            <motion.div ref={buttonRef} variants={itemVariants}>
+            <motion.div
+              ref={buttonRef}
+              variants={itemVariants}
+              className="flex justify-center"
+            >
               <Link to="/menu" className={styles.buttonLink}>
                 <button className={styles.button}>Menus</button>
               </Link>
