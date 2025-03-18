@@ -1,6 +1,5 @@
-import { useEffect, useState, useRef, MouseEvent, useCallback } from "react";
+import { useEffect, useRef, MouseEvent, useCallback } from "react";
 import { motion, useInView, useAnimation, LazyMotion, domAnimation } from "framer-motion";
-import { Carousel } from "../component/ui";
 import styles from "../css/OurStory.module.css";
 import chef from "../chef/chef.jpg";
 // If you're using Next.js, uncomment the next line and comment out the font imports below
@@ -8,12 +7,6 @@ import chef from "../chef/chef.jpg";
 
 // For standard React, you may need to import fonts in your main CSS or index.html
 // Or you can use React Helmet or similar for head management
-
-const textCarouselItems = [
-  "While each of their establishments has its own unique feel, the theme which pervades them all is that of family. – Gentleman's Journal",
-  "At Kaboul Gourmet, we embrace the harmony of tradition and innovation to create an unforgettable dining experience.",
-  "Our commitment to fresh, sustainable ingredients is what makes every dish special and unique.",
-];
 
 // Optimized variants with GPU-accelerated properties
 const containerVariants = {
@@ -66,14 +59,12 @@ const imageVariants = {
 };
 
 const OurStory = () => {
-  const [, setCarouselIndex] = useState(0);
   const controls = useAnimation();
   const sectionRef = useRef(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const isInView = useInView(sectionRef, { 
     once: true, 
     amount: 0.2,
-    // Remove rootMargin as it's not supported in this version of Framer Motion
   });
   
   // Start animations when section comes into view
@@ -85,15 +76,6 @@ const OurStory = () => {
       }, 400);
     }
   }, [isInView, controls]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCarouselIndex(
-        (prevIndex) => (prevIndex + 1) % textCarouselItems.length
-      );
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
 
   // Advanced parallax tilt effect - memoized for better performance
   const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
@@ -238,10 +220,6 @@ const OurStory = () => {
               >
                 NEWSLETTER SIGNUP
               </motion.a>
-            </motion.div>
-
-            <motion.div className={styles.quoteCarousel} variants={itemVariants}>
-              <Carousel items={textCarouselItems} />
             </motion.div>
           </motion.div>
         </motion.div>

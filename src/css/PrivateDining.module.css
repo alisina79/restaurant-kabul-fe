@@ -3,29 +3,27 @@
   display: flex;
   justify-content: center;
   align-items: stretch;
-  gap: clamp(15px, 3vw, 25px); /* Reduced responsive gap */
-  padding: clamp(30px, 5vw, 60px) clamp(15px, 4vw, 50px); /* Reduced responsive padding */
+  gap: clamp(20px, 4vw, 40px);
+  padding: clamp(40px, 6vw, 80px) clamp(20px, 5vw, 60px);
   height: auto;
-  background: #ac8d5b; /* Solid color as fallback */
-  background-image: url('../assets/patterns/simple-container-bg.svg'); /* New simpler pattern */
-  background-size: clamp(180px, 25vw, 250px); /* Reduced responsive background size */
+  background: #ac8d5b;
+  background-image: url('../assets/patterns/simple-container-bg.svg');
+  background-size: clamp(200px, 30vw, 300px);
   background-repeat: repeat;
   flex-wrap: wrap;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 1.2s ease-out forwards;
-  
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
-  width: 100%; /* Full width */
-  max-width: 100%; /* No maximum width limitation */
-  margin: 0; /* Remove margin */
-  box-sizing: border-box; /* Include padding in width calculation */
-  /* Remove conflicting width properties */
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-/* Spacer for consistent spacing like the Chef page */
+/* Spacer for consistent spacing */
 .spacer {
-  height: 20px; /* Reduced from 60px */
+  height: clamp(30px, 5vw, 60px);
   width: 100%;
 }
 
@@ -44,104 +42,70 @@
 /* IMAGE SECTION */
 .imageSection {
   flex: 1;
-  max-width: 48%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 50%;
+  display: block;
+  object-fit: cover;
   align-items: center;
-  position: relative;
-  gap: clamp(12px, 1.5vw, 18px); /* Reduced responsive gap */
-  min-height: clamp(300px, 45vh, 450px); /* Reduced min-height */
-  border: clamp(2px, 0.5vw, 3px) solid rgba(224, 193, 136, 0.5); /* Responsive border from secondaryImageContainer */
-  background: linear-gradient(to bottom, #ac8d5b, #8b6f44); /* Background gradient like secondaryImageContainer */
   border-radius: 12px;
-  padding: clamp(10px, 1.5vw, 15px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-  transform: translateZ(0); /* Hardware acceleration */
-  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+  margin-top: clamp(10px, 2vw, 20px);
+  position: relative;
+  border: clamp(2px, 0.5vw, 3px) solid rgba(224, 193, 136, 0.5);
+  transform: translateZ(0);
+  transition: transform 0.4s ease-out;
+  overflow: hidden;
 }
 
 /* Add hover effect to image section */
 .imageSection:hover {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
   transform: translateY(-5px) translateZ(0);
 }
 
-/* Modern Image Frame */
+/* Image frame styling */
 .imageFrame {
   width: 100%;
-  max-width: 500px; /* Keeping the original max-width */
-  height: 100%; /* Keeping the height as is */
-  border-radius: 12px;
+  height: 100%;
   overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-  margin-top: clamp(5px, 1vw, 10px);
+  border-radius: 6px;
   position: relative;
-  border: clamp(2px, 0.5vw, 3px) solid rgba(224, 193, 136, 0.5);
-  background: linear-gradient(to bottom, #ac8d5b, #8b6f44);
+  border: 2px solid rgba(224, 193, 136, 0.5);
   transform: translateZ(0);
-  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+  transition: transform 0.4s ease-out;
 }
 
-.imageFrame:hover {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-  transform: translateY(-5px) translateZ(0);
-}
-
-/* Add gradient overlay just like the secondary image container */
-.imageFrame::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-  pointer-events: none;
-}
-
-/* Image Styling exactly like secondary image */
+/* Image styling */
 .imageFrame img {
   width: 100%;
-  height: 100%; /* Keep this to maintain the image height */
+  height: 100%;
   display: block;
   border-radius: 6px;
   transition: transform 0.6s ease;
   object-fit: cover;
-  transform: scale(1.01);
 }
 
-.imageFrame img:hover {
+/* Image hover effect */
+.imageFrame:hover img {
   transform: scale(1.05);
 }
 
 /* TEXT SECTION */
 .textSection {
   flex: 1;
-  /* max-width: 48%; */
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding: clamp(30px, 4vw, 50px); Responsive padding */
-  background: #1a1e25; /* Dark background */
-  background-image: url('../assets/patterns/simple-monogram.svg'); /* Simple monogram */
+  background: #1a1e25;
+  background-image: url('../assets/patterns/simple-monogram.svg');
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
-  border-radius: 10px; /* Reduced from 12px */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Reduced shadow */
-  opacity: 0;
-  transform: translateX(50px);
-  animation: slideIn 1.2s ease-out forwards 0.4s;
-  min-height: clamp(300px, 45vh, 450px); /* Reduced min-height */
+  background-size: 60%;
+  border-radius: 12px;
+  opacity: 1;
+  min-height: clamp(400px, 60vh, 600px);
   position: relative;
   overflow: hidden;
   background-position-y: 4.5rem;
-}
-
-/* Floating Text Effect */
-.textSection:hover {
-  transform: translateX(0) scale(1.02);
+  background-blend-mode: screen;
 }
 
 /* Slide-in Animation */
@@ -157,23 +121,24 @@
 }
 
 /* TEXT CONTENT */
-.textBox {
+.textBox {  
   width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: clamp(250px, 40vh, 400px); /* Reduced min-height */
+  min-height: clamp(350px, 55vh, 550px);
+  padding: clamp(30px, 5vw, 60px);
 }
 
-/* Text content container - simpler styling */
+/* Text content container */
 .textContent {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   flex: 1;
   position: relative;
-  padding: 20px;
+  padding: clamp(20px, 4vw, 40px);
   border: none;
   background-color: transparent;
   z-index: 2;
@@ -182,33 +147,33 @@
 /* Monogram letter styling */
 .monogram {
   display: block;
-  font-size: clamp(2.5rem, 7vw, 4.5rem); /* Reduced font size */
+  font-size: clamp(3rem, 8vw, 5rem);
   font-family: 'Cormorant Garamond', serif;
   font-weight: 700;
-  color:#ffffff;
-  margin-bottom: clamp(8px, 1.5vw, 15px); /* Reduced margin */
+  color: #ffffff;
+  margin-bottom: clamp(12px, 2vw, 20px);
   text-align: center;
 }
 
 /* Title Styling */
 .mainHeading {
-  font-size: clamp(1.3rem, 2.5vw, 2rem); /* Reduced font size */
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: clamp(8px, 1.5vw, 15px); /* Reduced margin */
+  margin-bottom: clamp(12px, 2vw, 20px);
   font-family: 'Cormorant Garamond', serif;
   text-transform: uppercase;
-  letter-spacing: clamp(1px, 0.25vw, 2px); /* Reduced letter spacing */
+  letter-spacing: clamp(1px, 0.25vw, 2px);
   transition: transform 0.3s ease-in-out;
   text-align: center;
 }
 
 /* Subheading styling */
 .subheading {
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem); /* Reduced font size */
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
   font-family: 'Cormorant Garamond', serif;
   color: white;
-  margin-bottom: clamp(12px, 2vw, 20px); /* Reduced margin */
+  margin-bottom: clamp(15px, 3vw, 25px);
   font-weight: 400;
   font-style: italic;
   letter-spacing: 1px;
@@ -216,129 +181,112 @@
 }
 
 /* Paragraph Styling */
-.textBox p {
-  font-size: var(--font-size-base);
-  line-height: 1.8; /* Slightly reduced */
-  color:white;
-  margin-bottom: clamp(8px, 1.8vw, 15px); /* Reduced margin */
+.paragraph {
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
+  line-height: 1.8;
+  color: white;
+  margin-bottom: clamp(12px, 2vw, 20px);
   font-family: 'Cormorant Garamond', serif;
   text-align: center;
 }
 
 /* MENU BUTTON */
 .menuButton {
-  background: #fff;
-  color: #333;
-  font-size: var(--font-size-base);
+  background: #ffffff;
+  color: #1a1e25;
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
   font-weight: 600;
-  padding: clamp(10px, 1.5vw, 14px) clamp(20px, 3vw, 28px); /* Responsive padding */
-  border: none;
+  padding: clamp(0.8rem, 1.5vw, 1rem) clamp(2rem, 3vw, 3rem);
+  border: 2px solid #ffffff;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   text-transform: uppercase;
-  letter-spacing: clamp(1px, 0.2vw, 2px); /* Responsive letter spacing */
-  margin-top: clamp(15px, 2vw, 20px); /* Responsive margin */
-  margin-bottom: clamp(15px, 2.5vw, 25px); /* Responsive margin */
+  letter-spacing: 2px;
+  margin-top: clamp(1.5rem, 2vw, 2rem);
+  margin-bottom: clamp(1.5rem, 2vw, 2rem);
   font-family: 'Cormorant Garamond', serif;
+  z-index: 1;
 }
 
-/* Button Hover Effect */
-.menuButton:hover {
-  background: #f8f8f8;
-  transform: scale(1);
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Secondary Image Container - Similar to Chef page */
-.secondaryImageContainer {
-  width: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-  margin-top: clamp(5px, 1vw, 10px); /* Responsive margin */
-  position: relative;
-  border: clamp(2px, 0.5vw, 3px) solid rgba(224, 193, 136, 0.5); /* Responsive border */
-  background: linear-gradient(to bottom, #ac8d5b, #8b6f44); /* Background gradient if image loading is delayed */
-  transform: translateZ(0); /* Hardware acceleration */
-  transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
-}
-
-.secondaryImageContainer:hover {
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-  transform: translateY(-5px) translateZ(0);
-}
-
-.secondaryImageContainer::after {
-  content: "";
+.menuButton::before {
+  content: '';
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 60px;
-  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-  pointer-events: none; /* Don't interfere with hover effects */
+  height: 100%;
+  background: #1a1e25;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
 }
 
-.secondaryImage {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 6px;
-  transition: transform 0.6s ease;
-  max-height: clamp(180px, 25vh, 250px); /* Responsive max-height */
-  object-fit: cover;
-  transform: scale(1.01); /* Very slight scale to avoid white pixel edges */
+.menuButton:hover {
+  color: #ffffff;
+  border-color: #1a1e25;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.secondaryImage:hover {
-  transform: scale(1.05);
+.menuButton:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.menuButton:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;
-    padding: clamp(30px, 5vw, 50px) clamp(15px, 4vw, 40px);
+    padding: clamp(30px, 5vw, 50px) clamp(20px, 4vw, 40px);
   }
 
   .imageSection,
   .textSection {
-    max-width: 100%;
+    width: 100%;
     margin-bottom: 30px;
   }
   
-  .spacer {
-    height: 15px; /* Further reduced on tablets */
+  .textSection {
+    min-height: clamp(350px, 50vh, 500px);
+  }
+  
+  .textBox {
+    min-height: clamp(300px, 45vh, 450px);
   }
 }
 
 @media (max-width: 768px) {
-  /* Keep styles here minimal since we're using clamp for most properties */
   .textSection {
-    padding: clamp(25px, 4vw, 40px); /* Additional adjustment for medium screens */
+    padding: clamp(20px, 3vw, 30px);
+  }
+
+  .textBox {
+    padding: clamp(20px, 3vw, 30px);
   }
 }
 
 @media (max-width: 480px) {
-  /* Keep styles here minimal since we're using clamp for most properties */
-  .imageFrame {
-    border-width: 6px; /* Specifically for mobile to look better */
+  .container {
+    padding: clamp(20px, 3vw, 30px) clamp(15px, 3vw, 25px);
   }
   
-  .textBox p {
-    font-size: clamp(0.9rem, 1.2vw, 1rem); /* Smaller text */
-    line-height: 1.6;
+  .textSection {
+    min-height: clamp(300px, 40vh, 400px);
   }
   
-  .secondaryImage {
-    max-height: clamp(120px, 18vh, 180px); /* Smaller image */
+  .textBox {
+    min-height: clamp(250px, 35vh, 350px);
   }
   
   .spacer {
-    height: 10px; /* Minimal on mobile */
+    height: clamp(20px, 3vw, 30px);
   }
 }

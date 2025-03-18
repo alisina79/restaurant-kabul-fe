@@ -7,6 +7,7 @@ import {
   useAnimation,
 } from "framer-motion";
 import styles from "../css/Seasonal.module.css";
+import { Carousel } from "../component/ui";
 
 // Import pattern
 import patternBg from "../assets/patterns/elegant-container-bg.svg";
@@ -31,14 +32,20 @@ const Seasonal: React.FC = () => {
     {
       id: 1,
       text: "The food is as beautiful as the setting - seasonal ingredients treated with respect and flair.",
+      author: "Food & Travel Magazine",
+      position: "Featured Review"
     },
     {
       id: 2,
       text: "Our dining experience was exceptional. The seasonal menu truly showcases the best flavors of each season.",
+      author: "Michelin Guide",
+      position: "Restaurant Review"
     },
     {
       id: 3,
       text: "The attention to detail and quality of ingredients make this restaurant a standout culinary destination.",
+      author: "Culinary Expert",
+      position: "Featured Review"
     },
   ];
 
@@ -209,17 +216,17 @@ const Seasonal: React.FC = () => {
   };
 
   return (
-    <div className={styles.seasonalPageWrapper}>
+    <div className="relative w-full min-h-screen overflow-hidden font-playfair">
       {/* Background pattern */}
       <div
         className={styles.patternBackground}
         style={{ backgroundImage: `url(${patternBg})` }}
       ></div>
 
-      <div className={styles.container}>
+      <div className="flex bg-[#ac8d5b] max-h-[700px] relative z-10 overflow-hidden justify-around">
         <motion.div
           ref={leftColumnRef}
-          className={styles.left}
+          className="w-[47%] h-full flex items-center justify-center p-0"
           initial="hidden"
           animate={leftColumnControls}
           variants={containerVariants}
@@ -238,24 +245,17 @@ const Seasonal: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        <div className={styles.right} ref={rightContentRef}>
+        <div className="w-[50%] h-full flex flex-col justify-between text-white overflow-hidden" ref={rightContentRef}>
           <motion.div
-            className={styles.content}
+            className="mb-8 flex flex-col justify-center"
             initial="hidden"
             animate={rightContentControls}
             variants={containerVariants}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
           >
             <motion.div
               ref={sectionHeaderRef}
-              className={styles.sectionHeader}
+              className="mb-5"
               variants={itemVariants}
-              style={{ textAlign: "center" }}
             >
               <h3 className={styles.sectionLabel}>Seasonal Fresh</h3>
               <div className={styles.separator}></div>
@@ -265,7 +265,6 @@ const Seasonal: React.FC = () => {
               ref={subtitleRef}
               className={styles.subtitle}
               variants={itemVariants}
-              style={{ textAlign: "center" }}
             >
               Only the very best ingredients
             </motion.h2>
@@ -274,7 +273,6 @@ const Seasonal: React.FC = () => {
               ref={descriptionRef}
               className={styles.description}
               variants={itemVariants}
-              style={{ textAlign: "center" }}
             >
               Our menus at Restaurant Kabul celebrate only the best in produce
               of the season. With frequently changing menus our Chef continues
@@ -297,61 +295,38 @@ const Seasonal: React.FC = () => {
               className={styles.carousel}
               variants={itemVariants}
             >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  dragConstraints={{ left: 0, right: 0 }}
-                  key={activeTestimonial}
-                  className={styles.quote}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  variants={testimonialVariants}
-                >
-                  <p className={styles.quoteText}>
-                    "{testimonials[activeTestimonial].text}"
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-
-              <div className={styles.dots}>
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`${styles.dot} ${
-                      index === activeTestimonial ? styles.active : ""
-                    }`}
-                    onClick={() => handleDotClick(index)}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            ref={bottomImageRef}
-            className={styles.bottomImageWrapper}
-            initial="hidden"
-            animate={bottomImageControls}
-            variants={imageVariants}
-          >
-            <motion.div
-              className={styles.bottomImageContainer}
-              whileHover={{
-                boxShadow:
-                  windowWidth <= 768
-                    ? "0 15px 30px rgba(0, 0, 0, 0.25)"
-                    : "0 20px 40px rgba(0, 0, 0, 0.3)",
-              }}
-              transition={{ duration: windowWidth <= 768 ? 0.3 : 0.4 }}
-            >
-              <motion.img
-                src={bottomImage}
-                alt="Seasonal dish highlight"
-                className={styles.bottomImage}
-                whileHover={{ scale: windowWidth <= 768 ? 1.03 : 1.05 }}
-                transition={{ duration: windowWidth <= 768 ? 0.4 : 0.5 }}
+              <Carousel 
+                items={testimonials}
+                autoPlayInterval={6000}
+                className={styles.quote}
               />
+            </motion.div>
+
+            <motion.div
+              ref={bottomImageRef}
+              className="w-full flex justify-end items-center mt-4"
+              initial="hidden"
+              animate={bottomImageControls}
+              variants={containerVariants}
+            >
+              <motion.div
+                className={`${styles.bottomImageContainer} w-[80%]`}
+                whileHover={{
+                  boxShadow:
+                    windowWidth <= 768
+                      ? "0 15px 30px rgba(0, 0, 0, 0.25)"
+                      : "0 20px 40px rgba(0, 0, 0, 0.3)",
+                }}
+                transition={{ duration: windowWidth <= 768 ? 0.3 : 0.4 }}
+              >
+                <motion.img
+                  src={bottomImage}
+                  alt="Seasonal dish highlight"
+                  className={styles.bottomImage}
+                  whileHover={{ scale: windowWidth <= 768 ? 1.03 : 1.05 }}
+                  transition={{ duration: windowWidth <= 768 ? 0.4 : 0.5 }}
+                />
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
