@@ -147,7 +147,14 @@ function Navbar() {
               ref={bookButtonRef}
               className={styles.bookButton}
               onClick={toggleBookDropdown}
-              onMouseEnter={toggleBookDropdown}
+              onMouseEnter={(e) => {
+                toggleBookDropdown(e);
+              }}
+              style={{
+                padding: isBookDropdownOpen ? '12px 40px' : '12px',
+                backgroundColor: isBookDropdownOpen ? '#d4bc8d' : undefined,
+                transition: 'background-color 0.3s ease, padding 0.3s ease'
+              }}
              >
               <div className={styles.calendarIconMobile} >
                 <CalendarIcon color="#ac8d5b"  />

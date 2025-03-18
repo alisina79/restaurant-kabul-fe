@@ -17,7 +17,7 @@
 }
 
 .scrolled .topHeader {
-  padding: 10px 40px; /* Reduced padding when scrolled */
+  padding: 0px 40px; /* Reduced padding when scrolled */
 }
 
 /* Top Black Header (Primary Nav) */
@@ -32,11 +32,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 57px; /* Reduced padding */
+  padding: 0px 57px; /* Reduced padding */
   color: white;
   position: relative;
   overflow: visible;
 }
+/* .topHeader.contactArea >div
+{
+  padding: 12px 0px;
+} */
 
 .topHeader::after {
   content: "";
@@ -632,7 +636,7 @@
   }
 
   .topHeader {
-    padding: 15px 40px;
+    padding: 0px 40px;
   }
 }
 
@@ -646,7 +650,7 @@
   }
 
   .topHeader {
-    padding: 15px 30px;
+    padding: 0px 30px;
   }
   
   .desktopLogo {
@@ -687,7 +691,7 @@
   }
 
   .topHeader {
-    padding: 10px 15px; /* Reduced padding */
+    padding: 0px 15px; /* Reduced padding */
     justify-content: space-between;
     background-color: #1a1e25;
   }
