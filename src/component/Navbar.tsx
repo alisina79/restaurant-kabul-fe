@@ -29,10 +29,13 @@ function Navbar() {
   const [activeImage, setActiveImage] = useState(homeImage);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
+  const [isHoveringButton, setIsHoveringButton] = useState(false);
+  const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
   
   // Ref for the book button and dropdown
   const bookButtonRef = useRef<HTMLDivElement>(null);
   const bookDropdownRef = useRef<HTMLDivElement>(null);
+  const closeDropdownTimerRef = useRef<number | null>(null);
 
   // Image mapping for sidebar routes
   const routeImages = {
@@ -82,11 +85,52 @@ function Navbar() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  // Effect to handle the dropdown close with delay
+  useEffect(() => {
+    // If neither the button nor dropdown is being hovered, start the close timer
+    if (!isHoveringButton && !isHoveringDropdown && isBookDropdownOpen) {
+      closeDropdownTimerRef.current = window.setTimeout(() => {
+        setIsBookDropdownOpen(false);
+      }, 300); // 300ms delay before closing
+    } else if ((isHoveringButton || isHoveringDropdown) && closeDropdownTimerRef.current) {
+      // If hovering either element and timer exists, clear it
+      clearTimeout(closeDropdownTimerRef.current);
+      closeDropdownTimerRef.current = null;
+    }
+
+    // Clean up any timers on unmount
+    return () => {
+      if (closeDropdownTimerRef.current) {
+        clearTimeout(closeDropdownTimerRef.current);
+      }
+    };
+  }, [isHoveringButton, isHoveringDropdown, isBookDropdownOpen]);
   
-  // Handle dropdown toggle
+  // Handle dropdown toggle for mobile
   const toggleBookDropdown = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsBookDropdownOpen(!isBookDropdownOpen);
+  };
+
+  // Handle touch events for mobile devices
+  const handleTouchStart = () => {
+    if (isMobile) {
+      // For mobile, we'll toggle on touch rather than using hover
+      return;
+    }
+    // For desktop with touch, treat like hover
+    setIsHoveringButton(true);
+    setIsBookDropdownOpen(true);
+  };
+
+  const handleTouchEnd = () => {
+    if (isMobile) {
+      // For mobile, toggle is handled by click event
+      return;
+    }
+    // For desktop with touch
+    setIsHoveringButton(false);
   };
 
   // SVG for the "K" logo for mobile view
@@ -146,10 +190,24 @@ function Navbar() {
             <div 
               ref={bookButtonRef}
               className={styles.bookButton}
-              onClick={toggleBookDropdown}
-              onMouseEnter={(e) => {
-                toggleBookDropdown(e);
+              onClick={isMobile ? toggleBookDropdown : undefined}
+              onMouseEnter={() => {
+                setIsHoveringButton(true);
+                setIsBookDropdownOpen(true);
               }}
+              onMouseLeave={() => {
+                setIsHoveringButton(false);
+              }}
+              onFocus={() => {
+                setIsBookDropdownOpen(true);
+              }}
+              onBlur={() => {
+                if (!isHoveringDropdown) {
+                  setIsBookDropdownOpen(false);
+                }
+              }}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
               style={{
                 padding: isBookDropdownOpen ? '12px 40px' : '12px',
                 backgroundColor: isBookDropdownOpen ? '#d4bc8d' : undefined,
@@ -165,6 +223,14 @@ function Navbar() {
             <div 
               ref={bookDropdownRef}
               className={`${styles.bookDropdown} ${isBookDropdownOpen ? styles.active : ''}`}
+              onMouseEnter={() => {
+                setIsHoveringDropdown(true);
+              }}
+              onMouseLeave={() => {
+                setIsHoveringDropdown(false);
+              }}
+              onTouchStart={() => isMobile ? null : setIsHoveringDropdown(true)}
+              onTouchEnd={() => isMobile ? null : setIsHoveringDropdown(false)}
             >
               <Link 
                 to="/reservations" 
