@@ -67,6 +67,43 @@ const HERO_CONTENT = [
   },
 ];
 
+// Custom particle styles that don't rely on keyframe animations
+const particleStyle = (index: number) => {
+  const size = Math.floor(Math.random() * 8) + 2;
+  return {
+    width: `${size}px`,
+    height: `${size}px`,
+    top: `${Math.floor(Math.random() * 100)}%`,
+    left: `${Math.floor(Math.random() * 100)}%`,
+    opacity: (Math.random() * 0.5).toFixed(2),
+    transform: 'translateY(0)',
+    transition: `transform ${Math.floor(Math.random() * 10) + 10}s ease-in-out infinite`,
+  };
+};
+
+// Create a CSS animation with inline animation using different approach
+const scrollDotAnimation = {
+  animation: "2s ease-in-out infinite",
+  animationTimingFunction: "ease-in-out",
+  animationName: "scrollBounce",
+  // Use transformOrigin instead of hardcoded transform with translateX
+  transformOrigin: "center",
+  animationKeyframes: [
+    { 
+      transform: "translateY(0)", 
+      offset: 0 
+    },
+    { 
+      transform: "translateY(10px)", 
+      offset: 0.5 
+    },
+    { 
+      transform: "translateY(0)", 
+      offset: 1 
+    }
+  ]
+};
+
 const Hero: React.FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [parallaxElements, setParallaxElements] = useState({ x: 0, y: 0 });
@@ -75,15 +112,23 @@ const Hero: React.FC = () => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(true);
   const [isPaused, setIsPaused] = useState(false);
   const [textVisible, setTextVisible] = useState(true);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const videoRef = React.useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setIsLoaded(true);
 
     const handleMouseMove = (e: MouseEvent) => {
-      const x = (window.innerWidth / 2 - e.clientX) / 50;
-      const y = (window.innerHeight / 2 - e.clientY) / 50;
+      // Enhanced parallax effect with more responsiveness
+      const x = (window.innerWidth / 2 - e.clientX) / 30;
+      const y = (window.innerHeight / 2 - e.clientY) / 30;
       setParallaxElements({ x, y });
+      
+      // Track mouse position for spotlight effect
+      setMousePosition({ 
+        x: e.clientX / window.innerWidth, 
+        y: e.clientY / window.innerHeight 
+      });
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -201,7 +246,7 @@ const Hero: React.FC = () => {
             style={{
               transform: `translate(${parallaxElements.x}px, ${parallaxElements.y}px)`,
               transition:
-                "opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.5s ease-in-out",
+                "opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), transform 2s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
             }}
           >
             {content.type === "image" ? (
@@ -210,7 +255,7 @@ const Hero: React.FC = () => {
                 style={{
                   backgroundImage: `url(${content.src})`,
                   transform: `scale(${currentSlide === index ? 1.05 : 1})`,
-                  transition: "transform 7s ease-out",
+                  transition: "transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
                 }}
                 aria-label={content.alt}
               />
@@ -229,13 +274,13 @@ const Hero: React.FC = () => {
                 {currentSlide === index && (
                   <button
                     onClick={toggleVideoPlayback}
-                    className="absolute bottom-32 right-6 md:bottom-36 md:right-10 bg-black/50 text-white p-3 rounded-full backdrop-blur-sm hover:bg-black/70 transition-all z-50"
+                    className="absolute bottom-32 right-6 md:bottom-36 md:right-10 bg-black/40 text-white p-3 rounded-full backdrop-blur-sm hover:bg-black/70 transition-all z-50 group shadow-lg transform hover:scale-105 active:scale-95 duration-300"
                     aria-label={isVideoPlaying ? "Pause video" : "Play video"}
                   >
                     {isVideoPlaying ? (
-                      <Pause className="w-5 h-5" />
+                      <Pause className="w-5 h-5 group-hover:text-gold" />
                     ) : (
-                      <Play className="w-5 h-5" />
+                      <Play className="w-5 h-5 group-hover:text-gold" />
                     )}
                   </button>
                 )}
@@ -243,7 +288,14 @@ const Hero: React.FC = () => {
             )}
           </div>
         ))}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/40 z-20" />
+        <div 
+          className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/40 z-20"
+          style={{
+            background: `radial-gradient(circle at ${mousePosition.x * 100}% ${mousePosition.y * 100}%, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 40%, rgba(0,0,0,0.8) 80%)`,
+          }}
+        />
+        {/* Subtle vignette overlay */}
+        <div className="absolute inset-0 z-20 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0.4)_80%)]"></div>
       </div>
 
       {/* Enhanced Carousel Controls */}
@@ -251,23 +303,23 @@ const Hero: React.FC = () => {
         <button
           onClick={goToPrevSlide}
           disabled={transitioning}
-          className="bg-black/40 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/60 active:scale-95 transition-all duration-300 flex items-center justify-center transform hover:translate-x-[-5px]"
+          className="bg-black/30 backdrop-blur-sm text-white p-3 rounded-full hover:bg-gold/80 active:scale-95 transition-all duration-300 flex items-center justify-center transform hover:translate-x-[-5px] shadow-[0_0_15px_rgba(0,0,0,0.2)] group"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="w-5 h-5" />
+          <ChevronLeft className="w-5 h-5 group-hover:text-black" />
         </button>
         <button
           onClick={goToNextSlide}
           disabled={transitioning}
-          className="bg-black/40 backdrop-blur-sm text-white p-3 rounded-full hover:bg-black/60 active:scale-95 transition-all duration-300 flex items-center justify-center transform hover:translate-x-[5px]"
+          className="bg-black/30 backdrop-blur-sm text-white p-3 rounded-full hover:bg-gold/80 active:scale-95 transition-all duration-300 flex items-center justify-center transform hover:translate-x-[5px] shadow-[0_0_15px_rgba(0,0,0,0.2)] group"
           aria-label="Next slide"
         >
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-5 h-5 group-hover:text-black" />
         </button>
       </div>
 
       {/* Improved Carousel Indicators */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30 flex space-x-4">
         {HERO_CONTENT.map((content, index) => (
           <button
             key={index}
@@ -276,8 +328,8 @@ const Hero: React.FC = () => {
             className={cn(
               "transition-all duration-500 rounded-full outline-none focus:ring-2 focus:ring-gold/50",
               currentSlide === index
-                ? "bg-gold w-8 h-2"
-                : "bg-white/40 w-2 h-2 hover:bg-white/70"
+                ? "bg-gold w-10 h-2 shadow-[0_0_10px_rgba(172,141,91,0.5)]"
+                : "bg-white/30 w-2 h-2 hover:bg-white/70 hover:w-4"
             )}
             aria-label={`Go to slide ${index + 1}${
               content.type === "video" ? " (video)" : ""
@@ -289,7 +341,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Enhanced Content with improved animations - positioned bottom center */}
-      <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20 max-w-4xl px-4 sm:px-6 lg:px-8">
+      <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20 max-w-4xl px-4 sm:px-6 lg:px-8 w-full">
         <div
           className={cn(
             "text-center transition-opacity duration-500",
@@ -305,7 +357,7 @@ const Hero: React.FC = () => {
                 initialOpacity={0}
                 key={`subtitle-${currentSlide}`}
               >
-                <p className="text-[#ac8d5b] uppercase tracking-[0.4em] mb-4 text-sm sm:text-base font-light">
+                <p className="text-gold uppercase tracking-[0.4em] mb-4 text-sm sm:text-base font-light relative inline-block after:content-[''] after:absolute after:w-full after:h-[1px] after:bg-gold/30 after:bottom-[-5px] after:left-0 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 after:hover:scale-x-100">
                   {HERO_CONTENT[currentSlide].subtitle}
                 </p>
               </FadeIn>
@@ -318,7 +370,7 @@ const Hero: React.FC = () => {
                 springEffect
                 key={`title-${currentSlide}`}
               >
-                <h1 className="text-3xl sm:text-4xl md:text-5xl !text-white font-serif font-light leading-tight tracking-wide mb-4 reveal-text">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl !text-white font-serif font-light leading-tight tracking-wide mb-6 reveal-text" style={{ textShadow: "0 2px 10px rgba(0, 0, 0, 0.5)" }}>
                   {HERO_CONTENT[currentSlide].title
                     .split("\n")
                     .map((line, i) => (
@@ -339,7 +391,7 @@ const Hero: React.FC = () => {
                 initialOpacity={0}
                 key={`desc-${currentSlide}`}
               >
-                <p className="text-white/80 !text-base mb-6 font-light max-w-2xl mx-auto">
+                <p className="text-white/90 !text-base sm:text-lg mb-8 font-light max-w-2xl mx-auto leading-relaxed">
                   {HERO_CONTENT[currentSlide].description}
                 </p>
               </FadeIn>
@@ -354,10 +406,10 @@ const Hero: React.FC = () => {
                 <div className="flex justify-center">
                   <Link
                     to={HERO_CONTENT[currentSlide].button.url}
-                    className="bg-gold hover:bg-gold-dark text-[#ac8d5b] hover:text-white py-3 px-6 rounded-none tracking-wider transition-all duration-300 uppercase text-sm flex items-center justify-center group"
+                    className="bg-transparent text-gold hover:!text-white py-3 px-8 tracking-wider transition-all duration-500 uppercase text-sm flex items-center group no-underline"
                   >
                     {HERO_CONTENT[currentSlide].button.text}
-                    <ArrowRight className="ml-2 w-4 h-4 text-[#ac8d5b] transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRight className="ml-2 w-4 h-4 text-gold group-hover:!text-white transition-transform duration-500 group-hover:translate-x-1" />
                   </Link>
                 </div>
               </FadeIn>
@@ -374,12 +426,39 @@ const Hero: React.FC = () => {
             isLoaded ? "opacity-100" : "opacity-0"
           )}
         >
-          <span className="text-white/70 text-xs tracking-[0.3em] mb-1 uppercase font-light">
+          <span className="text-gold/80 text-xs tracking-[0.3em] mb-2 uppercase font-light">
             Scroll
           </span>
-          <div className="w-px h-10 bg-gradient-to-b from-white/0 via-white/50 to-white/0 animate-pulse"></div>
+          <div className="w-[1px] h-12 relative">
+            <div className="absolute inset-0 bg-gradient-to-b from-gold/0 via-gold/80 to-gold/0"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-gold/0 via-gold to-gold/0 animate-pulse"></div>
+            <div 
+              className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-gold rounded-full animate-bounce"
+            ></div>
+          </div>
         </div>
       </div>
+
+      {/* Add subtle floating particles */}
+      <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+        <div className="particles-container">
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+              className="particle absolute bg-white/10 rounded-full"
+              style={particleStyle(i)}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Add a subtle grain texture */}
+      <div 
+        className="absolute inset-0 z-20 pointer-events-none opacity-[0.03] mix-blend-overlay"
+        style={{
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")"
+        }}
+      ></div>
     </section>
   );
 };
