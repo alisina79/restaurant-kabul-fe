@@ -1,11 +1,15 @@
 import React from 'react';
+import styles from '../css/menu.module.css';
 
-const menus = [
+const firstRowMenus = [
   { label: 'A LA CARTE', url: '/pdfs/a-la-carte.pdf' },
   { label: 'TASTING MENU', url: '/pdfs/tasting-menu.pdf' },
   { label: 'SET MENU', url: '/pdfs/set-menu.pdf' },
   { label: 'SUNDAY LUNCH MENU', url: '/pdfs/sunday-lunch.pdf' },
   { label: 'VEGAN MENU', url: '/pdfs/vegan-menu.pdf' },
+];
+
+const secondRowMenus = [
   { label: 'VEGETARIAN MENU', url: '/pdfs/vegetarian-menu.pdf' },
   { label: 'CELEBRATION MENU', url: '/pdfs/celebration-menu.pdf' },
   { label: 'SAMPLE WINE LIST', url: '/pdfs/sample-wine-list.pdf' },
@@ -14,36 +18,55 @@ const menus = [
 
 const MenuPage: React.FC = () => {
   return (
-    <div className="bg-repeat min-h-screen w-full flex items-center justify-center px-4" style={{color: '#1a1e25', backgroundImage: 'url(/textures/paper.png)'}}>
-      <main className="text-center font-sans py-20 w-full max-w-6xl" style={{color: '#1a1e25'}}>
+    <div className={styles.container}>
+      <main className={styles.main}>
         {/* Title */}
-        <h1 className="text-3xl md:text-4xl font-extrabold font-serif mb-4" style={{color: '#1a1e25 !important'}}>
+        <h1 className={styles.title}>
           SAMPLE MENUS AT KABOUL GOURMET
         </h1>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl mb-12" style={{color: '#1a1e25 !important'}}>
-          Spitalfields, The City of Paris
+        <p className={styles.subtitle}>
+          Spitalfields, The City of London
         </p>
 
         {/* Menu Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-5 mb-16" style={{color: '#1a1e25 !important'}}>
-          {menus.map((menu) => (
-            <a
-              key={menu.label}
-              href={menu.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[16px] md:text-[17px] font-medium tracking-wide"
-              style={{color: '#1a1e25 !important'}}
-            >
-              {menu.label}
-            </a>
-          ))}
+        <div className={styles.menuContainer}>
+          {/* First Row */}
+          <div className={`${styles.menuRow} ${styles.firstRow}`}>
+            {firstRowMenus.map((menu) => (
+              <a
+                key={menu.label}
+                href={menu.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.menuLink}
+                aria-label={`View ${menu.label} menu`}
+              >
+                {menu.label}
+              </a>
+            ))}
+          </div>
+
+          {/* Second Row */}
+          <div className={`${styles.menuRow} ${styles.secondRow}`}>
+            {secondRowMenus.map((menu) => (
+              <a
+                key={menu.label}
+                href={menu.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.menuLink}
+                aria-label={`View ${menu.label} menu`}
+              >
+                {menu.label}
+              </a>
+            ))}
+x          </div>
         </div>
 
-        {/* Bottom Divider */}
-        <div className="h-[1px] w-[85%] bg-[#b49c6e] mx-auto" />
+        {/* Divider */}
+        <div className={styles.divider} />
       </main>
     </div>
   );
