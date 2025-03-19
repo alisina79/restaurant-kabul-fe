@@ -210,12 +210,14 @@ function Navbar() {
               onTouchEnd={handleTouchEnd}
               style={{
                 padding: isBookDropdownOpen ? '12px 40px' : '12px',
-                backgroundColor: isBookDropdownOpen ? '#d4bc8d' : undefined,
-                transition: 'background-color 0.3s ease, padding 0.3s ease'
+                backgroundColor: isHoveringButton ? '#ac8d5b' : isBookDropdownOpen ? '#d4bc8d' : undefined,
+                color: isHoveringButton ? '#ffffff' : '#ac8d5b',
+                transition: 'all 0.2s ease',
+                transform: isHoveringButton ? 'translateY(-2px)' : 'none'
               }}
              >
               <div className={styles.calendarIconMobile} >
-                <CalendarIcon color="#ac8d5b"  />
+                <CalendarIcon color={isHoveringButton ? "#ffffff" : "#ac8d5b"} />
               </div>
               {/* <img src={calendarIcon} alt="Calendar Icon" className={styles.calendarIconMobile} style={{ width: '16px', height: '16px', color: 'white' }} /> */}
               BOOK NOW

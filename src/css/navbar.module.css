@@ -119,15 +119,15 @@
 .logo {
   /* font-family: "Playfair Display", serif; */
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
+  font-weight: 800;
   font-style: normal;
-  font-size: 28px; /* Reduced font size */
-  letter-spacing: 5px; /* Reduced letter spacing */
+  font-size: 32px; /* Reduced font size */
+  letter-spacing: 30px; /* Reduced letter spacing */
   color: white;
   position: relative;
   display: inline-block;
   padding-bottom: 4px; /* Reduced padding */
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s ease;
   transform-style: preserve-3d;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
 }
@@ -141,7 +141,6 @@
   height: 1px;
   background: linear-gradient(90deg, transparent, #ac8d5b, transparent);
   transition: all 0.4s ease;
-  
 }
 
 .logo:hover {
@@ -151,7 +150,7 @@
 }
 
 .logo:hover::after {
-  background: #ac8d5b;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
   height: 2px;
   transform: scaleX(1.2);
 }
@@ -185,10 +184,8 @@
 }
 
 .bookButton {
-
   color: #ac8d5b;
   border: none;
-
   cursor: pointer;
   font-size: 1rem; /* Smaller font */
   font-weight: 600;
@@ -197,12 +194,11 @@
   gap: 6px; /* Reduced gap */
   position: relative;
   overflow: hidden;
-  transition: all 0.4s ease;
-
+  transition: all 0.2s ease;
   z-index: 1;
   .calendarIconMobile {
     width: 25px;
-  
+    transition: all 0.2s ease;
   }
 }
 
@@ -213,23 +209,15 @@
   left: -100%;
   width: 100%;
   height: 100%;
-
-  transition: all 0.4s ease;
+  transition: all 0.2s ease;
   z-index: -1;
 }
 
-.bookButton:hover {
-  /* background: #c0a06a; Slightly lighter gold on hover */
-  /* box-shadow: 0 10px 20px rgba(172, 141, 91, 0.3); */
-  transform: translateY(-2px); 
-}
-
+/* Remove conflicting hover styles since they're handled in the TSX file now */
 .bookButton:hover::before {
   left: 100%;
 }
-.bookButton:after{
-  color: #ffffff;
-}
+
 .bookDropdown {
   position: absolute;
   top: calc(100% + 10px);

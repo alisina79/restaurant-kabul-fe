@@ -2,27 +2,38 @@ import { useState } from "react";
 import styles from "yet-another-react-lightbox/styles.css";
 
 export const Logo = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="330"
       height="28"
       viewBox="45 28 330 28"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <style>{`
           .logo-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 32px;
             fill: none;
-            stroke: #ffffff;
-            stroke-width: 0.5;
             letter-spacing: 2px;
             line-height: 1;
             text-anchor: middle;
             dominant-baseline: middle;
+            transition: stroke 0.4s ease;
           }
         `}</style>
-      <text x="210" y="45" className="logo-text">
+      <text 
+        x="210" 
+        y="45" 
+        className="logo-text"
+        style={{
+          stroke: isHovered ? "#ac8d5b" : "#ffffff",
+          strokeWidth: 0.5
+        }}
+      >
         KABOUL GOURMET
       </text>
     </svg>
