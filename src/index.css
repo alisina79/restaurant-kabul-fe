@@ -27,7 +27,7 @@
   --font-size-heading: clamp(2rem, 5vw, 3rem); /* Responsive heading size */
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: #1a1e25;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -59,6 +59,7 @@ body {
   min-height: 100%;
   overflow-x: hidden;
   font-size: var(--font-size-base);
+  color: #1a1e25;
   .main-content {
     padding-bottom: 30px; /* Reduced padding */
   }
@@ -74,7 +75,7 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: #1a1e25;
     /* background-color: #ffffff; */
   }
   a:hover {
@@ -172,13 +173,16 @@ button:focus-visible {
     font-feature-settings: "rlig" 1, "calt" 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: #1a1e25;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
+    color: #1a1e25;
   }
 
   p, span, li, a, button {
     @apply font-sans;
+    color: #1a1e25;
   }
 }
