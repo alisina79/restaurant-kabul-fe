@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
- import FadeIn from "../components/animations/FadeIn";
+import FadeIn from "../components/animations/FadeIn";
 import { Testimonial } from "../components/Testimonial";
 import { KPatternBackground } from "../components/PatternBackground";
 

@@ -1,28 +1,21 @@
-/** @type {import('tailwindcss').Config} */
+ import type { Config } from "tailwindcss";
+ import animate from "tailwindcss-animate";
+
 export default {
-  darkMode: ["class"],
+  darkMode: "class",
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
+  prefix: "",
   theme: {
     container: {
       center: true,
-      padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '6rem',
-        '2xl': '8rem',
-      },
+      padding: "2rem",
       screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1440px',
+        "2xl": "1400px",
       },
     },
     extend: {
@@ -85,20 +78,7 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
-      spacing: {
-        'section': '6rem', // Vertical spacing between sections
-        'content': '2rem', // Vertical spacing between content blocks
-        'element': '1rem', // Spacing between elements
-        'container-padding': {
-          DEFAULT: '1rem',
-          sm: '2rem',
-          lg: '4rem',
-          xl: '6rem',
-          '2xl': '8rem',
-        },
-      },
     },
   },
-
-  plugins: [require("tailwindcss-animate")],
-} 
+  plugins: [animate],
+} satisfies Config;

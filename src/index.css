@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap");
 @import "tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Jacques+Francois+Shadow&display=swap");
 /* Apply box-sizing to all elements for consistent sizing */
 *,
 *::before,

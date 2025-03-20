@@ -1,338 +1,128 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import {
-  motion,
-  AnimatePresence,
-  useInView,
-  useAnimation,
-} from "framer-motion";
-import styles from "../css/Seasonal.module.css";
-import { Carousel } from "../component/ui";
+import React from "react";
+import FadeIn from "../components/animations/FadeIn";
+import { KPatternBackground } from "../components/PatternBackground";
+import { useNavigate } from "react-router-dom";
+import { Testimonial } from "../components/Testimonial";
+import Logo from "../components/logo";
 
-// Import pattern
-import patternBg from "../assets/patterns/elegant-container-bg.svg";
+const About: React.FC = () => {
+  const navigate = useNavigate();
 
-// Import images from public folder
-const mainImage = "/dish.jpg";
-const bottomImage = "/new.jpg";
-
-const Seasonal: React.FC = () => {
-  // Track window size for responsive animations
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  // Update window width when resized
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Testimonials data
   const testimonials = [
     {
-      id: 1,
-      text: "The food is as beautiful as the setting - seasonal ingredients treated with respect and flair.",
-      author: "Food & Travel Magazine",
-      position: "Featured Review"
+      boldText: "The best of 2020's",
+      regularText: " eating out (and in).",
+      attribution: "– The Hot Dinners Awards",
     },
     {
-      id: 2,
-      text: "Our dining experience was exceptional. The seasonal menu truly showcases the best flavors of each season.",
-      author: "Michelin Guide",
-      position: "Restaurant Review"
+      boldText: "Unlike many City restaurants,",
+      regularText: " La Chapelle is a great bet on the weekend.",
+      attribution: "– Great British Chefs",
     },
     {
-      id: 3,
-      text: "The attention to detail and quality of ingredients make this restaurant a standout culinary destination.",
-      author: "Culinary Expert",
-      position: "Featured Review"
+      boldText: "The epitome of fine dining,",
+      regularText: " with exceptional service and stunning surroundings.",
+      attribution: "– Food & Travel Magazine",
     },
   ];
 
-  // State for active testimonial
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-
-  // Create refs for scroll animation triggers
-  const leftColumnRef = useRef(null);
-  const rightContentRef = useRef(null);
-  const sectionHeaderRef = useRef(null);
-  const subtitleRef = useRef(null);
-  const descriptionRef = useRef(null);
-  const buttonRef = useRef(null);
-  const carouselRef = useRef(null);
-  const bottomImageRef = useRef(null);
-
-  // Adjust threshold based on screen size
-  const viewportMargin =
-    windowWidth <= 768 ? "0px 0px -30px 0px" : "0px 0px -50px 0px";
-  const viewportAmount = windowWidth <= 480 ? 0.2 : 0.3;
-
-  // Set up inView hooks for each section with better thresholds
-  const leftColumnInView = useInView(leftColumnRef, {
-    once: true,
-    amount: viewportAmount,
-    margin: viewportMargin,
-  });
-  const rightContentInView = useInView(rightContentRef, {
-    once: true,
-    amount: viewportAmount,
-    margin: viewportMargin,
-  });
-  const bottomImageInView = useInView(bottomImageRef, {
-    once: true,
-    amount: viewportAmount,
-    margin: viewportMargin,
-  });
-
-  // Animation controls - consolidated to fewer controllers
-  const leftColumnControls = useAnimation();
-  const rightContentControls = useAnimation();
-  const bottomImageControls = useAnimation();
-
-  // Consolidated animation triggers for better performance and synchronization
-  useEffect(() => {
-    // Handle left column animations
-    if (leftColumnInView) {
-      leftColumnControls.start("visible");
-    }
-
-    // Handle right content animations
-    if (rightContentInView) {
-      rightContentControls.start("visible");
-    }
-
-    // Handle bottom image animations
-    if (bottomImageInView) {
-      bottomImageControls.start("visible");
-    }
-  }, [
-    leftColumnInView,
-    leftColumnControls,
-    rightContentInView,
-    rightContentControls,
-    bottomImageInView,
-    bottomImageControls,
-  ]);
-
-  // Auto-advance carousel every 6 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTestimonial((current) => (current + 1) % testimonials.length);
-    }, 6000);
-
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
-
-  // Handle dot click
-  const handleDotClick = (index: number) => {
-    setActiveTestimonial(index);
-  };
-
-  // Adjust animation distance based on screen size
-  const getAnimationDistance = () => {
-    if (windowWidth <= 480) return 15;
-    if (windowWidth <= 768) return 20;
-    if (windowWidth <= 1200) return 25;
-    return 30;
-  };
-
-  // Adjust animation timing based on screen size
-  const getAnimationDuration = () => {
-    return windowWidth <= 768 ? 0.6 : 0.7;
-  };
-
-  // Animation variants with consistent timing and easing
-  const containerVariants = {
-    hidden: { opacity: 0, y: getAnimationDistance() },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: getAnimationDuration(),
-        staggerChildren: windowWidth <= 768 ? 0.08 : 0.1, // Faster stagger on mobile
-        ease: [0.25, 1, 0.5, 1],
-        when: "beforeChildren",
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: getAnimationDistance() * 0.7 },
-
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: getAnimationDuration(),
-        ease: [0.25, 1, 0.5, 1],
-      },
-    },
-  };
-
-  const testimonialVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: getAnimationDuration(),
-        ease: [0.25, 1, 0.5, 1],
-      },
-    },
-    enter: { opacity: 0, y: windowWidth <= 480 ? 8 : 10 },
-    center: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: windowWidth <= 768 ? 0.4 : 0.5,
-        ease: [0.25, 1, 0.5, 1],
-      },
-    },
-    exit: {
-      opacity: 0,
-      y: windowWidth <= 480 ? -8 : -10,
-      transition: {
-        duration: windowWidth <= 768 ? 0.4 : 0.5,
-        ease: [0.25, 1, 0.5, 1],
-      },
-    },
-  };
-
-  const imageVariants = {
-    hidden: {
-      opacity: 0,
-      y: getAnimationDistance() * 1.1,
-      scale: windowWidth <= 768 ? 0.99 : 0.98,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: getAnimationDuration() * 1.1, // Slightly longer for images
-        ease: [0.25, 1, 0.5, 1],
-      },
-    },
-  };
-
   return (
-    <div className="relative w-full min-h-screen overflow-hidden font-playfair">
-      {/* Background pattern */}
-      <div
-        className={styles.patternBackground}
-        style={{ backgroundImage: `url(${patternBg})` }}
-      ></div>
-
-      <div className="flex bg-[#ac8d5b] max-h-[700px] relative z-10 overflow-hidden justify-around">
-        <motion.div
-          ref={leftColumnRef}
-          className="w-[47%] h-full flex items-center justify-center p-0"
-          initial="hidden"
-          animate={leftColumnControls}
-          variants={containerVariants}
-        >
-          <motion.div
-            className={styles.imageContainer}
-            variants={imageVariants}
-          >
-            <motion.img
-              src={mainImage}
-              alt="Seasonal dish presentation"
-              className={styles.topImage}
-              whileHover={{ scale: windowWidth <= 768 ? 1.03 : 1.05 }}
-              transition={{ duration: windowWidth <= 768 ? 0.4 : 0.5 }}
-            />
-          </motion.div>
-        </motion.div>
-
-        <div className="w-[50%] h-full flex flex-col justify-between text-white overflow-hidden" ref={rightContentRef}>
-          <motion.div
-            className="mb-8 flex flex-col justify-center"
-            initial="hidden"
-            animate={rightContentControls}
-            variants={containerVariants}
-          >
-            <motion.div
-              ref={sectionHeaderRef}
-              className="mb-5"
-              variants={itemVariants}
-            >
-              <h3 className={styles.sectionLabel}>Seasonal Fresh</h3>
-              <div className={styles.separator}></div>
-            </motion.div>
-
-            <motion.h2
-              ref={subtitleRef}
-              className={styles.subtitle}
-              variants={itemVariants}
-            >
-              Only the very best ingredients
-            </motion.h2>
-
-            <motion.p
-              ref={descriptionRef}
-              className={styles.description}
-              variants={itemVariants}
-            >
-              Our menus at Restaurant Kabul celebrate only the best in produce
-              of the season. With frequently changing menus our Chef continues
-              to adapt our offering to ensure we only serve our guests the very
-              best.
-            </motion.p>
-
-            <motion.div
-              ref={buttonRef}
-              variants={itemVariants}
-              className="flex justify-center"
-            >
-              <Link to="/menu" className={styles.buttonLink}>
-                <button className={styles.button}>Menus</button>
-              </Link>
-            </motion.div>
-
-            <motion.div
-              ref={carouselRef}
-              className={styles.carousel}
-              variants={itemVariants}
-            >
-              <Carousel 
-                items={testimonials}
-                autoPlayInterval={6000}
-                className={styles.quote}
-              />
-            </motion.div>
-
-            <motion.div
-              ref={bottomImageRef}
-              className="w-full flex justify-end items-center mt-4"
-              initial="hidden"
-              animate={bottomImageControls}
-              variants={containerVariants}
-            >
-              <motion.div
-                className={`${styles.bottomImageContainer} w-[80%]`}
-                whileHover={{
-                  boxShadow:
-                    windowWidth <= 768
-                      ? "0 15px 30px rgba(0, 0, 0, 0.25)"
-                      : "0 20px 40px rgba(0, 0, 0, 0.3)",
-                }}
-                transition={{ duration: windowWidth <= 768 ? 0.3 : 0.4 }}
+    <KPatternBackground
+      strokeColor="#af905c"
+      fillColor="#645741"
+      backgroundColor="bg-[#af905c]"
+      patternSize="50px"
+    >
+      <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden bg-pattern">
+        <div className="container mx-auto px-6">
+          {/* Ensure both columns have equal height */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-stretch overflow-hidden">
+            {/* Left Side (Image) */}
+            <div className="relative overflow-hidden flex flex-col h-full order-2 lg:order-1">
+              <FadeIn
+                delay={0.5}
+                direction="up"
+                duration={1.2}
+                once={true}
+                className="h-full"
               >
-                <motion.img
-                  src={bottomImage}
-                  alt="Seasonal dish highlight"
-                  className={styles.bottomImage}
-                  whileHover={{ scale: windowWidth <= 768 ? 1.03 : 1.05 }}
-                  transition={{ duration: windowWidth <= 768 ? 0.4 : 0.5 }}
-                />
-              </motion.div>
-            </motion.div>
-          </motion.div>
+                <div className="h-full overflow-hidden group">
+                  <img
+                    src="https://ik.imagekit.io/sbj8bzmjnl4/galvin/wp-content/uploads/2024/04/best-restaurants-london-city-spitalfields-market-liverpool-street-bishopsgate-private-dining-rooms-event-space-michelin-011-888x1333.jpg.webp"
+                    alt="Galvin La Chapelle Restaurant Interior"
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125"
+                  />
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Right Side (Content) */}
+            <div className="bg-[#af905c] flex flex-col h-full order-1 lg:order-2">
+              <div className="p-0 md:p-8 lg:p-12 items-center text-center">
+                <FadeIn delay={0.1} direction="up" duration={0.8} once={true}>
+                  <Logo color="black" />
+                </FadeIn>
+                <FadeIn delay={0.2} direction="up" duration={0.8} once={true}>
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide text-gray-900 uppercase">
+                    SEASONAL FRESH
+                  </h2>
+                </FadeIn>
+                <FadeIn
+                  delay={0.3}
+                  direction="up"
+                  duration={1}
+                  once={false}
+                  size="small"
+                  initialOpacity={1}
+                >
+                  <div className="w-36 h-[3px] bg-white mx-auto my-3"></div>
+                </FadeIn>
+                <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
+                  <h3 className="text-lg md:text-xl font-serif text-gray-800">
+                    Only the very best ingredients
+                  </h3>
+                </FadeIn>
+                <FadeIn delay={0.4} direction="up" duration={0.8} once={true}>
+                  <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
+                    Our menus at La Chapelle celebrate only the best in produce
+                    of the season. With frequently changing menus, our Head Chef
+                    continues to adapt our offering to ensure we only serve our
+                    guests the very best.
+                  </p>
+                </FadeIn>
+                <FadeIn delay={0.5} direction="up" duration={0.8} once={true}>
+                  <div className="my-5 text-center">
+                    <button
+                      className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider bg-white text-black hover:bg-black hover:text-white transition-all duration-300"
+                      onClick={() => navigate("/menu")}
+                    >
+                      MENUS
+                    </button>
+                  </div>
+                </FadeIn>
+                <Testimonial testimonials={testimonials} />
+              </div>
+              <FadeIn
+                delay={0.5}
+                direction="up"
+                duration={1.2}
+                once={true}
+                className="h-full mt-4"
+              >
+                <div className="h-full overflow-hidden group">
+                  <img
+                    src="https://ik.imagekit.io/sbj8bzmjnl4/galvin/wp-content/uploads/2024/04/restaurant-michelin-star-french-city-london-galvin-la-chapelle-fish-04-960x640.jpg.webp"
+                    alt="Galvin La Chapelle Restaurant Interior"
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125"
+                  />
+                </div>
+              </FadeIn>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </KPatternBackground>
   );
 };
 
-export default Seasonal;
+export default About;

@@ -1,6 +1,6 @@
-import Hero from "../component/Hero";
+
 import Seasonal from "./Seasonal";
-import FeaturedDishes from "../component/FeaturedDishes";
+
 import Carousel from "./Carousel";
 import PrivateDining from "../pages/PrivateDining";
 import Chef from "../component/Chef";
@@ -10,11 +10,11 @@ import HeroSection from "./HeroSection";
 
 function Home() {
   return (
-    <div>
-      {/* <Hero /> */}
+    <div className="min-h-screen overflow-hidden">
+     
       <HeroSection />
       <Chef />
-      <FeaturedDishes />
+   
       <Seasonal />
       <PrivateDining />
       {/* <ChefSpecial /> */}

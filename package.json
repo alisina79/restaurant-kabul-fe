@@ -11,6 +11,7 @@
     "serve": "serve -s dist"
   },
   "dependencies": {
+    "@tailwindcss/typography": "github:tailwindcss/typography",
     "@tailwindcss/vite": "^4.0.14",
     "clsx": "^2.1.1",
     "framer-motion": "^12.5.0",
@@ -30,6 +31,7 @@
     "swiper": "^11.2.5",
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.0.14",
+    "tailwindcss-animate": "^1.0.7",
     "yet-another-react-lightbox": "^3.21.7"
   },
   "devDependencies": {

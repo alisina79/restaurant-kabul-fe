@@ -111,12 +111,9 @@ const FadeIn: React.FC<FadeInProps> = ({
   const childrenWithStagger = React.Children.map(children, (child, index) => {
     if (!staggerChildren || !React.isValidElement(child)) return child;
 
-    // @ts-ignore
-    return React.cloneElement(child as React.ReactElement, {
-      // @ts-ignore
+    return React.cloneElement(child as React.ReactElement<{ style?: React.CSSProperties }>, {
       style: {
-        // @ts-ignore
-        ...(child as React.ReactElement).props.style, // Remove extra space before comma
+        ...(child as React.ReactElement<{ style?: React.CSSProperties }>).props.style,
         opacity: isVisible ? 1 : initialOpacity / 100,
         transform: isVisible ? "translate(0, 0)" : getTransformStyle(),
         transition: `opacity ${duration}s ${

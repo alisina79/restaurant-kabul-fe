@@ -27,7 +27,7 @@ const MenuPage: React.FC = () => {
 
         {/* Subtitle */}
         <p className={styles.subtitle}>
-          Spitalfields, The City of London
+          Spitalfields, The City of Paris
         </p>
 
         {/* Menu Grid */}
@@ -62,7 +62,7 @@ const MenuPage: React.FC = () => {
                 {menu.label}
               </a>
             ))}
-x          </div>
+          </div>
         </div>
 
         {/* Divider */}

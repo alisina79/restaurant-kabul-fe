@@ -44,11 +44,11 @@
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: 2rem;
   line-height: 1.2;
   font-weight: 400;
   font-family: 'Nunito Sans', sans-serif;
-  letter-spacing: 0.02rem;
+  letter-spacing: 0.01rem;
   margin-bottom: 1rem;
   color: #b49c6e;
   width: 100%;
@@ -60,14 +60,14 @@
 @media (min-width: 768px) {
   .title {
     font-size: 2.5rem;
-    margin-bottom: 1.75rem;
+    margin-bottom: 1rem;
   }
 }
 
 @media (min-width: 1024px) {
   .title {
-    font-size: 2.75rem;
-    letter-spacing: 0.05em;
+    font-size: 2rem;
+    letter-spacing: 0.01em;
   }
 }
 
@@ -86,7 +86,7 @@
 @media (min-width: 768px) {
   .subtitle {
     font-size: 1.25rem;
-    margin-bottom: 3.5rem;
+    margin-bottom: 4.5rem;
   }
 }
 
@@ -106,7 +106,7 @@
 
 @media (min-width: 1024px) {
   .menuContainer {
-    margin: 0 auto 5rem;
+    margin: 0 auto 3rem;
   }
 }
 
@@ -194,31 +194,34 @@
 .divider {
   height: 1px;
   width: 100%;
-  max-width: 600px;
+  max-width: 54rem;
   background-color: #b49c6e;
   margin: 0 auto;
   position: relative;
 }
 
-.divider::before, .divider::after {
+/* .divider::before */
+/* ,
+ .divider::after  */
+ /* {
   content: '';
   position: absolute;
   height: 1px;
-  width: 10%;
+  width: 90%;
   background-color: #b49c6e;
   top: -12px;
-}
+} */
 
-.divider::before {
+/* .divider::before {
   left: 45%;
-}
+} */
 
-.divider::after {
+/* .divider::after {
   right: 45%;
-}
+} */
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .divider {
     width: 50%;
   }
-} 
+}  */
