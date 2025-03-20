@@ -1,5 +1,5 @@
 import Seasonal from "./Seasonal";
-import Carousel from "./Carousel";
+
 import PrivateDining from "../pages/PrivateDining";
 import Chef from "../component/Chef";
 // import ChefSpecial from "../pages/ChefSpecial"; // Commented out ChefSpecial component
@@ -35,9 +35,7 @@ function Home() {
         <PrivateDining />
       </div>
       
-      <div style={sectionStyle}>
-        <Carousel />
-      </div>
+      
       
       <div>
         <OurStory />
