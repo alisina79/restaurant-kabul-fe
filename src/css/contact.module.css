@@ -22,8 +22,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  max-width: 1000px;
+  gap: 20px;
+  max-width: 1100px;
   margin: 0 auto;
   align-items: stretch;
   animation: fadeIn 1s ease-in-out;
