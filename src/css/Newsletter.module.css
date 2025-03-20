@@ -3,7 +3,6 @@
   background-image: url('/images/texture.png');
   background-size: cover;
   background-position: center;
-  color: #ffffff; /* White Text */
   padding: 80px 5%; /* Reduced side padding */
   text-align: center;
   border-radius: 12px;
@@ -47,12 +46,13 @@
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 2.5rem !important;
   font-weight: bold;
+  font-family: 'Nunito Sans', sans-serif !important;
   text-transform: uppercase;
   color: #ac8d5b; /* Gold */
   margin-top: 20px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   position: relative;
   display: inline-block;
   z-index: 1;
@@ -86,9 +86,8 @@
 /* Special Offer */
 .offerMessage {
   font-size: 1.4rem;
-  color: #ffffff;
   margin: 30px auto;
-  font-weight: bold;
+color: #ffffff;
   padding: 20px;
   border: 1px dashed #8d734a;
   border-radius: 8px;
@@ -103,7 +102,10 @@
   gap: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
-
+.offerMessage span {
+  color:#ffffff;
+  font-size: 1.2rem;
+}
 .offerIcon {
   color: #ac8d5b;
   font-size: 1.8rem;
@@ -131,12 +133,12 @@
 
 .inputField {
   padding: 16px 20px;
-  width: 400px;
+  width: 600px;
   font-size: 1.1rem;
   border: 2px solid #8d734a;
   border-radius: 50px;
   background: #1a1e25;
-  color: #ffffff; /* Fixed text color */
+  color: #000; /* Fixed text color */
   outline: none;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -156,7 +158,7 @@
 .subscribeButton {
   background: linear-gradient(135deg, #ac8d5b 0%, #8d734a 100%);
   color: #ffffff;
-  padding: 16px 32px;
+  padding: 10px 28px;
   font-size: 1.1rem;
   font-weight: bold;
   border: none;
@@ -181,7 +183,7 @@
 
 /* Success/Error Message */
 .successMessage, .errorMessage {
-  background: rgba(26, 30, 37, 0.75);
+  background: #ac8d5b;
   color: #ffffff;
   padding: 15px 25px;
   border-radius: 50px;
