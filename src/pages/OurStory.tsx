@@ -1,4 +1,4 @@
-import { useEffect, useRef, MouseEvent, useCallback } from "react";
+import { useEffect, useRef, MouseEvent, useCallback, useState } from "react";
 import { motion, useInView, useAnimation, LazyMotion, domAnimation } from "framer-motion";
 import styles from "../css/OurStory.module.css";
 import chef from "../chef/chef.jpg";
@@ -10,12 +10,14 @@ import chef from "../chef/chef.jpg";
 
 // Optimized variants with GPU-accelerated properties
 const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: { 
       staggerChildren: 0.3,
       delayChildren: 0.2,
-    },
+      duration: 1.2
+    }
   },
 };
 
@@ -23,11 +25,8 @@ const itemVariants = {
   hidden: { opacity: 0, y: 40 },
   visible: { 
     opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.6, 
-      ease: "easeOut"
-    } 
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" }
   },
 };
 
@@ -62,6 +61,7 @@ const OurStory = () => {
   const controls = useAnimation();
   const sectionRef = useRef(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const [animationTriggered, setAnimationTriggered] = useState(false);
   const isInView = useInView(sectionRef, { 
     once: true, 
     amount: 0.2,
@@ -69,13 +69,21 @@ const OurStory = () => {
   
   // Start animations when section comes into view
   useEffect(() => {
-    if (isInView) {
-      // Start with a slight delay to ensure container opacity animation completes first
-      setTimeout(() => {
-        controls.start("visible");
-      }, 400);
+    if (isInView && !animationTriggered) {
+      controls.start("visible");
+      setAnimationTriggered(true);
+      
+      // Add the animation class after components are loaded
+      const timer = setTimeout(() => {
+        const contentSection = document.querySelector(`.${styles.contentSection}`);
+        if (contentSection) {
+          contentSection.classList.add(styles.animateContent);
+        }
+      }, 100);
+      
+      return () => clearTimeout(timer);
     }
-  }, [isInView, controls]);
+  }, [isInView, controls, animationTriggered]);
 
   // Advanced parallax tilt effect - memoized for better performance
   const handleMouseMove = useCallback((e: MouseEvent<HTMLDivElement>) => {
@@ -85,9 +93,9 @@ const OurStory = () => {
     const x = (e.clientX - left) / width;
     const y = (e.clientY - top) / height;
     
-    // Calculate tilt values
-    const tiltX = (y - 0.5) * 10; // -5 to 5 degrees
-    const tiltY = (0.5 - x) * 10; // -5 to 5 degrees
+    // Calculate tilt values with more dramatic effect
+    const tiltX = (y - 0.5) * 15; // -7.5 to 7.5 degrees
+    const tiltY = (0.5 - x) * 15; // -7.5 to 7.5 degrees
     
     // Apply transforms - use a GPU-optimized transform
     requestAnimationFrame(() => {
@@ -112,54 +120,11 @@ const OurStory = () => {
 
   return (
     <LazyMotion features={domAnimation}>
-      <section 
-        className={`py-8 bg-amber-50/50 ${styles.pageBackground}`} 
-        id="our-story" 
-        aria-label="Our Story"
-        itemScope 
-        itemType="http://schema.org/Article"
-      >
-        <motion.div
-          ref={sectionRef}
-          className={styles.ourStoryContainer}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        >
-          {/* Image Section */}
-          <motion.div
-            className={styles.imageSection}
-            variants={imageVariants}
-            initial="hidden"
-            animate={controls}
-          >
-            <div 
-              className={styles.imageWrapper}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-              onTouchStart={() => {}}
-              onTouchEnd={() => {}}
-            >
-              <img
-                ref={imageRef}
-                src={chef}
-                alt="Kaboul Gourmet Chef preparing a signature dish"
-                className={styles.chefImage}
-                loading="lazy"
-                fetchPriority="high"
-                itemProp="image"
-                decoding="async"
-              />
-              <div className={styles.imageOverlay}>
-                <span>Our Master Chef</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Text Section with Staggered Animation */}
-          <motion.div
-            className={`${styles.contentSection} ${styles.animateContent}`}
+      <div className={`${styles.pageBackground}`}>
+        <div className={styles.ourStoryContainer} ref={sectionRef}>
+          {/* Left column - Text content */}
+          <motion.div 
+            className={`${styles.contentSection}`}
             initial="hidden"
             animate={controls}
             variants={containerVariants}
@@ -222,8 +187,48 @@ const OurStory = () => {
               </motion.a>
             </motion.div>
           </motion.div>
-        </motion.div>
-      </section>
+          
+          {/* Right column - Chef image */}
+          <motion.div 
+            className={styles.imageSection}
+            initial="hidden"
+            animate={controls}
+            variants={imageVariants}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+          >
+            <div 
+              className={styles.imageWrapper}
+              onTouchStart={() => {}}
+              onTouchEnd={() => {}}
+            >
+              <motion.img
+                ref={imageRef}
+                src={chef}
+                alt="Kaboul Gourmet Chef preparing a signature dish"
+                className={styles.chefImage}
+                loading="lazy"
+                fetchPriority="high"
+                itemProp="image"
+                decoding="async"
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ 
+                  opacity: 1, 
+                  scale: 1,
+                  transition: { duration: 0.8, ease: "easeOut", delay: 0.5 }
+                }}
+                whileHover={{ 
+                  filter: "brightness(1.05) contrast(1.05)",
+                  transition: { duration: 0.3 }
+                }}
+              />
+              <div className={styles.imageOverlay}>
+                <span>Our Master Chef</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
     </LazyMotion>
   );
 };
