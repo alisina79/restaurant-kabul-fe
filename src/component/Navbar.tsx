@@ -11,6 +11,7 @@ import {
   Calendar,
   X as CloseIcon,
 } from "lucide-react";
+import { KPatternBackground } from "../components/PatternBackground";
 
 import calendarIcon from "../assets/calendar-icon.svg"
 // Import your food images for the sidebar
@@ -139,6 +140,7 @@ function Navbar() {
       xmlns="http://www.w3.org/2000/svg" 
       width="35" 
       height="35" 
+    
       viewBox="0 0 100 100" 
       className={styles.kLogoSvg}
       onMouseEnter={() => setIsLogoHovered(true)}
@@ -148,9 +150,9 @@ function Navbar() {
     >
       <text x="50" y="55" style={{
         fontFamily: 'Cinzel, serif',
-        fontSize: '68px',
+        fontSize: '78px',
         fill: 'none',
-        stroke: isLogoHovered ? '#ffffff' : '#ac8d5b',
+        stroke:  '#ac8d5b',
         strokeWidth: '1.1',
         textAnchor: 'middle',
         dominantBaseline: 'middle',
@@ -277,6 +279,9 @@ function Navbar() {
           <button className={styles.sidebarClose} onClick={() => setIsSidebarOpen(false)}>
             <CloseIcon size={24} />
           </button>
+          <div className={styles.sidebarHeaderLogo}>
+            <KLogoSVG />
+          </div>
           <div className={styles.sidebarLinks}>
             <Link to="/" 
               className={styles.sidebarLink} 
@@ -320,6 +325,15 @@ function Navbar() {
             >
               <Users size={20} /> ABOUT US
             </Link>
+          </div>
+          <div className={styles.sidebarLogo}>
+            <KPatternBackground
+              strokeColor="#af905c"
+              fillColor="#af905c"
+              backgroundColor="bg-[transparent]"
+              patternSize="50px"
+              className="w-[200px] h-[50px]"
+            />
           </div>
         </div>
         <div 

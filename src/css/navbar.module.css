@@ -164,7 +164,8 @@
 }
 
 .phoneNumber {
-  font-size: 1.2rem; /* Smaller font */
+  font-size: 1.5rem; /* Smaller font */
+  font-family: 'Cormorant Garamond', serif !important;
   transition: all 0.3s ease;
   color: #ac8d5b;
   font-weight: 500;
@@ -191,7 +192,7 @@
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 6px; /* Reduced gap */
+  gap: 2px; /* Reduced gap */
   position: relative;
   overflow: hidden;
   transition: all 0.2s ease;
@@ -221,13 +222,13 @@
 .bookDropdown {
   position: absolute;
   top: calc(100% + 10px);
-  left: 77%;
+  left: 75%;
   transform: translateX(-50%) translateY(10px);
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15), 0 3px 8px rgba(172, 141, 91, 0.1);
   width: 200px;
-  margin-top: 8px;
+  margin-top: 5px;
   display: flex;
   flex-direction: column;
   z-index: 200;
@@ -255,7 +256,7 @@
 .bookDropdown::after {
   content: "";
   position: absolute;
-  top: -8px;
+  top: -4px;
   left: 50%;
   transform: translateX(-50%) rotate(45deg);
   width: 16px;
@@ -373,7 +374,7 @@
 
 /* Bottom White Header (Secondary Nav) */
 .bottomHeader {
-  background-color: white;
+  background-color: whitesmoke;
   display: flex;
   align-items: center;
 
@@ -490,9 +491,10 @@
 }
 
 .sidebarContent {
-  width: 380px;
+  width: 550px;
   height: 100%;
-  background: linear-gradient(135deg, #ac8d5b 0%, #d4b77c 100%);
+  background: #ffffff;
+
   padding: 60px 45px;
   display: flex;
   flex-direction: column;
@@ -506,12 +508,28 @@
   transform: translateX(0);
 }
 
+.sidebarLogo {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+
+  padding-top: 30px;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
+}
+
+.sidebar.open .sidebarLogo {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 .sidebarClose {
   position: absolute;
   top: 20px;
   left: 60px;
   /* right: 25px; */
-  background: rgba(255, 255, 255, 0.15);
+  background: #ffffff;
   border: none;
   border-radius: 50%;
   width: 48px;
@@ -519,7 +537,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #d4b77c;
   font-size: 24px;
   cursor: pointer;
   transition: all 0.4s ease;
@@ -531,22 +549,46 @@
   transform: rotate(90deg);
 }
 
+.sidebarHeaderLogo {
+  display: flex;
+  justify-content: center;
+  margin: 0px 0 10px 0;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) 0.2s;
+}
+
+.sidebarHeaderLogo svg {
+  width: 60px;
+  height: 60px;
+}
+
+.sidebarHeaderLogo svg text {
+  font-size: 90px;
+  stroke-width: 1.5;
+}
+
+.sidebar.open .sidebarHeaderLogo {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 .sidebarLinks {
-  margin-top: 70px;
+
   display: flex;
   flex-direction: column;
-  gap: 22px;
 }
 
 .sidebarLink {
   display: flex;
   align-items: center;
-  gap: 18px;
-  color: white;
+  gap: 12px;
+  color: #ac8d5b;
+  margin-top: auto;
   text-decoration: none;
   font-size: 19px;
   font-weight: 600;
-  padding: 14px 0;
+  padding: 9px 0;
   transition: all 0.4s ease;
   position: relative;
   overflow: hidden;
@@ -697,7 +739,7 @@
     justify-content: center;
     align-items: center;
     background-color: #1a1e25;
-    padding: 4px; /* Reduced padding */
+    padding: 10px; /* Reduced padding */
     border-radius: 3px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Reduced shadow */
     -webkit-tap-highlight-color: transparent;
