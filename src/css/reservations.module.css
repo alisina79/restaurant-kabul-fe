@@ -30,7 +30,7 @@
 
 /* 🔹 Heading */
 .heading {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.8rem);
   font-weight: 700;
   color: #1a1e25; /* Main text color */
   text-align: center;
@@ -130,6 +130,9 @@
   margin-bottom: 15px;
   font-family: "Cormorant Garamond", serif;
   text-align: center;
+}
+.formTitle, p{
+  color: #ffffff;
 }
 
 /* 🔹 Form Intro */

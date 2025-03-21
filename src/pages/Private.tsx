@@ -88,6 +88,40 @@ export default function Private() {
                 >
                     Unforgettable experiences for any event from intimate private dining to exclusive use events upto 150 guests.
                 </motion.p>
+                
+                <motion.button 
+                    className={styles.bookButton}
+                    onClick={() => navigate('/reservations')}
+                    animate={buttonControls}
+                    whileHover={{ 
+                        scale: 1.05, 
+                        y: -5,
+                        x: -5,
+                        letterSpacing: "2.5px",
+                        transition: { duration: 0.3, ease: "easeOut" }
+                    }}
+                    whileTap={{ 
+                        scale: 0.98,
+                        y: 2,
+                        x: -2,
+                        transition: { duration: 0.1 }
+                    }}
+                    variants={itemVariants}
+                >
+                    <motion.span
+                        initial={{ opacity: 1 }}
+                        animate={{
+                            opacity: [1, 0.8, 1],
+                            transition: {
+                                duration: 3,
+                                repeat: Infinity,
+                                repeatType: "reverse"
+                            }
+                        }}
+                    >
+                        Book Now
+                    </motion.span>
+                </motion.button>
             </motion.div>
 
             <motion.div 
@@ -106,38 +140,7 @@ export default function Private() {
                 />
                 
                 <div className={styles.overlay}>
-                    <motion.button 
-                        className={styles.bookButton}
-                        onClick={() => navigate('/reservations')}
-                        animate={buttonControls}
-                        whileHover={{ 
-                            scale: 1.05, 
-                            y: -5,
-                            x: -5,
-                            letterSpacing: "2.5px",
-                            transition: { duration: 0.3, ease: "easeOut" }
-                        }}
-                        whileTap={{ 
-                            scale: 0.98,
-                            y: 2,
-                            x: -2,
-                            transition: { duration: 0.1 }
-                        }}
-                    >
-                        <motion.span
-                            initial={{ opacity: 1 }}
-                            animate={{
-                                opacity: [1, 0.8, 1],
-                                transition: {
-                                    duration: 3,
-                                    repeat: Infinity,
-                                    repeatType: "reverse"
-                                }
-                            }}
-                        >
-                            Book Now
-                        </motion.span>
-                    </motion.button>
+                    
                 </div>
             </motion.div>
         </div>

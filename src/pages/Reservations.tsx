@@ -253,7 +253,7 @@ const Reservations = () => {
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>
-        <span className={styles.headingAccent}>Kaboul</span> Reservations
+        <span className={styles.headingAccent}>Kaboul Gourmet</span> Reservations
       </h1>
       
       {/* Opening Hours Section */}
