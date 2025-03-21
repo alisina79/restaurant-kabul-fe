@@ -213,7 +213,7 @@ function Navbar() {
               style={{
                 padding: isBookDropdownOpen ? '12px 40px' : '12px',
                 backgroundColor: isHoveringButton ? '#ac8d5b' : isBookDropdownOpen ? '#d4bc8d' : undefined,
-                color: isHoveringButton ? '#ffffff' : '#ac8d5b',
+                // color: isHoveringButton ? '#ffffff' : '#ac8d5b',
                 transition: 'all 0.2s ease',
                 transform: isHoveringButton ? 'translateY(-2px)' : 'none'
               }}

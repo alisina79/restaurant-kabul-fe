@@ -188,15 +188,18 @@
   color: #ac8d5b;
   border: none;
   cursor: pointer;
-  font-size: 1rem; /* Smaller font */
+  font-size: 1rem;
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 2px; /* Reduced gap */
+  gap: 2px;
   position: relative;
   overflow: hidden;
   transition: all 0.2s ease;
   z-index: 1;
+  background: transparent;
+  border-radius: 50px;
+  padding: 12px;
   .calendarIconMobile {
     width: 25px;
     transition: all 0.2s ease;
@@ -699,15 +702,17 @@
   }
 
   .contactArea {
-    gap: 15px;
+    gap: 8px;
+    margin-left: auto;
   }
 
   .phoneNumber {
     display: none;
   }
 
-  .sidebarContent {
-    width: 320px;
+  .phoneNumber:hover {
+    background: #8f7544;
+    color: #ffffff;
   }
 
   .topHeader {
@@ -721,11 +726,15 @@
   }
 
   .bookButton {
-    padding: 7px 12px; /* Reduced padding */
-    font-size: 11px;
+    padding: 7px 12px;
+    font-size: 0.9rem;
     background: #ac8d5b;
-    border-radius: 50px;
+    border-radius: 0px;
     color: #ffffff;
+  }
+
+  .bookButton:hover {
+    background: #8f7544;
   }
 
   .logoWrapper {
@@ -738,8 +747,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #ffffff;
     background-color: #1a1e25;
-    padding: 10px; /* Reduced padding */
+    padding: 15px; /* Reduced padding */
     border-radius: 3px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Reduced shadow */
     -webkit-tap-highlight-color: transparent;
@@ -769,6 +779,10 @@
   .contactArea .bookDropdown::after {
     left: auto;
     right: 20px;
+  }
+
+  .sidebarContent {
+    width: 320px;
   }
 }
 
