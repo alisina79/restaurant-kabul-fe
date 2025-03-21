@@ -216,7 +216,9 @@
   transition: all 0.2s ease;
   z-index: -1;
 }
-
+.bookButton:hover{
+  color: #ffffff;
+}
 /* Remove conflicting hover styles since they're handled in the TSX file now */
 .bookButton:hover::before {
   left: 100%;
