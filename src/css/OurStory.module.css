@@ -92,10 +92,9 @@
   background-position: center;
   background-repeat: no-repeat;
   margin: 0 auto;
-  padding: 60px;
-  margin-top: 60px;
+  /* padding: 60px; */
   max-width: 1800px;
-  gap: 50px;
+  /* gap: 50px; */
 }
 
 .ourStoryContainer::before {

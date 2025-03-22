@@ -135,12 +135,42 @@ function Navbar() {
   };
 
   // SVG for the "K" logo for mobile view
-  const KLogoSVG = () => (
+  // const KLogoSVG = (color: string) =>   (
+  //   <svg 
+  //     xmlns="http://www.w3.org/2000/svg" 
+  //     width="35" 
+  //     height="35" 
+    
+  //     viewBox="0 0 100 100" 
+  //     className={styles.kLogoSvg}
+  //     onMouseEnter={() => setIsLogoHovered(true)}
+  //     onMouseLeave={() => setIsLogoHovered(false)}
+  //     onTouchStart={() => setIsLogoHovered(true)}
+  //     onTouchEnd={() => setIsLogoHovered(false)}
+  //   >
+  //     <text x="50" y="55" style={{
+  //       fontFamily: 'Cinzel, serif',
+  //       fontSize: '78px',
+  //       fill: 'none',
+  //       stroke: `#${color}`,
+  //       strokeWidth: '1.1',
+  //       textAnchor: 'middle',
+  //       dominantBaseline: 'middle',
+  //       transition: 'stroke 0.3s ease'
+  //     }}>K</text>
+  //   </svg>
+  // );
+
+  type KLogoSVGProps = {
+    color: string;
+    setIsLogoHovered: (hovered: boolean) => void; // if used outside, or pass as props
+  };
+  
+  const KLogoSVG: React.FC<KLogoSVGProps> = ({ color, setIsLogoHovered }) => (
     <svg 
       xmlns="http://www.w3.org/2000/svg" 
       width="35" 
       height="35" 
-    
       viewBox="0 0 100 100" 
       className={styles.kLogoSvg}
       onMouseEnter={() => setIsLogoHovered(true)}
@@ -152,7 +182,7 @@ function Navbar() {
         fontFamily: 'Cinzel, serif',
         fontSize: '78px',
         fill: 'none',
-        stroke:  '#ac8d5b',
+        stroke: `#${color}`,
         strokeWidth: '1.1',
         textAnchor: 'middle',
         dominantBaseline: 'middle',
@@ -160,6 +190,8 @@ function Navbar() {
       }}>K</text>
     </svg>
   );
+  
+ 
 
   return (
     <>
@@ -168,7 +200,7 @@ function Navbar() {
         <div className={styles.topHeader}>
           {/* Left Side - Hamburger Menu */}
           <div className={styles.hamburgerWrapper} onClick={() => setIsSidebarOpen(true)}>
-            <HamburgerMenu color="#ac8d5b"/>
+            <HamburgerMenu color={window.innerWidth > 768 ? "#ac8d5b" : "#ffffff"}/>
           </div>
 
           {/* Center - Brand Logo */}
@@ -180,7 +212,7 @@ function Navbar() {
               <div 
                 className={styles.mobileLogo}
               >
-                <KLogoSVG />
+                <KLogoSVG color="ffffff" setIsLogoHovered={setIsLogoHovered} />
               </div>
             </Link>
           </div>
@@ -280,7 +312,7 @@ function Navbar() {
             <CloseIcon size={24} />
           </button>
           <div className={styles.sidebarHeaderLogo}>
-            <KLogoSVG />
+            <KLogoSVG color="ffffff" setIsLogoHovered={setIsLogoHovered} />
           </div>
           <div className={styles.sidebarLinks}>
             <Link to="/" 

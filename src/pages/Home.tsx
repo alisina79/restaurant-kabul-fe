@@ -9,7 +9,12 @@ import Celebration from "./Celebration";
 
 // Style for consistent component spacing
 const sectionStyle = {
-  marginBottom: "60px"
+  marginBottom: "80px" // Increased margin for better separation
+};
+
+// Style for the last component (no bottom margin needed)
+const lastSectionStyle = {
+  marginBottom: "0"
 };
 
 function Home() {
@@ -35,9 +40,7 @@ function Home() {
         <PrivateDining />
       </div>
       
-      
-      
-      <div>
+      <div style={lastSectionStyle}>
         <OurStory />
       </div>
     </div>

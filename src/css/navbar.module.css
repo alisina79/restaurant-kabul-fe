@@ -444,7 +444,7 @@
 }
 
 .navLink {
-  color: #333;
+  color: #121212;
   text-decoration: none;
   font-size: 14px; /* Smaller font */
   font-weight: 600;
@@ -718,9 +718,15 @@
   }
 
   .topHeader {
-    padding: 0px 15px; /* Reduced padding */
+    padding: 0px 0px; /* Reduced padding */
     justify-content: space-between;
     background-color: #1a1e25;
+  }
+  .hamburgerWrapper{
+    padding: 4px 12px;
+  }
+  .bookButton{
+    transform: none !important;
   }
   
   .bottomHeader {
@@ -750,11 +756,19 @@
     justify-content: center;
     align-items: center;
     color: #ffffff;
-    background-color: #1a1e25;
-    padding: 15px; /* Reduced padding */
+    /* background-color: #1a1e25; */
+    /* padding: 15px;  */
     border-radius: 3px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+    /* box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); Reduced shadow */
     -webkit-tap-highlight-color: transparent;
+    letter-spacing: 0px;
+  }
+  .logo {
+    padding: 0px;
+    text-shadow: none;
+  }
+  .logo::after{
+    background: none;
   }
   
   .mobileLogo:active .kLogoSvg {
@@ -816,10 +830,16 @@
   }
   
   .kLogoSvg {
-    width: 30px; /* Reduced size */
-    height: 30px; /* Reduced size */
+    width: 50px; /* Reduced size */
+    height: 50px; /* Reduced size */
   }
   
+  .scrolled .topHeader{
+    padding: 0px;
+  }
+  .topHeader{
+    background: #ac8d5b;
+  }
   .bookButton {
     padding: 6px 10px; /* Reduced padding */
     font-size: 10px; /* Reduced font size */
