@@ -33,7 +33,7 @@ const About: React.FC = () => {
       backgroundColor="bg-[#af905c]"
       patternSize="50px"
     >
-      <div className="w-full min-h-screen overflow-hidden max-w-[1800px] mx-auto mt-[60px] px-[30px] py-[30px] flex flex-col lg:flex-row gap-[30px]">
+      <div className="w-full min-h-screen overflow-hidden max-w-[1800px] mx-auto mt-[50px] px-[30px] py-[30px] flex flex-col lg:flex-row gap-[30px]" style={{marginTop: '50px',}}> 
         {/* Left Side (Image) - Similar to Celebration's imageColumn */}
         <div className="w-full lg:w-1/2 relative overflow-hidden flex items-center justify-center rounded shadow-lg order-2 lg:order-1 perspective-1000 transform-style-preserve-3d transition-transform">
           <FadeIn
@@ -55,8 +55,8 @@ const About: React.FC = () => {
         </div>
 
         {/* Right Side (Content) - Similar to Celebration's textColumn */}
-        <div className="w-full lg:w-1/2 bg-[#af905c] flex flex-col order-1 lg:order-2 rounded shadow-lg p-[40px] md:p-[60px] lg:p-[80px] justify-center z-[1]">
-          <div className="flex flex-col items-center text-center">
+        <div className="w-full lg:w-1/2 bg-[#af905c] flex flex-col order-1  lg:order-2 rounded shadow-lg p-[40px] md:p-[60px] lg:p-[80px] justify-center z-[1]">
+          <div className="flex flex-col items-center text-center ">
             <FadeIn delay={0.1} direction="up" duration={0.8} once={true}>
               <Logo color="black" />
             </FadeIn>

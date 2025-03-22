@@ -481,7 +481,7 @@ html, body {
 @media (max-width: 1280px) {
   .ourStoryContainer {
     padding: 30px;
-    margin-top: 55px;
+ 
     gap: 30px;
   }
   

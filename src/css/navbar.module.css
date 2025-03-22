@@ -36,11 +36,9 @@
   color: white;
   position: relative;
   overflow: visible;
+  
 }
-/* .topHeader.contactArea >div
-{
-  padding: 12px 0px;
-} */
+
 
 .topHeader::after {
   content: "";
@@ -117,11 +115,10 @@
 }
 
 .logo {
-  /* font-family: "Playfair Display", serif; */
   font-family: 'Cormorant Garamond', serif;
   font-weight: 800;
   font-style: normal;
-  font-size: 32px; /* Reduced font size */
+  font-size: 35px; /* Reduced font size */
   letter-spacing: 30px; /* Reduced letter spacing */
   color: white;
   position: relative;
@@ -164,11 +161,11 @@
 }
 
 .phoneNumber {
-  font-size: 1.5rem; /* Smaller font */
-  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 1.2rem; /* Smaller font */
+  font-family: sans-serif;
   transition: all 0.3s ease;
   color: #ac8d5b;
-  font-weight: 500;
+  font-weight: 300;
   letter-spacing: 0.5px;
   padding: 6px 12px; /* Reduced padding */
   border-radius: 50px;
@@ -189,7 +186,8 @@
   border: none;
   cursor: pointer;
   font-size: 1rem;
-  font-weight: 600;
+  font-family: sans-serif;
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -199,7 +197,7 @@
   z-index: 1;
   background: transparent;
   border-radius: 50px;
-  padding: 12px;
+  padding:20px;
   .calendarIconMobile {
     width: 25px;
     transition: all 0.2s ease;
@@ -218,6 +216,7 @@
 }
 .bookButton:hover{
   color: #ffffff;
+  transition: all 0.2s ease ;
 }
 /* Remove conflicting hover styles since they're handled in the TSX file now */
 .bookButton:hover::before {
@@ -366,6 +365,7 @@
   background-color: rgba(172, 141, 91, 0.04);
   color: #ac8d5b;
   padding-left: 30px;
+  
 }
 
 .bookDropdownItem:hover::before {

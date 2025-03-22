@@ -9,7 +9,7 @@ import Celebration from "./Celebration";
 
 // Style for consistent component spacing
 const sectionStyle = {
-  marginBottom: "80px" // Increased margin for better separation
+  // marginBottom: "80px" // Increased margin for better separation
 };
 
 // Style for the last component (no bottom margin needed)

@@ -11,7 +11,7 @@
   background-repeat: no-repeat;
   margin: 0 auto;
   padding: 30px;
-  margin-top: 60px;
+  margin-top: 30px;
   max-width: 1800px;
   /* gap: 30px; */
 }
@@ -290,7 +290,6 @@
 @media (max-width: 1280px) {
   .celebrationContainer {
     padding: 25px;
-    margin-top: 55px;
     gap: 24px;
   }
   

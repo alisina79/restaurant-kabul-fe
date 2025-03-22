@@ -244,10 +244,10 @@ function Navbar() {
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
               style={{
-                padding: isBookDropdownOpen && window.innerWidth > 768 ? '12px 40px' : '12px',
+                padding: isBookDropdownOpen && window.innerWidth > 768 ? '20px 40px' : '20px',
                 backgroundColor: isHoveringButton && window.innerWidth > 768 ? '#ac8d5b' : isBookDropdownOpen && window.innerWidth > 768 ? '#d4bc8d' : undefined,
                 // color: isHoveringButton ? '#ffffff' : '#ac8d5b',
-                transition: 'all 0.2s ease',
+                transition: 'all 0.5s ease',
                 transform: isHoveringButton ? 'translateY(-2px)' : 'none'
               }}
              >

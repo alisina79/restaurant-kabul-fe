@@ -27,7 +27,7 @@ const Chef = () => {
 
   return (
     <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden bg-pattern">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 "style={{marginTop: '50px'}}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center overflow-hidden">
           <div className="px-0 md:px-12 lg:px-20">
             <div>
