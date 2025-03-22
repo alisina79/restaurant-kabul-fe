@@ -192,8 +192,9 @@ function Navbar() {
   );
   
  
+  const currentUrl = window.location.pathname;
 
-  return (
+    return (
     <>
       <header className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}>
         {/* Top Black Header */}
@@ -230,7 +231,7 @@ function Navbar() {
                 setIsBookDropdownOpen(true);
               }}
               onMouseLeave={() => {
-                setIsHoveringButton(false);
+                window.innerWidth > 768  && setIsHoveringButton(false);
               }}
               onFocus={() => {
                 setIsBookDropdownOpen(true);
@@ -243,8 +244,8 @@ function Navbar() {
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
               style={{
-                padding: isBookDropdownOpen ? '12px 40px' : '12px',
-                backgroundColor: isHoveringButton ? '#ac8d5b' : isBookDropdownOpen ? '#d4bc8d' : undefined,
+                padding: isBookDropdownOpen && window.innerWidth > 768 ? '12px 40px' : '12px',
+                backgroundColor: isHoveringButton && window.innerWidth > 768 ? '#ac8d5b' : isBookDropdownOpen && window.innerWidth > 768 ? '#d4bc8d' : undefined,
                 // color: isHoveringButton ? '#ffffff' : '#ac8d5b',
                 transition: 'all 0.2s ease',
                 transform: isHoveringButton ? 'translateY(-2px)' : 'none'
@@ -292,15 +293,20 @@ function Navbar() {
 
         {/* Bottom White Header */}
         <div className={styles.bottomHeader}>
-          <div className={styles.restaurantName}>
+          <Link to="/" style={{ cursor: 'pointer' }}>
+
+          <div 
+
+           style={{ cursor: 'pointer' }}  className={`${styles.restaurantName} `}>
             Kaboul Gourmet
           </div>
+          </Link>
           <nav className={styles.navLinks}>
-            <Link to="/menu" className={styles.navLink}>MENUS</Link>
-            <Link to="/whatson" className={styles.navLink}>WHAT'S ON</Link>
-            <Link to="/celebrations" className={styles.navLink}>CELEBRATION</Link>
-            <Link to="/contact" className={styles.navLink}>CONTACT</Link>
-            <Link to="/newsletter" className={styles.navLink}>NEWSLETTER SIGNUP</Link>
+            <Link to="/menu" className={`${styles.navLink} ${currentUrl === "/menu" ? styles.active : ""}` }>MENUS</Link>
+            <Link to="/whatson" className={`${styles.navLink} ${currentUrl === "/whatson" ? styles.active : ""}` }>WHAT'S ON</Link>
+            <Link to="/celebrations" className={`${styles.navLink} ${currentUrl === "/celebrations" ? styles.active : ""}` }>CELEBRATION</Link>
+            <Link to="/contact" className={`${styles.navLink} ${currentUrl === "/contact" ? styles.active : ""}` }>CONTACT</Link>
+            <Link to="/newsletter" className={`${styles.navLink} ${currentUrl === "/newsletter" ? styles.active : ""}` }>NEWSLETTER SIGNUP</Link>
           </nav>
         </div>
       </header>

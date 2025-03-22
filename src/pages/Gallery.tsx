@@ -36,7 +36,7 @@ const Gallery: React.FC = () => {
 
   const galleryImages = [
     {
-      src: "https://images.unsplash.com/photo-1464500513243-6c46d4c34d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80",
+      src: "https://images.unsplash.com/photo-1519996529931-28324d5a630e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80",
       alt: "Elegant restaurant table setting",
       size: "large",
     },
@@ -219,7 +219,7 @@ const Gallery: React.FC = () => {
                       </div>
                     </div>
                     
-                    <div className="flex-grow">
+                    <div className="flex-grow ">
                       <div className="mb-3 flex">
                         {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
                           <Star key={i} size={14} className="mr-1" style={{ color: '#ac8d5b', fill: '#ac8d5b' }} />
@@ -230,7 +230,7 @@ const Gallery: React.FC = () => {
                         <Quote size={60} style={{ color: '#ac8d5b' }} />
                       </div>
                       
-                      <p className="italic text-base md:text-lg font-light leading-relaxed mb-6" style={{ color: '#1a1e25' }}>
+                      <p className="italic text-base md:text-lg font-light leading-relaxed mb-4 " style={{ color: '#1a1e25', paddingLeft: '3px' }}>
                         "{testimonials[currentTestimonial].text}"
                       </p>
                       

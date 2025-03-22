@@ -102,6 +102,7 @@
   .menuContainer {
     margin: 0 auto 4.5rem;
   }
+ 
 }
 
 @media (min-width: 1024px) {
@@ -190,6 +191,11 @@
     letter-spacing: 0.12em;
   }
 }
+  @media (max-width: 768px) {
+    .menuLink {
+      font-size: 1rem;
+    }
+  }
 
 .divider {
   height: 1px;
