@@ -1,17 +1,12 @@
-import React from 'react';
-
-interface LogoProps {
-  color?: string;
-}
-
-const Logo: React.FC<LogoProps> = ({ color = 'black' }) => {
+const Logo = ({ className = "", color = "#af905c" }) => {
   return (
-    <div className="mb-4">
-      <h1 className={`text-4xl font-serif italic text-${color}`}>
-        Restaurant Kabul
-      </h1>
-    </div>
+    <h1
+      className={`text-4xl md:text-5xl lg:text-6xl tracking-wide text-center ${className}`}
+      style={{ fontFamily: "Imprint MT Shadow", color: color }}
+    >
+      K
+    </h1>
   );
 };
 
-export default Logo; 
+export default Logo;

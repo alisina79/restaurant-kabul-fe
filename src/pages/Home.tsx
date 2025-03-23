@@ -3,9 +3,14 @@ import Seasonal from "./Seasonal";
 import PrivateDining from "../pages/PrivateDining";
 import Chef from "../component/Chef";
 // import ChefSpecial from "../pages/ChefSpecial"; // Commented out ChefSpecial component
-import OurStory from "./OurStory";
+
 import HeroSection from "./HeroSection";
 import Celebration from "./Celebration";
+import Celebrations from "./Celebrations";
+import PrivateDiningCarousel from "./PrivateDiningCarousel";
+import Weddings from "./Weddings";
+import FooterAlt from "./FooterAlt";
+import OurStory from "./OurStory";
 
 // Style for consistent component spacing
 const sectionStyle = {
@@ -23,26 +28,19 @@ function Home() {
       <div style={sectionStyle}>
         <HeroSection />
       </div>
-      
-      <div style={sectionStyle}>
+    
         <Chef />
-      </div>
-      
-      <div style={sectionStyle}>
+    
+     
         <Seasonal />
-      </div>
+     
       
-      <div style={sectionStyle}>
-        <Celebration />
-      </div>
-      
-      <div style={sectionStyle}>
-        <PrivateDining />
-      </div>
-      
-      <div style={lastSectionStyle}>
-        <OurStory />
-      </div>
+     
+        <Celebrations />
+      <PrivateDiningCarousel />
+      <Weddings />
+      <OurStory />
+      <FooterAlt />
     </div>
   );
 }

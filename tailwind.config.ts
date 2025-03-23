@@ -1,5 +1,5 @@
- import type { Config } from "tailwindcss";
- import animate from "tailwindcss-animate";
+import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
 export default {
   darkMode: "class",
@@ -9,7 +9,6 @@ export default {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
-  prefix: "",
   theme: {
     container: {
       center: true,
