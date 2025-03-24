@@ -33,7 +33,7 @@ const Chef = () => {
             <div>
               {/* Main Heading */}
               <FadeIn delay={0.2} direction="up" duration={0.8} once={true}>
-                <h1 className="text-center font-serif text-lg md:text-xl lg:text-3xl leading-relaxed font-medium mb-8 tracking-wide text-amber-700">
+                <h1 className="text-center font-serif text-lg md:text-xl lg:text-3xl leading-relaxed font-medium mb-8 tracking-wide " >
                   A Family–run Collection Of Restaurants Founded In 2005 By
                   Michelin Star Brothers, Chris & Jeff Galvin Galvin La
                 </h1>

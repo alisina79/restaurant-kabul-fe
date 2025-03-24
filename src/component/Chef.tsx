@@ -33,14 +33,14 @@ const Chef = () => {
             <div>
               {/* Main Heading */}
               <FadeIn delay={0.2} direction="up" duration={0.8} once={true}>
-                <h1 className="text-center font-serif text-lg md:text-xl lg:text-3xl leading-relaxed font-medium mb-8 tracking-wide text-amber-700">
+                <h1 className="text-center font-serif text-lg md:text-xl lg:text-3xl leading-relaxed font-medium mb-8 tracking-wide text-primary">
                   A Family–run Collection Of Restaurants Founded In 2005 By
                   Michelin Star Brothers, Chris & Jeff Galvin Galvin La
                 </h1>
               </FadeIn>
               <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
-                <h1 className="text-center font-serif text-lg md:text-xl lg:text-3xl leading-relaxed font-medium mb-8 tracking-wide text-amber-700">
-                  ‘Proudly Independent & Family Owned’
+                <h1 className="text-center font-serif text-lg md:text-xl lg:text-3xl leading-relaxed font-medium mb-8 tracking-wide text-primary">
+                  'Proudly Independent & Family Owned'
                 </h1>
               </FadeIn>
 
@@ -48,13 +48,13 @@ const Chef = () => {
               <FadeIn delay={0.4} direction="up" duration={0.8} once={true}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10 text-center">
                   <button
-                    className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider bg-amber-700 text-white hover:bg-amber-800 transition-all duration-300"
+                    className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider bg-primary text-white hover:bg-transparent hover:text-primary hover:border-2 hover:border-primary transition-all duration-300"
                     onClick={() => navigate("/reservations")}
                   >
                     BOOK A TABLE
                   </button>
                   <button
-                    className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider bg-amber-700 text-white hover:bg-amber-800 transition-all duration-300"
+                    className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider bg-primary border-2 border-primary text-white hover:bg-transparent hover:text-primary hover:border-2 hover:border-primary transition-all duration-300"
                     onClick={() => navigate("/menu")}
                   >
                     MENUS
@@ -66,8 +66,8 @@ const Chef = () => {
               <FadeIn delay={0.5} direction="up" duration={0.8} once={true}>
                 <div className="flex justify-center items-center mt-14">
                   <KPatternBackground
-                    strokeColor="#af905c"
-                    fillColor="#af905c"
+                    strokeColor="#ac8d5b"
+                    fillColor="#ac8d5b"
                     backgroundColor="bg-[transparent]"
                     patternSize="50px"
                     className="w-[200px] h-[50px]"
