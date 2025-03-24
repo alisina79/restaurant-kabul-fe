@@ -111,7 +111,7 @@ const OurStory: React.FC = () => {
                     <div className="text-center">
                       <button
                         className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider bg-white text-black border-2 border-black hover:bg-black hover:text-white transition-all duration-300"
-                        onClick={() => navigate("/menu")}
+                        onClick={() => navigate("/about")}
                       >
                         Discover More
                       </button>
@@ -121,7 +121,7 @@ const OurStory: React.FC = () => {
                     <div className=" text-center">
                       <button
                         className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider bg-white text-black border-2 border-black hover:bg-black hover:text-white transition-all duration-300"
-                        onClick={() => navigate("/menu")}
+                        onClick={() => navigate("/newsletter")}
                       >
                         Subscribe
                       </button>

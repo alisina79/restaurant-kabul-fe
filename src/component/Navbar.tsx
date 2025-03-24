@@ -304,7 +304,7 @@ function Navbar() {
           <nav className={styles.navLinks}>
             <Link to="/menu" className={`${styles.navLink} ${currentUrl === "/menu" ? styles.active : ""}` }>MENUS</Link>
             <Link to="/whatson" className={`${styles.navLink} ${currentUrl === "/whatson" ? styles.active : ""}` }>WHAT'S ON</Link>
-            <Link to="/celebrations" className={`${styles.navLink} ${currentUrl === "/celebrations" ? styles.active : ""}` }>CELEBRATION</Link>
+            <Link to="/about" className={`${styles.navLink} ${currentUrl === "/about" ? styles.active : ""}` }>ABOUT US</Link>
             <Link to="/contact" className={`${styles.navLink} ${currentUrl === "/contact" ? styles.active : ""}` }>CONTACT</Link>
             <Link to="/newsletter" className={`${styles.navLink} ${currentUrl === "/newsletter" ? styles.active : ""}` }>NEWSLETTER SIGNUP</Link>
           </nav>
