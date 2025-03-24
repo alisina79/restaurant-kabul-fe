@@ -117,3 +117,23 @@ export const KFooterLogoSVG = ({
     </text>
   </svg>
 )}
+
+
+export const FooterAltNameSVG = () => {
+
+  const styles = {fancy: {
+    fontFamily: "'Brush Script MT', cursive",
+    fontSize: '7rem',
+    fill: 'white',
+  },
+  flower: {
+    fontFamily: "'Segoe UI Symbol', sans-serif",
+    fontSize: '7rem',
+    fill: 'white',
+  }
+  }
+  return <svg width="1000" height="300" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+  
+    
+  <text x="50" y="120" style={styles.fancy}>KaBoul Gourmet ❀</text>
+</svg>}

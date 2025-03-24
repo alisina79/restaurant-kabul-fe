@@ -1,3 +1,4 @@
+import { FooterAltNameSVG } from "../component/SVGS";
 import FadeIn from "../components/animations/FadeIn";
 import Logo from "../components/logo";
 import { Button } from "../components/ui/button";
@@ -22,9 +23,7 @@ const FooterAlt = () => {
           {/* Column 1: Logo and Contact */}
           <div>
             <div className="mb-6">
-              <h2 className="text-white font-serif text-3xl italic mb-4">
-                La Chapelle
-              </h2>
+             <FooterAltNameSVG />
             </div>
 
             <h3 className="font-medium uppercase text-sm tracking-wider mb-3">
