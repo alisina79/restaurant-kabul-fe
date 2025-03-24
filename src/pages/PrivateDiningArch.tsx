@@ -45,7 +45,7 @@ const PrivateDiningArch: React.FC = () => {
   const carouselItems = [
     {
       image: "/hall.jpg",
-      title: "The Arch",
+      title: "The Garden Room",
       description: "Up to 20 guests",
       content: "Perfect for intimate gatherings and corporate events in an exclusive setting."
     },
@@ -188,7 +188,7 @@ const PrivateDiningArch: React.FC = () => {
                     </FadeIn>
                     <FadeIn delay={0.2} direction="up" duration={0.8} once={true}>
                       <h2 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide text-gray-900 uppercase">
-                        EXCLUSIVE EXPERIENCE
+                      Tailored Celebrations
                       </h2>
                     </FadeIn>
                     <FadeIn
@@ -203,30 +203,21 @@ const PrivateDiningArch: React.FC = () => {
                     </FadeIn>
                     <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
                       <h3 className="text-lg md:text-xl font-serif text-gray-800">
-                        Unforgettable private dining
+                      Moments Made Memorable
                       </h3>
                     </FadeIn>
                     <FadeIn delay={0.4} direction="up" duration={0.8} once={true}>
                       <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
-                        The Arch private dining room is thoughtfully set within the main restaurant, 
-                        offering the perfect balance of privacy for your event while still allowing your guests 
-                        to enjoy the lively ambiance. The elegant interior of The Arch features luxurious touches, 
-                        including fine furnishings, ambient lighting, and a sophisticated atmosphere.
+                      The Garden Room is our elegant private dining space, tucked within the heart of the restaurant. It offers just the right mix of intimacy and connection—private enough for your guests to feel special, yet open enough to soak in the vibrant energy of KABOUL GOURMET.
                       </p>
                       <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
-                        Your event can be further elevated by our optional add-on bespoke services, designed to cater 
-                        to your every need. We offer personalized floral arrangements, complimentary menu printing, 
-                        and additional elegant touches that add a special atmosphere to your gathering.
+                      Designed with taste and comfort in mind, The Garden Room features refined furnishings, warm lighting, and a relaxed, upscale atmosphere. Whether you're hosting a celebration, business dinner, or family gathering, it’s a space that makes moments feel memorable.
                       </p>
                       <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
-                        Your event can be further elevated by our optional add-on bespoke services, designed to cater 
-                        to your every need. We offer personalized floral arrangements, complimentary menu printing, 
-                        and additional elegant touches that add a special atmosphere to your gathering.
+                      To make your event even more special, we offer optional services like personalized floral arrangements, printed menus, and extra decorative touches—all tailored to your needs.
                       </p>
                       <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
-                        Your event can be further elevated by our optional add-on bespoke services, designed to cater 
-                        to your every need. We offer personalized floral arrangements, complimentary menu printing, 
-                        and additional elegant touches that add a special atmosphere to your gathering.
+                      Our team is here to help plan and support every detail, so you can focus on enjoying the occasion. From custom menu selections to thoughtful service, we aim to create a seamless and unforgettable experience.
                       </p>
                       
                     </FadeIn>
