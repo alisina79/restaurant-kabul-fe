@@ -6,14 +6,14 @@
   display: flex;
   flex-direction: column;
   z-index: 100;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); */
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  backdrop-filter: blur(5px);
+  /* backdrop-filter: blur(5px); */
 }
 
 .scrolled {
   transform: translateY(-3px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); */
 }
 
 .scrolled .topHeader {
@@ -379,46 +379,40 @@
 
 /* Bottom White Header (Secondary Nav) */
 .bottomHeader {
-  background-color: whitesmoke;
+  background-color: white;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-
-  padding: 12px 70px; /* Reduced padding */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-  transition: all 0.4s ease, transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-  z-index: 50;
+  padding: 0.75rem 2.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   position: relative;
-  height: auto;
-  max-height: 160px; /* Reduced max height */
+  transition: all 0.4s ease;
+  transform: translateY(0);
   opacity: 1;
   visibility: visible;
-  overflow: hidden;
-  transform: translateY(0);
 }
 
-/* Hide bottomHeader when scrolled */
-.scrolled .bottomHeader {
-  padding: 0 50px;
-  max-height: 0;
+.bottomHeader.hidden {
+  transform: translateY(-100%);
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-20px);
-  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), padding 0.3s ease,
-    max-height 0.3s ease;
-  box-shadow: none;
+}
+
+.scrolled .bottomHeader {
+  padding: 0.6rem 2.5rem;
 }
 
 .restaurantName {
-  color: #ac8d5b;
-  font-family: "Playfair Display", serif;
-  font-size: 18px; /* Smaller font */
-  font-weight: 600;
-  margin-right: 50px; /* Reduced margin */
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: all 0.4s ease;
+  font-family: 'Cinzel', serif;
+  color: #1a1e25;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding-bottom: 5px;
   position: relative;
+  transition: all 0.4s ease;
+  white-space: nowrap;
   text-transform: uppercase;
-} 
+}
 
 .restaurantName::after {
   content: "";
@@ -441,18 +435,18 @@
 
 .navLinks {
   display: flex;
-  gap: 25px; /* Reduced gap */
+  gap: 3rem;
+  align-items: center;
 }
 
 .navLink {
-  color: #121212;
-  text-decoration: none;
-  font-size: 14px; /* Smaller font */
+  font-size: 0.9rem;
   font-weight: 600;
-  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  color: #333;
   position: relative;
-  padding: 6px 0; /* Reduced padding */
-  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  padding: 5px 5px;
 }
 
 .navLink::after {
@@ -672,15 +666,13 @@
 
 @media (max-width: 1024px) {
   .navLinks {
-    gap: 25px;
+    gap: 2rem;
   }
-
   .bottomHeader {
-    padding: 15px 30px;
+    padding: 0.7rem 1.5rem;
   }
-
   .topHeader {
-    padding: 0px 30px;
+    padding: 0 30px;
   }
   
   .desktopLogo {
@@ -701,43 +693,55 @@
 
 @media (max-width: 768px) {
   .navLinks {
-    display: none;
+    display: flex;
+    gap: 0.8rem;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
-
+  
+  .navLinks::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  
+  .navLink {
+    font-size: 0.7rem;
+    white-space: nowrap;
+    padding: 5px 2px;
+  }
+  
   .restaurantName {
-    margin-right: 0;
+    font-size: 1.2rem;
+    margin-right: 10px;
   }
 
   .contactArea {
-    gap: 8px;
-    margin-left: auto;
+    gap: 0.5rem;
   }
 
   .phoneNumber {
     display: none;
   }
-
   .phoneNumber:hover {
-    background: #8f7544;
-    color: #ffffff;
-  }
-
-  .topHeader {
-    padding: 0px 0px; /* Reduced padding */
-    justify-content: space-between;
-    background-color: #1a1e25;
-  }
-  .hamburgerWrapper{
-    padding: 4px 12px;
-  }
-  .bookButton{
-    transform: none !important;
+    color: #ac8d5b;
+    background: transparent;
   }
   
-  .bottomHeader {
-    display: none; /* Hide bottomHeader on mobile screens */
+  .topHeader {
+    padding: 0 15px; 
   }
-
+  .hamburgerWrapper{
+    padding: 4px 8px;
+  }
+  .bookButton{
+    padding:10px;
+  }
+  .bottomHeader {
+    padding: 0.7rem;
+    display: flex;
+  }
+  
   .bookButton {
     padding: 7px 12px;
     font-size: 0.9rem;
@@ -825,9 +829,24 @@
   .giftsLink {
     display: none;
   }
-
+  
   .bottomHeader {
+    padding: 0.5rem;
     justify-content: center;
+    flex-direction: column;
+  }
+
+  .restaurantName {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+  }
+
+  .navLinks {
+    gap: 0.5rem;
+  }
+  
+  .navLink {
+    font-size: 0.65rem;
   }
 
   .sidebarContent {

@@ -32,6 +32,8 @@ function Navbar() {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
   const [isHoveringButton, setIsHoveringButton] = useState(false);
   const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
   
   // Get current location to determine which page we're on
   const location = useLocation();
@@ -56,11 +58,20 @@ function Navbar() {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       setIsScrolled(scrollTop > 20);
+      
+      // Check scroll direction
+      if (scrollTop > lastScrollY) {
+        setIsScrollingDown(true);
+      } else {
+        setIsScrollingDown(false);
+      }
+      
+      setLastScrollY(scrollTop);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
   
   // Check if the device is mobile
   useEffect(() => {
@@ -270,24 +281,22 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Bottom White Header - Only show on home page */}
-        {isHomePage && (
-          <div className={styles.bottomHeader}>
-            <Link to="/" style={{ cursor: 'pointer' }}>
-              <div style={{ cursor: 'pointer' }} className={`${styles.restaurantName}`}>
-                Kaboul Gourmet
-              </div>
-            </Link>
-            <nav className={styles.navLinks}>
-              <Link to="/menu" className={`${styles.navLink} ${currentUrl === "/menu" ? styles.active : ""}` }>MENUS</Link>
-              <Link to="/whatson" className={`${styles.navLink} ${currentUrl === "/whatson" ? styles.active : ""}` }>WHAT'S ON</Link>
-              <Link to="/about" className={`${styles.navLink} ${currentUrl === "/about" ? styles.active : ""}` }>ABOUT US</Link>
-              <Link to="/private-dining-arch" className={`${styles.navLink} ${currentUrl === "/private-dining-arch" ? styles.active : ""}` }>Private Dining</Link>
-              <Link to="/contact" className={`${styles.navLink} ${currentUrl === "/contact" ? styles.active : ""}` }>CONTACT</Link>
-              <Link to="/newsletter" className={`${styles.navLink} ${currentUrl === "/newsletter" ? styles.active : ""}` }>NEWSLETTER SIGNUP</Link>
-            </nav>
-          </div>
-        )}
+        {/* Bottom White Header - Show on all pages with scroll behavior */}
+        <div className={`${styles.bottomHeader} ${isScrollingDown ? styles.hidden : ''}`}>
+          <Link to="/" style={{ cursor: 'pointer' }}>
+            <div style={{ cursor: 'pointer' }} className={`${styles.restaurantName}`}>
+              Kaboul Gourmet
+            </div>
+          </Link>
+          <nav className={styles.navLinks}>
+            <Link to="/menu" className={`${styles.navLink} ${currentUrl === "/menu" ? styles.active : ""}` }>MENUS</Link>
+            <Link to="/whatson" className={`${styles.navLink} ${currentUrl === "/whatson" ? styles.active : ""}` }>WHAT'S ON</Link>
+            <Link to="/about" className={`${styles.navLink} ${currentUrl === "/about" ? styles.active : ""}` }>ABOUT US</Link>
+            <Link to="/private-dining-arch" className={`${styles.navLink} ${currentUrl === "/private-dining-arch" ? styles.active : ""}` }>PRIVATE DINING</Link>
+            <Link to="/contact" className={`${styles.navLink} ${currentUrl === "/contact" ? styles.active : ""}` }>CONTACT</Link>
+            <Link to="/newsletter" className={`${styles.navLink} ${currentUrl === "/newsletter" ? styles.active : ""}` }>NEWSLETTER SIGNUP</Link>
+          </nav>
+        </div>
       </header>
 
       {/* Sidebar Menu for Mobile/Tablet */}
