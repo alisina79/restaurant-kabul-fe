@@ -91,21 +91,21 @@ const Celebrations: React.FC = () => {
                     <button
                       className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider bg-white text-black 
                  hover:bg-black hover:text-white transition-all duration-500 ease-in-out transform"
-                      onClick={() => navigate("/menu")}
+                      onClick={() => navigate("/reservations")}
                     >
                       Make a Booking
                     </button>
                     <button
                       className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider bg-white text-black 
                  hover:bg-black hover:text-white transition-all duration-500 ease-in-out transform"
-                      onClick={() => navigate("/menu")}
+                      onClick={() => navigate("/contact")}
                     >
                       Talk to our team
                     </button>
                     <button
                       className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider bg-white text-black 
                  hover:bg-black hover:text-white transition-all duration-500 ease-in-out transform"
-                      onClick={() => navigate("/menu")}
+                      onClick={() => navigate("/reservations")}
                     >
                       Private Dining Enquiry
                     </button>
