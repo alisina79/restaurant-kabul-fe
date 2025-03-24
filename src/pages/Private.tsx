@@ -89,39 +89,64 @@ export default function Private() {
                     Unforgettable experiences for any event from intimate private dining to exclusive use events upto 150 guests.
                 </motion.p>
                 
-                <motion.button 
-                    className={styles.bookButton}
-                    onClick={() => navigate('/reservations')}
-                    animate={buttonControls}
-                    whileHover={{ 
-                        scale: 1.05, 
-                        y: -5,
-                        x: -5,
-                        letterSpacing: "2.5px",
-                        transition: { duration: 0.3, ease: "easeOut" }
-                    }}
-                    whileTap={{ 
-                        scale: 0.98,
-                        y: 2,
-                        x: -2,
-                        transition: { duration: 0.1 }
-                    }}
-                    variants={itemVariants}
-                >
-                    <motion.span
-                        initial={{ opacity: 1 }}
-                        animate={{
-                            opacity: [1, 0.8, 1],
-                            transition: {
-                                duration: 3,
-                                repeat: Infinity,
-                                repeatType: "reverse"
-                            }
+                <div className={styles.buttonGroup}>
+                    <motion.button 
+                        className={styles.bookButton}
+                        onClick={() => navigate('/reservations')}
+                        animate={buttonControls}
+                        whileHover={{ 
+                            scale: 1.05, 
+                            y: -5,
+                            x: -5,
+                            letterSpacing: "2.5px",
+                            transition: { duration: 0.3, ease: "easeOut" }
                         }}
+                        whileTap={{ 
+                            scale: 0.98,
+                            y: 2,
+                            x: -2,
+                            transition: { duration: 0.1 }
+                        }}
+                        variants={itemVariants}
                     >
-                        Book Now
-                    </motion.span>
-                </motion.button>
+                        <motion.span
+                            initial={{ opacity: 1 }}
+                            animate={{
+                                opacity: [1, 0.8, 1],
+                                transition: {
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    repeatType: "reverse"
+                                }
+                            }}
+                        >
+                            Book Now
+                        </motion.span>
+                    </motion.button>
+                    
+                    <motion.button 
+                        className={styles.privateRoomButton}
+                        onClick={() => navigate('/private-dining-arch')}
+                        whileHover={{ 
+                            scale: 1.05, 
+                            y: -5,
+                            x: -5,
+                            letterSpacing: "2.5px",
+                            transition: { duration: 0.3, ease: "easeOut" }
+                        }}
+                        whileTap={{ 
+                            scale: 0.98,
+                            y: 2,
+                            x: -2,
+                            transition: { duration: 0.1 }
+                        }}
+                        variants={itemVariants}
+                    >
+                        <motion.span>
+                            View The Arch
+                        </motion.span>
+                    </motion.button>
+                </div>
             </motion.div>
 
             <motion.div 
@@ -141,6 +166,29 @@ export default function Private() {
                 
                 <div className={styles.overlay}>
                     
+                </div>
+            </motion.div>
+            
+            {/* Featured Private Dining Rooms */}
+            <motion.div 
+                className={styles.featuredRooms}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1 }}
+            >
+                <h2 className={styles.roomsTitle}>Our Private Dining Spaces</h2>
+                <div className={styles.roomsGrid}>
+                    <div className={styles.roomCard} onClick={() => navigate('/private-dining-arch')}>
+                        <div className={styles.roomImageWrapper}>
+                            <img src="/hall.jpg" alt="The Arch Private Dining Room" className={styles.roomImage} />
+                        </div>
+                        <div className={styles.roomInfo}>
+                            <h3 className={styles.roomName}>The Arch</h3>
+                            <p className={styles.roomCapacity}>Up to 20 guests</p>
+                            <button className={styles.viewRoomButton}>View Details</button>
+                        </div>
+                    </div>
+                    {/* You can add more room cards here as you create more pages */}
                 </div>
             </motion.div>
         </div>

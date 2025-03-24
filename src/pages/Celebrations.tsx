@@ -64,26 +64,13 @@ const Celebrations: React.FC = () => {
                 </FadeIn>
                 <FadeIn delay={0.4} direction="up" duration={0.8} once={true}>
                   <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
-                    Join us to celebrate the milestones in your life. Whether
-                    that be a wedding reception, birthday, graduation or perhaps
-                    securing that new job, we are the perfect location to
-                    celebrate.
+                  Celebrate life’s special moments with us at KABOUL GOURMET. Whether it’s a birthday, graduation, wedding reception, or a new job, our warm and welcoming space is the perfect place to gather.
                     <br />
                     <br />
-                    Galvin la Chapelle can be the perfect backdrop for an
-                    intimate wedding reception, from securing one of our private
-                    dining rooms or exclusively hiring our restaurants for your
-                    big day. Small or larger private tables can be reserved to
-                    make your special occasion.
+                    We offer private dining options for both small and larger groups, and you can even reserve the entire restaurant for exclusive events. Whatever the occasion, we’ll help make it feel personal and memorable.
                     <br />
                     <br />
-                    We welcome special requests, from a bouquet of flowers to a
-                    small celebration cake please talk to our team and they will
-                    try their best to meet your needs and wants of your special
-                    day. Our team are on hand for all those pre-ordered bottles
-                    of Galvin champagne, a signed menu or even a Galvin
-                    cook-book amongst a handful of options to mark the special
-                    occasion
+                    Have something special in mind? From flowers to a custom cake, our team is here to help. We also offer pre-ordered drinks, personalized menus, and thoughtful extras to make your celebration unique.
                   </p>
                 </FadeIn>
                 <FadeIn delay={0.5} direction="up" duration={0.8} once={true}>

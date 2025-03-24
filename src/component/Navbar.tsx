@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "../css/navbar.module.css";
 import {
   Menu as MenuIcon,
@@ -32,6 +32,10 @@ function Navbar() {
   const [isLogoHovered, setIsLogoHovered] = useState(false);
   const [isHoveringButton, setIsHoveringButton] = useState(false);
   const [isHoveringDropdown, setIsHoveringDropdown] = useState(false);
+  
+  // Get current location to determine which page we're on
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
   
   // Ref for the book button and dropdown
   const bookButtonRef = useRef<HTMLDivElement>(null);
@@ -134,32 +138,7 @@ function Navbar() {
     setIsHoveringButton(false);
   };
 
-  // SVG for the "K" logo for mobile view
-  // const KLogoSVG = (color: string) =>   (
-  //   <svg 
-  //     xmlns="http://www.w3.org/2000/svg" 
-  //     width="35" 
-  //     height="35" 
-    
-  //     viewBox="0 0 100 100" 
-  //     className={styles.kLogoSvg}
-  //     onMouseEnter={() => setIsLogoHovered(true)}
-  //     onMouseLeave={() => setIsLogoHovered(false)}
-  //     onTouchStart={() => setIsLogoHovered(true)}
-  //     onTouchEnd={() => setIsLogoHovered(false)}
-  //   >
-  //     <text x="50" y="55" style={{
-  //       fontFamily: 'Cinzel, serif',
-  //       fontSize: '78px',
-  //       fill: 'none',
-  //       stroke: `#${color}`,
-  //       strokeWidth: '1.1',
-  //       textAnchor: 'middle',
-  //       dominantBaseline: 'middle',
-  //       transition: 'stroke 0.3s ease'
-  //     }}>K</text>
-  //   </svg>
-  // );
+ 
 
   type KLogoSVGProps = {
     color: string;
@@ -291,24 +270,24 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Bottom White Header */}
-        <div className={styles.bottomHeader}>
-          <Link to="/" style={{ cursor: 'pointer' }}>
-
-          <div 
-
-           style={{ cursor: 'pointer' }}  className={`${styles.restaurantName} `}>
-            Kaboul Gourmet
+        {/* Bottom White Header - Only show on home page */}
+        {isHomePage && (
+          <div className={styles.bottomHeader}>
+            <Link to="/" style={{ cursor: 'pointer' }}>
+              <div style={{ cursor: 'pointer' }} className={`${styles.restaurantName}`}>
+                Kaboul Gourmet
+              </div>
+            </Link>
+            <nav className={styles.navLinks}>
+              <Link to="/menu" className={`${styles.navLink} ${currentUrl === "/menu" ? styles.active : ""}` }>MENUS</Link>
+              <Link to="/whatson" className={`${styles.navLink} ${currentUrl === "/whatson" ? styles.active : ""}` }>WHAT'S ON</Link>
+              <Link to="/about" className={`${styles.navLink} ${currentUrl === "/about" ? styles.active : ""}` }>ABOUT US</Link>
+              <Link to="/private-dining-arch" className={`${styles.navLink} ${currentUrl === "/private-dining-arch" ? styles.active : ""}` }>Hall</Link>
+              <Link to="/contact" className={`${styles.navLink} ${currentUrl === "/contact" ? styles.active : ""}` }>CONTACT</Link>
+              <Link to="/newsletter" className={`${styles.navLink} ${currentUrl === "/newsletter" ? styles.active : ""}` }>NEWSLETTER SIGNUP</Link>
+            </nav>
           </div>
-          </Link>
-          <nav className={styles.navLinks}>
-            <Link to="/menu" className={`${styles.navLink} ${currentUrl === "/menu" ? styles.active : ""}` }>MENUS</Link>
-            <Link to="/whatson" className={`${styles.navLink} ${currentUrl === "/whatson" ? styles.active : ""}` }>WHAT'S ON</Link>
-            <Link to="/about" className={`${styles.navLink} ${currentUrl === "/about" ? styles.active : ""}` }>ABOUT US</Link>
-            <Link to="/contact" className={`${styles.navLink} ${currentUrl === "/contact" ? styles.active : ""}` }>CONTACT</Link>
-            <Link to="/newsletter" className={`${styles.navLink} ${currentUrl === "/newsletter" ? styles.active : ""}` }>NEWSLETTER SIGNUP</Link>
-          </nav>
-        </div>
+        )}
       </header>
 
       {/* Sidebar Menu for Mobile/Tablet */}

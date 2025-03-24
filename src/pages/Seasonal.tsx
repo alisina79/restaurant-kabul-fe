@@ -86,10 +86,9 @@ const About: React.FC = () => {
                 </FadeIn>
                 <FadeIn delay={0.4} direction="up" duration={0.8} once={true}>
                   <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
-                    Our menus at La Chapelle celebrate only the best in produce
-                    of the season. With frequently changing menus, our Head Chef
-                    continues to adapt our offering to ensure we only serve our
-                    guests the very best.
+                  At KABOUL GOURMET, we focus on using the best seasonal ingredients. Our menu changes regularly, allowing our Head Chef to bring out fresh flavors and serve you the highest quality dishes every time you visit.
+
+
                   </p>
                 </FadeIn>
                 <FadeIn delay={0.5} direction="up" duration={0.8} once={true}>

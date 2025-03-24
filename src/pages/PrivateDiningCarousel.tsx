@@ -72,11 +72,11 @@ const PrivateDiningCarousel = () => {
           </FadeIn>
           <div className="flex justify-center mt-8">
             <a
-              href="/reservations"
+              href="/private-dining-arch"
               className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider bg-white text-black 
       hover:bg-black hover:text-white transition-all duration-500 ease-in-out transform"
             >
-              Make a Booking
+              Check it out
             </a>
           </div>
         </div>
