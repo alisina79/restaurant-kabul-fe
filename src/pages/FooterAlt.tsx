@@ -23,7 +23,10 @@ const FooterAlt = () => {
           {/* Column 1: Logo and Contact */}
           <div>
             <div className="mb-6">
-             <FooterAltNameSVG />
+              <div className="flex gap-2 items-center">
+                <h1 style={{fontFamily: "'Brush Script MT', cursive"}} className="text-white font-serif text-5xl italic mb-4  cursor-pointer">Kaboul Gourmet</h1>
+                <span style={{fontFamily: "'Segoe UI Symbol', sans-serif"}} className="text-white font-serif text-3xl italic mb-4  cursor-pointer">❀</span>
+              </div>
             </div>
 
             <h3 className="font-medium uppercase text-sm tracking-wider mb-3">
