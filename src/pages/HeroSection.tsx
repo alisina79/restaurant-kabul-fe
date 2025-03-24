@@ -16,7 +16,7 @@ const HERO_CONTENT = [
     src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3774&q=80",
     alt: "Elegant restaurant interior",
     subtitle: "Fine Dining Experience Since 2008",
-    title: "Exceptional Cuisine\nRefined Elegance",
+    title: "Exceptional Cuisine max-Refined Elegance",
     description:
       "An unforgettable dining experience in the heart of London. Michelin-starred cuisine in a setting of understated elegance.",
     button: {
@@ -31,7 +31,7 @@ const HERO_CONTENT = [
     poster:
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     subtitle: "Culinary Artistry",
-    title: "Watch Our Chefs\nCreate Magic",
+    title: "Watch Our Chefs max-Create Magic",
     description:
       "Witness the craftsmanship and passion behind every dish. Our executive chef brings decades of experience to create unforgettable flavors.",
     button: {
@@ -44,7 +44,7 @@ const HERO_CONTENT = [
     src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     alt: "Fine dining experience",
     subtitle: "Memorable Moments",
-    title: "Perfect Setting\nFor Special Occasions",
+    title: "Perfect Setting max-For Special Occasions",
     description:
       "Celebrate life's most precious moments in an atmosphere of sophistication and warmth. Private dining rooms available for intimate gatherings.",
     button: {
@@ -57,7 +57,7 @@ const HERO_CONTENT = [
     src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     alt: "Gourmet dish presentation",
     subtitle: "Seasonal Selections",
-    title: "Locally Sourced\nGlobally Inspired",
+    title: "Locally Sourced max-Globally Inspired",
     description:
       "Our menu changes with the seasons, featuring the finest ingredients from local producers and influences from around the world.",
     button: {
@@ -341,7 +341,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Enhanced Content with improved animations - positioned bottom center */}
-      <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20 max-w-4xl px-4 sm:px-6 lg:px-8 w-full">
+      <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20  px-4 sm:px-6 lg:px-8 w-full">
         <div
           className={cn(
             "text-center transition-opacity duration-500",
@@ -357,7 +357,7 @@ const Hero: React.FC = () => {
                 initialOpacity={0}
                 key={`subtitle-${currentSlide}`}
               >
-                <p className="text-gold uppercase tracking-[0.4em] mb-4 text-sm sm:text-base font-light relative inline-block after:content-[''] after:absolute after:w-full after:h-[1px] after:bg-gold/30 after:bottom-[-5px] after:left-0 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 after:hover:scale-x-100">
+                <p className="text-white uppercase tracking-[0.4em] mb-4 text-sm sm:text-base font-light relative inline-block after:content-[''] after:absolute after:w-full after:h-[1px] after:bg-gold/30 after:bottom-[-5px] after:left-0 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 after:hover:scale-x-100">
                   {HERO_CONTENT[currentSlide].subtitle}
                 </p>
               </FadeIn>
@@ -406,10 +406,10 @@ const Hero: React.FC = () => {
                 <div className="flex justify-center">
                   <Link
                     to={HERO_CONTENT[currentSlide].button.url}
-                    className="bg-transparent text-gold hover:!text-white py-3 px-8 tracking-wider transition-all duration-500 uppercase text-sm flex items-center group no-underline"
+                    className="bg-transparent text-[#ac8d5b] hover:text-white py-3 px-8 tracking-wider transition-all duration-500 uppercase text-sm flex items-center group no-underline"
                   >
                     {HERO_CONTENT[currentSlide].button.text}
-                    <ArrowRight className="ml-2 w-4 h-4 text-gold group-hover:!text-white transition-transform duration-500 group-hover:translate-x-1" />
+                    <ArrowRight className="ml-2 w-4 h-4 text-[#ac8d5b] group-hover:text-white transition-transform duration-500 group-hover:translate-x-1" />
                   </Link>
                 </div>
               </FadeIn>
