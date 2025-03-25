@@ -37,7 +37,7 @@ const FooterAlt = () => {
               Call{" "}
               <a
                 href="tel:02072990400"
-                className="underline hover:no-underline"
+                className="underline hover:no-underline hover:text-[#121212]"
               >
                 020 7299 0400
               </a>{" "}
@@ -47,7 +47,7 @@ const FooterAlt = () => {
               Alternatively email{" "}
               <a
                 href="mailto:elise@galvinrestaurants.com"
-                className="underline hover:no-underline"
+                className="underline hover:no-underline hover:text-[#121212]"
               >
                 elise@galvinrestaurants.com
               </a>
@@ -58,7 +58,7 @@ const FooterAlt = () => {
               For all private dining enquiries please email
               <a
                 href="mailto:privatedining.city@galvinrestaurants.com"
-                className="underline hover:no-underline"
+                className="underline hover:no-underline hover:text-[#121212]"
               >
                 {" "}
                 privatedining.city@galvinrestaurants.com
@@ -66,14 +66,14 @@ const FooterAlt = () => {
               or call{" "}
               <a
                 href="tel:02072990400"
-                className="underline hover:no-underline"
+                className="underline hover:no-underline hover:text-[#121212]"
               >
                 020 7299 0400
               </a>{" "}
               opt 2
             </p>
 
-            <p className="text-sm mb-4 underline hover:no-underline cursor-pointer">
+            <p className="text-sm mb-4 underline hover:no-underline hover:text-[#121212] cursor-pointer">
               Frequently Asked Questions
             </p>
 
