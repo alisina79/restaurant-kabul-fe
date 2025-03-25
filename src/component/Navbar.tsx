@@ -289,12 +289,12 @@ function Navbar() {
             </div>
           </Link>
           <nav className={styles.navLinks}>
-            <Link to="/menu" className={`${styles.navLink} ${currentUrl === "/menu" ? styles.active : ""}` }>MENUS</Link>
+            <Link to="/menu" className={`${styles.navLink} ${currentUrl === "/menu" ? styles.active : ""}` } >MENUS</Link>
             <Link to="/whatson" className={`${styles.navLink} ${currentUrl === "/whatson" ? styles.active : ""}` }>WHAT'S ON</Link>
             <Link to="/about" className={`${styles.navLink} ${currentUrl === "/about" ? styles.active : ""}` }>ABOUT US</Link>
             <Link to="/private-dining-arch" className={`${styles.navLink} ${currentUrl === "/private-dining-arch" ? styles.active : ""}` }>PRIVATE DINING</Link>
             <Link to="/contact" className={`${styles.navLink} ${currentUrl === "/contact" ? styles.active : ""}` }>CONTACT</Link>
-            <Link to="/newsletter" className={`${styles.navLink} ${currentUrl === "/newsletter" ? styles.active : ""}` }>NEWSLETTER SIGNUP</Link>
+            <Link to="/newsletter" className={`${styles.navLink} ${currentUrl === "/newsletter" ? styles.active : ""}` } style={{ display: isMobile ? "none" : "block" }}>NEWSLETTER SIGNUP</Link>
           </nav>
         </div>
       </header>
