@@ -16,6 +16,7 @@ import Ourjourny from "./pages/Ourjourny";
 import Private from "./pages/Private";
 import Celebration from "./pages/Celebration";
 import PrivateDiningArch from "./pages/PrivateDiningArch";
+import MothersDay from "./pages/MothersDay";
 
 import { useLocation } from "react-router";
 import { useEffect } from "react";
@@ -45,6 +46,7 @@ function App() {
         <Route path="/private-dining" element={<Private />} />
         <Route path="/celebrations" element={<Celebration />} />
         <Route path="/private-dining-arch" element={<PrivateDiningArch />} />
+        <Route path="/mothers-day" element={<MothersDay />} />
       
       </Routes>
       <Footer /> {/* Footer is always visible */}

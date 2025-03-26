@@ -31,12 +31,12 @@ const HERO_CONTENT = [
     poster:
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     subtitle: "Culinary Artistry",
-    title: "Watch Our Chefs max-Create Magic",
+    title: "Celebrate Mother's Day with Us",
     description:
-      "Witness the craftsmanship and passion behind every dish. Our executive chef brings decades of experience to create unforgettable flavors.",
+      "Join us for a special Mother's Day menu, complimentary champagne for mothers, and a small gift to take home.",
     button: {
-      text: "Meet Our Team",
-      url: "/chefs",
+      text: "Discover More",
+      url: "/mothers-day",
     },
   },
   {

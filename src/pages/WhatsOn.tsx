@@ -4,8 +4,21 @@ import styles from "../css/WhatsOn.module.css";
 import four from "../chef/four.jpg";
 import five from "../chef/five.jpg";
 import six from "../chef/six.jpg";
+import { useNavigate } from "react-router-dom";
 
 const events = [
+  {
+    id: "mothers-day",
+    title: "Mother's Day Celebration",
+    date: "May 12, 2024",
+    description:
+      "Treat your mother to a special dining experience with our Mother's Day menu.",
+    details:
+      "Join us for a memorable Mother's Day celebration with a special menu, complimentary champagne for mothers, and a small gift to take home.",
+    image: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    hasSpecialPage: true,
+    linkTo: "/mothers-day"
+  },
   {
     id: "wine-tasting",
     title: "Wine Tasting Dinner",
@@ -15,6 +28,7 @@ const events = [
     details:
       "Join us for a night of fine wines carefully paired with gourmet dishes. Experts will guide you through each tasting.",
     image: four,
+    hasSpecialPage: false
   },
   {
     id: "jazz-night",
@@ -24,6 +38,7 @@ const events = [
     details:
       "Enjoy a sophisticated evening of live jazz performances while indulging in our signature gourmet dishes.",
     image: five,
+    hasSpecialPage: false
   },
   {
     id: "afghan-week",
@@ -34,20 +49,32 @@ const events = [
     details:
       "Explore the taste of Afghanistan with a week-long special menu featuring traditional Afghan dishes.",
     image: six,
+    hasSpecialPage: false
   },
 ];
 
 const WhatsOn = () => {
   // Create references for each event details section
+  const mothersRef = useRef(null);
   const wineTastingRef = useRef(null);
   const jazzNightRef = useRef(null);
   const afghanWeekRef = useRef(null);
+  const navigate = useNavigate();
 
   // Function to handle smooth scrolling to the correct section
   const handleScrollToDetails = (eventId: string) => {
     const section = document.getElementById(eventId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  // Function to handle navigation to event pages or scroll to details
+  const handleEventAction = (event: any) => {
+    if (event.hasSpecialPage && event.linkTo) {
+      navigate(event.linkTo);
+    } else {
+      handleScrollToDetails(event.id);
     }
   };
 
@@ -69,9 +96,9 @@ const WhatsOn = () => {
                 className={styles.detailsButton}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => handleScrollToDetails(event.id)} // Scrolls to details section
+                onClick={() => handleEventAction(event)} // Navigate or scroll to details
               >
-                Learn More
+                {event.hasSpecialPage ? "View Details" : "Learn More"}
               </motion.button>
             </div>
           </motion.div>
@@ -80,7 +107,7 @@ const WhatsOn = () => {
 
       {/* Event Details Sections */}
       <motion.div className={styles.detailsSection}>
-        {events.map((event) => (
+        {events.filter(event => !event.hasSpecialPage).map((event) => (
           <motion.div
             key={event.id}
             id={event.id}
