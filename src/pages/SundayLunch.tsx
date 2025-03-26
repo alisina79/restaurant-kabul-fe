@@ -84,7 +84,7 @@ const SundayLunch: React.FC = () => {
             <div className="container mx-auto px-6 flex flex-col items-start">
               <div className="w-16 h-[2px] bg-[#ac8d5b] my-2"></div>
               <p className="text-2xl md:text-3xl font-serif text-primary mt-10">
-                Private Dining
+                Sunday Lunch
               </p>
             </div>
           </div>
@@ -141,12 +141,7 @@ const SundayLunch: React.FC = () => {
             ))}
           </div>
           
-          {/* Scroll Down Indicator
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 text-white/70 animate-bounce">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div> */}
+         
         </div>
       </div>
 
@@ -255,7 +250,7 @@ const SundayLunch: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <FadeIn delay={0.1} direction="up" duration={0.8} once={true}>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-center uppercase text-[#1a1e25] mb-8">
-                PRIVATE DINING MENUS
+                SUNDAY LUNCH MENUS
               </h2>
               <div className="w-24 h-[2px] bg-[#ac8d5b] mx-auto mb-12"></div>
             </FadeIn>
