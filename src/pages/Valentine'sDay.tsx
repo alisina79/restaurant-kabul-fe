@@ -85,9 +85,9 @@ const ValentineDay: React.FC = () => {
       {/* Content Section - Pattern background container */}
       <section className="w-full overflow-hidden py-10">
         <KPatternBackground
-          strokeColor="#af905c"
-          fillColor="#7a613c"
-          backgroundColor="bg-[#1a1e25]"
+          strokeColor="#1a1e25"
+          fillColor="#1a1e25"
+          backgroundColor="bg-[#ac8d5b]"
           patternSize="50px"
           className="p-6 md:p-12 lg:p-16 overflow-hidden w-full"
         >
@@ -116,18 +116,18 @@ const ValentineDay: React.FC = () => {
                   </FadeIn>
                   <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
                     <h3 className="text-lg md:text-xl font-serif text-gray-800">
-                      Celebrate Valentine's Day in Style at Kaboul Gourmet
+                    Savor Love in Style at KABOUL GOURMET
                     </h3>
                   </FadeIn>
                   <FadeIn delay={0.4} direction="up" duration={0.8} once={true}>
                     <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
-                      This Valentine's Day, treat the special women in your life to an unforgettable dining experience at Kaboul Gourmet. Our chefs have crafted a special menu that celebrates the warmth and love of mothers everywhere.
+                    This Valentine’s Day, create lasting memories at KABOUL GOURMET. Whether you're celebrating with a partner, close friends, or simply honoring the joy of connection, we invite you to enjoy an evening filled with warmth, flavor, and meaningful moments.
                       <br />
                       <br />
-                      Our elegant Valentine's Day Menu features traditional Afghan delicacies with contemporary twists, including a complimentary glass of champagne for all mothers. From our signature kabuli pulao to decadent desserts, every dish is prepared with care and the finest ingredients.
+                      Our specially curated Valentine’s Day Menu showcases the essence of Afghan cuisine, blending time-honored traditions with contemporary touches. From our fragrant kabuli pulao to rich, handcrafted desserts, each dish is prepared with care, using only the finest ingredients.
                       <br />
                       <br />
-                      As a special touch, all mothers will receive a small gift to commemorate the occasion. Reserve your table now to secure your place for this popular celebration.
+                      The atmosphere is set for something special — soft lighting, refined décor, and attentive service to make the evening feel truly personal. As a thoughtful gesture, every guest will receive a small gift to take home, adding a memorable touch to your night.
                     </p>
                   </FadeIn>
                   <FadeIn delay={0.5} direction="up" duration={0.8} once={true}>

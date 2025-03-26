@@ -113,7 +113,7 @@ const Anniversary: React.FC = () => {
                   </FadeIn>
                   <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
                     <h3 className="text-lg md:text-xl font-serif text-gray-800">
-                      Celebrate Anniversary in Style at Kaboul Gourmet
+                    An Anniversary Worth Savoring at KABOUL GOURMET
                     </h3>
                   </FadeIn>
                   <FadeIn delay={0.4} direction="up" duration={0.8} once={true}>
