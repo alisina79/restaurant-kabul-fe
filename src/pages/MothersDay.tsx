@@ -183,7 +183,7 @@ const MothersDay: React.FC = () => {
         <div className="relative max-w-7xl mx-auto px-4 mt-8">
           <div className="flex justify-end">
             <button 
-              onClick={() => navigate("/weekly-specials")} 
+              onClick={() => navigate("/sudanday")} 
               className="flex items-center justify-center px-6 py-3 text-[#b78c4c] border border-[#b78c4c] bg-transparent hover:bg-[#b78c4c] hover:text-white transition-all duration-300"
               style={{ 
                 
@@ -193,8 +193,9 @@ const MothersDay: React.FC = () => {
                 letterSpacing: "0.5px"
               }}
             >
+                
               <span className="inline-flex items-center justify-center">
-                Sundays at Kaboul Gourmet
+                Sunday Lunch at Kaboul Gourmet
                 <span className="ml-2" style={{ fontSize: "18px" }}>›</span>
               </span>
             </button>

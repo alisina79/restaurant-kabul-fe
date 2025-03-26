@@ -48,8 +48,8 @@ const HERO_CONTENT = [
     description:
       "Celebrate life's most precious moments in an atmosphere of sophistication and warmth. Private dining rooms available for intimate gatherings.",
     button: {
-      text: "Private Events",
-      url: "/events",
+      text: "Sudan Day Lunch",
+      url: "/sudanday",
     },
   },
   {
@@ -61,8 +61,22 @@ const HERO_CONTENT = [
     description:
       "Our menu changes with the seasons, featuring the finest ingredients from local producers and influences from around the world.",
     button: {
-      text: "Explore Menu",
-      url: "/menu",
+      text: "Valentine's Day",
+      url: "/valentineday",
+    },
+  },
+
+  {
+    type: "image",
+    src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    alt: "Gourmet dish presentation",
+    subtitle: "Seasonal Selections",
+    title: "Locally Sourced max-Globally Inspired",
+    description:
+      "Our menu changes with the seasons, featuring the finest ingredients from local producers and influences from around the world.",
+    button: {
+      text: "Anniversary",
+      url: "/anniversary",
     },
   },
 ];

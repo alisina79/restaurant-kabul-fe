@@ -17,6 +17,10 @@ import Private from "./pages/Private";
 import Celebration from "./pages/Celebration";
 import PrivateDiningArch from "./pages/PrivateDiningArch";
 import MothersDay from "./pages/MothersDay";
+import ValentineDay from "./pages/Valentine'sDay";
+import Anniversary from "./pages/Anniversary";
+import SundayLunch from "./pages/SundayLunch";
+
 
 import { useLocation } from "react-router";
 import { useEffect } from "react";
@@ -47,6 +51,10 @@ function App() {
         <Route path="/celebrations" element={<Celebration />} />
         <Route path="/private-dining-arch" element={<PrivateDiningArch />} />
         <Route path="/mothers-day" element={<MothersDay />} />
+        <Route path="/anniversary" element={<Anniversary />} />
+        <Route path="/valentineday" element={<ValentineDay />} />
+        <Route path="/sudanday" element={<SundayLunch />} />
+        
       
       </Routes>
       <Footer /> {/* Footer is always visible */}
