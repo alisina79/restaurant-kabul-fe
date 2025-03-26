@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { KPatternBackground } from "../components/PatternBackground";
 import FadeIn from "../components/animations/FadeIn";
 import Logo from "../components/logo";
-
+import useScrollNavbarStyles from '../hooks/useScrollNavbarStyles';
 const PrivateDiningArch: React.FC = () => {
   const navigate = useNavigate();
   const imageRef = useRef<HTMLImageElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const scrollNavbarStyles = useScrollNavbarStyles();
   
   // 3D tilt effect on mouse movement - from Celebration component
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
@@ -79,7 +80,7 @@ const PrivateDiningArch: React.FC = () => {
         {/* Full-screen Carousel Container with Navbar Header */}
         <div className="relative w-full h-screen overflow-hidden">
           {/* Navbar-style Header that overlaps the carousel */}
-          <div className="absolute top-4 left-0 w-full z-30 bg-white/85 flex items-center py-4">
+          <div className={`fixed top-4 left-0 w-full z-30 bg-white/85 flex items-center py-4 transition-transform duration-300 ease-in-out transform ${scrollNavbarStyles}`}>
             <div className="container mx-auto px-6 flex flex-col items-start">
               <div className="w-16 h-[2px] bg-[#ac8d5b] my-2"></div>
               <p className="text-2xl md:text-3xl font-serif text-primary mt-10">
