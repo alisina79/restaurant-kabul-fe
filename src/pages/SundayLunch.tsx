@@ -46,22 +46,10 @@ const SundayLunch: React.FC = () => {
   const carouselItems = [
     {
       image: "/hall.jpg",
-      title: "The Garden Room",
-      description: "Up to 20 guests",
-      content: "Perfect for intimate gatherings and corporate events in an exclusive setting."
+      title: "Sunday Lunch at Kaboul Gourmet",
+      content: "Join us every Sunday for a delicious and relaxed dining experience."
     },
-    {
-      image: "https://ik.imagekit.io/sbj8bzmjnl4/galvin/wp-content/uploads/2024/04/galvin-la-chapelle-spitalfields-market-london-city-french-restaurant-fine-dining-michelin-star-016-960x960.jpg.webp",
-      title: "Elegant Dining Experience",
-      description: "Exceptional Service",
-      content: "Exquisite atmosphere with personalized service and bespoke menus created by our chefs."
-    },
-    {
-      image: "https://ik.imagekit.io/sbj8bzmjnl4/galvin/wp-content/uploads/2024/04/private-dining-room-restaurant-london-galvin-la-chapelle-04-960x960.jpg.webp",
-      title: "Exceptional Occasions",
-      description: "Memorable Events",
-      content: "Create memorable celebrations with our award-winning culinary team for any special occasion."
-    }
+  
   ];
 
   // Navigate carousel
@@ -106,12 +94,12 @@ const SundayLunch: React.FC = () => {
               {/* Center-positioned Content Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20 flex items-center justify-center">
                 <div className="text-center px-4 md:px-8 max-w-3xl">
-                  <h3 className="text-3xl md:text-4xl lg:text-5xl font-serif text-white mb-4">
+                  <h3 className="text-3xl md:text-4xl lg:text-4xl font-serif text-white mb-4">
                     {item.title}
                   </h3>
                   <div className="w-16 h-[2px] bg-[#ac8d5b] mx-auto my-4"></div>
                   <p className="text-xl md:text-2xl text-white/90 font-serif italic mb-3">
-                    {item.description}
+                   
                   </p>
                   <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-8">
                     {item.content}
@@ -127,19 +115,7 @@ const SundayLunch: React.FC = () => {
             </div>
           ))}
           
-          {/* Indicators */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
-            {carouselItems.map((_, index) => (
-              <button 
-                key={index}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentSlide ? 'bg-white scale-125' : 'bg-white/40 hover:bg-white/60'
-                }`}
-                onClick={() => setCurrentSlide(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+      
           
          
         </div>
@@ -220,7 +196,7 @@ const SundayLunch: React.FC = () => {
                     <FadeIn delay={0.5} direction="up" duration={0.8} once={true}>
                       <div className="my-5 text-center">
                         <button
-                          className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider bg-white text-black hover:bg-black hover:text-white transition-all duration-300"
+                          className="px-6 py-3 font-Gorgia text-sm font-medium uppercase tracking-wider bg-white text-black hover:bg-black hover:text-white transition-all duration-300"
                           onClick={() => navigate("/reservations")}
                         >
                           BOOK NOW
@@ -250,7 +226,7 @@ const SundayLunch: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <FadeIn delay={0.1} direction="up" duration={0.8} once={true}>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-serif font-bold text-center uppercase text-[#1a1e25] mb-8">
-                SUNDAY LUNCH MENUS
+                OUR SUNDAY MENU
               </h2>
               <div className="w-24 h-[2px] bg-[#ac8d5b] mx-auto mb-12"></div>
             </FadeIn>
