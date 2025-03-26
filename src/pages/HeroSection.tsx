@@ -15,10 +15,10 @@ const HERO_CONTENT = [
     type: "image",
     src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3774&q=80",
     alt: "Elegant restaurant interior",
-    subtitle: "Fine Dining Experience Since 2008",
-    title: "Exceptional Cuisine max-Refined Elegance",
+    subtitle: "Every plate is a canvas. Every flavor tells a story",
+    title: "Exceptional Cuisine. Effortless Elegance",
     description:
-      "An unforgettable dining experience in the heart of London. Michelin-starred cuisine in a setting of understated elegance.",
+      "Reserve your table and discover a unique Afghan dining experience in the heart of Grenoble. Bold flavors, elegant ambiance, and warm hospitality await.",
     button: {
       text: "Book a Table",
       url: "/reservations",
@@ -30,10 +30,10 @@ const HERO_CONTENT = [
     alt: "Chef preparing gourmet meal",
     poster:
       "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    subtitle: "Culinary Artistry",
-    title: "Celebrate Mother's Day with Us",
+    subtitle: "Celebrate with Elegant Flavors, Crafted with Love",
+    title: "A Mother's Day to Remember",
     description:
-      "Join us for a special Mother's Day menu, complimentary champagne for mothers, and a small gift to take home.",
+      "Celebrate Mother’s Day with a thoughtfully crafted menu and a heartfelt gift for every mom — a small gesture to make her feel truly special.",
     button: {
       text: "Discover More",
       url: "/mothers-day",
@@ -43,23 +43,23 @@ const HERO_CONTENT = [
     type: "image",
     src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     alt: "Fine dining experience",
-    subtitle: "Memorable Moments",
-    title: "Perfect Setting max-For Special Occasions",
+    subtitle: "Déjeuner du Dimanche",
+    title: "Ambiance Parfaite – Pour Occasions Spéciales",
     description:
-      "Celebrate life's most precious moments in an atmosphere of sophistication and warmth. Private dining rooms available for intimate gatherings.",
+      "Celebrate life’s special moments in a setting of elegance and comfort. Private dining available for your most intimate occasions.",
     button: {
-      text: "Sudan Day Lunch",
-      url: "/sudanday",
+      text: "Sunday Lunch",
+      url: "/sunday",
     },
   },
   {
     type: "image",
     src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     alt: "Gourmet dish presentation",
-    subtitle: "Seasonal Selections",
-    title: "Locally Sourced max-Globally Inspired",
+    subtitle: "Saison Spéciale",
+    title: "A Spéciale Evening to Remember",
     description:
-      "Our menu changes with the seasons, featuring the finest ingredients from local producers and influences from around the world.",
+      "Celebrate l’amour with a menu spéciale Saint-Valentin — seasonal flavors, crafted with passion, for an unforgettable soirée.",
     button: {
       text: "Valentine's Day",
       url: "/valentineday",
@@ -70,10 +70,10 @@ const HERO_CONTENT = [
     type: "image",
     src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     alt: "Gourmet dish presentation",
-    subtitle: "Seasonal Selections",
-    title: "Locally Sourced max-Globally Inspired",
+    subtitle: "Savoir-Faire",
+    title: "A Toast to Amour",
     description:
-      "Our menu changes with the seasons, featuring the finest ingredients from local producers and influences from around the world.",
+      "Celebrate your anniversaire with refined flavors, warm ambiance, and moments to remember.",
     button: {
       text: "Anniversary",
       url: "/anniversary",
