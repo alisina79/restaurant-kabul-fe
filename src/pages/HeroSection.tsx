@@ -44,7 +44,7 @@ const HERO_CONTENT = [
     src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     alt: "Fine dining experience",
     subtitle: "Déjeuner du Dimanche",
-    title: "Ambiance Parfaite – Pour Occasions Spéciales",
+    title: "Ambiance Parfaite–Pour Occasions Spéciales",
     description:
       "Celebrate life’s special moments in a setting of elegance and comfort. Private dining available for your most intimate occasions.",
     button: {
@@ -386,7 +386,7 @@ const Hero: React.FC = () => {
                 springEffect
                 key={`title-${currentSlide}`}
               >
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl !text-white font-serif font-light leading-tight tracking-wide mb-6 reveal-text" style={{ textShadow: "0 2px 10px rgba(0, 0, 0, 0.5)" }}>
+                <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-5xl !text-white font-serif font-light leading-tight tracking-wide mb-6 reveal-text" style={{ textShadow: "0 2px 10px rgba(0, 0, 0, 0.5)" }}>
                   {HERO_CONTENT[currentSlide].title
                     .split("\n")
                     .map((line, i) => (
