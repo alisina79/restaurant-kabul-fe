@@ -93,9 +93,9 @@ const ValentineDay: React.FC = () => {
         >
           {/* Content wrapper to maintain proper width for content */}
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-stretch h-full">
               <div className="bg-[#af905c] flex flex-col h-full">
-                <div className="p-4 md:p-8 lg:p-12 items-center text-center">
+                <div className="p-4 md:p-8 lg:p-12 items-center text-center h-full flex flex-col justify-center">
                   <FadeIn delay={0.1} direction="up" duration={0.8} once={true}>
                     <Logo color="black" />
                   </FadeIn>
@@ -171,6 +171,7 @@ const ValentineDay: React.FC = () => {
                       src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                       alt="Valentine's Day at Kaboul Gourmet"
                       className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125"
+                      style={{ height: '100%', objectFit: 'cover' }}
                     />
                   </div>
                 </FadeIn>

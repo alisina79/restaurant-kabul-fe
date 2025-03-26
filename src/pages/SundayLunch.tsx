@@ -47,7 +47,7 @@ const SundayLunch: React.FC = () => {
     {
       image: "/hall.jpg",
       title: "Sunday Lunch at Kaboul Gourmet",
-      content: "Join us every Sunday for a delicious and relaxed dining experience."
+      content: "Join us every Sunday for a flavorful déjeuner in a warm, inviting ambiance."
     },
   
   ];
@@ -132,7 +132,7 @@ const SundayLunch: React.FC = () => {
           <section className="w-full py-16 md:py-24 lg:py-28 overflow-hidden">
             <div className="container mx-auto px-6">
               {/* Ensure both columns have equal height */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-stretch overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-stretch overflow-hidden h-full">
                 {/* Left Side (Image) */}
                 <div className="relative overflow-hidden flex flex-col h-full">
                   <FadeIn
@@ -147,6 +147,7 @@ const SundayLunch: React.FC = () => {
                         src="https://ik.imagekit.io/sbj8bzmjnl4/galvin/wp-content/uploads/2024/04/best-restaurants-london-city-spitalfields-market-liverpool-street-bishopsgate-private-dining-rooms-event-space-michelin-011-888x1333.jpg.webp"
                         alt="Private Dining Space"
                         className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125"
+                        style={{ height: '100%', objectFit: 'cover' }}
                       />
                     </div>
                   </FadeIn>
@@ -154,13 +155,13 @@ const SundayLunch: React.FC = () => {
 
                 {/* Right Side (Content) */}
                 <div className="bg-[#af905c] flex flex-col h-full">
-                  <div className="p-4 md:p-8 lg:p-12 items-center text-center">
+                  <div className="p-4 md:p-8 lg:p-12 items-center text-center h-full flex flex-col justify-center">
                     <FadeIn delay={0.1} direction="up" duration={0.8} once={true}>
                       <Logo color="black" />
                     </FadeIn>
                     <FadeIn delay={0.2} direction="up" duration={0.8} once={true}>
                       <h2 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide text-gray-900 uppercase">
-                      Tailored Celebrations
+                      Célébrations Sur-Mesure
                       </h2>
                     </FadeIn>
                     <FadeIn
@@ -175,22 +176,22 @@ const SundayLunch: React.FC = () => {
                     </FadeIn>
                     <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
                       <h3 className="text-lg md:text-xl font-serif text-gray-800">
-                      Moments Made Memorable
+                      Moments Inoubliables
                       </h3>
                     </FadeIn>
                     <FadeIn delay={0.4} direction="up" duration={0.8} once={true}>
                       <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
-                      The Garden Room is our elegant private dining space, tucked within the heart of the restaurant. It offers just the right mix of intimacy and connection—private enough for your guests to feel special, yet open enough to soak in the vibrant energy of KABOUL GOURMET.
+                      Sundays at KABOUL GOURMET are made for slowing down and savoring. Our Sunday Lunch offers a relaxed, refined take on traditional Afghan flavors, crafted for comfort and connection. It's the perfect moment to gather with family or friends over thoughtful food in a warm, inviting setting.
                       </p>
                       <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
-                      Designed with taste and comfort in mind, The Garden Room features refined furnishings, warm lighting, and a relaxed, upscale atmosphere. Whether you're hosting a celebration, business dinner, or family gathering, it's a space that makes moments feel memorable.
+                      For more intimate occasions, our private dining space offers an exclusive way to enjoy the experience. Whether it's a quiet celebration, a birthday, or a family gathering, the room blends privacy with the signature ambiance of KABOUL GOURMET.
                       </p>
                       <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
-                      To make your event even more special, we offer optional services like personalized floral arrangements, printed menus, and extra decorative touches—all tailored to your needs.
+                      To make your event even We offer optional touches like custom menus, floral arrangements, and tailored décor to match your vision. From planning to presentation, our team is here to make sure everything runs smoothly—so you can focus on the moment, not the details..
                       </p>
-                      <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
+                      {/* <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
                       Our team is here to help plan and support every detail, so you can focus on enjoying the occasion. From custom menu selections to thoughtful service, we aim to create a seamless and unforgettable experience.
-                      </p>
+                      </p> */}
                       
                     </FadeIn>
                     <FadeIn delay={0.5} direction="up" duration={0.8} once={true}>
@@ -235,10 +236,10 @@ const SundayLunch: React.FC = () => {
             <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
               <div className="text-center mb-12">
                 <p className="text-lg text-gray-800 mb-4">
-                  We offer a range of carefully crafted menus for private dining events, featuring our signature Afghan cuisine.
+                We offer thoughtfully curated menus for private Sunday gatherings, all rooted in our signature Afghan cuisine.
                 </p>
                 <p className="text-lg text-gray-800">
-                  From intimate lunches to lavish dinner celebrations, our culinary team creates exceptional dining experiences for all occasions.
+                Whether you're planning an intimate déjeuner or a more elaborate Sunday celebration, our culinary team delivers a dining experience that’s both personal and unforgettable.
                 </p>
               </div>
             </FadeIn>
