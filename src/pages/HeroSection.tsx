@@ -13,7 +13,7 @@ import FadeIn from "../components/animations/FadeIn";
 const HERO_CONTENT = [
   {
     type: "image",
-    src: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3774&q=80",
+    src: "https://youtu.be/xPPLbEFbCAo?si=LaXeRGRhb-GBvHss",
     alt: "Elegant restaurant interior",
     subtitle: "Every plate is a canvas. Every flavor tells a story",
     title: "Exceptional Cuisine. Effortless Elegance",
