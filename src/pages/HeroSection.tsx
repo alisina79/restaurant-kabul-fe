@@ -12,30 +12,29 @@ import FadeIn from "../components/animations/FadeIn";
 
 const HERO_CONTENT = [
   {
-    type: "image",
-    src: "https://youtu.be/xPPLbEFbCAo?si=LaXeRGRhb-GBvHss",
+    type: "video",
+    src: "/videos/reel.mp4",
     alt: "Elegant restaurant interior",
+    poster: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     subtitle: "Every plate is a canvas. Every flavor tells a story",
     title: "Exceptional Cuisine. Effortless Elegance",
     description:
       "Reserve your table and discover a unique Afghan dining experience in the heart of Grenoble. Bold flavors, elegant ambiance, and warm hospitality await.",
     button: {
-      text: "Book a Table",
+      text: "Explore More",
       url: "/reservations",
     },
   },
   {
-    type: "video",
-    src: "https://youtu.be/xPPLbEFbCAo?si=YSQrHCJV9KR4wDpU.mp4",
+    type: "image",
+    src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     alt: "Chef preparing gourmet meal",
-    poster:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     subtitle: "Celebrate with Elegant Flavors, Crafted with Love",
     title: "A Mother's Day to Remember",
     description:
-      "Celebrate Mother’s Day with a thoughtfully crafted menu and a heartfelt gift for every mom — a small gesture to make her feel truly special.",
+      "Celebrate Mother's Day with a thoughtfully crafted menu and a heartfelt gift for every mom — a small gesture to make her feel truly special.",
     button: {
-      text: "Discover More",
+      text: "Explore More",
       url: "/mothers-day",
     },
   },
@@ -46,9 +45,9 @@ const HERO_CONTENT = [
     subtitle: "Déjeuner du Dimanche",
     title: "Ambiance Parfaite–Pour Occasions Spéciales",
     description:
-      "Celebrate life’s special moments in a setting of elegance and comfort. Private dining available for your most intimate occasions.",
+      "Celebrate life's special moments in a setting of elegance and comfort. Private dining available for your most intimate occasions.",
     button: {
-      text: "Sunday Lunch",
+      text: "Explore More",
       url: "/sunday",
     },
   },
@@ -59,9 +58,9 @@ const HERO_CONTENT = [
     subtitle: "Saison Spéciale",
     title: "A Spéciale Evening to Remember",
     description:
-      "Celebrate l’amour with a menu spéciale Saint-Valentin — seasonal flavors, crafted with passion, for an unforgettable soirée.",
+      "Celebrate l'amour with a menu spéciale Saint-Valentin — seasonal flavors, crafted with passion, for an unforgettable soirée.",
     button: {
-      text: "Valentine's Day",
+      text: "Explore More",
       url: "/valentineday",
     },
   },
@@ -77,7 +76,7 @@ const HERO_CONTENT = [
     description:
       "Celebrate your anniversaire with refined flavors, warm ambiance, and moments to remember.",
     button: {
-      text: "Anniversary",
+      text: "Explore More",
       url: "/anniversary",
     },
   },
@@ -386,7 +385,7 @@ const Hero: React.FC = () => {
                 springEffect
                 key={`title-${currentSlide}`}
               >
-                <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-5xl !text-white font-serif font-light leading-tight tracking-wide mb-6 reveal-text" style={{ textShadow: "0 2px 10px rgba(0, 0, 0, 0.5)" }}>
+                <h1 className="!leading-tight text-4xl sm:text-4xl md:text-5xl lg:text-5xl !text-white font-serif font-light  tracking-wide mb-6 reveal-text" style={{ textShadow: "0 2px 10px rgba(0, 0, 0, 0.5)" }}>
                   {HERO_CONTENT[currentSlide].title
                     .split("\n")
                     .map((line, i) => (

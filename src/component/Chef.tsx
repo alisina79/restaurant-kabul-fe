@@ -9,19 +9,19 @@ const Chef = () => {
   // Testimonial data
   const testimonials = [
     {
-      boldText: "The best of 2020's",
-      regularText: " eating out (and in).",
-      attribution: "– The Hot Dinners Awards",
+      boldText: "The essence of timeless flavor,",
+      regularText: " crafted for both comforting meals and memorable moments.",
+      attribution: " — Where tradition meets taste",
     },
     {
-      boldText: "Unlike many City restaurants,",
-      regularText: " La Chapelle is a great bet on the weekend.",
-      attribution: "– Great British Chefs",
+      boldText: "Unlike typical dining spots,",
+      regularText: " KABOUL GOURMET offers a warm, soulful experience every day of the week.",
+      attribution: "— Hospitality is our heritage",
     },
     {
-      boldText: "The epitome of fine dining,",
-      regularText: " with exceptional service and stunning surroundings.",
-      attribution: "– Food & Travel Magazine",
+      boldText: " A fresh take on Afghan cuisine",
+      regularText: " crafted with care and served in a welcoming space.",
+      attribution: "— A new tradition begins",
     },
   ];
 
@@ -33,14 +33,13 @@ const Chef = () => {
             <div>
               {/* Main Heading */}
               <FadeIn delay={0.2} direction="up" duration={0.8} once={true}>
-                <h1 className="text-center font-serif text-lg md:text-xl lg:text-3xl leading-relaxed font-medium mb-8 tracking-wide text-primary">
-                  A Family–run Collection Of Restaurants Founded In 2005 By
-                  Michelin Star Brothers, Chris & Jeff Galvin Galvin La
-                </h1>
+                <h2 className="text-center font-serif text-lg md:text-xl lg:text-3xl leading-relaxed font-medium mb-8 tracking-wide text-primary">
+                A family-run restaurant serving authentic Afghan cuisine made with care. Rooted in tradition and hospitality, we share recipes passed down through generations — bringing the warmth of home to every plate.
+                </h2>
               </FadeIn>
               <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
                 <h1 className="text-center font-serif text-lg md:text-xl lg:text-3xl leading-relaxed font-medium mb-8 tracking-wide text-primary">
-                  'Proudly Independent & Family Owned'
+                Family-Owned. Independent. Always Authentic
                 </h1>
               </FadeIn>
 

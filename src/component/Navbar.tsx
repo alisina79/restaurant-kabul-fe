@@ -169,10 +169,10 @@ function Navbar() {
       onTouchEnd={() => setIsLogoHovered(false)}
     >
       <text x="50" y="55" style={{
-        fontFamily: 'Cinzel, serif',
+        fontFamily: 'Playfair Display, serif',
         fontSize: '78px',
-        fill: 'none',
-        stroke: `#${color}`,
+        fill:`#ac8d5b`,
+        stroke: `#ac8d5b`,
         strokeWidth: '1.1',
         textAnchor: 'middle',
         dominantBaseline: 'middle',
@@ -203,7 +203,7 @@ function Navbar() {
               <div 
                 className={styles.mobileLogo}
               >
-                <KLogoSVG color="ffffff" setIsLogoHovered={setIsLogoHovered} />
+                <KLogoSVG color="#ac8d5b" setIsLogoHovered={setIsLogoHovered} />
               </div>
             </Link>
           </div>
@@ -234,10 +234,10 @@ function Navbar() {
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
               style={{
-                padding: isBookDropdownOpen && window.innerWidth > 768 ? '20px 40px' : '20px',
+                padding: isBookDropdownOpen && window.innerWidth > 768 ? '20px 29px' : '20px',
                 backgroundColor: isHoveringButton && window.innerWidth > 768 ? '#ac8d5b' : isBookDropdownOpen && window.innerWidth > 768 ? '#d4bc8d' : undefined,
                 // color: isHoveringButton ? '#ffffff' : '#ac8d5b',
-                transition: 'all 0.5s ease',
+                transition: 'all 0.3s ease-in-out',
                 transform: isHoveringButton ? 'translateY(-2px)' : 'none'
               }}
              >
@@ -308,7 +308,7 @@ function Navbar() {
             <CloseIcon size={24} />
           </button>
           <div className={styles.sidebarHeaderLogo}>
-            <KLogoSVG color="ffffff" setIsLogoHovered={setIsLogoHovered} />
+            <KLogoSVG color="#ffffff" setIsLogoHovered={setIsLogoHovered} />
           </div>
           <div className={styles.sidebarLinks}>
             <Link to="/" 
