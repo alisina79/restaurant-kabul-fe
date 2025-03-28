@@ -314,7 +314,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Enhanced Carousel Controls */}
-      <div className="absolute bottom-1/2 w-full flex justify-between px-4 md:px-8 z-30">
+      <div className="absolute md:bottom-1/2 bottom-1/3 w-full flex justify-between px-4 md:px-8 z-30">
         <button
           onClick={goToPrevSlide}
           disabled={transitioning}
@@ -356,7 +356,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Enhanced Content with improved animations - positioned bottom center */}
-      <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-20  px-4 sm:px-6 lg:px-8 w-full">
+      <div className="absolute md:bottom-32 bottom-12 left-1/2 transform -translate-x-1/2 z-20  px-4 sm:px-6 lg:px-8 w-full">
         <div
           className={cn(
             "text-center transition-opacity duration-500",
@@ -441,9 +441,9 @@ const Hero: React.FC = () => {
             isLoaded ? "opacity-100" : "opacity-0"
           )}
         >
-          <span className="text-gold/80 text-xs tracking-[0.3em] mb-2 uppercase font-light">
+          {/* <span className="text-gold/80 text-xs tracking-[0.3em] mb-2 uppercase font-light">
             Scroll
-          </span>
+          </span> */}
           <div className="w-[1px] h-12 relative">
             <div className="absolute inset-0 bg-gradient-to-b from-gold/0 via-gold/80 to-gold/0"></div>
             <div className="absolute inset-0 bg-gradient-to-b from-gold/0 via-gold to-gold/0 animate-pulse"></div>

@@ -44,17 +44,12 @@
   margin-top: 0;
   text-align: left;
   position: absolute;
-  /* left: 11%; */
-  /* top: 30px; */
+
   transform-origin: center;
-  /* transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); */
+
   display: block;
-  /* width: auto; */
-  /* margin-bottom: 0; */
-  /* z-index: 5; */
-  /* opacity: 0.85; */
+ 
   margin:auto;
-  /* left: 2.5rem; */
   transform: translateX(-137%);
 }
 
@@ -497,12 +492,10 @@
   /* .logo {
     font-size: 20rem;
   } */
-  
-  /* .logoContainer {
-    position: absolute;
-    left: -30px;
-    top: 60px;
-  } */
+ .logoContainer {
+    position: relative;
+   transform: none;
+  }
   
   .footer {
     min-height: 550px;
@@ -511,6 +504,7 @@
   .footerNav {
     margin-top: 0px;
     margin-bottom: 25px;
+    flex-direction: row;
   }
   
   .navRow {

@@ -83,7 +83,7 @@
   width: 100%;
   max-width: 1080px;
   height: 0;
-  padding-bottom: 177.77%; /* For 1080x1920 aspect ratio (9:16) */
+  padding-bottom: 35rem; /* For 1080x1920 aspect ratio (9:16) */
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);

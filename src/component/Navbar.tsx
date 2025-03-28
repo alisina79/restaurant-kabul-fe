@@ -171,7 +171,7 @@ function Navbar() {
       <text x="50" y="55" style={{
         fontFamily: 'Playfair Display, serif',
         fontSize: '78px',
-        fill:`#ac8d5b`,
+        fill:`#ffffff`,
         stroke: `#ac8d5b`,
         strokeWidth: '1.1',
         textAnchor: 'middle',
@@ -210,7 +210,7 @@ function Navbar() {
 
           {/* Right Side - Contact info and Book button */}
           <div className={styles.contactArea}>
-            <span className={styles.phoneNumber}>020 7299 0404</span>
+            <Link to="tel:02072990404" className={styles.phoneNumber}>020 7299 0404</Link>
             
             <div 
               ref={bookButtonRef}

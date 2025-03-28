@@ -107,7 +107,7 @@ const FooterAlt = () => {
               ADDRESS
             </h3>
 
-            <div className="flex flex-col sm:flex-row mb-3 gap-4">
+            <div className="flex flex-row mb-3 gap-4 flex-nowrap ">
               <div className="flex-1">
                 <p className="text-sm mb-2 leading-relaxed">
                   Galvin La Chapelle
@@ -149,7 +149,7 @@ const FooterAlt = () => {
                 <img
                   src="https://ik.imagekit.io/sbj8bzmjnl4/galvin/wp-content/uploads/2023/12/best-restaurant-london-front-entrance-spitalfeilds-640x677.jpg"
                   alt="Map of Galvin La Chapelle"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="md:w-full w-30 h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             </div>

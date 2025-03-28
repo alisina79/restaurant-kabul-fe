@@ -237,6 +237,7 @@
   border: 2px solid rgba(172, 141, 91, 0.4);
   background: rgba(20, 22, 28, 0.6);
   color: #ffff;
+  color-scheme: dark;
   font-size: clamp(0.85rem, 2vw, 1rem);
   transition: 0.3s ease-in-out;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) inset;

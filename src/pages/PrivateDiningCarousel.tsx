@@ -111,7 +111,7 @@ const PrivateDiningCarousel = () => {
                     />
                     <div className="absolute inset-0 bg-black/40"></div>
                     <div className="absolute inset-0 flex flex-col justify-center items-center text-white p-6">
-                      <h3 className="text-2xl md:text-3xl font-serif mb-2">
+                      <h3 className="text-2xl md:text-3xl font-serif mb-2 text-white">
                         {room.title}
                       </h3>
                       <p className="text-sm mb-8">{room.location}</p>
