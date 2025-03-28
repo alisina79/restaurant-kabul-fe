@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
  import FadeIn from "../components/animations/FadeIn";
 import { Testimonial } from "../components/Testimonial";
 import { KPatternBackground } from "../components/PatternBackground";
-
+import chef from "../../public/images/chef.jpg";
 const Chef = () => {
   const navigate = useNavigate();
 
@@ -85,7 +85,7 @@ const Chef = () => {
             >
               <div className="lg:h-[700px] overflow-hidden group">
                 <img
-                  src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1977&q=80"
+                  src={chef}
                   alt="Galvin La Chapelle Restaurant Interior"
                   className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-125"
                 />
