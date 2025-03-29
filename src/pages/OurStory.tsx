@@ -47,7 +47,7 @@ const OurStory: React.FC = () => {
                 <div className="h-full overflow-hidden group">
                   <img
                     src={Azim}
-                    alt="Galvin La Chapelle Restaurant Interior"
+                    alt="Kaboul Gourmet Restaurant Interior"
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125"
                   />
                 </div>
@@ -59,7 +59,7 @@ const OurStory: React.FC = () => {
               <div className="p-4 md:p-8 lg:p-12 items-center">
                 <FadeIn delay={0.2} direction="up" duration={0.8} once={true}>
                   <h2 className="font-serif text-3xl md:text-4xl text-navy mb-4 uppercase">
-                    OUR STORY
+                    <span className="border-b-2 border-[#1a1e25]">OUR STORY</span>
                   </h2>
                 </FadeIn>
                 <FadeIn
@@ -101,7 +101,7 @@ const OurStory: React.FC = () => {
                   <FadeIn delay={0.7} direction="up" duration={0.8} once={true}>
                     <div className="text-center">
                       <button
-                        className="px-8 py-3 font-serif mt-5 text-sm font-medium uppercase tracking-wider bg-white text-black border-2 border-black hover:bg-black hover:text-white transition-all duration-300"
+                        className="px-8 py-3 font-serif mt-5 text-sm font-medium uppercase tracking-wider bg-white text-black border-2 border-black hover:bg-[#1a1e25] hover:text-white transition-all duration-300"
                         onClick={() => navigate("/about")}
                       >
                         Discover More
@@ -111,7 +111,7 @@ const OurStory: React.FC = () => {
                   <FadeIn delay={0.8} direction="up" duration={0.8} once={true}>
                     <div className=" text-center">
                       <button
-                        className="px-8 py-3 font-serif mt-5 text-sm font-medium uppercase tracking-wider bg-white text-black border-2 border-black hover:bg-black hover:text-white transition-all duration-300"
+                        className="px-8 py-3 font-serif mt-5 text-sm font-medium uppercase tracking-wider bg-white text-black border-2 border-black hover:bg-[#1a1e25] hover:text-white transition-all duration-300"
                         onClick={() => navigate("/newsletter")}
                       >
                         Subscribe
