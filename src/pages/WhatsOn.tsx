@@ -39,7 +39,7 @@ const Weddings: React.FC = () => {
                   size="small"
                   initialOpacity={1}
                 >
-                  <div className="w-36 h-[3px] bg-white mx-auto my-2"></div>
+                  <div className="w-36 h-[3px] bg-[#ac8d5b] mx-auto my-2"></div>
                 </FadeIn>
                 <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
                   <h3 className="text-lg md:text-xl font-serif text-[#ffffff]">

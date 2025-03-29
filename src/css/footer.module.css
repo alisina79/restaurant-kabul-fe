@@ -2,7 +2,7 @@
 .footer {
   padding-top: 60px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(to bottom, #1a1f27, #13161C);
+  background: #1a1e25;
   color: #ffffff;
   position: relative;
   display: flex;
@@ -11,7 +11,7 @@
   z-index: 1;
   overflow: hidden;
   padding-bottom: 40px;
-  box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.1);
+
   font-size: 14px;
   /* min-height: 760px; */
 }

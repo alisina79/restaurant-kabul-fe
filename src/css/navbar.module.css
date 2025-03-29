@@ -20,12 +20,12 @@
 /* Top Black Header (Primary Nav) */
 .topHeader {
   background-color: #1a1e25;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to right,
     rgba(21, 24, 30, 0.95),
     rgba(26, 30, 37, 0.95),
     rgba(21, 24, 30, 0.95)
-  );
+  ); */
   display: flex;
   justify-content: space-between;
   align-items: center;
