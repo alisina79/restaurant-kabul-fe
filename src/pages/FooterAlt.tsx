@@ -149,7 +149,7 @@ const FooterAlt = () => {
                 <img
                   src={chef}
                   alt="Map of Galvin La Chapelle"
-                  className="md:w-full w-30 h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="md:w-full w-[150px] h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             </div>
@@ -211,14 +211,14 @@ If you require step-free access, we’ve got you covered. An accessible entrance
             </div>
 
             <div className="mt-6 p-4 bg-white/10 rounded-md">
-              <h4 className="text-sm font-medium uppercase tracking-wider mb-2">
+              <h4 className="text-sm font-medium uppercase tracking-wider mb-2 text-[#ffffff]">
                 BOOK A TABLE
               </h4>
               <p className="text-sm mb-3">
                 Reserve your dining experience today
               </p>
-              <Button className="w-full bg-white text-[#af905c] hover:bg-white/90 transition-colors">
-                RESERVE NOW
+              <Button className="w-full  text-[#ffffff] hover:bg-white/90 hover:text-[#ac8d5b] border-2 border-[#ffffff] ">
+                <a href="/reservations">RESERVE NOW</a>
               </Button>
             </div>
           </div>
