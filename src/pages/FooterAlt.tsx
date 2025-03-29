@@ -3,7 +3,7 @@ import FadeIn from "../components/animations/FadeIn";
 import Logo from "../components/logo";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
-
+import chef from "../../public/images/chef.jpg";
 const FooterAlt = () => {
   const handleMapClick = () => {
     window.open(
@@ -147,23 +147,18 @@ const FooterAlt = () => {
                   </span>
                 </div>
                 <img
-                  src="https://ik.imagekit.io/sbj8bzmjnl4/galvin/wp-content/uploads/2023/12/best-restaurant-london-front-entrance-spitalfeilds-640x677.jpg"
+                  src={chef}
                   alt="Map of Galvin La Chapelle"
                   className="md:w-full w-30 h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             </div>
-
+<h4 className="font-medium uppercase text-sm tracking-wider mb-3 text-white hover:text-[#1a1e25] cursor-pointer">  Finding Us:</h4>
             <p className="text-sm mb-6 leading-relaxed">
-              When visiting us at Galvin La Chapelle, although we share a
-              building with our sister restaurant Galvin Bistrot & Bar – you can
-              find the entrance to our restaurant on Spital Square. Our large
-              arched door is tucked within our historical red brick building
-              with a few steps leading you into the restaurant. Please note, if
-              you require step free access to our restaurant, you can use the
-              entrance on the other side of the building via Galvin Bistrot &
-              Bar. Our Bistrot is step free & can be spotted by our red Galvin
-              umbrellas or outdoor terrace.
+
+            Kaboul Gourmet is located in a charming historic building in the heart of Grenoble. You'll find our entrance tucked beneath a grand arched doorway, set into classic red brick, with a few steps leading up into the restaurant.
+            <br />
+If you require step-free access, we’ve got you covered. An accessible entrance is available on the other side of the building—just follow the signs or ask a member of our team for assistance.
             </p>
           </div>
 
