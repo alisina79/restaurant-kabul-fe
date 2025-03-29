@@ -271,7 +271,7 @@ If you require step-free access, we’ve got you covered. An accessible entrance
               <div>
                 <p className="text-sm cursor-pointer inline-block">
                   <span className="relative group inline-flex items-center">
-                    View more FAQs
+                   <a href="/faqs" className="text-white hover:text-[#1a1e25]"> View more FAQs</a>
                     <svg
                       className="w-3 h-3 ml-1"
                       fill="none"
