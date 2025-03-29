@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
  import FadeIn from "../components/animations/FadeIn";
 import { Testimonial } from "../components/Testimonial";
 import { KPatternBackground } from "../components/PatternBackground";
-import chef from "../../public/images/chef.jpg";
+import chee from "/images/chee.jpg";
 const Chef = () => {
   const navigate = useNavigate();
 
@@ -26,8 +26,8 @@ const Chef = () => {
   ];
 
   return (
-    <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden bg-pattern">
-      <div className="container mx-auto px-6 "style={{marginTop: '50px'}}>
+    <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden bg-pattern ">
+      <div className="container mx-auto px-6 ">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center overflow-hidden">
           <div className="px-0 md:px-12 lg:px-20">
             <div>
@@ -85,7 +85,7 @@ const Chef = () => {
             >
               <div className="lg:h-[700px] overflow-hidden group">
                 <img
-                  src={chef}
+                  src={chee}
                   alt="Galvin La Chapelle Restaurant Interior"
                   className="w-full h-auto object-cover transition-transform duration-1000 group-hover:scale-125"
                 />

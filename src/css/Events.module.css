@@ -1,5 +1,5 @@
 /* Main Section */
-.whatsOnSection {
+.eventsSection {
   background: url('/image/texture.png');
   background-size: cover;
   background-position: center;
@@ -221,7 +221,7 @@ html {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .whatsOnSection {
+  .eventsSection {
     padding: 60px 5%;
   }
 

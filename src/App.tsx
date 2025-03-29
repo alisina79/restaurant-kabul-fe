@@ -10,7 +10,6 @@ import Gallery from "./pages/Gallery";
 import About from "./pages/AboutUs";
 import TermsAndConditions from "./pages/TermsAndConditions";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-import WhatsOn from "./pages/WhatsOn";
 import Newsletter from "./pages/Newsletter";
 import Ourjourny from "./pages/Ourjourny";
 import Private from "./pages/Private";
@@ -20,7 +19,7 @@ import MothersDay from "./pages/MothersDay";
 import ValentineDay from "./pages/Valentine'sDay";
 import Anniversary from "./pages/Anniversary";
 import SundayLunch from "./pages/SundayLunch";
-
+import Events from "./pages/Events";
 
 import { useLocation } from "react-router";
 import { useEffect } from "react";
@@ -42,7 +41,6 @@ function App() {
         <Route path="/reservations" element={<Reservations />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/about" element={<About />} />
-        <Route path="/whatson" element={<WhatsOn />} />
         <Route path="/newsletter" element={<Newsletter />} />
         <Route path="/termsandconditions" element={<TermsAndConditions />} />
         <Route path="/ourjourny" element={<Ourjourny />} />
@@ -54,8 +52,7 @@ function App() {
         <Route path="/anniversary" element={<Anniversary />} />
         <Route path="/valentineday" element={<ValentineDay />} />
         <Route path="/sudanday" element={<SundayLunch />} />
-        
-      
+        <Route path="/events" element={<Events />} />
       </Routes>
       <Footer /> {/* Footer is always visible */}
     </>

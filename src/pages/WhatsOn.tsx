@@ -1,166 +1,104 @@
-import { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import styles from "../css/WhatsOn.module.css";
+import React from "react";
+
 import { useNavigate } from "react-router-dom";
-
-const events = [
-  {
-    id: "mothers-day",
-    title: "Mother's Day Celebration",
-    date: "May 12, 2024",
-    description: "Treat your mother to a special dining experience with our Mother's Day menu.",
-    details: "Join us for a memorable Mother's Day celebration with a special menu, complimentary champagne for mothers, and a small gift to take home.",
-    image: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    hasSpecialPage: true,
-    linkTo: "/mothers-day",
-    category: "Special Occasion"
-  },
-  {
-    id: "valentine-day",
-    title: "Valentine's Day Special",
-    date: "February 14, 2024",
-    description: "Romantic dinner for two with special Valentine's Day menu and ambiance.",
-    details: "Experience an intimate evening with your loved one featuring a romantic candlelit dinner, special Valentine's menu, and complimentary dessert for couples.",
-    image: "https://images.unsplash.com/photo-1511795409834-432f31fbc916?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    hasSpecialPage: true,
-    linkTo: "/valentine-day",
-    category: "Special Occasion"
-  },
-  {
-    id: "anniversary",
-    title: "Anniversary Celebration",
-    date: "Ongoing",
-    description: "Make your anniversary memorable with our special celebration package.",
-    details: "Celebrate your special day with a personalized anniversary package including a special menu, complimentary champagne, and a custom dessert.",
-    image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    hasSpecialPage: true,
-    linkTo: "/anniversary",
-    category: "Special Occasion"
-  },
-  {
-    id: "sunday-lunch",
-    title: "Sunday Lunch Special",
-    date: "Every Sunday",
-    description: "Enjoy our special Sunday lunch menu with family and friends.",
-    details: "Join us every Sunday for our special lunch menu featuring traditional favorites, live music, and a relaxed atmosphere perfect for family gatherings.",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-    hasSpecialPage: true,
-    linkTo: "/sunday-lunch",
-    category: "Regular Event"
-  }
-];
-
-const filterOptions = [
-  { id: 'all', label: 'All Events' },
-  { id: 'special', label: 'Special Occasions' },
-  { id: 'regular', label: 'Regular Events' },
-  { id: 'upcoming', label: 'Upcoming Events' }
-];
-
-const WhatsOn = () => {
+import { KPatternBackground } from "../components/PatternBackground";
+import FadeIn from "../components/animations/FadeIn";
+import Logo from "../components/logo";
+import what from "../../public/images/what.jpg";
+const Weddings: React.FC = () => {
   const navigate = useNavigate();
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleEventAction = (event: any) => {
-    if (event.hasSpecialPage && event.linkTo) {
-      navigate(event.linkTo);
-    }
-  };
-
-  const filteredEvents = events.filter(event => {
-    const matchesFilter = activeFilter === 'all' || 
-      (activeFilter === 'special' && event.category === 'Special Occasion') ||
-      (activeFilter === 'regular' && event.category === 'Regular Event') ||
-      (activeFilter === 'upcoming' && new Date(event.date) > new Date());
-
-    const matchesSearch = event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      event.description.toLowerCase().includes(searchQuery.toLowerCase());
-
-    return matchesFilter && matchesSearch;
-  });
 
   return (
-    <motion.section className={styles.whatsOnSection}>
-      <motion.h1 
-        className={styles.sectionTitle}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        Special Events & Occasions
-      </motion.h1>
-
-      <div className={styles.filterContainer}>
-        <div className={styles.searchBox}>
-          <input
-            type="text"
-            placeholder="Search events..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className={styles.searchInput}
-          />
-        </div>
-        
-        <div className={styles.filterButtons}>
-          {filterOptions.map((filter) => (
-            <motion.button
-              key={filter.id}
-              className={`${styles.filterButton} ${activeFilter === filter.id ? styles.activeFilter : ''}`}
-              onClick={() => setActiveFilter(filter.id)}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {filter.label}
-            </motion.button>
-          ))}
-        </div>
-      </div>
-      
-      <AnimatePresence mode="wait">
-        <motion.div 
-          className={styles.eventsGrid}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          {filteredEvents.map((event, index) => (
-            <motion.div 
-              key={event.id} 
-              className={styles.eventCard}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <div className={styles.eventImageContainer}>
-                <img
-                  src={event.image}
-                  alt={event.title}
-                  className={styles.eventImage}
-                />
-                <div className={styles.eventCategory}>{event.category}</div>
-                <div className={styles.eventDateBadge}>{event.date}</div>
-              </div>
-              <div className={styles.eventContent}>
-                <h3>{event.title}</h3>
-                <p className={styles.description}>{event.description}</p>
-                <motion.button
-                  className={styles.detailsButton}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => handleEventAction(event)}
+    <KPatternBackground
+      strokeColor="#ac8d5b"
+      fillColor="#ac8d5b"
+      backgroundColor="bg-[#1a1e25]"
+      patternSize="50px"
+      className="
+      "
+    >
+      <section className="w-full py-12 md:py-16 lg:py-20 overflow-hidden bg-pattern mb-20 ">
+        <div className="container mx-auto px-6">
+          {/* Ensure both columns have equal height */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-stretch overflow-hidden">
+            <div className="bg-[#1a1e25] flex flex-col h-full">
+              <div className="p-4 md:p-6 lg:p-8 items-center text-center">
+                <FadeIn delay={0.1} direction="up" duration={0.8} once={true}>
+                  <Logo color="#ac8d5b" />
+                </FadeIn>
+                <FadeIn delay={0.2} direction="up" duration={0.8} once={true}>
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide text-[#ffffff] uppercase">
+                    What's On at Kaboul Gourmet
+                  </h3>
+                </FadeIn>
+                <FadeIn
+                  delay={0.3}
+                  direction="up"
+                  duration={0.8}
+                  once={false}
+                  size="small"
+                  initialOpacity={1}
                 >
-                  View Details
-                </motion.button>
+                  <div className="w-36 h-[3px] bg-white mx-auto my-2"></div>
+                </FadeIn>
+                <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
+                  <h3 className="text-lg md:text-xl font-serif text-[#ffffff]">
+                    Celebrating moments that matter
+                  </h3>
+                </FadeIn>
+                <FadeIn delay={0.4} direction="up" duration={0.8} once={true}>
+                  <p className="mt-2 text-sm md:text-base text-white max-w-2xl">
+                  We believe great food is even better when shared on special occasions. That's why we're celebrating moments that matter—like Valentine's Day, Mother's Day, anniversaries, and more. We're also making Sundays something to savor with comforting, well-crafted lunches perfect for gathering with friends or family.
+                    <br />
+                    <br />
+                    Throughout the year, we'll highlight key dates with thoughtful menus, warm hospitality, and just the right atmosphere to make each event feel special.
+
+Keep an eye on this space for updates on upcoming celebrations and seasonal offerings.
+                  </p>
+                </FadeIn>
+                <FadeIn delay={0.5} direction="up" duration={0.8} once={true}>
+                  <div className="flex flex-wrap justify-center gap-4 mb-6 text-center mt-6">
+                    <button
+                      className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider border border-[#ac8d5b] bg-[#ac8d5b] text-[#ffffff] 
+                 hover:bg-[#1a1e25] hover:text-[#ac8d5b] transition-all duration-500 ease-in-out transform"
+                      onClick={() => navigate("/menu")}
+                    >
+                      Make a Booking
+                    </button>
+                    <button
+                      className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider border border-[#ac8d5b] bg-[#ac8d5b] text-[#ffffff] 
+                 hover:bg-[#1a1e25] hover:text-[#ac8d5b] transition-all duration-500 ease-in-out transform"
+                      onClick={() => navigate("/events")}
+                    >
+                      WHAT'S ON
+                    </button>
+                  
+                  </div>
+                </FadeIn>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </AnimatePresence>
-    </motion.section>
+            </div>
+            <div className="relative overflow-hidden flex flex-col h-full order-2 lg:order-1">
+              <FadeIn
+                delay={0.5}
+                direction="up"
+                duration={1.2}
+                once={true}
+                className="h-full"
+              >
+                <div className="h-full overflow-hidden group">
+                  <img
+                    src="/images/what.jpg"
+                    alt="Kaboul Gourmet Restaurant Interior"
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125"
+                  />
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+    </KPatternBackground>
   );
 };
 
-export default WhatsOn;
+export default Weddings;

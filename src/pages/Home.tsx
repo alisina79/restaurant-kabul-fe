@@ -8,7 +8,7 @@ import HeroSection from "./HeroSection";
 import Celebration from "./Celebration";
 import Celebrations from "./Celebrations";
 import PrivateDiningCarousel from "./PrivateDiningCarousel";
-import Weddings from "./Weddings";
+import WhatsOn from "./WhatsOn";
 import FooterAlt from "./FooterAlt";
 import OurStory from "./OurStory";
 
@@ -31,14 +31,14 @@ function Home() {
     
         <Chef />
     
-     
+        <WhatsOn />
         <Seasonal />
      
       
      
-        <Celebrations />
+      
       <PrivateDiningCarousel />
-      <Weddings />
+      <Celebrations />
       <OurStory />
       <FooterAlt />
     </div>

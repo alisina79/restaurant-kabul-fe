@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from '../css/Celebration.module.css';
 
 // Import the food image
-import foodImage from "../../public/hall.jpg";
+import foodImage from "/hall.jpg";
 
 export default function Celebration() {
   const navigate = useNavigate();

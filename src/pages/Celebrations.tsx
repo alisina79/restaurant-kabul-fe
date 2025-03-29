@@ -28,8 +28,8 @@ const Celebrations: React.FC = () => {
   return (
     <KPatternBackground
       strokeColor="#af905c"
-      fillColor="#7a613c"
-      backgroundColor="bg-[#1a1e25]"
+      fillColor="#bea47d"
+      backgroundColor="bg-[#ffffff]"
       patternSize="50px"
       className="mt-20"
     >
