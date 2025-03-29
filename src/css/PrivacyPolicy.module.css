@@ -6,7 +6,7 @@
 
 .container {
   display: flex;
-  background-color: var(--primary-bg);
+  /* background-color: var(--primary-bg); */
   color: var(--white);
   padding: 50px 20px;
 }
@@ -17,14 +17,14 @@
   top: 20px;
   width: 250px;
   height: fit-content;
-  background: rgba(255, 255, 255, 0.1);
+  background: #ac8d5b;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar h2 {
-  color: var(--gold);
+  color: var(--white);
   font-size: 22px;
   margin-bottom: 15px;
   text-align: center;
@@ -47,7 +47,7 @@
 }
 
 .sidebar ul li a:hover {
-  color: var(--gold);
+  color: var(--primary-bg);
 }
 
 .content {
@@ -56,7 +56,7 @@
   max-width: 800px;
   margin-left: 50px;
   padding: 30px;
-  background: rgba(255, 255, 255, 0.08);
+  background: #ac8d5b;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -64,7 +64,7 @@
 .title {
   font-size: 32px;
   margin-bottom: 20px;
-  color: var(--gold);
+  color: var(--white);
   text-align: center;
 }
 
@@ -96,7 +96,7 @@
   font-size: 22px;
   cursor: pointer;
   padding: 10px;
-  color: var(--gold);
+  color: var(--white);
   transition: color 0.3s ease;
 }
 
@@ -105,6 +105,7 @@
 }
 
 .expandedText {
+  color: var(--primary-bg);
   font-size: 16px;
   line-height: 1.5;
   padding: 10px 15px;
@@ -117,7 +118,7 @@
   justify-content: center;
   width: 50px;
   height: 50px;
-  background: var(--gold);
+  background: var(--white);
   color: var(--primary-bg);
   border: none;
   border-radius: 50%;
