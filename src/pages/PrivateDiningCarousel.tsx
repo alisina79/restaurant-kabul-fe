@@ -22,30 +22,30 @@ interface DiningRoom {
 const diningRooms: DiningRoom[] = [
   {
     id: 1,
-    title: "EXCLUSIVE HIRE",
-    location: "The City, London",
+    title: "WHAT'S ON",
+    location: "The City, Grenoble",
     image:
       "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop",
-    getInTouchLink: "#",
-    exploreLink: "#",
+    getInTouchLink: "/contact",
+    exploreLink: "/events",
   },
   {
     id: 2,
     title: "THE GALLERY",
-    location: "The City, London",
+    location: "The City, Grenoble",
     image:
       "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop",
-    getInTouchLink: "#",
-    exploreLink: "#",
+    getInTouchLink: "/contact",
+    exploreLink: "/gallery",
   },
   {
     id: 3,
     title: "PRIVATE ROOM",
-    location: "The City, London",
+    location: "The City, Grenoble",
     image:
       "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop",
-    getInTouchLink: "#",
-    exploreLink: "#",
+    getInTouchLink: "/contact",
+    exploreLink: "/private-dining-arch",
   },
 ];
 
@@ -57,17 +57,16 @@ const PrivateDiningCarousel = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide text-white uppercase">
-            PRIVATE DINING IN THE CITY OF LONDON
+            PRIVATE DINING IN THE CITY OF GRENOBLE
           </h2>
           <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
             <h3 className="text-lg md:text-xl font-serif text-black">
-              Unforgettable Experiences at Galvin La Chapelle
+            Savor the Signature Experience at Kaboul Gourmet
             </h3>
           </FadeIn>
           <FadeIn delay={0.4} direction="up" duration={0.8} once={true}>
             <p className="mt-4 text-sm md:text-base text-black max-w-2xl mx-auto text-center">
-              Unforgettable experiences for any event from intimate private
-              dining to exclusive use events up to 150 guests.
+            Whether it’s an intimate dinner or a full-scale celebration for up to 150 guests, we create unforgettable experiences tailored to every occasion.
             </p>
           </FadeIn>
           <div className="flex justify-center mt-8">
@@ -116,13 +115,14 @@ const PrivateDiningCarousel = () => {
                       </h3>
                       <p className="text-sm mb-8">{room.location}</p>
                       <div className="flex flex-col sm:flex-row gap-4">
-                        <Button
+                        <Button onClick={() => window.open(room.getInTouchLink, "_blank")}
                           variant="outline"
                           className="border-white text-white bg-transparent hover:bg-white hover:text-[#c6a87a] uppercase tracking-wider"
                         >
                           GET IN TOUCH
                         </Button>
                         <Button
+                          onClick={() => window.open(room.exploreLink, "_blank")}
                           variant="outline"
                           className="border-white text-white bg-transparent hover:bg-white hover:text-[#c6a87a] uppercase tracking-wider"
                         >

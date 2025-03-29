@@ -60,12 +60,12 @@ const About: React.FC = () => {
 
             {/* Right Side (Content) */}
             <div className="bg-[#af905c] flex flex-col h-full order-1 lg:order-2">
-              <div className="p-4 md:p-8 lg:p-12 items-center text-center">
+              <div className="p-4 md:p-8 lg:p-12 items-center text-center text-normal">
                 <FadeIn delay={0.1} direction="up" duration={0.8} once={true}>
                   <Logo color="black" />
                 </FadeIn>
                 <FadeIn delay={0.2} direction="up" duration={0.8} once={true}>
-                  <h2 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide text-gray-900 uppercase">
+                  <h2 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide text-black uppercase">
                     SEASONAL FRESH
                   </h2>
                 </FadeIn>
@@ -80,7 +80,7 @@ const About: React.FC = () => {
                   <div className="w-36 h-[3px] bg-white mx-auto my-3"></div>
                 </FadeIn>
                 <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
-                  <h3 className="text-lg md:text-xl font-serif text-gray-800">
+                  <h3 className="text-lg md:text-xl font-serif text-black">
                     Only the very best ingredients
                   </h3>
                 </FadeIn>
