@@ -8,7 +8,9 @@ import { Carousel,
 } from "../components/ui/carousel";
 import FadeIn from "../components/animations/FadeIn";
 import { Button } from "../components/ui/button";
-
+import hall from "../../public/images/hall.jpg";
+import gallery from "../../public/images/gallery.jpg";
+import whats from "../../public/images/whats.jpg";
 
 interface DiningRoom {
   id: number;
@@ -25,7 +27,7 @@ const diningRooms: DiningRoom[] = [
     title: "WHAT'S ON",
     location: "The City, Grenoble",
     image:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop",
+      whats,
     getInTouchLink: "/contact",
     exploreLink: "/events",
   },
@@ -34,7 +36,7 @@ const diningRooms: DiningRoom[] = [
     title: "THE GALLERY",
     location: "The City, Grenoble",
     image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop",
+      gallery,
     getInTouchLink: "/contact",
     exploreLink: "/gallery",
   },
@@ -43,7 +45,7 @@ const diningRooms: DiningRoom[] = [
     title: "PRIVATE ROOM",
     location: "The City, Grenoble",
     image:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2070&auto=format&fit=crop",
+      hall,
     getInTouchLink: "/contact",
     exploreLink: "/private-dining-arch",
   },
@@ -57,7 +59,7 @@ const PrivateDiningCarousel = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide text-white uppercase">
-            PRIVATE DINING IN THE CITY OF GRENOBLE
+          Private Dining in the Heart of Grenoble
           </h2>
           <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
             <h3 className="text-lg md:text-xl font-serif text-black">
