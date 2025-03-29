@@ -5,7 +5,7 @@
 }
 
 .termsContainer {
-  background-color: var(--primary-bg);
+  /* background-color: var(--primary-bg); */
   color: var(--white);
   padding: 60px 15px;
   display: flex;
@@ -17,16 +17,18 @@
   width: 100%;
   padding: 30px;
   margin-top: 80px;
-  background: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1);  */
+  background-color: #ac8d5b;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .title {
+  
   text-align: center;
   font-size: 32px;
   margin-bottom: 20px;
-  color: var(--gold);
+  color: white;
   text-transform: uppercase;
 }
 
@@ -56,7 +58,7 @@
   font-size: 20px;
   cursor: pointer;
   padding: 10px;
-  color: var(--gold);
+  color: var(--white);
   transition: color 0.3s ease;
 }
 
@@ -73,7 +75,7 @@
   font-size: 16px;
   padding: 10px 15px;
   line-height: 1.5;
-  color: var(--white);
+  color: var(--primary-bg);
 }
 
 .termsFooter {
@@ -90,13 +92,14 @@
   font-size: 14px;
   border: none;
   border-radius: 6px;
-  background: var(--gold);
+  background: var(--white);
   color: var(--primary-bg);
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .backToTop:hover {
-  background: var(--white);
+  background: var(--primary-bg);
+  color: var(--white);
   transform: scale(1.05);
 }
