@@ -62,7 +62,7 @@ const Chef = () => {
               </FadeIn>
 
               <Testimonial testimonials={testimonials} />
-              <FadeIn delay={0.5} direction="up" duration={0.8} once={true}>
+              <FadeIn delay={0.5} direction="up" duration={0.8} once={true} initialOpacity={1} size="small">
                 <div className="flex justify-center items-center mt-14">
                   <KPatternBackground
                     strokeColor="#ac8d5b"
@@ -70,7 +70,7 @@ const Chef = () => {
                     backgroundColor="bg-[transparent]"
                     patternSize="50px"
                     className="w-[200px] h-[50px]"
-                  />
+                   />
                 </div>
               </FadeIn>
             </div>

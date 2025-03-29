@@ -7,7 +7,7 @@ export const KPatternBackground = ({
   spacing = "400",
   children = null, // Default to null if not provided
   className = "",
-  ...props
+   ...props
 }: {
   strokeColor?: string;
   fillColor?: string;
