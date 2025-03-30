@@ -7,7 +7,7 @@ import chef from "../../public/images/chef.jpg";
 const FooterAlt = () => {
   const handleMapClick = () => {
     window.open(
-      "https://maps.google.com/?q=Galvin+La+Chapelle+35+Spital+Square+London+E1+6DY",
+      "https://maps.google.com/?q=Kaboul+Gourmet+Grenoble+38000+France",
       "_blank"
     );
   };
@@ -36,39 +36,39 @@ const FooterAlt = () => {
             <p className="text-sm mb-4 leading-relaxed">
               Call{" "}
               <a
-                href="tel:02072990400"
+                href="tel:+33613139148"
                 className="underline hover:no-underline hover:text-[#121212]"
               >
-                020 7299 0400
+                +33613139148
               </a>{" "}
               to speak with us about an existing booking, or for any general
               enquiry.
               <br />
               Alternatively email{" "}
               <a
-                href="mailto:elise@galvinrestaurants.com"
+                href="mailto:contact@KaboulGourmet.com"
                 className="underline hover:no-underline hover:text-[#121212]"
               >
-                elise@galvinrestaurants.com
+                contact@KaboulGourmet.com
               </a>
               .
             </p>
 
-            <p className="text-sm mb-4 leading-relaxed">
+            <p className="text-sm mb-4">
               For all private dining enquiries please email
               <a
-                href="mailto:privatedining.city@galvinrestaurants.com"
+                href="mailto:contact@KaboulGourmet.com"
                 className="underline hover:no-underline hover:text-[#121212]"
               >
                 {" "}
-                privatedining.city@galvinrestaurants.com
+                contact@KaboulGourmet.com
               </a>{" "}
               or call{" "}
               <a
-                href="tel:02072990400"
+                href="tel:+33613139148"
                 className="underline hover:no-underline hover:text-[#121212]"
               >
-                020 7299 0400
+                +33613139148
               </a>{" "}
               opt 2
             </p>
@@ -110,13 +110,11 @@ const FooterAlt = () => {
             <div className="flex flex-row mb-3 gap-4 flex-nowrap ">
               <div className="flex-1">
                 <p className="text-sm mb-2 leading-relaxed">
-                  Galvin La Chapelle
+                  Kaboul Gourmet
                   <br />
-                  35 Spital Square
+                  Grenoble 38000
                   <br />
-                  Spitalfields
-                  <br />
-                  London E1 6DY
+                  France
                 </p>
 
                 <p
@@ -158,7 +156,7 @@ const FooterAlt = () => {
 
             Kaboul Gourmet is located in a charming historic building in the heart of Grenoble. You'll find our entrance tucked beneath a grand arched doorway, set into classic red brick, with a few steps leading up into the restaurant.
             <br />
-If you require step-free access, we’ve got you covered. An accessible entrance is available on the other side of the building—just follow the signs or ask a member of our team for assistance.
+If you require step-free access, we've got you covered. An accessible entrance is available on the other side of the building—just follow the signs or ask a member of our team for assistance.
             </p>
           </div>
 

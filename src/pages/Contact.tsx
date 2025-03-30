@@ -96,11 +96,11 @@ function Contact() {
           <div className={styles.info}>
             <p>
               <FaMapMarkerAlt size={18} color="#ac8d5b" />
-              <strong>Address:</strong> 123 Paris Street, France
+              <strong>Address:</strong> Grenoble 38000, France
             </p>
             <p>
               <FaPhone size={18} color="#ac8d5b" />
-              <strong>Phone:</strong> +33 1 23 45 67 89
+              <strong>Phone:</strong> +33613139148
             </p>
             <p>
               <FaEnvelope size={18} color="#ac8d5b" />
@@ -232,7 +232,7 @@ function Contact() {
         <h2 className={styles.mapTitle}>Find Us</h2>
         <iframe
           title="Google Map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9996280457894!2d2.292292615674795!3d48.85884417928747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7a8c5b1bce8e9d8!2zNDjCsDUxJzMxLjgiTiAywrAxNSc0My4zIkU!5e0!3m2!1sen!2sfr!4v1615560725345!5m2!1sen!2sfr"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2817.838104456789!2d5.724509315720789!3d45.188979979999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478a7b7c1c1c1c1c%3A0x1c1c1c1c1c1c1c1c!2sGrenoble%2C%2038000%20France!5e0!3m2!1sfr!2sfr!4v1641234567890!5m2!1sfr!2sfr"
           allowFullScreen={true}
           loading="lazy"
           className={styles.map}

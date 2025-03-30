@@ -68,7 +68,7 @@
   /* font-size: 17rem; */
   /* font-family: "Didot", "Playfair Display", serif; */
   font-weight: 600;
-  color: #AD8658;
+  color: #ac8d5b;
   text-decoration: none;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
               color 0.3s ease-in-out,
@@ -116,7 +116,7 @@
 }
 
 .footerNav a {
-  color: #AD8658;
+  color: #ac8d5b;
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
@@ -144,7 +144,7 @@
   display: block;
   width: 100%;
   height: 2px;
-  background: #AD8658;
+  background: #ac8d5b;
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -166,7 +166,7 @@
 
 .socialIcons a {
   font-size: 1.4rem;
-  color: #AD8658;
+  color: #ac8d5b;
   transition: color 0.3s ease-in-out, 
               transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
               background-color 0.3s ease-in-out;
@@ -210,7 +210,7 @@
 }
 
 .footerSubnav a {
-  color: #AD8658;
+  color: #ac8d5b;
   text-decoration: none;
   font-size:  0.8rem;
   text-transform: uppercase;
@@ -238,7 +238,7 @@
   display: block;
   width: 100%;
   height: 1px;
-  background: #AD8658;
+  background: #ac8d5b;
   transform: scaleX(0);
   transform-origin: center;
   transition: transform 0.3s ease-in-out;
@@ -277,7 +277,7 @@
   font-size: 1.2rem;
   margin-bottom: 6px;
   font-weight: 600;
-  color: #AD8658;
+  color: #ac8d5b;
   letter-spacing: 0.5px;
 }
 
@@ -308,7 +308,7 @@
 }
 
 .newsletterForm input:focus {
-  border-color: #AD8658;
+  border-color: #ac8d5b;
   box-shadow: 0 0 0 2px rgba(173, 134, 88, 0.2);
   outline: none;
 }
@@ -319,9 +319,9 @@
 
 .newsletterForm button {
   padding: 10px 15px;
-  background: #AD8658;
+  background: #ac8d5b;
   border: none;
-  color: #13161C;
+  color: #ffffff;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -378,8 +378,8 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #AD8658;
-  color: #13161C;
+  background: #ac8d5b;
+  color: #ffffff;
   padding: 10px;
   border: none;
   border-radius: 50%;
@@ -413,7 +413,7 @@
 
 .scrollToTop:hover {
   transform: scale(1.1) translateY(-5px);
-  background: #ffffff;
+  background: #1a1e25;
   box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
   opacity: 1;
 }

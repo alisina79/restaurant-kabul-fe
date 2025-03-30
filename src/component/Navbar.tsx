@@ -210,7 +210,7 @@ function Navbar() {
 
           {/* Right Side - Contact info and Book button */}
           <div className={styles.contactArea}>
-            <Link to="tel:02072990404" className={styles.phoneNumber}>020 7299 0404</Link>
+            <Link to="tel:+33613139148" className={styles.phoneNumber}>+33613139148</Link>
             
             <div 
               ref={bookButtonRef}
