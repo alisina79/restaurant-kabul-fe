@@ -332,7 +332,8 @@
 }
 
 .newsletterForm button:hover {
-  background: #ffffff;
+  background: #1a1e25;
+  color: #ac8d5b;
   transform: translateY(-2px);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }

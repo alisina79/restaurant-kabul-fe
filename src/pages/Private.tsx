@@ -180,10 +180,10 @@ export default function Private() {
                 <div className={styles.roomsGrid}>
                     <div className={styles.roomCard} onClick={() => navigate('/private-dining-arch')}>
                         <div className={styles.roomImageWrapper}>
-                            <img src="/hall.jpg" alt="The Arch Private Dining Room" className={styles.roomImage} />
+                            <img src="/hall.jpg" alt="The Private Dining Garden Room" className={styles.roomImage} />
                         </div>
                         <div className={styles.roomInfo}>
-                            <h3 className={styles.roomName}>The Arch</h3>
+                            <h3 className={styles.roomName}>The Garden Room</h3>
                             <p className={styles.roomCapacity}>Up to 20 guests</p>
                             <button className={styles.viewRoomButton}>View Details</button>
                         </div>
