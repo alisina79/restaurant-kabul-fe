@@ -23,18 +23,18 @@ const About: React.FC = () => {
         {/* Content container that creates the asymmetric layout */}
         <div className="container mx-auto px-6 relative z-20">
           <div className="min-h-[60vh] lg:min-h-[65vh] flex items-center">
-            <div className="w-full lg:w-1/2 py-16">
+            <div className="w-full  py-16">
               <FadeIn delay={0.1} direction="up" duration={0.8} once={true}>
                 <h1 className="text-4xl md:text-6xl font-serif text-white mb-6 leading-tight">
                   Our Story
                 </h1>
                 <div className="w-24 h-[3px] bg-[#af905c] mb-8"></div>
-                <p className="text-lg text-white/80 mb-10 max-w-md">
+                <p className="text-lg text-white/80 mb-10 ">
                   A culinary journey through the rich traditions and flavors of Afghanistan.
                 </p>
                 <button
                   onClick={() => navigate("/reservations")}
-                  className="px-8 py-3 bg-[#af905c] text-white font-medium uppercase text-sm tracking-wider hover:bg-white hover:text-[#af905c] transition-all duration-300"
+                  className="px-8 py-3 bg-[#ac8d5b] text-white font-medium uppercase text-sm tracking-wider hover:bg-white hover:text-[#af905c] transition-all duration-300"
                 >
                   Reserve a Table
                 </button>
@@ -110,9 +110,15 @@ const About: React.FC = () => {
                 <div className="flex flex-wrap gap-4">
                   <button
                     onClick={() => navigate("/menu")}
-                    className="px-8 py-3 bg-[#af905c] text-white font-medium uppercase text-sm tracking-wider hover:bg-[#8a7346] transition-colors"
+                    className="px-8 py-3 bg-[#ac8d5b] text-white font-medium uppercase text-sm tracking-wider hover:bg-[#1a1e25] transition-colors"
                   >
                     Discover Our Menu
+                  </button>
+                  <button
+                    onClick={() => navigate("/menu")}
+                    className="px-8 py-3 bg-[#ac8d5b] text-white font-medium uppercase text-sm tracking-wider hover:bg-[#1a1e25] transition-colors"
+                  >
+                    <a href="/ourjourny" className="px-8 py-3 bg-[#ac8d5b] text-white font-medium uppercase text-sm tracking-wider hover:bg-[#1a1e25] transition-colors">Explore More</a>
                   </button>
                 </div>
               </FadeIn>
