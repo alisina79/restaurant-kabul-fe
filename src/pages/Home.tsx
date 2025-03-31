@@ -1,6 +1,4 @@
 import Seasonal from "./Seasonal";
-
-import PrivateDining from "../pages/PrivateDining";
 import Chef from "../component/Chef";
 // import ChefSpecial from "../pages/ChefSpecial"; // Commented out ChefSpecial component
 
