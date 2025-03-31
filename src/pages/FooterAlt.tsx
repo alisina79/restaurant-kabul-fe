@@ -13,7 +13,7 @@ const FooterAlt = () => {
   };
 
   return (
-    <section className="bg-[#af905c] py-8 md:py-12 lg:py-16 text-white relative">
+    <section className=" py-8 md:py-12 lg:py-16 text-white relative">
       <FadeIn delay={0.1} direction="up" duration={0.8} once={true}>
         <Logo color="white" />
       </FadeIn>
@@ -97,6 +97,8 @@ const FooterAlt = () => {
                 >
                   SUBSCRIBE
                 </Button>
+
+                
               </div>
             </div>
           </div>
