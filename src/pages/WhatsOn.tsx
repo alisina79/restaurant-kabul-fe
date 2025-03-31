@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { KPatternBackground } from "../components/PatternBackground";
 import FadeIn from "../components/animations/FadeIn";
 import Logo from "../components/logo";
-import what from "../../public/images/what.jpg";
+import what from "../images/what.jpg";
 const Weddings: React.FC = () => {
   const navigate = useNavigate();
 
@@ -85,9 +85,9 @@ Keep an eye on this space for updates on upcoming celebrations and seasonal offe
                 once={true}
                 className="h-full"
               >
-                <div className="h-full overflow-hidden group">
+                <div className="h-full overflow-hidden group min-h-[400px]">
                   <img
-                    src="/images/what.jpg"
+                    src={what}
                     alt="Kaboul Gourmet Restaurant Interior"
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125"
                   />

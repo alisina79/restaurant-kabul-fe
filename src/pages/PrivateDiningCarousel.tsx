@@ -8,9 +8,9 @@ import { Carousel,
 } from "../components/ui/carousel";
 import FadeIn from "../components/animations/FadeIn";
 import { Button } from "../components/ui/button";
-import hall from "../../public/images/hall.jpg";
-import gallery from "../../public/images/gallery.jpg";
-import whats from "../../public/images/whats.jpg";
+import hall from "../images/hall.jpg";
+import gallery from "../images/gallery.jpg";
+import whats from "../images/whats.jpg";
 
 interface DiningRoom {
   id: number;
@@ -68,7 +68,7 @@ const PrivateDiningCarousel = () => {
           </FadeIn>
           <FadeIn delay={0.4} direction="up" duration={0.8} once={true}>
             <p className="mt-4 text-sm md:text-base text-black max-w-2xl mx-auto text-center">
-            Whether it’s an intimate dinner or a full-scale celebration for up to 150 guests, we create unforgettable experiences tailored to every occasion.
+            Whether it's an intimate dinner or a full-scale celebration for up to 150 guests, we create unforgettable experiences tailored to every occasion.
             </p>
           </FadeIn>
           <div className="flex justify-center mt-8">

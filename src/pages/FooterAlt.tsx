@@ -3,7 +3,7 @@ import FadeIn from "../components/animations/FadeIn";
 import Logo from "../components/logo";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
-import chef from "../../public/images/chef.jpg";
+import chef from "../images/chef.jpg";
 const FooterAlt = () => {
   const handleMapClick = () => {
     window.open(
@@ -147,7 +147,7 @@ const FooterAlt = () => {
                 <img
                   src={chef}
                   alt="Map of Galvin La Chapelle"
-                  className="md:w-full w-[150px] h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="md:w-full w-[150px] h-full object-cover transition-transform duration-500 group-hover:scale-105 min-h-[150px]"
                 />
               </div>
             </div>

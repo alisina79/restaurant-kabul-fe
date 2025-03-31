@@ -9,6 +9,10 @@ import {
 import { Link } from "react-router-dom";
 import { cn } from "../lib/utils";
 import FadeIn from "../components/animations/FadeIn";
+import hall from "../images/hall.jpg";
+import mother from "../images/mother.jpg";
+import val from "../images/val.jpg";
+import ann from "../images/ann.jpg";
 
 const HERO_CONTENT = [
   {
@@ -27,7 +31,7 @@ const HERO_CONTENT = [
   },
   {
     type: "image",
-    src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    src: mother,
     alt: "Chef preparing gourmet meal",
     subtitle: "Celebrate with Elegant Flavors, Crafted with Love",
     title: "A Mother's Day to Remember",
@@ -40,7 +44,7 @@ const HERO_CONTENT = [
   },
   {
     type: "image",
-    src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    src: hall,
     alt: "Fine dining experience",
     subtitle: "Déjeuner du Dimanche",
     title: "Ambiance Parfaite–Pour Occasions Spéciales",
@@ -48,12 +52,12 @@ const HERO_CONTENT = [
       "Celebrate life's special moments in a setting of elegance and comfort. Private dining available for your most intimate occasions.",
     button: {
       text: "Explore More",
-      url: "/sunday",
+      url: "/sudanday",
     },
   },
   {
     type: "image",
-    src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    src: val,
     alt: "Gourmet dish presentation",
     subtitle: "Saison Spéciale",
     title: "A Spéciale Evening to Remember",
@@ -67,7 +71,7 @@ const HERO_CONTENT = [
 
   {
     type: "image",
-    src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    src: ann,
     alt: "Gourmet dish presentation",
     subtitle: "Savoir-Faire",
 
@@ -318,10 +322,10 @@ const Hero: React.FC = () => {
         <button
           onClick={goToPrevSlide}
           disabled={transitioning}
-          className="bg-black/30 backdrop-blur-sm text-white p-3 rounded-full hover:bg-gold/80 active:scale-95 transition-all duration-300 flex items-center justify-center transform hover:translate-x-[-5px] shadow-[0_0_15px_rgba(0,0,0,0.2)] group"
+          className="bg-black/30 backdrop-blur-sm text-white hover:text-white p-3 rounded-full hover:bg-gold/80 active:scale-95 transition-all duration-300 flex items-center justify-center transform hover:translate-x-[-5px] shadow-[0_0_15px_rgba(0,0,0,0.2)] group"
           aria-label="Previous slide"
         >
-          <ChevronLeft className="w-5 h-5 group-hover:text-black" />
+          <ChevronLeft className="w-5 h-5 group-hover:text-white" />
         </button>
         <button
           onClick={goToNextSlide}
@@ -329,7 +333,7 @@ const Hero: React.FC = () => {
           className="bg-black/30 backdrop-blur-sm text-white p-3 rounded-full hover:bg-gold/80 active:scale-95 transition-all duration-300 flex items-center justify-center transform hover:translate-x-[5px] shadow-[0_0_15px_rgba(0,0,0,0.2)] group"
           aria-label="Next slide"
         >
-          <ChevronRight className="w-5 h-5 group-hover:text-black" />
+          <ChevronRight className="w-5 h-5 group-hover:text-white" />
         </button>
       </div>
 

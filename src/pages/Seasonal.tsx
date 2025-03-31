@@ -5,6 +5,8 @@ import { KPatternBackground } from "../components/PatternBackground";
 import FadeIn from "../components/animations/FadeIn";
 import Logo from "../components/logo";
 import { Testimonial } from "../components/Testimonial";
+import seas from "../images/seas.jpg";
+import ses from "../images/ses.jpg";
 
 
 const About: React.FC = () => {
@@ -50,7 +52,7 @@ const About: React.FC = () => {
               >
                 <div className="h-full overflow-hidden group">
                   <img
-                    src="https://ik.imagekit.io/sbj8bzmjnl4/galvin/wp-content/uploads/2024/04/best-restaurants-london-city-spitalfields-market-liverpool-street-bishopsgate-private-dining-rooms-event-space-michelin-011-888x1333.jpg.webp"
+                    src={seas}
                     alt="Galvin La Chapelle Restaurant Interior"
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125"
                   />
@@ -112,7 +114,7 @@ const About: React.FC = () => {
               >
                 <div className="h-full overflow-hidden group">
                   <img
-                    src="https://ik.imagekit.io/sbj8bzmjnl4/galvin/wp-content/uploads/2024/04/restaurant-michelin-star-french-city-london-galvin-la-chapelle-fish-04-960x640.jpg.webp"
+                    src={ses}
                     alt="Galvin La Chapelle Restaurant Interior"
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125"
                   />

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { KPatternBackground } from "../components/PatternBackground";
 import FadeIn from "../components/animations/FadeIn";
 import Logo from "../components/logo";
+import hah from "../images/hah.jpg";
 
 const Celebrations: React.FC = () => {
   const navigate = useNavigate();
@@ -110,7 +111,7 @@ const Celebrations: React.FC = () => {
               >
                 <div className="h-full overflow-hidden group">
                   <img
-                    src="https://ik.imagekit.io/sbj8bzmjnl4/galvin/wp-content/uploads/2024/04/restaurants-spitalfields-market-city-london-fine-dining-celebrations-012-960x960.jpg.webp"
+                    src={hah}
                     alt="Galvin La Chapelle Restaurant Interior"
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-125"
                   />

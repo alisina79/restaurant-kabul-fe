@@ -124,9 +124,9 @@ const SundayLunch: React.FC = () => {
       {/* Section 3: From Seasonal Page (Left Image, Right Content) */}
       <div className="mb-16 md:mb-24">
         <KPatternBackground
-          strokeColor="#af905c"
-          fillColor="#645741"
-          backgroundColor="bg-[#af905c]"
+          strokeColor="#ac8d5b"
+          fillColor="#1a1e25"
+          backgroundColor="bg-[#ac8d5b]"
           patternSize="50px"
         >
           <section className="w-full py-16 md:py-24 lg:py-28 overflow-hidden">

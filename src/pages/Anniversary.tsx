@@ -82,9 +82,9 @@ const Anniversary: React.FC = () => {
       {/* Content Section - Pattern background container */}
       <section className="w-full overflow-hidden py-10">
         <KPatternBackground
-          strokeColor="#121212"
-          fillColor="#121212"
-          backgroundColor="bg-[#ab8d5b]"
+          strokeColor="#ac8d5"
+          fillColor="#ac8d5b"
+          backgroundColor="bg-[#ffffff]"
           patternSize="50px"
           className="p-6 md:p-12 lg:p-16 overflow-hidden w-full"
         >
