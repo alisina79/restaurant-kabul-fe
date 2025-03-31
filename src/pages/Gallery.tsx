@@ -1,11 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { X, Camera, Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
+import ImageLoader from '../components/animations/ImageLoader';
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+  size: 'small' | 'medium' | 'large';
+}
 
 const Gallery: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [hasAnimated, setHasAnimated] = useState<boolean>(false);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<{ [key: string]: boolean }>({});
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3, once: true });
 
@@ -34,7 +42,7 @@ const Gallery: React.FC = () => {
     }
   }, [isInView]);
 
-  const galleryImages = [
+  const galleryImages: GalleryImage[] = [
     {
       src: "https://images.unsplash.com/photo-1519996529931-28324d5a630e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80",
       alt: "Elegant restaurant table setting",
@@ -106,6 +114,10 @@ const Gallery: React.FC = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
+  const handleImageLoad = (src: string) => {
+    setLoadedImages(prev => ({ ...prev, [src]: true }));
+  };
+
   return (
     <section 
       id="gallery" 
@@ -162,10 +174,24 @@ const Gallery: React.FC = () => {
                 }`}
                 onClick={() => setSelectedImage(image.src)}
               >
+                <AnimatePresence mode="wait">
+                  {!loadedImages[image.src] && (
+                    <motion.div
+                      initial={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ImageLoader size={image.size} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
                 <img 
                   src={image.src} 
                   alt={image.alt}
-                  className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-110"
+                  className={`object-cover w-full h-full transition-transform duration-1000 group-hover:scale-110 ${
+                    loadedImages[image.src] ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  onLoad={() => handleImageLoad(image.src)}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
