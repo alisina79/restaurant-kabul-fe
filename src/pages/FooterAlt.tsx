@@ -13,18 +13,18 @@ const FooterAlt = () => {
   };
 
   return (
-    <section className=" py-8 md:py-12 lg:py-16 text-white relative">
+    <section className=" py-8 md:py-12 lg:py-16 text-white relative bg-[#ac8d5b]">
       <FadeIn delay={0.1} direction="up" duration={0.8} once={true}>
         <Logo color="white" />
       </FadeIn>
 
-      <div className="container mx-auto px-6 py-6">
+      <div className="container mx-auto px-6 py-6 bg-[#ac8d5b]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-6">
           {/* Column 1: Logo and Contact */}
           <div>
             <div className="mb-6">
               <div className="flex gap-2 items-center">
-                <h1 style={{fontFamily: "'Brush Script MT', cursive"}} className="text-white font-serif text-5xl italic mb-4  cursor-pointer">Kaboul Gourmet</h1>
+                <h1 style={{fontFamily: "'Brush Script MT', cursive"}} className="text-white bg-[#ac8d5b]font-serif text-5xl italic mb-4  cursor-pointer">Kaboul Gourmet</h1>
                 <span style={{fontFamily: "'Segoe UI Symbol', sans-serif"}} className="text-white font-serif text-3xl italic mb-4  cursor-pointer">❀</span>
               </div>
             </div>
