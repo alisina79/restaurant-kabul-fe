@@ -23,16 +23,16 @@ const Weddings: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-stretch overflow-hidden">
             <div className="bg-[#1a1e25] flex flex-col h-full">
               <div className="p-4 md:p-6 lg:p-8 items-center text-center">
-                <FadeIn delay={0.1} direction="up" duration={0.8} once={true}>
+                <FadeIn direction="up" delay={0.2} duration={0.8} once={true}>
                   <Logo color="#ac8d5b" />
                 </FadeIn>
-                <FadeIn delay={0.2} direction="up" duration={0.8} once={true}>
+                <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
                   <h3 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide text-[#ffffff] uppercase">
                     What's On at Kaboul Gourmet
                   </h3>
                 </FadeIn>
                 <FadeIn
-                  delay={0.3}
+                  delay={0.4}
                   direction="up"
                   duration={0.8}
                   once={false}
@@ -41,22 +41,34 @@ const Weddings: React.FC = () => {
                 >
                   <div className="w-36 h-[3px] bg-[#ac8d5b] mx-auto my-2"></div>
                 </FadeIn>
-                <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
+                <FadeIn delay={0.5} direction="up" duration={0.8} once={true}>
                   <h3 className="text-lg md:text-xl font-serif text-[#ffffff]">
                     Celebrating moments that matter
                   </h3>
                 </FadeIn>
-                <FadeIn delay={0.4} direction="up" duration={0.8} once={true}>
+                <FadeIn delay={0.6} direction="up" duration={0.8} once={true}>
                   <p className="mt-2 text-sm md:text-base text-white max-w-2xl">
-                  We believe great food is even better when shared on special occasions. That's why we're celebrating moments that matter—like Valentine's Day, Mother's Day, anniversaries, and more. We're also making Sundays something to savor with comforting, well-crafted lunches perfect for gathering with friends or family.
-                    <br />
-                    <br />
-                    Throughout the year, we'll highlight key dates with thoughtful menus, warm hospitality, and just the right atmosphere to make each event feel special.
-
-Keep an eye on this space for updates on upcoming celebrations and seasonal offerings.
+                    We believe great food is even better when shared on special
+                    occasions. That's why we're celebrating moments that
+                    matter—like Valentine's Day, Mother's Day, anniversaries,
+                    and more. We're also making Sundays something to savor with
+                    comforting, well-crafted lunches perfect for gathering with
+                    friends or family.
                   </p>
                 </FadeIn>
-                <FadeIn delay={0.5} direction="up" duration={0.8} once={true}>
+                <br />
+                <br />
+                <FadeIn delay={0.7} direction="up" duration={0.8} once={true}>
+                  <p>
+                    Throughout the year, we'll highlight key dates with
+                    thoughtful menus, warm hospitality, and just the right
+                    atmosphere to make each event feel special. Keep an eye on
+                    this space for updates on upcoming celebrations and seasonal
+                    offerings.
+                  </p>
+                </FadeIn>
+
+                <FadeIn delay={0.8} direction="up" duration={0.8} once={true}>
                   <div className="flex flex-wrap justify-center gap-4 mb-6 text-center mt-6">
                     <button
                       className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider border border-[#ac8d5b] bg-[#ac8d5b] text-[#ffffff] 
@@ -72,15 +84,14 @@ Keep an eye on this space for updates on upcoming celebrations and seasonal offe
                     >
                       WHAT'S ON
                     </button>
-                  
                   </div>
                 </FadeIn>
               </div>
             </div>
             <div className="relative overflow-hidden flex flex-col h-full order-2 lg:order-1">
               <FadeIn
-                delay={0.5}
                 direction="up"
+                delay={0.3}
                 duration={1.2}
                 once={true}
                 className="h-full"

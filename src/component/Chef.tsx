@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
- import FadeIn from "../components/animations/FadeIn";
+import FadeIn from "../components/animations/FadeIn";
 import { Testimonial } from "../components/Testimonial";
 import { KPatternBackground } from "../components/PatternBackground";
 import chee from "../images/chee.jpg";
@@ -15,7 +15,8 @@ const Chef = () => {
     },
     {
       boldText: "Unlike typical dining spots,",
-      regularText: " KABOUL GOURMET offers a warm, soulful experience every day of the week.",
+      regularText:
+        " KABOUL GOURMET offers a warm, soulful experience every day of the week.",
       attribution: "— Hospitality is our heritage",
     },
     {
@@ -32,14 +33,17 @@ const Chef = () => {
           <div className="px-0 md:px-12 lg:px-20">
             <div>
               {/* Main Heading */}
-              <FadeIn delay={0.2} direction="up" duration={0.8} once={true}>
+              <FadeIn direction="up" delay={0.2} duration={0.8} once={true}>
                 <h2 className="text-center font-serif text-lg md:text-xl lg:text-3xl leading-relaxed font-medium mb-8 tracking-wide text-primary">
-                A family-run restaurant serving authentic Afghan cuisine made with care. Rooted in tradition and hospitality, we share recipes passed down through generations — bringing the warmth of home to every plate.
+                  A family-run restaurant serving authentic Afghan cuisine made
+                  with care. Rooted in tradition and hospitality, we share
+                  recipes passed down through generations — bringing the warmth
+                  of home to every plate.
                 </h2>
               </FadeIn>
               <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
                 <h1 className="text-center font-serif text-lg md:text-xl lg:text-3xl leading-relaxed font-medium mb-8 tracking-wide text-primary">
-                Family-Owned. Independent. Always Authentic
+                  Family-Owned. Independent. Always Authentic
                 </h1>
               </FadeIn>
 
@@ -62,7 +66,14 @@ const Chef = () => {
               </FadeIn>
 
               <Testimonial testimonials={testimonials} />
-              <FadeIn delay={0.5} direction="up" duration={0.8} once={true} initialOpacity={1} size="small">
+              <FadeIn
+                delay={0.5}
+                direction="up"
+                duration={0.8}
+                once={true}
+                initialOpacity={1}
+                size="small"
+              >
                 <div className="flex justify-center items-center mt-14">
                   <KPatternBackground
                     strokeColor="#ac8d5b"
@@ -70,15 +81,15 @@ const Chef = () => {
                     backgroundColor="bg-[transparent]"
                     patternSize="50px"
                     className="w-[200px] h-[50px]"
-                   />
+                  />
                 </div>
               </FadeIn>
             </div>
           </div>
           <div className="relative overflow-hidden ">
             <FadeIn
-              delay={0.5}
               direction="up"
+              delay={0.3}
               duration={1.2}
               once={true}
               className="h-full"

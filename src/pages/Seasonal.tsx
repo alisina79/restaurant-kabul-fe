@@ -8,7 +8,6 @@ import { Testimonial } from "../components/Testimonial";
 import seas from "../images/seas.jpg";
 import ses from "../images/ses.jpg";
 
-
 const About: React.FC = () => {
   const navigate = useNavigate();
 
@@ -44,10 +43,11 @@ const About: React.FC = () => {
             {/* Left Side (Image) */}
             <div className="relative overflow-hidden flex flex-col h-full order-2 lg:order-1">
               <FadeIn
-                delay={0.5}
                 direction="up"
+                delay={0.3}
                 duration={1.2}
                 once={true}
+                size="large"
                 className="h-full"
               >
                 <div className="h-full overflow-hidden group">
@@ -63,16 +63,16 @@ const About: React.FC = () => {
             {/* Right Side (Content) */}
             <div className="bg-[#af905c] flex flex-col h-full order-1 lg:order-2">
               <div className="p-4 md:p-8 lg:p-12 items-center text-center text-normal">
-                <FadeIn delay={0.1} direction="up" duration={0.8} once={true}>
+                <FadeIn direction="up" delay={0.2} duration={0.8} once={true}>
                   <Logo color="black" />
                 </FadeIn>
-                <FadeIn delay={0.2} direction="up" duration={0.8} once={true}>
+                <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
                   <h2 className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide text-black uppercase">
                     SEASONAL FRESH
                   </h2>
                 </FadeIn>
                 <FadeIn
-                  delay={0.3}
+                  delay={0.4}
                   direction="up"
                   duration={1}
                   once={false}
@@ -81,19 +81,20 @@ const About: React.FC = () => {
                 >
                   <div className="w-36 h-[3px] bg-white mx-auto my-3"></div>
                 </FadeIn>
-                <FadeIn delay={0.3} direction="up" duration={0.8} once={true}>
+                <FadeIn delay={0.5} direction="up" duration={0.8} once={true}>
                   <h3 className="text-lg md:text-xl font-serif text-black">
                     Only the very best ingredients
                   </h3>
                 </FadeIn>
-                <FadeIn delay={0.4} direction="up" duration={0.8} once={true}>
+                <FadeIn delay={0.6} direction="up" duration={0.8} once={true}>
                   <p className="mt-4 text-sm md:text-base text-black max-w-2xl">
-                  At KABOUL GOURMET, we focus on using the best seasonal ingredients. Our menu changes regularly, allowing our Head Chef to bring out fresh flavors and serve you the highest quality dishes every time you visit.
-
-
+                    At KABOUL GOURMET, we focus on using the best seasonal
+                    ingredients. Our menu changes regularly, allowing our Head
+                    Chef to bring out fresh flavors and serve you the highest
+                    quality dishes every time you visit.
                   </p>
                 </FadeIn>
-                <FadeIn delay={0.5} direction="up" duration={0.8} once={true}>
+                <FadeIn delay={0.7} direction="up" duration={0.8} once={true}>
                   <div className="my-5 text-center">
                     <button
                       className="px-8 py-3 font-serif text-sm font-medium uppercase tracking-wider bg-white text-black hover:bg-black hover:text-white transition-all duration-300"
